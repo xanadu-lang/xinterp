@@ -59,7 +59,7 @@ LIBRARY:=-L./xanadu/lib -lxatsopt
 
 ######
 #
-all: \
+all:: \
 xinterp
 xinterp: \
 DATS/xinterp.dats \
@@ -67,6 +67,11 @@ $(OBJSATS) $(OBJDATS) ; \
 $(PATSCC) -cleanaft -o ./bin/xinterp \
 $(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC) $(LIBRARY)
 #
+######
+
+libxatsopt: ; \
+(cd ./xanadu/srcgen/xats && make libxatsopt)
+
 ######
 
 BUILD/%_sats.c: \
