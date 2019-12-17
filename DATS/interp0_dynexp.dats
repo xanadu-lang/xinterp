@@ -1133,10 +1133,12 @@ IR0Eeval
 val
 irv1 = interp0_irexp(env0, ire1)
 //
+(*
 val () =
 println!("aux_eval: ire1 = ", ire1)
 val () =
 println!("aux_eval: irv1 = ", irv1)
+*)
 //
 in
 //
@@ -1339,8 +1341,10 @@ let
 val-
 IR0Etalf(ire1) = ire0.node()
 //
+(*
 val () =
 println!("aux_talf: ire1 = ", ire1)
+*)
 //
 in
 case-
