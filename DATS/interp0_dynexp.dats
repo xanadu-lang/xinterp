@@ -1118,7 +1118,7 @@ ire1.node() of
 end // end of [aux_addr]
 
 (* ****** ****** *)
-//
+
 fun
 aux_eval
 ( env0
@@ -1142,17 +1142,67 @@ in
 //
 case- irv1 of
 |
-IR0Vlft(irlv) =>
+IR0Vlft(x0) => aux_eval_left(x0)
+|
+IR0Vlazy(r0) => aux_eval_lazy(r0)
+//
+end // end of [aux_eval]
+//
+and
+aux_eval_left
+(x0: ir0lftval): ir0val =
+let
+//
+fun
+auxget_at
+( irvs
+: ir0valist
+, i0: int): ir0val =
 (
-case- irlv of
+case+ irvs of
+|
+list_nil() =>
+IR0Vnone0()
+|
+list_cons
+(irv0, irvs) =>
+(
+if
+(i0 <= 0)
+then irv0
+else auxget_at(irvs, i0-1)
+)
+) (* end of [auxget_at] *)
+in
+case+ x0 of
 |
 IR0LVref(r0) =>
 let
   val-Some(irv0) = r0[] in irv0
 end
-) (* end of [IR0Vlft] *)
 |
-IR0Vlazy(r0) =>
+IR0LVproj
+(x1, lab2, idx2) =>
+let
+val
+irv1 = aux_eval_left(x1)
+in
+//
+case- irv1 of
+|
+IR0Vtuple(knd, irvs) =>
+let
+val () = // flat
+assertloc(knd = 0) in auxget_at(irvs, idx2)
+end
+//
+end
+end (* end of [aux_eval_left] *)
+//
+and
+aux_eval_lazy
+( r0
+: ref(ir0lazval)): ir0val =
 (
 case+ r0[] of
 //
@@ -1171,10 +1221,8 @@ case+ r0[] of
     val () = intpenv_free_fenv(env0) in irv2
     end
   end // IR0LVexp
-) (* end of [IR0Vlazy] *)
-//
-end // end of [aux_eval]
-//
+) (* end of [aux_eval_lazy] *)
+
 (* ****** ****** *)
 //
 fun
