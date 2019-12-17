@@ -1099,6 +1099,27 @@ end // end of [aux_fix]
 (* ****** ****** *)
 //
 fun
+aux_addr
+( env0
+: !intpenv
+, ire0: ir0exp): ir0val =
+let
+//
+val-
+IR0Eaddr(ire1) = ire0.node()
+//
+in
+case-
+ire1.node() of
+| IR0Eflat(ire2) => 
+  (
+    interp0_irexp(env0, ire2)
+  )
+end // end of [aux_addr]
+
+(* ****** ****** *)
+//
+fun
 aux_eval
 ( env0
 : !intpenv
@@ -1112,9 +1133,24 @@ IR0Eeval
 val
 irv1 = interp0_irexp(env0, ire1)
 //
+val () =
+println!("aux_eval: ire1 = ", ire1)
+val () =
+println!("aux_eval: irv1 = ", irv1)
+//
 in
 //
 case- irv1 of
+|
+IR0Vlft(irlv) =>
+(
+case- irlv of
+|
+IR0LVref(r0) =>
+let
+  val-Some(irv0) = r0[] in irv0
+end
+) (* end of [IR0Vlft] *)
 |
 IR0Vlazy(r0) =>
 (
@@ -1134,9 +1170,8 @@ case+ r0[] of
     let
     val () = intpenv_free_fenv(env0) in irv2
     end
-  end // end of [IR0LVexp]
-//
-)
+  end // IR0LVexp
+) (* end of [IR0Vlazy] *)
 //
 end // end of [aux_eval]
 //
@@ -1252,13 +1287,25 @@ aux_talf
 , ire0
 : ir0exp): ir0val =
 let
+//
 val-
 IR0Etalf(ire1) = ire0.node()
+//
+val () =
+println!("aux_talf: ire1 = ", ire1)
+//
 in
 case-
 ire1.node() of
 |
 IR0Eflat(ire1) => interp0_irexp(env0, ire1)
+|
+IR0Eeval(knd0, ire1) =>
+let
+val () =
+assertloc(knd0 = 2) in interp0_irexp(env0, ire1)
+end // end of [IR0Eeval]
+//
 end // end of [aux_talf]
 
 (* ****** ****** *)
@@ -1326,6 +1373,8 @@ ire0.node() of
 | IR0Efix
     (_, _, _, _) => aux_fix(env0, ire0)
   // IR0Efix
+//
+| IR0Eaddr(ire1) => aux_addr(env0, ire0)
 //
 | IR0Eeval(_, _) => aux_eval(env0, ire0)
 //
