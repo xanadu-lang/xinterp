@@ -13,7 +13,6 @@ in
 end
 
 (* ****** ****** *)
-(*
 //
 var x1: int = 1
 var x2: int = 2
@@ -23,7 +22,6 @@ pswap($addr(x1), $addr(x2))
 //
 val x1 = x1 and x2 = x2
 //
-*)
 (* ****** ****** *)
 //
 var
