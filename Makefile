@@ -54,8 +54,8 @@ $(patsubst %.dats, BUILD/%_dats.o, $(SRCDATS))
 
 INCLUDE:=
 INCLUDE+=-I"."
-INCLUDE+=-I"./BUILD/xats"
-LIBRARY:=-L./xanadu/lib -lxatsopt
+INCLUDE+=-I"./xanadu/srcgen/xats"
+LIBRARY:=-L"./xanadu/lib" -lxatsopt
 
 ######
 #
