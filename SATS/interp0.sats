@@ -131,12 +131,19 @@ ir0val =
   (ir0env, d2var, ir0arglst, ir0exp)
 (*
 | IR0Vfix2 of
-  (ir0env, d2var, ir0arglst, ir0exp, ir0exp)
+  ( ir0env
+  , d2var(*f*)
+  , ir0arglst, ir0exp, ir0exp)
 *)
 | IR0Vfixs of
-  (ir0env, d2var, ir0arglst, ir0exp, ir0explst)
+  ( ir0env
+  , d2var(*f*)
+  , ir0arglst, ir0exp, ir0explst)
 //
 | IR0Vlazy of ref(ir0lazval)
+| IR0Vllazy of
+  ( ir0env
+  , ir0exp(*eval*), ir0expopt(*free*))
 //
 | IR0Vnone0 of () | IR0Vnone1 of (ir0exp)
 //

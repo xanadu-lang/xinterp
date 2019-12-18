@@ -1143,10 +1143,16 @@ println!("aux_eval: irv1 = ", irv1)
 in
 //
 case- irv1 of
-|
-IR0Vlft(x0) => aux_eval_left(x0)
-|
-IR0Vlazy(r0) => aux_eval_lazy(r0)
+//
+| IR0Vlft
+  (irlv) => aux_eval_left(irlv)
+//
+| IR0Vlazy
+  (ref0) => aux_eval_lazy(ref0)
+//
+| IR0Vllazy
+  (fenv, ire1, opt2) =>
+  aux_eval_llazy(fenv, ire1, opt2)
 //
 end // end of [aux_eval]
 //
@@ -1195,7 +1201,7 @@ case- irv1 of
 IR0Vtuple(knd, irvs) =>
 let
 val () = // flat
-assertloc(knd = 0) in auxget_at(irvs, idx2)
+assertloc(knd=0) in auxget_at(irvs, idx2)
 end
 //
 end
@@ -1208,22 +1214,40 @@ aux_eval_lazy
 (
 case+ r0[] of
 //
-| IR0LVval(irv2) => irv2
+|
+IR0LVval(irv2) => irv2
 //
-| IR0LVexp(fenv, ire2) =>
+|
+IR0LVexp(fenv, ire2) =>
+let
+  val env0 =
+  intpenv_make_fenv(fenv)
+  val
+  irv2 =
+  interp0_irexp(env0, ire2)
+in
+  r0[] := IR0LVval(irv2);
   let
-    val env0 =
-    intpenv_make_fenv(fenv)
-    val
-    irv2 =
-    interp0_irexp(env0, ire2)
-  in
-    r0[] := IR0LVval(irv2);
-    let
-    val () = intpenv_free_fenv(env0) in irv2
-    end
-  end // IR0LVexp
+  val () = intpenv_free_fenv(env0) in irv2
+  end
+end // IR0LVexp(fenv, ire2)
 ) (* end of [aux_eval_lazy] *)
+
+and
+aux_eval_llazy
+( fenv: ir0env
+, ire1: ir0exp
+, opt2: ir0expopt): ir0val =
+let
+  val env0 =
+  intpenv_make_fenv(fenv)
+  val
+  irv1 = interp0_irexp(env0, ire1)
+in
+  let
+  val () = intpenv_free_fenv(env0) in irv1
+  end
+end
 
 (* ****** ****** *)
 //
@@ -1241,7 +1265,28 @@ val
 fenv = intpenv_take_fenv(env0)
 //
 in
-  IR0Vlazy(ref(IR0LVexp(fenv, ire1)))
+IR0Vlazy(ref(IR0LVexp(fenv, ire1)))
+end
+//
+fun
+aux_llazy
+( env0
+: !intpenv
+, ire0: ir0exp): ir0val =
+let
+//
+val-
+IR0Ellazy
+( ire1
+, opt2(*free*)) = ire0.node()
+//
+in
+(
+  IR0Vllazy(fenv, ire1, opt2)
+) where
+{
+  val fenv = intpenv_take_fenv(env0)
+}
 end
 //
 (* ****** ****** *)
@@ -1355,7 +1400,7 @@ IR0Eflat(ire1) => interp0_irexp(env0, ire1)
 IR0Eeval(knd0, ire1) =>
 let
 val () =
-assertloc(knd0 = 2) in interp0_irexp(env0, ire1)
+assertloc(knd0=1) in interp0_irexp(env0, ire1)
 end // end of [IR0Eeval]
 //
 end // end of [aux_talf]
@@ -1418,6 +1463,7 @@ ire0.node() of
   // IR0Eif0
 | IR0Ecase
     (_, _, _) => aux_case(env0, ire0)
+  // IR0Ecase
 //
 | IR0Elam
     (_, _, _) => aux_lam(env0, ire0)
@@ -1431,11 +1477,12 @@ ire0.node() of
 | IR0Eeval(_, _) => aux_eval(env0, ire0)
 //
 | IR0Elazy(ire1) => aux_lazy(env0, ire0)
+| IR0Ellazy(_, _) => aux_llazy(env0, ire0)
 //
 | IR0Eflat(ire1) => aux_flat(env0, ire0)
 | IR0Etalf(ire1) => aux_talf(env0, ire0)
 //
-| _(*rest-of-ir0exp*) => IR0Vnone1(ire0)
+| _(* rest-of-ir0exp *) => IR0Vnone1(ire0)
 //
 end // end of [interp0_irexp]
 

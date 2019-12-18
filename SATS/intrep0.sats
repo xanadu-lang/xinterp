@@ -295,13 +295,20 @@ ir0exp_node =
 | IR0Eaddr of (ir0exp(*l-value*))
 | IR0Efold of (ir0exp(*l-value*))
 //
-| IR0Eeval of
-  (int(*knd*), ir0exp(*l-value*))
-//
 | IR0Elazy of (ir0exp(* thunk *))
+| IR0Ellazy of
+  (ir0exp(*eval*), ir0expopt(*free*))
 //
 | IR0Eflat of (ir0exp(*l-value*))
 | IR0Etalf of (ir0exp(*IR0Eflat*))
+//
+// HX-2019-12-18:
+// kind=0: undecided
+// kind=1: derefence
+// kind=2: lazy-eval
+// kind=3: llazy-eval
+| IR0Eeval of
+  (int(*kind*), ir0exp(*source*))
 //
 | IR0Enone0 of () | IR0Enone1 of d3exp
 //

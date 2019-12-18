@@ -10,6 +10,10 @@ RMF=rm -f
 
 ######
 
+MAKE=make
+
+######
+
 PATSCC=$(PATSHOME)/bin/patscc
 PATSOPT=$(PATSHOME)/bin/patsopt
 
@@ -70,7 +74,7 @@ $(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC) $(LIBRARY)
 ######
 
 libxatsopt: ; \
-(cd ./xanadu/srcgen/xats && make libxatsopt)
+(cd ./xanadu/srcgen/xats && $(MAKE) libxatsopt)
 
 ######
 
@@ -122,6 +126,8 @@ clean:: ; $(RMF) xinterp_dats.c
 
 cleanall:: clean
 cleanall:: ; $(RMF) ./bin/xinterp
+cleanall:: ; $(RMF) ./xanadu/lib/libxatsopt.a
+cleanall:: ; $(MAKE) -C ./xanadu/srcgen/xats cleanall
 
 ######
 
