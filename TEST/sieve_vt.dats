@@ -25,11 +25,7 @@ end
 
 and
 filter
-( xs
-: stream_vt(int)
-, x0: int
-)
-: stream_vt(int) =
+(xs, x0) =
 $llazy
 (
 let
@@ -62,6 +58,8 @@ val-
 cons_vt(x0, xs) = $eval(xs) // x0 = 2
 val-
 cons_vt(x1, xs) = $eval(xs) // x1 = 3
+val-
+cons_vt(x2, xs) = $eval(xs) // x2 = 5
 
 (* ****** ****** *)
 
