@@ -689,6 +689,7 @@ the_preludes_load_if
 // end of [val]
 //
 val () = (st0.inpfil0 := fp0)
+//
 val
 (pf0 | ()) =
 $FP0.the_filpathlst_push(fp0)
@@ -711,49 +712,83 @@ val
 $FP0.the_filpathlst_pout(pf0 | (*none*))
 *)
 //
+val () = synread_main(d0cs)
+//
 (*
 val () =
 println!
 ("process_fpath: d0cs = ", d0cs)
 *)
 //
-val () = synread_main(d0cs)
-//
+val
+d1cs =
+let
 val
 d1cs = trans01_declist(d0cs)
+in
+d1cs where
+{
+  val () = tread01_main(d1cs)
+}
+end // end of [val]
 (*
 val () =
 println!
 ("process_fpath: d1cs = ", d1cs)
 *)
 //
-val () = t1xread_main(d1cs)
-//
+val
+d2cs = 
+let
 val
 d2cs = trans12_declist(d1cs)
+in
+d2cs where
+{
+  val () = tread12_main(d2cs)
+}
+end // end of [val]
 (*
 val () =
 println!
 ("process_fpath: d2cs = ", d2cs)
 *)
 //
-val () = t2xread_main(d2cs)
-//
+val
+d3cs =
+let
 val
 d3cs = trans23_declist(d2cs)
+in
+d3cs where
+{
+(*
+  val () = tread23_main(d3cs)
+*)
+}
+end // end of [val]
 (*
 val () =
 println!
 ("process_fpath: d3cs = ", d3cs)
 *)
+//
+val
+d3cs =
+let
 val
 d3cs = trans33_declist(d3cs)
+in
+d3cs where
+{
+  val () = tread33_main(d3cs)
+}
+end // end of [val]
 (*
 val () =
 println!
 ("process_fpath: d3cs = ", d3cs)
 *)
-val () = t3xread_main(d3cs)
 //
 val
 d3cs = trans3t_program(d3cs)
