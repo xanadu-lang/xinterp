@@ -1875,6 +1875,13 @@ IR0Pany() => true
 IR0Pvar(d2v0) => true
 //
 |
+IR0Pflat(irp1) =>
+interp0_irpat_ck0(irp1, irv0)
+|
+IR0Pfree(irp1) =>
+interp0_irpat_ck0(irp1, irv0)
+//
+|
 IR0Pcapp(d2c0, irps) =>
 (
 case- irv0 of
@@ -1962,6 +1969,13 @@ val () =
 interp0_insert_d2var
   (env0, d2v0, irv0)
 } (* end of [IR0Pvar] *)
+//
+|
+IR0Pflat(irp1) =>
+interp0_irpat_ck1(env0, irp1, irv0)
+|
+IR0Pfree(irp1) =>
+interp0_irpat_ck1(env0, irp1, irv0)
 //
 |
 IR0Pcapp(d2c0, irps) =>

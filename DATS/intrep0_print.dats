@@ -147,6 +147,11 @@ case+ x0.node() of
 | IR0Pvar(d2v) =>
   fprint!(out, "IR0Pvar(", d2v, ")")
 //
+| IR0Pflat(irp1) =>
+  fprint!(out, "IR0Pflat(", irp1, ")")
+| IR0Pfree(irp1) =>
+  fprint!(out, "IR0Pfree(", irp1, ")")
+//
 | IR0Pcapp(d2c0, irps) =>
   fprint!
   ( out
