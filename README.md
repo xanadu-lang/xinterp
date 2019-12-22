@@ -1,7 +1,6 @@
 # xinterp
 
-An interpreter for Xanadu that is primarily
-for the purpose of assigning dynamic semantics.
+An interpreter for assigning dynamic semantics to Xanadu
 
 ### Download
 
