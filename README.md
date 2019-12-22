@@ -6,7 +6,7 @@ for the purpose of assigning dynamic semantics.
 ### Download
 
 ```
-git clone https://github.com/xanadu-lang/xinterp.git
+git clone --recursive https://github.com/xanadu-lang/xinterp.git
 ```
 
 ### Prerequisites
