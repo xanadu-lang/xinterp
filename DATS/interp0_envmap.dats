@@ -632,14 +632,14 @@ the_d2cstdef_insert
   (k0, x0) =
 {
 //
-(*
+// (*
 val () =
 println!
 ("the_d2cstdef_insert: k0 = ", k0)
 val () =
 println!
 ("the_d2cstdef_insert: x0 = ", x0)
-*)
+// *)
 //
 val-
 ~None_vt() =
