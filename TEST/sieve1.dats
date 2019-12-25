@@ -36,7 +36,8 @@ xs =
 sieve(from(2)) where
 {
 fun
-from(n) = $lazy(strmcon_cons(n, from(n+1)))
+from(n) =
+$lazy(strmcon_cons(n, from(n+1)))
 }
 
 (* ****** ****** *)

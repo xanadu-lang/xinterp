@@ -529,7 +529,7 @@ d3e0.node() of
     val opt2 = irerase_dexpopt(opt2)
   in
     ir0exp_make_node(loc0, IR0Ellazy(ire1, opt2))
-  end // end of [D3Elazy]
+  end // end of [D3Ellazy]
 //
 | D3Eflat(d3e1) =>
   let
