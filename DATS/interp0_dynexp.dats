@@ -216,7 +216,8 @@ let
 val-
 IR0Efcst(d2c) = ire0.node()
 val
-opt = interp0_search_d2cst(d2c)
+opt =
+interp0_search_d2cst(env0, d2c)
 //
 (*
 val () =
@@ -2362,7 +2363,7 @@ end
 //
 ) : ir0val // end of [let]
 in
-  interp0_insert_d2cst(d2c, irv0)
+  interp0_insert_d2cst(env0, d2c, irv0)
 end
 |
 list_cons _ =>
@@ -2372,7 +2373,7 @@ intpenv_take_fenv(env0)
 val irv0 =
 IR0Vfix(fenv, nam, iras, body)
 in
-  interp0_insert_d2cst(d2c, irv0)
+  interp0_insert_d2cst(env0, d2c, irv0)
 end
 ) (* end of [Some(body)] *)
 ) (* end of [Some(iras)] *)
@@ -2489,7 +2490,9 @@ end (* end of [list_cons] *) ) (*auxfixs*)
 
 fun
 auxirfds
-( fenv
+( env0
+: !intpenv
+, fenv
 : ir0env
 , irdfs
 : ir0explst
@@ -2552,11 +2555,11 @@ IR0Vfixs
 ) : ir0val // end-of-let
 in
 (
-  auxirfds(fenv, irdfs, irfds)
+auxirfds(env0, fenv, irdfs, irfds)
 ) where
 {
 val () =
-interp0_insert_d2cst(d2c, irv0)
+interp0_insert_d2cst(env0, d2c, irv0)
 }
 end
 |
@@ -2567,11 +2570,11 @@ IR0Vfixs
 (fenv, nam, iras, body, irdfs)
 in
 (
-  auxirfds(fenv, irdfs, irfds)
+auxirfds(env0, fenv, irdfs, irfds)
 ) where
 {
 val () =
-interp0_insert_d2cst(d2c, irv0)
+interp0_insert_d2cst(env0, d2c, irv0)
 }
 end
 ) (* end of [Some(body)] *)
@@ -2603,7 +2606,7 @@ case+ xs of
   val irdfs = auxfixs(irfds)
 //
   in
-    auxirfds(fenv, irdfs, irfds)
+    auxirfds(env0, fenv, irdfs, irfds)
   end
 ) (* end of [list_cons] *)
 ) (* interp0_ir0fundeclist *)
@@ -2660,7 +2663,7 @@ val
 irv0 = IR0Vlam(fenv, iras, body)
 //
 in
-  interp0_insert_d2cst(d2c0, irv0)
+interp0_insert_d2cst(env0, d2c0, irv0)
 end
 //
 |

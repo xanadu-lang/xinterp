@@ -120,11 +120,18 @@ the_d2vardef_insert
 //
 (* ****** ****** *)
 
+datatype
+d2key =
+| D2Kcst of d2cst // let-fun
+| D2Kvar of d2var // arg and let-var
+
+(* ****** ****** *)
+
 local
 //
 absimpl
 ir0env_tbox =
-List0(@(d2var, ir0val))
+List0(@(d2key, ir0val))
 //
 datavtype
 intpenv =
@@ -141,7 +148,7 @@ intplst =
 | intplst_loc2 of intplst
 //
 | intplst_cons of
-  (d2var, ir0val, intplst)
+  (d2key, ir0val, intplst)
 //
 absimpl
 intpenv_vtbox = intpenv
@@ -198,7 +205,7 @@ auxenv(env, list_vt_nil())
 {
 vtypedef
 res =
-List0_vt(@(d2var, ir0val))
+List0_vt(@(d2key, ir0val))
 fun
 auxenv
 (env: !intplst, res: res): res =
@@ -260,7 +267,8 @@ val+
 val () =
 (
   xs :=
-  intplst_cons(d2v0, irv0, xs)
+  intplst_cons
+  (D2Kvar(d2v0), irv0, xs)
 )
 } (* end of [where] *)
 end // end of [intpenv_bind_fix]
@@ -301,7 +309,8 @@ case+ ires of
   val () =
   (
     xs :=
-    intplst_cons(d2v1, irv1, xs)
+    intplst_cons
+    (D2Kvar(d2v1), irv1, xs)
   )
   } where
   {
@@ -396,10 +405,39 @@ val+~INTPENV(l0, xs) = env
 
 implement
 interp0_search_d2cst
-  (d2c0) =
-(
-the_d2cstdef_search(d2c0)
-)
+  (env0, d2c0) =
+  (auxlst(xs)) where
+{
+//
+  vtypedef
+  res = Option_vt(ir0val)
+  val+INTPENV(l0, xs) = env0
+//
+  fun
+  auxlst
+  (xs: !intplst): res =
+  (
+  case+ xs of
+  | intplst_nil() =>
+    the_d2cstdef_search(d2c0)
+  | intplst_fun() =>
+    the_d2cstdef_search(d2c0)
+  | intplst_let1(xs) => auxlst(xs)
+  | intplst_loc1(xs) => auxlst(xs)
+  | intplst_loc2(xs) => auxlst(xs)
+  | intplst_cons
+    (d2k1, irv1, xs) =>
+    (
+    case+ d2k1 of
+    | D2Kcst(d2c1) =>
+      if
+      (d2c0 = d2c1)
+      then Some_vt(irv1) else auxlst(xs)
+    | D2Kvar(d2v1) => auxlst(xs)
+    )
+  ) (* end of [auxlst] *)
+//
+} (* end of [interp0_search_d2cst] *)
 
 (* ****** ****** *)
 
@@ -426,8 +464,15 @@ interp0_search_d2var
   | intplst_loc1(xs) => auxlst(xs)
   | intplst_loc2(xs) => auxlst(xs)
   | intplst_cons
-    (d2v1, irv1, xs) =>
-    if (d2v0 = d2v1) then Some_vt(irv1) else auxlst(xs)
+    (d2k1, irv1, xs) =>
+    (
+    case+ d2k1 of
+    | D2Kcst(d2c1) => auxlst(xs)
+    | D2Kvar(d2v1) =>
+      if
+      (d2v0 = d2v1)
+      then Some_vt(irv1) else auxlst(xs)
+    )
   ) (* end of [auxlst] *)
 //
 } (* end of [interp0_search_d2var] *)
@@ -436,10 +481,35 @@ interp0_search_d2var
 
 implement
 interp0_insert_d2cst
-  (d2c0, irv0) =
+  (env0, d2c0, irv0) =
+let
+//
+val+
+@INTPENV(l0, xs) = env0
+//
+in
+//
+case xs of
+|
+intplst_nil() =>
 (
+fold@(env0);
 the_d2cstdef_insert(d2c0, irv0)
 )
+|
+_(*non-intplst_nil*) =>
+(
+fold@(env0)
+) where
+{
+  val () =
+  (
+  xs :=
+  intplst_cons(D2Kcst(d2c0), irv0, xs)
+  )
+} (* non-intplst_nil *)
+//
+end // end of [interp0_insert_d2cst]
 
 (* ****** ****** *)
 
@@ -469,7 +539,7 @@ fold@(env0)
   val () =
   (
   xs :=
-  intplst_cons(d2v0, irv0, xs)
+  intplst_cons(D2Kvar(d2v0), irv0, xs)
   )
 } (* non-intplst_nil *)
 //

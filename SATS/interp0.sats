@@ -237,7 +237,9 @@ intpenv_free_fenv(env: intpenv): void
 
 fun
 interp0_search_d2cst
-(d2c: d2cst): Option_vt(ir0val)
+( env
+: !intpenv
+, d2c: d2cst): Option_vt(ir0val)
 fun
 interp0_search_d2var
 ( env
@@ -248,7 +250,9 @@ interp0_search_d2var
 //
 fun
 interp0_insert_d2cst
-(d2c: d2cst, irv: ir0val): void
+( env
+: !intpenv
+, d2c: d2cst, irv: ir0val): void
 //
 fun
 interp0_insert_d2var
