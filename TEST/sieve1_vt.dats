@@ -24,7 +24,7 @@ case- xs of
 ) where
 {
 implement
-filter$test0<int>(x1) = (x1 % x0 > 0)
+filter0$test<int>(x1) = (x1 % x0 > 0)
 }
 end
 ) (* end of [sieve] *)
