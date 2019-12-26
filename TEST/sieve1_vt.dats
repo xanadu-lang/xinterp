@@ -6,6 +6,22 @@
 
 (* ****** ****** *)
 
+impltmp
+<x0>(*tmp*)
+stream_vt_filter0(xs) =
+(
+stream_vt_mapopt0(xs)
+) where
+{
+impltmp
+mapopt0$fopr<x0><x0>(x0) = 
+if
+filter0$test(x0)
+then optn_vt_cons(x0) else optn_vt_nil()
+}
+
+(* ****** ****** *)
+
 fun
 sieve
 ( xs
