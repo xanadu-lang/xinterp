@@ -7,7 +7,7 @@
 (* ****** ****** *)
 
 fun
-bxor(p: bool, q: bool): bool =
+xor(p: bool, q: bool): bool =
 if (p)
 then q
 else (if q then false else true)
@@ -42,7 +42,7 @@ kxor
 ( k0
 : bool -<cref> ans): ans =
 kflip
-(lam(p) => kflip(lam(q) => k0(bxor(p, q))
+(lam(p) => kflip(lam(q) => k0(p xor q)))
 
 fun
 kxor0
@@ -53,18 +53,17 @@ kxor0
 kxor<ans>
 (
 lam(x) =>
-list_cons(x, list_nil()
-)
+list_cons(x, list_nil())
 ) where
 {
   typedef ans = list(bool)
   implement
   kflip<ans>(k0) = append(k0(false), k0(true))
-} (* kxor0 *)
+} (* end of [kxor0] *)
 
 (* ****** ****** *)
 
-val ans = kxor0()
+val ans = kxor0((*void*))
 
 (* ****** ****** *)
 
