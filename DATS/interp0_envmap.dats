@@ -702,14 +702,14 @@ the_d2cstdef_insert
   (k0, x0) =
 {
 //
-// (*
+(*
 val () =
 println!
 ("the_d2cstdef_insert: k0 = ", k0)
 val () =
 println!
 ("the_d2cstdef_insert: x0 = ", x0)
-// *)
+*)
 //
 val-
 ~None_vt() =
@@ -841,9 +841,11 @@ d2cst
 (
 let
 //
+(*
 val () =
 println!
 ("d2cst: nam = ", nam)
+*)
 //
 val
 sym = $SYM.symbol_make(nam)

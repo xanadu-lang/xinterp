@@ -651,7 +651,7 @@ IR0Vtuple
 (knd, irvs) => auxget_at(irvs, idx2)
 |
 IR0Vlft(irlv) =>
-IR0Vlft(IR0LVproj(irlv, lab2, idx2))
+IR0Vlft(IR0LVpflt(irlv, lab2, idx2))
 //
 end // end of [auxproj]
 
@@ -841,7 +841,7 @@ case- irvl of
 |
 IR0Vlft(irlv) =>
 (
-case- irlv of
+case+ irlv of
 |
 IR0LVref(r0) =>
 (
@@ -852,19 +852,88 @@ IR0LVref(r0) =>
   (r0[] := Some(irvr))
 } (* end of [IR0LVref] *)
 |
-IR0LVproj
+IR0LVpbox
 (_, _, _) =>
 (
   IR0Vnil((*void*))
 ) where
 {
 val () =
-aux_assgn_proj(irvr, irlv)
+aux_assgn_pbox(irvr, irlv)
+}
+|
+IR0LVpflt
+(_, _, _) =>
+(
+  IR0Vnil((*void*))
+) where
+{
+val () =
+aux_assgn_pflt(irvr, irlv)
 }
 )
 end // end of [aux_assgn]
 and
-aux_assgn_proj
+aux_assgn_pbox
+( irvr: ir0val
+, irlv: ir0lftval) : void =
+let
+//
+val-
+IR0LVpbox
+(irv1, _, idx2) = irlv
+//
+val-
+IR0Vtuple(knd, irvs) = irv1
+val () = assertloc(knd > 0)
+//
+in
+{
+//
+typedef x0 = ir0val
+//
+fun
+auxlset_at
+( xs
+: !List0_vt(x0)
+, i0: int, y0: x0): void =
+(
+case+ xs of
+|list_vt_nil() => ()
+|
+@list_vt_cons(x0, xs1) =>
+(
+ if
+ (i0 <= 0)
+ then 
+ fold@(xs) where
+ {
+   val () = (x0 := y0)
+ }
+ else
+ fold@(xs) where
+ {
+ val () =
+ auxlset_at(xs1, i0-1, y0)
+ }
+)
+) (* end of [auxlset_at] *)
+//
+val
+irvs =
+$UN.castvwtp0
+{List0_vt(x0)}(irvs)
+//
+val () =
+auxlset_at(irvs, idx2, irvr)
+//
+prval () = $UN.cast2void(irvs)
+//
+}
+end
+// end of [aux_assgn_pbox]
+and
+aux_assgn_pflt
 ( irvr: ir0val
 , irlv: ir0lftval) : void =
 let
@@ -899,7 +968,7 @@ else auxget_at(irvs, i0-1)
 ) (* end of [auxget_at] *)
 //
 fun
-auxset_at
+auxfset_at
 ( irvs
 : ir0valist
 , i0: int
@@ -918,17 +987,24 @@ then
 list_cons(irvr, irvs)
 else
 list_cons
-( irv0
-, auxset_at(irvs, i0-1, irvr))
+(
+irv0
+,
+let
+val i1 = i0 - 1
+in
+auxfset_at(irvs, i1, irvr)
+end
 )
-) (* end of [auxset_at] *)
+)
+) (* end of [auxfset_at] *)
 //
 fun
 auxlst_up
 ( irlv
 : ir0lftval): ir0valist =
 (
-case+ irlv of
+case- irlv of
 | IR0LVref(r0) =>
   (
     list_sing(x0)
@@ -936,7 +1012,7 @@ case+ irlv of
   {
     val-Some(x0) = r0[]
   }
-| IR0LVproj
+| IR0LVpflt
   (irlv, lab2, idx2) =>
   let
   val
@@ -960,29 +1036,32 @@ auxlst_dn
 , irvs: ir0valist
 , irlv: ir0lftval): void =
 (
-case+ irlv of
-| IR0LVref(r0) =>
-  (r0[] := Some(irvr))
-| IR0LVproj
-  (irlv, lab2, idx2) =>
-  auxlst_dn
-  (irvr, irvs, irlv) where
-  {
-    val-
-    list_cons
-    (irv1, irvs) = irvs
-    val irvr = 
-    let
-    val-
-    IR0Vtuple(knd, xs) = irv1
-    in
-    IR0Vtuple
-    (knd, auxset_at(xs, idx2, irvr))
-    end
-  }
-)
+case- irlv of
+|
+IR0LVref(r0) =>
+(r0[] := Some(irvr))
+|
+IR0LVpflt
+(irlv, lab2, idx2) =>
+auxlst_dn
+(irvr, irvs, irlv) where
+{
+  val-
+  list_cons
+  (irv1, irvs) = irvs
+  val irvr = 
+  let
+  val-
+  IR0Vtuple(knd, xs) = irv1
+  in
+  IR0Vtuple
+  ( knd
+  , auxfset_at(xs, idx2, irvr))
+  end
+}
+) (* end of [auxlst_dn] *)
 //
-} (* end of [aux_assgn_proj] *)
+} (* end of [aux_assgn_pflt] *)
 
 (* ****** ****** *)
 
@@ -1183,14 +1262,14 @@ else auxget_at(irvs, i0-1)
 )
 ) (* end of [auxget_at] *)
 in
-case+ x0 of
+case- x0 of
 |
 IR0LVref(r0) =>
 let
   val-Some(irv0) = r0[] in irv0
 end
 |
-IR0LVproj
+IR0LVpflt
 (x1, lab2, idx2) =>
 let
 val
@@ -1387,16 +1466,26 @@ let
 val-
 IR0Etalf(ire1) = ire0.node()
 //
-(*
+// (*
 val () =
 println!("aux_talf: ire1 = ", ire1)
-*)
+// *)
 //
 in
 case-
 ire1.node() of
 |
-IR0Eflat(ire1) => interp0_irexp(env0, ire1)
+IR0Eflat(ire1) =>
+interp0_irexp(env0, ire1)
+|
+IR0Eproj
+(ire1, lab2, idx2) =>
+let
+val
+irv1 = interp0_irexp(env0, ire1)
+in
+IR0Vlft(IR0LVpbox(irv1, lab2, idx2))
+end // end of [IR0Eproj]
 |
 IR0Eeval(knd0, ire1) =>
 let

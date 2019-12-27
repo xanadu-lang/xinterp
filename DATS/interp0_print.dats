@@ -154,11 +154,16 @@ case+ x0 of
 | IR0LVref(r0) =>
   fprint!
   (out, "IR0LVref(", ref_get_ptr(r0), ")")
-| IR0LVproj
+| IR0LVpbox
   (x1, lab, idx) =>
   fprint!
   ( out
-  , "IR0LVproj(", x1, "; ", lab, "; ", idx, "; ")
+  , "IR0LVpbox(", x1, "; ", lab, "; ", idx, "; ")
+| IR0LVpflt
+  (x1, lab, idx) =>
+  fprint!
+  ( out
+  , "IR0LVpflt(", x1, "; ", lab, "; ", idx, "; ")
 ) (* end of [fprint_ir0lftval] *)
 //
 (* ****** ****** *)
