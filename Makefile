@@ -142,6 +142,9 @@ test:: sieve
 sieve: ; ./bin/xinterp -d TEST/sieve.dats
 test:: sieve_vt
 sieve_vt: ; ./bin/xinterp -d TEST/sieve_vt.dats
+#
+test:: koka-amb
+koka-amb: ; ./bin/xinterp -d TEST/koka-amb.dats
 
 ######
 
