@@ -150,6 +150,9 @@ ir0val =
 and
 ir0lftval =
 | IR0LVref of ref(ir0valopt)
+//
+| IR0LVpcon of (ir0val, label)
+//
 | IR0LVpbox of
   (ir0val, label, int(*index*))
 | IR0LVpflt of

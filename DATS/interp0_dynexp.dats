@@ -84,6 +84,23 @@ xatsopt_strunq
 : string) : string = "ext#xatsopt_strunq"
 //
 (* ****** ****** *)
+//
+extern
+fun
+pcon_lab2idx
+(lab2: label): int(*index*)
+//
+implement
+pcon_lab2idx
+  (lab2) =
+let
+val
+opt = lab2.int()
+in
+case- opt of ~Some_vt(idx2) => idx2
+end // end of [pcon_lab2idx]
+//
+(* ****** ****** *)
 
 implement
 interp0_program
@@ -629,6 +646,34 @@ else auxget_at(irvs, i0-1)
 in(* in-of-local*)
 
 fun
+auxpcon
+( env0
+: !intpenv
+, ire0
+: ir0exp): ir0val =
+let
+val-
+IR0Epcon
+( ire1
+, lab2) = ire0.node()
+val
+irv1 =
+interp0_irexp(env0, ire1)
+in
+case- irv1 of
+|
+IR0Vcon
+(d2c1, irvs) =>
+(
+  auxget_at(irvs, idx2)
+) where
+{
+  val
+  idx2 = pcon_lab2idx(lab2)
+}
+end // end of [auxpcon]
+
+fun
 auxproj
 ( env0
 : !intpenv
@@ -648,7 +693,8 @@ in
 case- irv1 of
 |
 IR0Vtuple
-(knd, irvs) => auxget_at(irvs, idx2)
+(knd, irvs) =>
+auxget_at(irvs, idx2)
 |
 IR0Vlft(irlv) =>
 IR0Vlft(IR0LVpflt(irlv, lab2, idx2))
@@ -819,6 +865,94 @@ end // end of [aux_tuple]
 
 (* ****** ****** *)
 
+local
+
+fun
+auxget_at
+( irvs
+: ir0valist
+, i0: int): ir0val =
+(
+case+ irvs of
+|
+list_nil() =>
+IR0Vnone0()
+|
+list_cons
+(irv0, irvs) =>
+(
+if
+(i0 <= 0)
+then irv0
+else auxget_at(irvs, i0-1)
+)
+) (* end of [auxget_at] *)
+
+(* ****** ****** *)
+
+fun
+auxfset_at
+( irvs
+: ir0valist
+, i0: int
+, irvr: ir0val): ir0valist =
+(
+case+ irvs of
+|
+list_nil() => list_nil()
+|
+list_cons
+(irv0, irvs) =>
+(
+if
+(i0 <= 0)
+then
+list_cons(irvr, irvs)
+else
+list_cons
+(
+irv0
+,
+let
+val i1 = i0 - 1
+in
+auxfset_at(irvs, i1, irvr)
+end
+)
+)
+//
+) (* end of [auxfset_at] *)
+
+(* ****** ****** *)
+
+fun
+auxlset_at
+( xs
+: !List0_vt(ir0val)
+, i0: int, y0: ir0val): void =
+(
+case+ xs of
+|list_vt_nil() => ()
+|
+@list_vt_cons(x0, xs1) =>
+(
+ if
+ (i0 <= 0)
+ then 
+ fold@(xs) where
+ {
+   val () = (x0 := y0)
+ }
+ else
+ fold@(xs) where
+ {
+   val () = auxlset_at(xs1, i0-1, y0)
+ }
+) (* list_vt_cons *)
+) (* end of [auxlset_at] *)
+
+in(*in-of-local*)
+
 fun
 aux_assgn
 ( env0
@@ -852,6 +986,18 @@ IR0LVref(r0) =>
   (r0[] := Some(irvr))
 } (* end of [IR0LVref] *)
 |
+//
+IR0LVpcon
+(_, lab2) =>
+(
+  IR0Vnil((*void*))
+) where
+{
+val () =
+aux_assgn_pcon(irvr, irlv)
+}
+//
+|
 IR0LVpbox
 (_, _, _) =>
 (
@@ -873,10 +1019,45 @@ aux_assgn_pflt(irvr, irlv)
 }
 )
 end // end of [aux_assgn]
+//
+and
+aux_assgn_pcon
+( irvr: ir0val
+, irlv: ir0lftval): void =
+let
+//
+val-
+IR0LVpcon
+(irv1, lab2) = irlv
+val
+idx2 = pcon_lab2idx(lab2)
+//
+val-
+IR0Vcon(d2c1, irvs) = irv1
+//
+in
+{
+//
+typedef x0 = ir0val
+//
+val
+irvs =
+$UN.castvwtp0
+{List0_vt(x0)}(irvs)
+//
+val () =
+auxlset_at(irvs, idx2, irvr)
+//
+prval () = $UN.cast2void(irvs)
+//
+}
+end
+// end of [aux_assgn_pcon]
+//
 and
 aux_assgn_pbox
 ( irvr: ir0val
-, irlv: ir0lftval) : void =
+, irlv: ir0lftval): void =
 let
 //
 val-
@@ -891,33 +1072,6 @@ in
 {
 //
 typedef x0 = ir0val
-//
-fun
-auxlset_at
-( xs
-: !List0_vt(x0)
-, i0: int, y0: x0): void =
-(
-case+ xs of
-|list_vt_nil() => ()
-|
-@list_vt_cons(x0, xs1) =>
-(
- if
- (i0 <= 0)
- then 
- fold@(xs) where
- {
-   val () = (x0 := y0)
- }
- else
- fold@(xs) where
- {
- val () =
- auxlset_at(xs1, i0-1, y0)
- }
-)
-) (* end of [auxlset_at] *)
 //
 val
 irvs =
@@ -945,59 +1099,6 @@ in
 auxlst_dn(irvr, irvs, irlv)
 end where
 {
-//
-fun
-auxget_at
-( irvs
-: ir0valist
-, i0: int): ir0val =
-(
-case+ irvs of
-|
-list_nil() =>
-IR0Vnone0()
-|
-list_cons
-(irv0, irvs) =>
-(
-if
-(i0 <= 0)
-then irv0
-else auxget_at(irvs, i0-1)
-)
-) (* end of [auxget_at] *)
-//
-fun
-auxfset_at
-( irvs
-: ir0valist
-, i0: int
-, irvr: ir0val): ir0valist =
-(
-case+ irvs of
-|
-list_nil() => list_nil()
-|
-list_cons
-(irv0, irvs) =>
-(
-if
-(i0 <= 0)
-then
-list_cons(irvr, irvs)
-else
-list_cons
-(
-irv0
-,
-let
-val i1 = i0 - 1
-in
-auxfset_at(irvs, i1, irvr)
-end
-)
-)
-) (* end of [auxfset_at] *)
 //
 fun
 auxlst_up
@@ -1062,6 +1163,8 @@ auxlst_dn
 ) (* end of [auxlst_dn] *)
 //
 } (* end of [aux_assgn_pflt] *)
+
+end // end of [local]
 
 (* ****** ****** *)
 
@@ -1475,8 +1578,19 @@ in
 case-
 ire1.node() of
 |
-IR0Eflat(ire1) =>
+IR0Eflat
+(ire1) =>
 interp0_irexp(env0, ire1)
+|
+IR0Epcon
+(ire1, lab2) =>
+let
+val
+irv1 =
+interp0_irexp(env0, ire1)
+in
+IR0Vlft(IR0LVpcon(irv1, lab2))
+end // end of [IR0Epcon]
 |
 IR0Eproj
 (ire1, lab2, idx2) =>
@@ -1532,6 +1646,7 @@ ire0.node() of
 //
 | IR0Edapp _ => auxdapp(env0, ire0)
 //
+| IR0Epcon _ => auxpcon(env0, ire0)
 | IR0Eproj _ => auxproj(env0, ire0)
 //
 | IR0Elet

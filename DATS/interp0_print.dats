@@ -153,17 +153,25 @@ fprint_ir0lftval
 case+ x0 of
 | IR0LVref(r0) =>
   fprint!
-  (out, "IR0LVref(", ref_get_ptr(r0), ")")
+  ( out
+  , "IR0LVref(", ref_get_ptr(r0), ")")
+//
+| IR0LVpcon
+  (x1, lab) =>
+  fprint!
+  (out, "IR0LVpcon(", x1, "; ", lab, ")")
+//
 | IR0LVpbox
   (x1, lab, idx) =>
   fprint!
   ( out
-  , "IR0LVpbox(", x1, "; ", lab, "; ", idx, "; ")
+  , "IR0LVpbox(", x1, "; ", lab, "; ", idx, ")")
 | IR0LVpflt
   (x1, lab, idx) =>
   fprint!
   ( out
-  , "IR0LVpflt(", x1, "; ", lab, "; ", idx, "; ")
+  , "IR0LVpflt(", x1, "; ", lab, "; ", idx, ")")
+//
 ) (* end of [fprint_ir0lftval] *)
 //
 (* ****** ****** *)

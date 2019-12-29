@@ -267,8 +267,10 @@ ir0exp_node =
   ( ir0exp
   , int(*npf*), ir0explst)
 //
+| IR0Epcon of
+  ( ir0exp, label(*proj*))
 | IR0Eproj of
-  ( ir0exp(*rcd*)
+  ( ir0exp//rcd
   , label(*proj*), int(*index*))
 //
 | IR0Elet of (ir0dclist, ir0exp)

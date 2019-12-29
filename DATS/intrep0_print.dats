@@ -245,7 +245,8 @@ x0.node() of
   fprint!
   ( out
   , "IR0Etimp("
-  , ire1, "; ", targ, "; ", irc2, "; ", tsub)
+  , ire1, "; "
+  , targ, "; ", irc2, "; ", tsub, ")")
 //
 | IR0Edapp
   (irf0, npf1, ires) =>
@@ -254,6 +255,11 @@ x0.node() of
   , "IR0Edapp("
   , irf0, "; ", npf1, "; ", ires, ")")
 //
+| IR0Epcon
+  (ire1, lab2) =>
+  fprint!
+  ( out
+  , "IR0Epcon(", ire1, "; ", lab2, ")")
 | IR0Eproj
   (ire1, lab2, idx2) =>
   fprint!
