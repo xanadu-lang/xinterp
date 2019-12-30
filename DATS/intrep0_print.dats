@@ -222,6 +222,9 @@ x0.node() of
 | IR0Estr(tok) =>
   fprint!(out, "IR0Estr(", tok, ")")
 //
+| IR0Etop(tok) =>
+  fprint!(out, "IR0Etop(", tok, ")")
+//
 | IR0Evar(d2v) =>
   fprint!(out, "IR0Evar(", d2v, ")")
 //

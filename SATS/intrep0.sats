@@ -249,6 +249,8 @@ ir0exp_node =
 | IR0Ebtf of (token)
 | IR0Estr of (token)
 //
+| IR0Etop of (token)
+//
 | IR0Evar of (d2var)
 //
 | IR0Econ1 of (d2con)

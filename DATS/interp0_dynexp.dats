@@ -188,6 +188,18 @@ tok.node() of
 end // end of [auxstr]
 
 fun
+auxtop
+( ire0
+: ir0exp): ir0val =
+(
+  IR0Vnil()
+) where
+{
+val-
+IR0Etop(tok) = ire0.node()
+}
+
+fun
 auxvar
 ( env0
 : !intpenv
@@ -793,7 +805,8 @@ case+ ires of
   auxlst(env0, ires)
   ) where
   {
-  val-IR0Vnil() = 
+  val-
+  IR0Vnil() = 
   interp0_irexp(env0, irea)
   }
 ) (* end of [auxlst] *)
@@ -1299,7 +1312,18 @@ ire1.node() of
     interp0_irexp(env0, ire2)
   )
 end // end of [aux_addr]
-
+//
+fun
+aux_fold
+( env0
+: !intpenv
+, ire0: ir0exp): ir0val =
+( IR0Vnil() ) where
+{
+val-
+IR0Efold(ire1) = ire0.node()
+}
+//
 (* ****** ****** *)
 
 fun
@@ -1523,21 +1547,43 @@ aux_flat_main
 case-
 ire0.node() of
 |
-IR0Evar(d2v1) =>
+IR0Evar _ =>
 let
-val irv1 = auxvar(env0, ire0)
+val
+irv0 = auxvar(env0, ire0)
+val () =
+println!
+("aux_flat_main: irv0 = ", irv0)
 in
 //
-case- irv1 of
+case- irv0 of
 |
-IR0Vlft(irlv) =>
+IR0Vlft
+( irlv ) =>
 (
 case- irlv of
 |
-IR0LVref(r0) =>
+IR0LVref
+  (r0) =>
 let
-  val-Some(irv0) = r0[] in irv0
+  val-
+  Some(irv1) = r0[] in irv1
 end
+|
+IR0LVpcon
+(irv1, lab2) =>
+let
+val-
+IR0Vcon
+(d2c1, irvs) = irv1
+in
+(
+  auxget_at(irvs, idx2)
+) where
+{
+  val idx2 = pcon_lab2idx(lab2)
+}
+end // end of [IR0LVpcon]
 )
 //
 end // end of [IR0Evar]
@@ -1554,7 +1600,6 @@ end
 ) (* end of [aux_flat_main] *)
 
 end // end of [local]
-
 
 (* ****** ****** *)
 
@@ -1633,6 +1678,8 @@ ire0.node() of
 | IR0Ebtf _ => auxbtf(ire0)
 | IR0Estr _ => auxstr(ire0)
 //
+| IR0Etop _ => auxtop(ire0)
+//
 | IR0Evar _ => auxvar(env0, ire0)
 //
 | IR0Econ1 _ => auxcon1(env0, ire0)
@@ -1678,6 +1725,7 @@ ire0.node() of
   // IR0Efix
 //
 | IR0Eaddr(ire1) => aux_addr(env0, ire0)
+| IR0Efold(ire1) => aux_fold(env0, ire0)
 //
 | IR0Eeval(_, _) => aux_eval(env0, ire0)
 //

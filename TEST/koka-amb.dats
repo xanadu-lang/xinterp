@@ -13,7 +13,8 @@ then q
 else (if q then false else true)
 
 (* ****** ****** *)
-
+//
+(*
 fun
 <a:type>
 append
@@ -25,7 +26,15 @@ case+ xs of
 | list_cons(x0, xs) =>
   list_cons(x0, append(xs, ys))
 )
-
+*)
+//
+fun
+<a:type>
+append
+( xs: list(a)
+, ys: list(a)): list(a) =
+  list_append<a>(xs, ys)
+//
 (* ****** ****** *)
 
 #extern

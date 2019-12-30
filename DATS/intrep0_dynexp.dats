@@ -330,6 +330,10 @@ d3e0.node() of
   ir0exp_make_node
   (loc0, IR0Estr(tok))
 //
+| D3Etop(tok) =>
+  ir0exp_make_node
+  (loc0, IR0Etop(tok))
+//
 | D3Evar(d2v) =>
   ir0exp_make_node
   (loc0, IR0Evar(d2v))
@@ -524,6 +528,12 @@ d3e0.node() of
     val ire1 = irerase_dexp(d3e1)
   in
     ir0exp_make_node(loc0, IR0Eaddr(ire1))
+  end // end of [D3Eaddr]
+| D3Efold(d3e1) =>
+  let
+    val ire1 = irerase_dexp(d3e1)
+  in
+    ir0exp_make_node(loc0, IR0Efold(ire1))
   end // end of [D3Eaddr]
 //
 | D3Elazy(d3e1) =>
