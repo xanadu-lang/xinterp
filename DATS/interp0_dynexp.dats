@@ -805,6 +805,11 @@ case+ ires of
   auxlst(env0, ires)
   ) where
   {
+(*
+  val () =
+  println!
+  ("auxlst: irea = ", irea)
+*)
   val-
   IR0Vnil() = 
   interp0_irexp(env0, irea)
@@ -869,7 +874,18 @@ irv1 = interp0_irexp(env0, ire1)
 //
 in
 (
-  IR0Vtuple(knd0, irvs)
+if
+(knd0 > 0)
+then
+IR0Vtuple(knd0, irvs)
+else
+(
+case+ irvs of
+|
+list_nil _ => IR0Vnil()
+|
+list_cons _ => IR0Vtuple(knd0, irvs)
+)
 ) where
 {
   val irvs = auxlst(env0, npf1, ires)
@@ -1584,9 +1600,15 @@ in
   val idx2 = pcon_lab2idx(lab2)
 }
 end // end of [IR0LVpcon]
-)
+(*
+|
+IR0LVpbox _ => // HX: can it happen?
+|
+IR0LVpflt _ => // HX: can it happen?
+*)
+) (* end of [IR0Vlft] *)
 //
-end // end of [IR0Evar]
+end (* end of [IR0Evar] *)
 |
 IR0Eproj
 (ire1, lab2, idx2) =>
@@ -2188,6 +2210,66 @@ end // end of [list_cons]
 
 (* ****** ****** *)
 
+fun
+ir0pat_leftize
+( env0
+: !intpenv
+, irp1: ir0pat
+, irv0: ir0val): void =
+(
+case+
+irp1.node() of
+|
+IR0Pcapp
+(d2c1, irps) =>
+auxirps(env0, 0(*index*), irps)
+|
+_ (*non-IR0Pcapp*) => ((*void*))
+) where
+{
+fun
+auxirp1
+( env0
+: !intpenv
+, i0: int
+, irp1: ir0pat): void =
+(
+case+
+irp1.node() of
+|
+IR0Pvar(d2v1) =>
+(
+interp0_insert_d2var
+  (env0, d2v1, irv1)
+) where
+{
+  val lab2 =
+  label_make_int(i0)
+  val irv1 =
+  IR0Vlft(IR0LVpcon(irv0, lab2))
+}
+| _(*non-IR0Pvar*) => ()
+)
+and
+auxirps
+( env0
+: !intpenv
+, i0: int
+, irps: ir0patlst): void =
+(
+case+ irps of
+| list_nil() => ()
+| list_cons
+  (irp1, irps) =>
+  (
+    auxirps(env0, i0+1, irps)
+  ) where
+  {
+    val () = auxirp1(env0, i0, irp1)
+  }
+)
+}
+
 implement
 interp0_irpat_ck1
   (env0, irp0, irv0) =
@@ -2225,7 +2307,13 @@ interp0_insert_d2var
 //
 |
 IR0Pflat(irp1) =>
-interp0_irpat_ck1(env0, irp1, irv0)
+let
+val () =
+interp0_irpat_ck1
+(env0, irp1, irv0)
+in
+  ir0pat_leftize(env0, irp1, irv0)
+end
 |
 IR0Pfree(irp1) =>
 interp0_irpat_ck1(env0, irp1, irv0)

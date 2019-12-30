@@ -102,6 +102,12 @@ auxdapp
 : d3pat): ir0pat =
 let
 //
+val () =
+println!
+("\
+auxdapp: \
+d3p0 = ", d3p0)
+//
 val
 loc0 = d3p0.loc()
 //
