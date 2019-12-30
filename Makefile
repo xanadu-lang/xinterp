@@ -119,39 +119,12 @@ $(SED) -i -e 's/^SATS/BUILD/' -e 's/^DATS/BUILD/' .depend
 #
 ######
 
-test:: cbref
-cbref: ; ./bin/xinterp -d TEST/cbref.dats
-#
-test:: foldl
-foldl: ; ./bin/xinterp -d TEST/foldl.dats
-#
-test:: gfact
-gfact: ; ./bin/xinterp -d TEST/gfact.dats
-#
-test:: kfact
-kfact: ; ./bin/xinterp -d TEST/kfact.dats
-test:: kfibo
-kfibo: ; ./bin/xinterp -d TEST/kfibo.dats
-test:: kisevn
-kisevn: ; ./bin/xinterp -d TEST/kisevn.dats
-#
-test:: pswap
-pswap: ; ./bin/xinterp -d TEST/pswap.dats
-#
-test:: sieve
-sieve: ; ./bin/xinterp -d TEST/sieve.dats
-test:: sieve_vt
-sieve_vt: ; ./bin/xinterp -d TEST/sieve_vt.dats
-#
-test:: koka-amb
-koka-amb: ; ./bin/xinterp -d TEST/koka-amb.dats
-
-######
-
 clean:: ; $(RMF) BUILD/*_?ats.c
 clean:: ; $(RMF) BUILD/*_?ats.o
 clean:: ; $(RMF) xinterp_dats.o
 clean:: ; $(RMF) xinterp_dats.c
+
+######
 
 cleanall:: clean
 cleanall:: ; $(RMF) ./bin/xinterp
