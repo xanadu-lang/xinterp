@@ -29,7 +29,7 @@ sieve
 $llazy
 (
 let
-val xs = $eval(xs)
+val xs = !xs
 in
 case- xs of
 |
@@ -59,17 +59,17 @@ $llazy(strmcon_vt_cons(n, from(n+1)))
 (* ****** ****** *)
 
 val-
-~strmcon_vt_cons(x0, xs) = $eval(xs) // x0 = 2
+~strmcon_vt_cons(x0, xs) = !xs // x0 = 2
 val-
-~strmcon_vt_cons(x1, xs) = $eval(xs) // x1 = 3
+~strmcon_vt_cons(x1, xs) = !xs // x1 = 3
 val-
-~strmcon_vt_cons(x2, xs) = $eval(xs) // x2 = 5
+~strmcon_vt_cons(x2, xs) = !xs // x2 = 5
 val-
-~strmcon_vt_cons(x3, xs) = $eval(xs) // x3 = 7
+~strmcon_vt_cons(x3, xs) = !xs // x3 = 7
 val-
-~strmcon_vt_cons(x4, xs) = $eval(xs) // x4 = 11
+~strmcon_vt_cons(x4, xs) = !xs // x4 = 11
 val-
-~strmcon_vt_cons(x5, xs) = $eval(xs) // x5 = 13
+~strmcon_vt_cons(x5, xs) = !xs // x5 = 13
 
 (* ****** ****** *)
 
