@@ -1,6 +1,6 @@
 (* ****** ****** *)
 
-#include
+#staload
 "./../xanadu\
 /prelude/DATS/stream.dats"
 
@@ -37,12 +37,12 @@ strmcon_cons(x0, xs) =>
 (
 strmcon_cons
 (x0, sieve(stream_filter(xs)))
-) where
-{
+)
+where
 implement
 filter$test<int>(x1) = (x1 % x0 > 0)
-}
-end
+endwhr
+endlet
 ) (* end of [sieve] *)
 
 (* ****** ****** *)

@@ -1,10 +1,10 @@
 (* ****** ****** *)
 
-#include
+#staload
 "./../xanadu/prelude/DATS/gnum.dats"
-#include
+#staload
 "./../xanadu/prelude/DATS/gord.dats"
-#include
+#staload
 "./../xanadu/prelude/DATS/gint.dats"
 
 (* ****** ****** *)

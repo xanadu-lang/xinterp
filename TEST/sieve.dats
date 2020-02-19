@@ -39,7 +39,8 @@ cons(x1, xs) =>
   then $eval(filter(xs, x0))
   else cons(x1, filter(xs, x0))
 )
-end // end of [filter]
+endlet
+) // end of [filter]
 
 (* ****** ****** *)
 

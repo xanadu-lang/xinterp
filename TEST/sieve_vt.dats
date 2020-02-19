@@ -22,7 +22,7 @@ case- xs of
 |
 ~cons_vt(x0, xs) =>
  cons_vt(x0, sieve(filter(xs, x0)))
-end
+endlet
 ) (* end of [sieve] *)
 
 and
@@ -42,7 +42,8 @@ case- xs of
   then $eval(filter(xs, x0))
   else cons_vt(x1, filter(xs, x0))
 )
-end // end of [filter]
+endlet
+) // end of [filter]
 
 (* ****** ****** *)
 

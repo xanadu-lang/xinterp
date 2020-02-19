@@ -1,6 +1,6 @@
 (* ****** ****** *)
 
-#include
+#staload
 "./../xanadu\
 /prelude/DATS/stream_vt.dats"
 
@@ -18,7 +18,7 @@ mapopt0$fopr<x0><x0>(x0) =
 if
 filter0$test(x0)
 then optn_vt_cons(x0) else optn_vt_nil()
-}
+} endwhr
 
 (* ****** ****** *)
 
