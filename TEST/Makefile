@@ -38,6 +38,9 @@ dtcon: ; $(XINTERP) -d ./dtcon.dats
 test:: pswap
 pswap: ; $(XINTERP) -d ./pswap.dats
 #
+test:: tuple
+tuple: ; $(XINTERP) -d ./tuple.dats
+#
 ######
 
 test:: sieve
