@@ -43,6 +43,7 @@ and r = nr.1
 in
 nr.0 := n-1;
 nr.1 := n*r; loop(nr)
+end
 else nr.1 // end of [if]
 //
 in
@@ -71,6 +72,7 @@ and r = nr.1
 in
 nr.0 := n-1;
 nr.1 := n*r; loop(nr)
+end
 else nr.1 // end of [if]
 //
 in
