@@ -1,6 +1,6 @@
 (* ****** ****** *)
 
-#include
+#staload
 "./../xanadu\
 /prelude/DATS/list.dats"
 
@@ -63,6 +63,7 @@ kxor<ans>
 (
 lam(x) =>
 list_cons(x, list_nil())
+)
 ) where
 {
   typedef ans = list(bool)
