@@ -310,12 +310,12 @@ IR0Etcst
 ( d2c0
 , ti3a, ti2s) = ire1.node()
 //
-// (*
+(*
 val () =
 println!("auxtimp: ire0 = ", ire0)
 val () =
 println!("auxtimp: ire1 = ", ire1)
-// *)
+*)
 //
 fun
 auxirfd0
@@ -597,7 +597,7 @@ val
 irvs =
 auxdarg(env0, npf1, ires)
 //
-// (*
+(*
 val () =
 println!
 ("auxdapp: ire0 = ", ire0)
@@ -607,7 +607,7 @@ println!
 val () =
 println!
 ("auxdapp: irvs = ", irvs)
-// *)
+*)
 //
 in
 //
@@ -1675,9 +1675,13 @@ IR0Evar _ =>
 let
 val
 irv0 = auxvar(env0, ire0)
+//
+(*
 val () =
 println!
 ("aux_flat_main: irv0 = ", irv0)
+*)
+//
 in
 //
 case- irv0 of
@@ -1744,10 +1748,10 @@ let
 val-
 IR0Etalf(ire1) = ire0.node()
 //
-// (*
+(*
 val () =
 println!("aux_talf: ire1 = ", ire1)
-// *)
+*)
 //
 in
 case-
