@@ -23,4 +23,4 @@ let val ans = fibo(10) in ans end
 
 (* ****** ****** *)
 
-(* end of [kfact.dats] *)
+(* end of [kfibo.dats] *)
