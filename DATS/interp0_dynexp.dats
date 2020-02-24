@@ -124,6 +124,40 @@ in
 end // end of [interp0_program]
 
 (* ****** ****** *)
+//
+extern
+fun
+interp0_irexp_fun
+(env: !intpenv, ire: ir0exp): ir0val
+//
+implement
+interp0_irexp_fun
+  (env0, ire0) =
+let
+val env0 =
+$UN.castvwtp1{ptr}(env0)
+in
+try
+irv0 where
+{
+val
+env0 =
+$UN.castvwtp0{intpenv}(env0)
+val
+irv0 = interp0_irexp(env0, ire0)
+prval
+((*void*)) = $UN.cast2void(env0)
+}
+with exn =>
+let
+val
+env0 =
+$UN.castvwtp0{intpenv}(env0)
+val () = intpenv_free_fenv(env0) in $raise(exn)
+end
+end // end of [interp0_irexp_fun]
+//
+(* ****** ****** *)
 
 local
 
@@ -1250,10 +1284,12 @@ case+ opt2 of
 val-
 IR0Ecase
 ( knd
-, ire1, ircls) = ire0.node()
+, ire1
+, ircls) = ire0.node()
 //
 val
-irv1 = interp0_irexp(env0, ire1)
+irv1 =
+interp0_irexp(env0, ire1)
 val
 opt2 =
 interp0_irclaulst(env0, irv1, ircls)
@@ -1307,6 +1343,57 @@ IR0Vfix
   fenv = intpenv_take_fenv(env0)
 }
 end // end of [aux_fix]
+
+(* ****** ****** *)
+
+fun
+aux_try
+( env0
+: !intpenv
+, ire0
+: ir0exp): ir0val =
+let
+//
+val-
+IR0Etry
+( ire1
+, ircls) = ire0.node()
+//
+val env0 =
+$UN.castvwtp1{ptr}(env0)
+//
+in
+//
+try
+let
+val
+env0 =
+$UN.castvwtp0{intpenv}(env0)
+val
+irv1 = interp0_irexp(env0, ire1)
+prval
+((*void*)) = $UN.cast2void(env0)
+in
+  irv1
+end
+with
+~IR0EXN(irx1) =>
+let
+val
+env0 =
+$UN.castvwtp0{intpenv}(env0)
+val
+opt2 =
+interp0_irclaulst(env0, irx1, ircls)
+prval ((*void*)) = $UN.cast2void(env0)
+in
+case+ opt2 of
+| ~None_vt() =>
+   IR0Vnone0((*void*))
+| ~Some_vt(irv2) => irv2
+end
+//
+end (* end of [aux_try] *)
 
 (* ****** ****** *)
 //
@@ -1447,7 +1534,7 @@ let
   intpenv_make_fenv(fenv)
   val
   irv2 =
-  interp0_irexp(env0, ire2)
+  interp0_irexp_fun(env0, ire2)
 in
   r0[] := IR0LVval(irv2);
   let
@@ -1465,11 +1552,32 @@ let
   val env0 =
   intpenv_make_fenv(fenv)
   val
-  irv1 = interp0_irexp(env0, ire1)
+  irv1 = interp0_irexp_fun(env0, ire1)
 in
   let
   val () = intpenv_free_fenv(env0) in irv1
   end
+end
+
+(* ****** ****** *)
+
+fun
+aux_raise
+( env0
+: !intpenv
+, ire0: ir0exp): ir0val =
+let
+//
+val-
+IR0Eraise(ire1) = ire0.node()
+//
+val
+irv1 = interp0_irexp(env0, ire1)
+in
+let
+val () =
+($raise IR0EXN(irv1)){void} in IR0Vnone0()
+end
 end
 
 (* ****** ****** *)
@@ -1746,10 +1854,16 @@ ire0.node() of
     (_, _, _, _) => aux_fix(env0, ire0)
   // IR0Efix
 //
+| IR0Etry
+    (ire1, ircls) => aux_try(env0, ire0)
+  // IR0Etry
+//
 | IR0Eaddr(ire1) => aux_addr(env0, ire0)
 | IR0Efold(ire1) => aux_fold(env0, ire0)
 //
 | IR0Eeval(_, _) => aux_eval(env0, ire0)
+//
+| IR0Eraise(ire1) => aux_raise(env0, ire0)
 //
 | IR0Elazy(ire1) => aux_lazy(env0, ire0)
 | IR0Ellazy(_, _) => aux_llazy(env0, ire0)
@@ -1844,14 +1958,17 @@ let
   (
   case+ iras of
   | list_nil() =>
-    interp0_irexp(env0, body)
+    ( irv0 ) where
+    {
+      val irv0 =
+      interp0_irexp_fun(env0, body)
+    }
   | list_cons _ =>
     (
-    IR0Vlam(fenv, iras, body)
+      IR0Vlam(fenv, iras, body)
     ) where
     {
-      val
-      fenv = intpenv_take_fenv(env0)
+      val fenv = intpenv_take_fenv(env0)
     }
   ) : ir0val // end of [val]
 in
@@ -1893,14 +2010,17 @@ let
   (
   case+ iras of
   | list_nil _ =>
-    interp0_irexp(env0, body)
+    ( irv0 ) where
+    {
+      val irv0 =
+      interp0_irexp_fun(env0, body)
+    }
   | list_cons _ =>
     (
     IR0Vlam(fenv, iras, body)
     ) where
     {
-      val
-      fenv = intpenv_take_fenv(env0)
+      val fenv = intpenv_take_fenv(env0)
     }
   ) : ir0val // end of [val]
 in
@@ -1945,14 +2065,17 @@ let
   (
   case+ iras of
   | list_nil _ =>
-    interp0_irexp(env0, body)
+    ( irv0 ) where
+    {
+      val irv0 =
+      interp0_irexp_fun(env0, body)
+    }
   | list_cons _ =>
     (
     IR0Vlam(fenv, iras, body)
     ) where
     {
-      val
-      fenv = intpenv_take_fenv(env0)
+      val fenv = intpenv_take_fenv(env0)
     }
   ) : ir0val // end of [val]
 in
@@ -2494,11 +2617,13 @@ val opt0 =
 if
 test
 then
-let
+(
+Some_vt(irv1)
+) where
+{
 val
-irv1 =
-interp0_irexp(env0, ire1) in Some_vt(irv1)
-end
+irv1 = interp0_irexp(env0, ire1)
+}
 else
 (
   None_vt(*void*)

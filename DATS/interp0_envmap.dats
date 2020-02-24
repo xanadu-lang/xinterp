@@ -119,12 +119,12 @@ the_d2vardef_insert
 (d2v: d2var, def: ir0val): void
 //
 (* ****** ****** *)
-
+//
 datatype
 d2key =
 | D2Kcst of d2cst // let-fun
 | D2Kvar of d2var // arg and let-var
-
+//
 (* ****** ****** *)
 
 local
@@ -144,8 +144,10 @@ intplst =
 | intplst_fun of ()
 //
 | intplst_let1 of intplst
+(*
 | intplst_loc1 of intplst
 | intplst_loc2 of intplst
+*)
 //
 | intplst_cons of
   (d2key, ir0val, intplst)
@@ -217,10 +219,13 @@ case+ env of
 //
 | intplst_let1
     (env) => auxenv(env, res)
+//
+(*
 | intplst_loc1
     (env) => auxenv(env, res)
 | intplst_loc2
     (env) => auxenv(env, res)
+*)
 //
 | intplst_cons(k0, x0, env) =>
   auxenv(env, list_vt_cons((k0, x0), res))
@@ -394,6 +399,8 @@ case- xs of
 |
 ~intplst_fun() => ()
 |
+~intplst_let1(xs) => auxlst(xs)
+|
 ~intplst_cons(_, _, xs) => auxlst(xs)
 )
 //
@@ -423,8 +430,10 @@ interp0_search_d2cst
   | intplst_fun() =>
     the_d2cstdef_search(d2c0)
   | intplst_let1(xs) => auxlst(xs)
+(*
   | intplst_loc1(xs) => auxlst(xs)
   | intplst_loc2(xs) => auxlst(xs)
+*)
   | intplst_cons
     (d2k1, irv1, xs) =>
     (
@@ -461,8 +470,10 @@ interp0_search_d2var
   | intplst_fun() =>
     the_d2vardef_search(d2v0)
   | intplst_let1(xs) => auxlst(xs)
+(*
   | intplst_loc1(xs) => auxlst(xs)
   | intplst_loc2(xs) => auxlst(xs)
+*)
   | intplst_cons
     (d2k1, irv1, xs) =>
     (

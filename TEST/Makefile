@@ -43,6 +43,11 @@ tuple: ; $(XINTERP) -d ./tuple.dats
 #
 ######
 
+test:: isAVL
+isAVL: ; $(XINTERP) -d ./isAVL.dats
+
+######
+
 test:: sieve
 sieve: ; $(XINTERP) -d ./sieve.dats
 test:: sieve_vt
@@ -50,7 +55,7 @@ sieve_vt: ; $(XINTERP) -d ./sieve_vt.dats
 
 ######
 
-test:: sieve
+test:: sieve1
 sieve1: ; $(XINTERP) -d ./sieve1.dats
 test:: sieve1_vt
 sieve1_vt: ; $(XINTERP) -d ./sieve1_vt.dats

@@ -199,6 +199,10 @@ overload fprint with fprint_ir0lftval
 //
 (* ****** ****** *)
 
+exception IR0EXN of ir0val
+
+(* ****** ****** *)
+
 absvtype intpenv_vtbox = ptr
 vtypedef intpenv = intpenv_vtbox
 

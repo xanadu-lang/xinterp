@@ -16,7 +16,7 @@ foldl(xs: list(a), r0: r): r =
 case+ xs of
 | list_nil() => r0
 | list_cons(x0, xs) =>
-  foldl(xs, foldl$fopr(r0, x0))
+  foldl(xs, foldl$fopr<a><r>(r0, x0))
 )
 
 (* ****** ****** *)
@@ -26,11 +26,13 @@ fun
 length
 ( xs
 : list(a)): int =
-( foldl(xs, 0) ) where
+(
+  foldl(xs, 0)
+) where
 {
   implement
   foldl$fopr<a><int>(r0, x0) = r0 + 1
-}
+} endwhr
 
 (* ****** ****** *)
 //
