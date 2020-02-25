@@ -158,6 +158,42 @@ end
 end // end of [interp0_irexp_fun]
 //
 (* ****** ****** *)
+//
+extern
+fun
+interp0_irexp_try
+(env: !intpenv, ire: ir0exp): ir0val
+//
+implement
+interp0_irexp_try
+  (env0, ire0) =
+let
+val env0 =
+$UN.castvwtp1{ptr}(env0)
+in
+try
+irv0 where
+{
+val
+env0 =
+$UN.castvwtp0{intpenv}(env0)
+val
+irv0 = interp0_irexp(env0, ire0)
+prval
+((*void*)) = $UN.cast2void(env0)
+}
+with exn =>
+let
+val
+env0 =
+$UN.castvwtp1{intpenv}(env0)
+val () = intpenv_pop0_try1(env0)
+prval
+((*void*)) = $UN.cast2void(env0) in $raise(exn)
+end
+end // end of [interp0_irexp_try]
+//
+(* ****** ****** *)
 
 local
 
@@ -1359,6 +1395,9 @@ IR0Etry
 ( ire1
 , ircls) = ire0.node()
 //
+val () =
+intpenv_push_try1(env0)
+//
 val env0 =
 $UN.castvwtp1{ptr}(env0)
 //
@@ -1370,7 +1409,10 @@ val
 env0 =
 $UN.castvwtp0{intpenv}(env0)
 val
-irv1 = interp0_irexp(env0, ire1)
+irv1 =
+interp0_irexp_try(env0, ire1)
+val () = intpenv_pop0_try1(env0)
+//
 prval
 ((*void*)) = $UN.cast2void(env0)
 in

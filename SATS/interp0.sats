@@ -238,6 +238,13 @@ intpenv_push_let1(!intpenv): void
 (* ****** ****** *)
 //
 fun
+intpenv_pop0_try1(!intpenv): void
+fun
+intpenv_push_try1(!intpenv): void
+//
+(* ****** ****** *)
+//
+fun
 intpenv_free_nil(env: intpenv): void
 fun
 intpenv_free_fenv(env: intpenv): void
