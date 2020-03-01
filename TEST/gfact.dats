@@ -1,11 +1,11 @@
 (* ****** ****** *)
 
 #staload
+"./../xanadu/prelude/DATS/gint.dats"
+#staload
 "./../xanadu/prelude/DATS/gnum.dats"
 #staload
 "./../xanadu/prelude/DATS/gord.dats"
-#staload
-"./../xanadu/prelude/DATS/gint.dats"
 
 (* ****** ****** *)
 

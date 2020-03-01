@@ -36,7 +36,8 @@ cons(x1, xs) =>
 (
   if
   (x1%x0=0)
-  then $eval(filter(xs, x0))
+  then
+  $eval(filter(xs, x0))
   else cons(x1, filter(xs, x0))
 )
 endlet

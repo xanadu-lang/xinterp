@@ -22,6 +22,11 @@ test:: gfact
 gfact: ; $(XINTERP) -d ./gfact.dats
 #
 ######
+#
+test:: gtest
+gtest: ; $(XINTERP) -d ./gtest.dats
+#
+######
 
 test:: kfact
 kfact: ; $(XINTERP) -d ./kfact.dats
