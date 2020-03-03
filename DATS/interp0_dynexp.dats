@@ -1460,6 +1460,10 @@ ire1.node() of
   (
     interp0_irexp(env0, ire2)
   )
+| IR0Eeval(1(*ptr*), ire2) =>
+  (
+    interp0_irexp(env0, ire2)
+  )
 end // end of [aux_addr]
 //
 fun
