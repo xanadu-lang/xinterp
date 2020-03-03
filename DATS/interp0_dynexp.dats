@@ -1454,16 +1454,30 @@ val-
 IR0Eaddr(ire1) = ire0.node()
 //
 in
+//
 case-
 ire1.node() of
-| IR0Eflat(ire2) => 
-  (
-    interp0_irexp(env0, ire2)
-  )
-| IR0Eeval(1(*ptr*), ire2) =>
-  (
-    interp0_irexp(env0, ire2)
-  )
+|
+IR0Eflat(ire2) => 
+(
+  interp0_irexp(env0, ire2)
+)
+|
+IR0Eeval(1(*ptr*), ire2) =>
+(
+  interp0_irexp(env0, ire2)
+)
+|
+IR0Epcon
+(ire2, lab2) =>
+let
+val
+irv2 =
+interp0_irexp(env0, ire2)
+in
+IR0Vlft(IR0LVpcon(irv2, lab2))
+end
+//
 end // end of [aux_addr]
 //
 fun
@@ -1547,6 +1561,21 @@ case- x0 of
 IR0LVref(r0) =>
 let
   val-Some(irv0) = r0[] in irv0
+end
+|
+IR0LVpcon
+(irv1, lab2) =>
+let
+val-
+IR0Vcon
+(d2c1, irvs) = irv1
+in
+(
+  auxget_at(irvs, idx2)
+) where
+{
+  val idx2 = pcon_lab2idx(lab2)
+}
 end
 |
 IR0LVpflt
