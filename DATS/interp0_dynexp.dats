@@ -1446,6 +1446,10 @@ aux_addr
 , ire0: ir0exp): ir0val =
 let
 //
+val () =
+println!
+("aux_addr: ire0 = ", ire0)
+//
 val-
 IR0Eaddr(ire1) = ire0.node()
 //
