@@ -29,10 +29,12 @@ UN =
 
 #staload
 "./../xanadu/prelude/DATS/list.dats"
+#staload
+"./../xanadu/prelude/DATS/list_vt.dats"
 
 (* ****** ****** *)
 //
-val xs =
+val xs1 =
 list_cons(1,
 list_cons(2,
 list_cons(3,
@@ -41,14 +43,34 @@ list_cons(5, list_nil())))))
 //
 (* ****** ****** *)
 
-val ys =
+val xs2 = gseq_reverse(xs1)
+
+(* ****** ****** *)
+
+val xs3 =
 (
-gseq_map_list<int,list(int)>(xs)
+gseq_map_list(xs1)
 ) where
 {
-impltmp map$fopr<int><int>(x0) = x0 * x0
+impltmp
+map$fopr<int><int>(x0) = x0 * x0
 }
 
 (* ****** ****** *)
 
-(* end of [gseq_map.dats] *)
+val xs4 =
+(
+gseq_map_rlist(xs1)
+) where
+{
+impltmp
+map$fopr<int><int>(x0) = x0 * x0
+}
+
+(* ****** ****** *)
+
+val xs5 = gseq_append(xs1, xs2)
+
+(* ****** ****** *)
+
+(* end of [gseq_test.dats] *)
