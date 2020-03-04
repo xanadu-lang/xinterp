@@ -19,8 +19,7 @@ list_cons
 val x0 = xs.0
 val x1 = xs.1
 val () = xs.0 := 1
-val p1 = $addr(xs.1)
-val y1 = $eval(p1)
+val ys = $eval($addr(xs.1))
 //
 (* ****** ****** *)
 

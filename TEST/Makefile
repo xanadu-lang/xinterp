@@ -37,6 +37,9 @@ kisevn: ; $(XINTERP) -d ./kisevn.dats
 
 ######
 #
+test:: addrs
+addrs: ; $(XINTERP) -d ./addrs.dats
+#
 test:: dtcon
 dtcon: ; $(XINTERP) -d ./dtcon.dats
 #
