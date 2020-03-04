@@ -312,19 +312,39 @@ auxfcst
 , ire0
 : ir0exp): ir0val =
 let
-val-
-IR0Efcst(d2c) = ire0.node()
-val
-opt =
-interp0_search_d2cst(env0, d2c)
 //
 // (*
 val () =
-println!("auxfcst: d2c = ", d2c)
+println!
+("auxfcst: ire0 = ", ire0)
 // *)
+val-
+IR0Efcst(d2c) = ire0.node()
 //
 in
-case- opt of ~Some_vt(irv) => irv
+//
+if
+$D2E.d2cst_iscast(d2c)
+then
+IR0Vfun
+(
+lam(vs) =>
+let
+val-
+list_cons(v0, _) = vs in v0 
+end
+) (* end of [then] *)
+else
+(
+  case-
+  opt of ~Some_vt(irf) => irf
+) where
+{
+val
+opt =
+interp0_search_d2cst(env0, d2c)
+} (* end of [else] *)
+//
 end // end of [auxfcst]
 
 (* ****** ****** *)
