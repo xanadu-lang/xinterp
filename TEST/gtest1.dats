@@ -90,4 +90,4 @@ val rev_xs = gseq_copy_rlist(xs)
 
 (* ****** ****** *)
 
-(* end of [gtest.dats] *)
+(* end of [gtest1.dats] *)

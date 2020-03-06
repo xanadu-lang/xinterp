@@ -73,4 +73,20 @@ val xs5 = gseq_append(xs1, xs2)
 
 (* ****** ****** *)
 
-(* end of [gseq_test.dats] *)
+val xs6 = gseq_filter_list(xs5)
+where
+{
+impltmp
+filter$test<int>(x0) = x0 % 2 = 0 }
+
+(* ****** ****** *)
+
+val xs7 = gseq_filter_rlist(xs5)
+where
+{
+impltmp
+filter$test<int>(x0) = x0 % 2 = 0 }
+
+(* ****** ****** *)
+
+(* end of [gtest2.dats] *)

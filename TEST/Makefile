@@ -23,8 +23,10 @@ gfact: ; $(XINTERP) -d ./gfact.dats
 #
 ######
 #
-test:: gtest
-gtest: ; $(XINTERP) -d ./gtest.dats
+test:: gtest1
+gtest1: ; $(XINTERP) -d ./gtest1.dats
+test:: gtest2
+gtest2: ; $(XINTERP) -d ./gtest2.dats
 #
 ######
 
