@@ -8,6 +8,13 @@ XINTERP="./../bin/xinterp"
 
 ######
 #
+test:: bools
+bools: ; $(XINTERP) -d ./bools.dats
+test:: chars
+chars: ; $(XINTERP) -d ./chars.dats
+#
+######
+#
 test:: cbref
 cbref: ; $(XINTERP) -d ./cbref.dats
 #

@@ -657,6 +657,22 @@ end // end of [bool_print]
 (* ****** ****** *)
 
 fun
+char_eqzq
+(x: ir0val): ir0val =
+let
+val-IR0Vchr(c) = x
+in
+  IR0Vbtf(char0_iseqz(c))
+end // end of [char_eqzq]
+fun
+char_neqzq
+(x: ir0val): ir0val =
+let
+val-IR0Vchr(c) = x
+in
+  IR0Vbtf(char0_isneqz(c))
+end // end of [char_neqzq]
+fun
 char_print
 (x: ir0val): ir0val =
 let
@@ -666,18 +682,6 @@ val () = print(x) in IR0Vnone0() end
 end // end of [char_print]
 
 (* ****** ****** *)
-
-fun
-string_nilq
-(x: ir0val): ir0val =
-let
-val-IR0Vstr(x) = x
-val p = string2ptr(x)
-val c =
-$UN.ptr0_get<char>(p)
-in
-  IR0Vbtf(char0_iseqz(c))
-end // end of [string_nilq]
 //
 fun
 string_head
@@ -1097,6 +1101,19 @@ d2cst("bool_print")
 ,
 IR0Vfun(firfun1(bool_print)))
 //
+(* ****** ****** *)
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst("char_eqzq"),
+IR0Vfun(firfun1(char_eqzq)))
+val () =
+the_d2cstdef_insert
+(
+d2cst("char_neqzq"),
+IR0Vfun(firfun1(char_neqzq)))
+//
 val () =
 the_d2cstdef_insert
 (
@@ -1106,12 +1123,6 @@ IR0Vfun(firfun1(char_print)))
 //
 (* ****** ****** *)
 //
-val () =
-the_d2cstdef_insert
-(
-d2cst("string_nilq"),
-IR0Vfun
-(firfun1(string_nilq)))
 val () =
 the_d2cstdef_insert
 (
