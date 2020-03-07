@@ -617,6 +617,123 @@ end // end of [local]
 (* ****** ****** *)
 
 fun
+bool_neg
+(x: ir0val): ir0val =
+let
+val-
+IR0Vbtf(x) = x in IR0Vbtf(not(x))
+end // end of [bool_neg]
+
+fun
+bool_add
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-
+IR0Vbtf(x) = x
+val-
+IR0Vbtf(y) = y in IR0Vbtf(x + y)
+end // end of [bool_add]
+fun
+bool_mul
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-
+IR0Vbtf(x) = x
+val-
+IR0Vbtf(y) = y in IR0Vbtf(x * y)
+end // end of [bool_mul]
+
+fun
+bool_print
+(x: ir0val): ir0val =
+let
+val-IR0Vbtf(x) = x in
+let
+val () = print(x) in IR0Vnone0() end
+end // end of [bool_print]
+
+(* ****** ****** *)
+
+fun
+char_print
+(x: ir0val): ir0val =
+let
+val-IR0Vchr(x) = x in
+let
+val () = print(x) in IR0Vnone0() end
+end // end of [char_print]
+
+(* ****** ****** *)
+
+fun
+string_nilq
+(x: ir0val): ir0val =
+let
+val-IR0Vstr(x) = x
+val p = string2ptr(x)
+val c =
+$UN.ptr0_get<char>(p)
+in
+  IR0Vbtf(char0_iseqz(c))
+end // end of [string_nilq]
+//
+fun
+string_head
+(x: ir0val): ir0val =
+let
+val-IR0Vstr(x) = x
+val p = string2ptr(x)
+in
+  IR0Vchr
+  ($UN.ptr0_get<char>(p))
+end // end of [string_head]
+fun
+string_head_raw
+(x: ir0val): ir0val =
+let
+val-IR0Vstr(x) = x
+val p = string2ptr(x)
+in
+  IR0Vchr
+  ($UN.ptr0_get<char>(p))
+end // end of [string_head_raw]
+fun
+string_tail_raw
+(x: ir0val): ir0val =
+let
+val-IR0Vstr(x) = x
+val p = string2ptr(x)
+in
+IR0Vstr
+($UN.cast(ptr0_succ<char>(p)))
+end // end of [string_tail_raw]
+fun
+string_print
+(x: ir0val): ir0val =
+let
+val-IR0Vstr(x) = x in
+let
+val () = print(x) in IR0Vnone0() end
+end // end of [string_print]
+
+(* ****** ****** *)
+
+fun
+gint_succ_sint
+(x: ir0val): ir0val =
+let
+val-IR0Vint(x) = x in IR0Vint(x + 1) end
+fun
+gint_pred_sint
+(x: ir0val): ir0val =
+let
+val-IR0Vint(x) = x in IR0Vint(x - 1) end
+
+(* ****** ****** *)
+
+fun
 gint_lt_sint_sint
 ( x: ir0val
 , y: ir0val): ir0val =
@@ -954,6 +1071,87 @@ if
 (n0 = 0)
 then
 {
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst("bool_neg")
+,
+IR0Vfun(firfun1(bool_neg)))
+val () =
+the_d2cstdef_insert
+(
+d2cst("bool_add")
+,
+IR0Vfun(firfun2(bool_add)))
+val () =
+the_d2cstdef_insert
+(
+d2cst("bool_mul")
+,
+IR0Vfun(firfun2(bool_mul)))
+val () =
+the_d2cstdef_insert
+(
+d2cst("bool_print")
+,
+IR0Vfun(firfun1(bool_print)))
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst("char_print")
+,
+IR0Vfun(firfun1(char_print)))
+//
+(* ****** ****** *)
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst("string_nilq"),
+IR0Vfun
+(firfun1(string_nilq)))
+val () =
+the_d2cstdef_insert
+(
+d2cst("string_head"),
+IR0Vfun
+(firfun1(string_head)))
+val () =
+the_d2cstdef_insert
+(
+d2cst("string_head_raw"),
+IR0Vfun
+(firfun1(string_head_raw)))
+val () =
+the_d2cstdef_insert
+(
+d2cst("string_tail_raw"),
+IR0Vfun
+(firfun1(string_tail_raw)))
+val () =
+the_d2cstdef_insert
+(
+d2cst("string_print"),
+IR0Vfun(firfun1(string_print)))
+//
+(* ****** ****** *)
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst("gint_succ_sint")
+,
+IR0Vfun(firfun1(gint_succ_sint)))
+val () =
+the_d2cstdef_insert
+(
+d2cst("gint_pred_sint")
+,
+IR0Vfun(firfun1(gint_pred_sint)))
+//
+(* ****** ****** *)
 //
 val () =
 the_d2cstdef_insert

@@ -90,10 +90,14 @@ case+ x0 of
 //
 | IR0Vint(i0) =>
   fprint!(out, "IR0Vint(", i0, ")")
+| IR0Vptr(p0) =>
+  fprint!(out, "IR0Vptr(", p0, ")")
+//
 | IR0Vbtf(b0) =>
   fprint!(out, "IR0Vbtf(", b0, ")")
 | IR0Vchr(c0) =>
   fprint!(out, "IR0Vchr(", c0, ")")
+//
 | IR0Vflt(f0) =>
   fprint!(out, "IR0Vflt(", f0, ")")
 | IR0Vstr(s0) =>

@@ -79,6 +79,11 @@ fprint_val<ir0val> = fprint_ir0val
 //
 extern
 fun
+xatsopt_chrunq
+( source // '<char>' -> <char>
+: string) : char = "ext#xatsopt_chrunq"
+extern
+fun
 xatsopt_strunq
 ( source // "<string>" -> <string>
 : string) : string = "ext#xatsopt_strunq"
@@ -240,6 +245,22 @@ IR0Vbtf
 }
 //
 end // end of [auxbtf]
+
+fun
+auxchr
+( ire0
+: ir0exp): ir0val =
+let
+val-
+IR0Echr(tok) = ire0.node()
+in(*in-of-let*)
+//
+case-
+tok.node() of
+| T_CHAR_char(rep) => 
+  IR0Vchr(xatsopt_chrunq(rep))
+//
+end // end of [auxchr]
 
 fun
 auxstr
@@ -1527,12 +1548,12 @@ IR0Eeval
 val
 irv1 = interp0_irexp(env0, ire1)
 //
-(*
+// (*
 val () =
 println!("aux_eval: ire1 = ", ire1)
 val () =
 println!("aux_eval: irv1 = ", irv1)
-*)
+// *)
 //
 in
 //
@@ -1909,6 +1930,8 @@ ire0.node() of
 //
 | IR0Eint _ => auxint(ire0)
 | IR0Ebtf _ => auxbtf(ire0)
+| IR0Echr _ => auxchr(ire0)
+//
 | IR0Estr _ => auxstr(ire0)
 //
 | IR0Etop _ => auxtop(ire0)

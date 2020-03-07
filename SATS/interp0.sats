@@ -104,8 +104,11 @@ ir0val =
 | IR0Vnil of ()
 //
 | IR0Vint of int
+| IR0Vptr of ptr
+//
 | IR0Vbtf of bool
 | IR0Vchr of char
+//
 | IR0Vflt of double
 | IR0Vstr of string
 //

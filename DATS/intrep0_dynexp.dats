@@ -332,6 +332,9 @@ d3e0.node() of
 | D3Ebtf(tok) =>
   ir0exp_make_node
   (loc0, IR0Ebtf(tok))
+| D3Echr(tok) =>
+  ir0exp_make_node
+  (loc0, IR0Echr(tok))
 | D3Estr(tok) =>
   ir0exp_make_node
   (loc0, IR0Estr(tok))
