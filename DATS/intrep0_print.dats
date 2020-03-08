@@ -352,10 +352,11 @@ x0.node() of
   (
     fprint!(out, "IR0Elazy(", ire1, ")")
   )
-| IR0Ellazy(ire1, opt2) =>
+| IR0Ellazy
+  (ire1, ires(*frees*)) =>
   fprint!
   ( out
-  , "IR0Ellazy(", ire1, "; ", opt2, ")")
+  , "IR0Ellazy(", ire1, "; ", ires, ")")
 //
 | IR0Eflat(ire1) =>
   (

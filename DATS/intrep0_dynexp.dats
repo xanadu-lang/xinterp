@@ -571,12 +571,12 @@ d3e0.node() of
   in
     ir0exp_make_node(loc0, IR0Elazy(ire1))
   end // end of [D3Elazy]
-| D3Ellazy(d3e1, opt2) =>
+| D3Ellazy(d3e1, d3es) =>
   let
     val ire1 = irerase_dexp(d3e1)
-    val opt2 = irerase_dexpopt(opt2)
+    val ires = irerase_dexplst(d3es)
   in
-    ir0exp_make_node(loc0, IR0Ellazy(ire1, opt2))
+    ir0exp_make_node(loc0, IR0Ellazy(ire1, ires))
   end // end of [D3Ellazy]
 //
 | D3Eflat(d3e1) =>

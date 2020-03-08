@@ -1,19 +1,19 @@
 (* ****** ****** *)
-
+//
 #staload
 "./../xanadu\
-/prelude/DATS/char.dats"
+/prelude/DATS/gseq.dats"
 #staload
 "./../xanadu\
-/prelude/DATS/string.dats"
-
+/prelude/DATS/unsafe.dats"
+//
 (* ****** ****** *)
-//
+
 #staload
-"./../xanadu/prelude/DATS/gseq.dats"
+"./../xanadu/prelude/DATS/char.dats"
 #staload
-"./../xanadu/prelude/DATS/unsafe.dats"
-//
+"./../xanadu/prelude/DATS/string.dats"
+
 (* ****** ****** *)
 
 val a = 'a'

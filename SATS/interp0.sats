@@ -146,7 +146,7 @@ ir0val =
 | IR0Vlazy of ref(ir0lazval)
 | IR0Vllazy of
   ( ir0env
-  , ir0exp(*eval*), ir0expopt(*free*))
+  , ir0exp(*eval*), ir0explst(*frees*))
 //
 | IR0Vnone0 of () | IR0Vnone1 of (ir0exp)
 //

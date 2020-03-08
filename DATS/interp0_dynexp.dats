@@ -1566,8 +1566,8 @@ case- irv1 of
   (ref0) => aux_eval_lazy(ref0)
 //
 | IR0Vllazy
-  (fenv, ire1, opt2) =>
-  aux_eval_llazy(fenv, ire1, opt2)
+  (fenv, ire1, ires) =>
+  aux_eval_llazy(fenv, ire1, ires)
 //
 end // end of [aux_eval]
 //
@@ -1667,7 +1667,7 @@ and
 aux_eval_llazy
 ( fenv: ir0env
 , ire1: ir0exp
-, opt2: ir0expopt): ir0val =
+, ires: ir0explst): ir0val =
 let
   val env0 =
   intpenv_make_fenv(fenv)

@@ -310,7 +310,7 @@ ir0exp_node =
 | IR0Elazy of
   (ir0exp(*eval*))
 | IR0Ellazy of
-  (ir0exp(*eval*), ir0expopt(*free*))
+  (ir0exp(*eval*), ir0explst(*frees*))
 //
 | IR0Eflat of (ir0exp(*l-value*))
 | IR0Etalf of (ir0exp(*IR0Eflat*))
