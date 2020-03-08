@@ -1,4 +1,9 @@
 (* ****** ****** *)
+#staload _ =
+"prelude\
+/DATS/CATS\
+/Xint/runtime.dats"
+(* ****** ****** *)
 (*
 //
 val xs =

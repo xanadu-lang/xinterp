@@ -1,6 +1,10 @@
 (* ****** ****** *)
+#staload _ =
+"prelude\
+/DATS/CATS/Xint/runtime.dats"
+(* ****** ****** *)
 
-#staload
+#staload _ =
 "./../xanadu/prelude/DATS/bool.dats"
 
 (* ****** ****** *)

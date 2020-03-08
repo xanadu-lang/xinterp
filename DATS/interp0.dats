@@ -333,14 +333,38 @@ the_preludes_load
   XATSHOME: string
 ) : void =
   "ext#libxatsopt_the_preludes_load"
-extern
+//
+(* ****** ****** *)
+
 fun
 the_preludes_load_if
+( XHOME
+: string, flag: &(int)) : void =
 (
-  XATSHOME: string, flag: &int
-) : void =
-  "ext#libxatsopt_the_preludes_load_if"
 //
+if
+(flag = 0)
+then
+{
+val () =
+(flag := flag + 1)
+val () =
+the_preludes_load(XHOME)
+//
+(*
+HX-2020-03-08:
+The runtime for primitive functions
+*)
+//
+val () =
+the_prelude_load
+( XHOME
+, 1(*dynamic*)
+, "prelude/DATS/CATS/Xint/runtime.dats")
+//
+} (* end of [then] *) // end-of-if
+) (* end of [the_preludes_load_if] *)
+
 (* ****** ****** *)
 //
 datatype

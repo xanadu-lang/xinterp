@@ -1,4 +1,9 @@
 (* ****** ****** *)
+#staload _ =
+"prelude\
+/DATS/CATS\
+/Xint/runtime.dats"
+(* ****** ****** *)
 //
 #staload
 "./../xanadu\
@@ -8,12 +13,14 @@
 /prelude/DATS/unsafe.dats"
 //
 (* ****** ****** *)
-
-#staload
-"./../xanadu/prelude/DATS/char.dats"
-#staload
-"./../xanadu/prelude/DATS/string.dats"
-
+//
+#staload _ =
+"./../xanadu\
+/prelude/DATS/char.dats"
+#staload _ =
+"./../xanadu\
+/prelude/DATS/string.dats"
+//
 (* ****** ****** *)
 
 val a = 'a'
@@ -23,9 +30,10 @@ val () = g_print(b)
 
 (* ****** ****** *)
 
-val ab =
+val
+alphabet =
 "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-val ((*void*)) = gseq_print(ab)
+val () = gseq_print(alphabet)
 
 (* ****** ****** *)
 

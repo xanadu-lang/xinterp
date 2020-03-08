@@ -1,4 +1,9 @@
 (* ****** ****** *)
+#staload
+"./../xanadu\
+/prelude/DATS\
+/CATS/Xint/runtime.dats"
+(* ****** ****** *)
 
 #symload
 nil with strmcon_nil

@@ -1,4 +1,8 @@
 (* ****** ****** *)
+#staload
+"prelude\
+/DATS/CATS/Xint/runtime.dats"
+(* ****** ****** *)
 
 fun
 fact(n) =

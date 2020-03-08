@@ -1,4 +1,9 @@
 (* ****** ****** *)
+#staload
+"./../xanadu\
+/prelude/DATS\
+/CATS/Xint/runtime.dats"
+(* ****** ****** *)
 
 var x0 = $(0, 1)
 val x1 = x0

@@ -3,6 +3,10 @@
 ** for g-sequences
 *)
 (* ****** ****** *)
+#staload _ =
+"prelude\
+/DATS/CATS/Xint/runtime.dats"
+(* ****** ****** *)
 
 #staload
 UN =

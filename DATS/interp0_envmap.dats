@@ -1027,11 +1027,11 @@ d2cst
 (
 let
 //
-(*
+// (*
 val () =
 println!
 ("d2cst: nam = ", nam)
-*)
+// *)
 //
 val
 sym = $SYM.symbol_make(nam)
@@ -1079,25 +1079,25 @@ then
 val () =
 the_d2cstdef_insert
 (
-d2cst("bool_neg")
+d2cst("xint_bool_neg")
 ,
 IR0Vfun(firfun1(bool_neg)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("bool_add")
+d2cst("xint_bool_add")
 ,
 IR0Vfun(firfun2(bool_add)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("bool_mul")
+d2cst("xint_bool_mul")
 ,
 IR0Vfun(firfun2(bool_mul)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("bool_print")
+d2cst("xint_bool_print")
 ,
 IR0Vfun(firfun1(bool_print)))
 //
@@ -1106,18 +1106,18 @@ IR0Vfun(firfun1(bool_print)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("char_eqzq"),
+d2cst("xint_char_eqzq"),
 IR0Vfun(firfun1(char_eqzq)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("char_neqzq"),
+d2cst("xint_char_neqzq"),
 IR0Vfun(firfun1(char_neqzq)))
 //
 val () =
 the_d2cstdef_insert
 (
-d2cst("char_print")
+d2cst("xint_char_print")
 ,
 IR0Vfun(firfun1(char_print)))
 //
@@ -1126,25 +1126,28 @@ IR0Vfun(firfun1(char_print)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("string_head"),
+d2cst
+("xint_string_head"),
 IR0Vfun
 (firfun1(string_head)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("string_head_raw"),
+d2cst
+("xint_string_head_raw"),
 IR0Vfun
 (firfun1(string_head_raw)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("string_tail_raw"),
+d2cst
+("xint_string_tail_raw"),
 IR0Vfun
 (firfun1(string_tail_raw)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("string_print"),
+d2cst("xint_string_print"),
 IR0Vfun(firfun1(string_print)))
 //
 (* ****** ****** *)
@@ -1152,13 +1155,15 @@ IR0Vfun(firfun1(string_print)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("gint_succ_sint")
+d2cst
+("xint_gint_succ_sint")
 ,
 IR0Vfun(firfun1(gint_succ_sint)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("gint_pred_sint")
+d2cst
+("xint_gint_pred_sint")
 ,
 IR0Vfun(firfun1(gint_pred_sint)))
 //
@@ -1167,40 +1172,46 @@ IR0Vfun(firfun1(gint_pred_sint)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("gint_lt_sint_sint")
+d2cst
+("xint_gint_lt_sint_sint")
 ,
 IR0Vfun(firfun2(gint_lt_sint_sint)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("gint_gt_sint_sint")
+d2cst
+("xint_gint_gt_sint_sint")
 ,
 IR0Vfun(firfun2(gint_gt_sint_sint)))
 //
 val () =
 the_d2cstdef_insert
 (
-d2cst("gint_eq_sint_sint")
+d2cst
+("xint_gint_eq_sint_sint")
 ,
 IR0Vfun(firfun2(gint_eq_sint_sint)))
 //
 val () =
 the_d2cstdef_insert
 (
-d2cst("gint_lte_sint_sint")
+d2cst
+("xint_gint_lte_sint_sint")
 ,
 IR0Vfun(firfun2(gint_lte_sint_sint)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("gint_gte_sint_sint")
+d2cst
+("xint_gint_gte_sint_sint")
 ,
 IR0Vfun(firfun2(gint_gte_sint_sint)))
 //
 val () =
 the_d2cstdef_insert
 (
-d2cst("gint_neq_sint_sint")
+d2cst
+("xint_gint_neq_sint_sint")
 ,
 IR0Vfun(firfun2(gint_neq_sint_sint)))
 //
@@ -1209,7 +1220,8 @@ IR0Vfun(firfun2(gint_neq_sint_sint)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("gint_cmp_sint_sint")
+d2cst
+("xint_gint_cmp_sint_sint")
 ,
 IR0Vfun(firfun2(gint_cmp_sint_sint)))
 //
@@ -1218,31 +1230,36 @@ IR0Vfun(firfun2(gint_cmp_sint_sint)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("gint_add_sint_sint")
+d2cst
+("xint_gint_add_sint_sint")
 ,
 IR0Vfun(firfun2(gint_add_sint_sint)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("gint_sub_sint_sint")
+d2cst
+("xint_gint_sub_sint_sint")
 ,
 IR0Vfun(firfun2(gint_sub_sint_sint)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("gint_mul_sint_sint")
+d2cst
+("xint_gint_mul_sint_sint")
 ,
 IR0Vfun(firfun2(gint_mul_sint_sint)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("gint_div_sint_sint")
+d2cst
+("xint_gint_div_sint_sint")
 ,
 IR0Vfun(firfun2(gint_div_sint_sint)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("gint_mod_sint_sint")
+d2cst
+("xint_gint_mod_sint_sint")
 ,
 IR0Vfun(firfun2(gint_mod_sint_sint)))
 //
