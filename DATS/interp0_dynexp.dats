@@ -334,11 +334,12 @@ auxfcst
 : ir0exp): ir0val =
 let
 //
-// (*
+(*
 val () =
 println!
 ("auxfcst: ire0 = ", ire0)
-// *)
+*)
+//
 val-
 IR0Efcst(d2c) = ire0.node()
 //
@@ -674,7 +675,7 @@ val
 irvs =
 auxdarg(env0, npf1, ires)
 //
-// (*
+(*
 val () =
 println!
 ("auxdapp: ire0 = ", ire0)
@@ -684,7 +685,7 @@ println!
 val () =
 println!
 ("auxdapp: irvs = ", irvs)
-// *)
+*)
 //
 in
 //
@@ -922,9 +923,17 @@ case+ ires of
   ("auxlst: irea = ", irea)
 *)
   val-
-  IR0Vnil() = 
+  IR0Vnil() = irva where
+  {
+  val irva =
   interp0_irexp(env0, irea)
+(*
+  val ((*void*)) =
+  println!("auxlst: irva = ", irva)
+*)
   }
+//
+  } (* where *)
 ) (* end of [auxlst] *)
 val () =
   auxlst(env0, ires)
@@ -1487,9 +1496,11 @@ aux_addr
 , ire0: ir0exp): ir0val =
 let
 //
+(*
 val () =
 println!
 ("aux_addr: ire0 = ", ire0)
+*)
 //
 val-
 IR0Eaddr(ire1) = ire0.node()
@@ -1548,12 +1559,12 @@ IR0Eeval
 val
 irv1 = interp0_irexp(env0, ire1)
 //
-// (*
+(*
 val () =
 println!("aux_eval: ire1 = ", ire1)
 val () =
 println!("aux_eval: irv1 = ", irv1)
-// *)
+*)
 //
 in
 //
@@ -2700,6 +2711,7 @@ implement
 interp0_irclau
 (env0, irv0, ircl) =
 let
+//
 (*
 val () =
 println!
@@ -2708,6 +2720,7 @@ val () =
 println!
 ("interp0_irclau: ircl = ", ircl)
 *)
+//
 in
 //
 case+

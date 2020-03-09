@@ -651,7 +651,7 @@ bool_print
 let
 val-IR0Vbtf(x) = x in
 let
-val () = print(x) in IR0Vnone0() end
+val () = print(x) in IR0Vnil() end
 end // end of [bool_print]
 
 (* ****** ****** *)
@@ -678,7 +678,7 @@ char_print
 let
 val-IR0Vchr(x) = x in
 let
-val () = print(x) in IR0Vnone0() end
+val () = print(x) in IR0Vnil() end
 end // end of [char_print]
 
 (* ****** ****** *)
@@ -719,8 +719,19 @@ string_print
 let
 val-IR0Vstr(x) = x in
 let
-val () = print(x) in IR0Vnone0() end
+val () = print(x) in IR0Vnil() end
 end // end of [string_print]
+
+(* ****** ****** *)
+
+fun
+gint_print_sint
+(x: ir0val): ir0val =
+let
+val-IR0Vint(x) = x in
+let
+val () = print(x) in IR0Vnil() end
+end // end of [gint_print_sint]
 
 (* ****** ****** *)
 
@@ -1127,28 +1138,37 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
+("xint_string_print"),
+IR0Vfun(firfun1(string_print)))
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
 ("xint_string_head"),
-IR0Vfun
-(firfun1(string_head)))
+IR0Vfun(firfun1(string_head)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
 ("xint_string_head_raw"),
-IR0Vfun
-(firfun1(string_head_raw)))
+IR0Vfun(firfun1(string_head_raw)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
 ("xint_string_tail_raw"),
-IR0Vfun
-(firfun1(string_tail_raw)))
+IR0Vfun(firfun1(string_tail_raw)))
+//
+(* ****** ****** *)
+//
 val () =
 the_d2cstdef_insert
 (
-d2cst("xint_string_print"),
-IR0Vfun(firfun1(string_print)))
+d2cst
+("xint_gint_print_sint")
+,
+IR0Vfun(firfun1(gint_print_sint)))
 //
 (* ****** ****** *)
 //

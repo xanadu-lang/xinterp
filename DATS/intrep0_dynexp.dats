@@ -600,6 +600,11 @@ d3e0.node() of
     ir0exp_make_node(loc0, IR0Eeval(knd0, ire1))
   end // end of [D3Eeval]
 //
+| D3Enone0((*void*)) =>
+  (
+    ir0exp_make_node(loc0, IR0Enone0())
+  )
+//
 | _(*rest-of-d3exp*) =>
   (
     ir0exp_make_node(loc0, IR0Enone1(d3e0))
