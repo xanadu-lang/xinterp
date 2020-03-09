@@ -673,7 +673,7 @@ val
 irvs =
 auxdarg(env0, npf1, ires)
 //
-(*
+// (*
 val () =
 println!
 ("auxdapp: ire0 = ", ire0)
@@ -683,7 +683,7 @@ println!
 val () =
 println!
 ("auxdapp: irvs = ", irvs)
-*)
+// *)
 //
 in
 //
@@ -1322,14 +1322,24 @@ aux_if0
 , ire0
 : ir0exp): ir0val =
 let
+//
 val-
 IR0Eif0
 ( ire1
 , ire2
 , opt3) = ire0.node()
+//
 val
 irv1 =
 interp0_irexp(env0, ire1)
+//
+val () =
+println!
+("aux_if0: ire1 = ", ire1)
+val () =
+println!
+("aux_if0: irv1 = ", irv1)
+//
 in
 //
 case- irv1 of
