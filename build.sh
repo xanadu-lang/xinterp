@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #
-# If this repository is cloned without --recursive flag
+# For when this repository is cloned without --recursive flag
 #
 clone_xanadu() {
     if [ ! -d xanadu/srcgen ]; then
@@ -28,6 +28,7 @@ fi
 
 generate_script() {
     printf "$XINTERP_SCRIPT" > xinterp
+    # make the above script executable
     chmod +x xinterp
 }
 
@@ -38,6 +39,3 @@ main() {
 }
 
 main
-
-
-# make the above script executable
