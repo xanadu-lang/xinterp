@@ -1,13 +1,24 @@
 (* ****** ****** *)
-#staload
-"./../xanadu\
-/prelude/DATS\
-/CATS/Xint/runtime.dats"
+#staload _ =
+"prelude\
+/DATS/CATS/Xint/runtime.dats"
 (* ****** ****** *)
 
 #staload
-"./../xanadu\
-/prelude/DATS/list.dats"
+_(*UN*) =
+"./../xanadu/prelude/DATS/unsafe.dats"
+
+(* ****** ****** *)
+
+#staload
+"./../xanadu/prelude/DATS/gseq.dats"
+
+#staload
+"./../xanadu/prelude/DATS/bool.dats"
+#staload
+"./../xanadu/prelude/DATS/list.dats"
+#staload
+"./../xanadu/prelude/DATS/string.dats"
 
 (* ****** ****** *)
 
@@ -77,9 +88,12 @@ list_cons(x, list_nil())
 } (* end of [kxor0] *)
 
 (* ****** ****** *)
-
-val ans = kxor0((*void*))
-
+//
+val ans =
+let
+val ans = kxor0((*void*)) in g_print(ans); ans
+end
+//
 (* ****** ****** *)
 
 (* end of [koka-amb.dats] *)
