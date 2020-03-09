@@ -282,9 +282,7 @@ fun
 auxtop
 ( ire0
 : ir0exp): ir0val =
-(
-  IR0Vnil()
-) where
+(IR0Vnil()) where
 {
 val-
 IR0Etop(tok) = ire0.node()
@@ -549,7 +547,7 @@ case+
 irfds of 
 |
 list_nil() =>
-IR0Vnone0()
+IR0Verror()
 |
 list_cons
 (irfd0, irfds) =>
@@ -755,7 +753,7 @@ auxget_at
 case+ irvs of
 |
 list_nil() =>
-IR0Vnone0()
+IR0Verror()
 |
 list_cons
 (irv0, irvs) =>
@@ -1025,7 +1023,7 @@ auxget_at
 case+ irvs of
 |
 list_nil() =>
-IR0Vnone0()
+IR0Verror()
 |
 list_cons
 (irv0, irvs) =>
@@ -1128,7 +1126,7 @@ case+ irlv of
 |
 IR0LVref(r0) =>
 (
-  IR0Vnil((*void*))
+  IR0Vnil(*void*)
 ) where
 {
   val () =
@@ -1139,7 +1137,7 @@ IR0LVref(r0) =>
 IR0LVpcon
 (_, lab2) =>
 (
-  IR0Vnil((*void*))
+  IR0Vnil(*void*)
 ) where
 {
 val () =
@@ -1150,7 +1148,7 @@ aux_assgn_pcon(irvr, irlv)
 IR0LVpbox
 (_, _, _) =>
 (
-  IR0Vnil((*void*))
+  IR0Vnil(*void*)
 ) where
 {
 val () =
@@ -1160,7 +1158,7 @@ aux_assgn_pbox(irvr, irlv)
 IR0LVpflt
 (_, _, _) =>
 (
-  IR0Vnil((*void*))
+  IR0Vnil(*void*)
 ) where
 {
 val () =
@@ -1362,7 +1360,7 @@ aux_case
 (
 case+ opt2 of
 | ~None_vt() =>
-   IR0Vnone0((*void*))
+   IR0Verror((*void*))
 | ~Some_vt(irv2) => irv2
 ) where
 {
@@ -1481,7 +1479,7 @@ prval ((*void*)) = $UN.cast2void(env0)
 in
 case+ opt2 of
 | ~None_vt() =>
-   IR0Vnone0((*void*))
+   IR0Verror((*void*))
 | ~Some_vt(irv2) => irv2
 end
 //
@@ -1596,7 +1594,7 @@ auxget_at
 case+ irvs of
 |
 list_nil() =>
-IR0Vnone0()
+IR0Verror()
 |
 list_cons
 (irv0, irvs) =>
@@ -1707,7 +1705,7 @@ irv1 = interp0_irexp(env0, ire1)
 in
 let
 val () =
-($raise IR0EXN(irv1)){void} in IR0Vnone0()
+($raise IR0EXN(irv1)){void} in IR0Verror()
 end
 end
 
@@ -1764,7 +1762,7 @@ auxget_at
 case+ irvs of
 |
 list_nil() =>
-IR0Vnone0()
+IR0Verror()
 |
 list_cons
 (irv0, irvs) =>
@@ -2007,6 +2005,8 @@ ire0.node() of
 //
 | IR0Eflat(ire1) => aux_flat(env0, ire0)
 | IR0Etalf(ire1) => aux_talf(env0, ire0)
+//
+| IR0Enone0((*void*)) => IR0Vnil(*void*)
 //
 | _(* rest-of-ir0exp *) => IR0Vnone1(ire0)
 //
@@ -2737,7 +2737,7 @@ val opt0 =
   if
   test
   then
-  Some_vt(IR0Vnone0()) else None_vt()
+  Some_vt(IR0Verror()) else None_vt()
 ) : Option_vt(ir0val)
 in
 let

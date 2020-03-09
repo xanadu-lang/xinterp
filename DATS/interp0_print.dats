@@ -134,8 +134,8 @@ case+ x0 of
 | IR0Vllazy(_, _, _) =>
   fprint!(out, "IR0Vllazy(", "...", ")")
 //
-| IR0Vnone0() =>
-  fprint!(out, "IR0Vnone0(", ")")
+| IR0Verror() =>
+  fprint!(out, "IR0Verror(", ")")
 | IR0Vnone1(ire1) =>
   fprint!(out, "IR0Vnone1(", ire1, ")")
 //

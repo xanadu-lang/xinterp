@@ -148,7 +148,7 @@ ir0val =
   ( ir0env
   , ir0exp(*eval*), ir0explst(*frees*))
 //
-| IR0Vnone0 of () | IR0Vnone1 of (ir0exp)
+| IR0Verror of () | IR0Vnone1 of (ir0exp)
 //
 and
 ir0lftval =
