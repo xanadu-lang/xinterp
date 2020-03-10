@@ -673,7 +673,7 @@ val
 irvs =
 auxdarg(env0, npf1, ires)
 //
-// (*
+(*
 val () =
 println!
 ("auxdapp: ire0 = ", ire0)
@@ -683,7 +683,7 @@ println!
 val () =
 println!
 ("auxdapp: irvs = ", irvs)
-// *)
+*)
 //
 in
 //
@@ -1333,12 +1333,14 @@ val
 irv1 =
 interp0_irexp(env0, ire1)
 //
+(*
 val () =
 println!
 ("aux_if0: ire1 = ", ire1)
 val () =
 println!
 ("aux_if0: irv1 = ", irv1)
+*)
 //
 in
 //
@@ -3237,8 +3239,9 @@ let
 val-
 IR0Cimpdecl3
 ( knd, mopt
-, sqas, tqas, id2c
-, ti3a, ti2s, iras, body) = irdcl.node()
+, sqas, tqas
+, id2c, ti3a
+, ti2s, iras, body) = irdcl.node()
 //
 (*
 val () =

@@ -40,8 +40,15 @@ val () = gseq_print(alphabet)
 
 (* ****** ****** *)
 
+val ai = gseq_indexof(alphabet, 'a')
 val Ai = gseq_indexof(alphabet, 'A')
 val Zi = gseq_indexof(alphabet, 'Z')
+
+(* ****** ****** *)
+
+val rai = gseq_rindexof(alphabet, 'a')
+val rAi = gseq_rindexof(alphabet, 'A')
+val rZi = gseq_rindexof(alphabet, 'Z')
 
 (* ****** ****** *)
 
