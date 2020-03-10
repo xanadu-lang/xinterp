@@ -46,7 +46,7 @@ cons(x1, xs) =>
   else cons(x1, filter(xs, x0))
 )
 endlet
-) // end of [filter]
+) (* filter *)
 
 (* ****** ****** *)
 

@@ -681,6 +681,21 @@ let
 val () = print(x) in IR0Vnil() end
 end // end of [char_print]
 
+fun
+char_equal
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vchr(x) = x
+val-IR0Vchr(y) = y in IR0Vbtf(x = y) end
+fun
+char_noteq
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vchr(x) = x
+val-IR0Vchr(y) = y in IR0Vbtf(x != y) end
+
 (* ****** ****** *)
 //
 fun
@@ -734,7 +749,13 @@ val () = print(x) in IR0Vnil() end
 end // end of [gint_print_sint]
 
 (* ****** ****** *)
-
+//
+fun
+gint_neg_sint
+(x: ir0val): ir0val =
+let
+val-IR0Vint(x) = x in IR0Vint(~x) end
+//
 fun
 gint_succ_sint
 (x: ir0val): ir0val =
@@ -745,7 +766,7 @@ gint_pred_sint
 (x: ir0val): ir0val =
 let
 val-IR0Vint(x) = x in IR0Vint(x - 1) end
-
+//
 (* ****** ****** *)
 
 fun
@@ -1128,6 +1149,19 @@ IR0Vfun(firfun1(char_neqzq)))
 val () =
 the_d2cstdef_insert
 (
+d2cst("xint_char_equal")
+,
+IR0Vfun(firfun2(char_equal)))
+val () =
+the_d2cstdef_insert
+(
+d2cst("xint_char_noteq")
+,
+IR0Vfun(firfun2(char_noteq)))
+//
+val () =
+the_d2cstdef_insert
+(
 d2cst("xint_char_print")
 ,
 IR0Vfun(firfun1(char_print)))
@@ -1171,6 +1205,14 @@ d2cst
 IR0Vfun(firfun1(gint_print_sint)))
 //
 (* ****** ****** *)
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_gint_neg_sint")
+,
+IR0Vfun(firfun1(gint_neg_sint)))
 //
 val () =
 the_d2cstdef_insert

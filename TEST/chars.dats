@@ -19,6 +19,9 @@
 /prelude/DATS/char.dats"
 #staload _ =
 "./../xanadu\
+/prelude/DATS/gint.dats"
+#staload _ =
+"./../xanadu\
 /prelude/DATS/string.dats"
 //
 (* ****** ****** *)
@@ -34,6 +37,11 @@ val
 alphabet =
 "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 val () = gseq_print(alphabet)
+
+(* ****** ****** *)
+
+val Ai = gseq_indexof(alphabet, 'A')
+val Zi = gseq_indexof(alphabet, 'Z')
 
 (* ****** ****** *)
 
