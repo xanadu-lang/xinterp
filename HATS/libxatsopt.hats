@@ -16,6 +16,9 @@ XANADU_targetloc
 (* ****** ****** *)
 //
 #staload
+"{$XANADU}/SATS/locinfo.sats"
+//
+#staload
 "{$XANADU}/SATS/filsrch.sats"
 //
 (* ****** ****** *)

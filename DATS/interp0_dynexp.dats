@@ -543,11 +543,13 @@ auxirfds
 : ir0fundeclist
 ) : ir0val =
 (
-case+
-irfds of 
+case-
+irfds of
+(*
 |
 list_nil() =>
 IR0Verror()
+*)
 |
 list_cons
 (irfd0, irfds) =>
@@ -673,7 +675,7 @@ val
 irvs =
 auxdarg(env0, npf1, ires)
 //
-(*
+// (*
 val () =
 println!
 ("auxdapp: ire0 = ", ire0)
@@ -683,7 +685,7 @@ println!
 val () =
 println!
 ("auxdapp: irvs = ", irvs)
-*)
+// *)
 //
 in
 //
@@ -750,10 +752,13 @@ auxget_at
 : ir0valist
 , i0: int): ir0val =
 (
-case+ irvs of
+case-
+irvs of
+(*
 |
 list_nil() =>
 IR0Verror()
+*)
 |
 list_cons
 (irv0, irvs) =>
@@ -1020,10 +1025,13 @@ auxget_at
 : ir0valist
 , i0: int): ir0val =
 (
-case+ irvs of
+case-
+irvs of
+(*
 |
 list_nil() =>
 IR0Verror()
+*)
 |
 list_cons
 (irv0, irvs) =>
@@ -1370,18 +1378,29 @@ aux_case
 , ire0
 : ir0exp): ir0val =
 (
-case+ opt2 of
+case- opt2 of
+(*
 | ~None_vt() =>
    IR0Verror((*void*))
+*)
 | ~Some_vt(irv2) => irv2
 ) where
 {
+//
+val loc0 = ire0.loc()
 //
 val-
 IR0Ecase
 ( knd
 , ire1
 , ircls) = ire0.node()
+//
+(*
+val () =
+println!("aux_case: loc0 = ", loc0)
+val () =
+println!("aux_case: ire0 = ", ire0)
+*)
 //
 val
 irv1 =
@@ -1489,9 +1508,11 @@ opt2 =
 interp0_irclaulst(env0, irx1, ircls)
 prval ((*void*)) = $UN.cast2void(env0)
 in
-case+ opt2 of
+case- opt2 of
+(*
 | ~None_vt() =>
    IR0Verror((*void*))
+*)
 | ~Some_vt(irv2) => irv2
 end
 //
@@ -1541,17 +1562,6 @@ IR0Vlft(IR0LVpcon(irv2, lab2))
 end
 //
 end // end of [aux_addr]
-//
-fun
-aux_fold
-( env0
-: !intpenv
-, ire0: ir0exp): ir0val =
-( IR0Vnil() ) where
-{
-val-
-IR0Efold(ire1) = ire0.node()
-}
 //
 (* ****** ****** *)
 
@@ -1603,10 +1613,13 @@ auxget_at
 : ir0valist
 , i0: int): ir0val =
 (
-case+ irvs of
+case-
+irvs of
+(*
 |
 list_nil() =>
 IR0Verror()
+*)
 |
 list_cons
 (irv0, irvs) =>
@@ -1701,6 +1714,29 @@ in
 end
 
 (* ****** ****** *)
+fun
+aux_fold
+( env0
+: !intpenv
+, ire0: ir0exp): ir0val =
+( IR0Vnil() ) where
+{
+val-
+IR0Efold(ire1) = ire0.node()
+}
+//
+fun
+aux_free
+( env0
+: !intpenv
+, ire0: ir0exp): ir0val =
+( IR0Vnil() ) where
+{
+val-
+IR0Efree(ire1) = ire0.node()
+}
+//
+(* ****** ****** *)
 
 fun
 aux_raise
@@ -1771,10 +1807,13 @@ auxget_at
 : ir0valist
 , i0: int): ir0val =
 (
-case+ irvs of
+case-
+irvs of
+(*
 |
 list_nil() =>
 IR0Verror()
+*)
 |
 list_cons
 (irv0, irvs) =>
@@ -2006,9 +2045,11 @@ ire0.node() of
   // IR0Etry
 //
 | IR0Eaddr(ire1) => aux_addr(env0, ire0)
-| IR0Efold(ire1) => aux_fold(env0, ire0)
 //
 | IR0Eeval(_, _) => aux_eval(env0, ire0)
+//
+| IR0Efold(ire1) => aux_fold(env0, ire0)
+| IR0Efree(ire1) => aux_free(env0, ire0)
 //
 | IR0Eraise(ire1) => aux_raise(env0, ire0)
 //

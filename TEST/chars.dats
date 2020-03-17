@@ -23,7 +23,16 @@
 #staload _ =
 "./../xanadu\
 /prelude/DATS/string.dats"
+#staload _ =
+"./../xanadu\
+/prelude/DATS/stream_vt.dats"
 //
+(* ****** ****** *)
+
+impltmp
+{a:type}
+g_free<a>(x) = ()
+
 (* ****** ****** *)
 
 val a = 'a'
@@ -33,9 +42,21 @@ val () = g_print(b)
 
 (* ****** ****** *)
 
+val a = "a"
+val b = "b"
+val ab = "ab"
+val cd = "cd"
+val sgn = g_cmp(a, ab)
+val sgn = g_cmp(b, ab)
+val sgn = g_cmp(ab, ab)
+val sgn = g_cmp(ab, cd)
+
+(* ****** ****** *)
+
 val
 alphabet =
 "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+val () = g_print(alphabet)
 val () = gseq_print(alphabet)
 
 (* ****** ****** *)

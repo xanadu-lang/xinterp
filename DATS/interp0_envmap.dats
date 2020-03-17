@@ -682,6 +682,13 @@ val () = print(x) in IR0Vnil() end
 end // end of [char_print]
 
 fun
+char_cmp
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vchr(x) = x
+val-IR0Vchr(y) = y in IR0Vint(x - y) end
+fun
 char_equal
 ( x: ir0val
 , y: ir0val): ir0val =
@@ -1146,6 +1153,12 @@ the_d2cstdef_insert
 d2cst("xint_char_neqzq"),
 IR0Vfun(firfun1(char_neqzq)))
 //
+val () =
+the_d2cstdef_insert
+(
+d2cst("xint_char_cmp")
+,
+IR0Vfun(firfun2(char_cmp)))
 val () =
 the_d2cstdef_insert
 (

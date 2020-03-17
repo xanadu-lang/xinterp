@@ -332,20 +332,24 @@ x0.node() of
   (
     fprint!(out, "IR0Eaddr(", ire1, ")")
   )
-| IR0Efold(ire1) =>
-  (
-    fprint!(out, "IR0Efold(", ire1, ")")
-  )
-//
 | IR0Eeval
   (knd0, ire1) =>
   fprint!
   ( out
   , "IR0Eeval(", knd0, "; ", ire1, ")")
 //
+| IR0Efold(ire1) =>
+  (
+    fprint!(out, "IR0Efold(", ire1, ")")
+  )
+| IR0Efree(ire1) =>
+  (
+    fprint!(out, "IR0Efree(", ire1, ")")
+  )
+//
 | IR0Eraise(ire1) =>
   (
-  fprint!(out, "IR0Eraise(", ire1, ")")
+    fprint!(out, "IR0Eraise(", ire1, ")")
   )
 //
 | IR0Elazy(ire1) =>
