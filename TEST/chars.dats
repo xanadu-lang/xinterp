@@ -7,6 +7,9 @@
 //
 #staload
 "./../xanadu\
+/prelude/DATS/gbas.dats"
+#staload
+"./../xanadu\
 /prelude/DATS/gseq.dats"
 #staload
 "./../xanadu\
@@ -27,12 +30,6 @@
 "./../xanadu\
 /prelude/DATS/stream_vt.dats"
 //
-(* ****** ****** *)
-
-impltmp
-{a:type}
-g_free<a>(x) = ()
-
 (* ****** ****** *)
 
 val a = 'a'

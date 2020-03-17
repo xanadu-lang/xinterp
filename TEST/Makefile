@@ -15,6 +15,11 @@ chars: ; $(XINTERP) -d ./chars.dats
 #
 ######
 #
+test:: lists
+lists: ; $(XINTERP) -d ./lists.dats
+#
+######
+#
 test:: cbref
 cbref: ; $(XINTERP) -d ./cbref.dats
 #
