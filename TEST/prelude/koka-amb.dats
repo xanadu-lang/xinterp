@@ -1,24 +1,25 @@
 (* ****** ****** *)
 #staload _ =
 "prelude\
-/DATS/CATS/Xint/runtime.dats"
+/DATS/CATS\
+/Xint/runtime.dats"
 (* ****** ****** *)
 
 #staload
 _(*UN*) =
-"./../xanadu/prelude/DATS/unsafe.dats"
+"prelude/DATS/unsafe.dats"
 
 (* ****** ****** *)
 
 #staload
-"./../xanadu/prelude/DATS/gseq.dats"
+"prelude/DATS/gseq.dats"
 
 #staload
-"./../xanadu/prelude/DATS/bool.dats"
+"prelude/DATS/bool.dats"
 #staload
-"./../xanadu/prelude/DATS/list.dats"
+"prelude/DATS/list.dats"
 #staload
-"./../xanadu/prelude/DATS/string.dats"
+"prelude/DATS/string.dats"
 
 (* ****** ****** *)
 

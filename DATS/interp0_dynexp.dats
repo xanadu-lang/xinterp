@@ -676,6 +676,12 @@ irvs =
 auxdarg(env0, npf1, ires)
 //
 // (*
+//
+val loc0 = ire0.loc()
+//
+val () =
+println!
+("auxdapp: loc0 = ", loc0)
 val () =
 println!
 ("auxdapp: ire0 = ", ire0)

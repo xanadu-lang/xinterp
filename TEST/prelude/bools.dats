@@ -1,12 +1,11 @@
 (* ****** ****** *)
 #staload _ =
 "prelude\
-/DATS/CATS/Xint/runtime.dats"
+/DATS/CATS\
+/Xint/runtime.dats"
 (* ****** ****** *)
-
 #staload _ =
-"./../xanadu/prelude/DATS/bool.dats"
-
+"prelude/DATS/bool.dats"
 (* ****** ****** *)
 
 val b0 = true

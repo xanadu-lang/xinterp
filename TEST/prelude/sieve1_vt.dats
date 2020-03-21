@@ -1,13 +1,12 @@
 (* ****** ****** *)
 #staload
-"./../xanadu\
-/prelude/DATS\
-/CATS/Xint/runtime.dats"
+"prelude\
+/DATS/CATS\
+/Xint/runtime.dats"
 (* ****** ****** *)
 
 #staload
-"./../xanadu\
-/prelude/DATS/stream_vt.dats"
+"prelude/DATS/stream_vt.dats"
 
 (* ****** ****** *)
 

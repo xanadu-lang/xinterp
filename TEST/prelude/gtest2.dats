@@ -5,7 +5,8 @@
 (* ****** ****** *)
 #staload _ =
 "prelude\
-/DATS/CATS/Xint/runtime.dats"
+/DATS/CATS\
+/Xint/runtime.dats"
 (* ****** ****** *)
 
 #staload
@@ -13,28 +14,28 @@ UN =
 "prelude/SATS/unsafe.sats"
 #staload
 // UN =
-"./../xanadu/prelude/DATS/unsafe.dats"
+"prelude/DATS/unsafe.dats"
 
 (* ****** ****** *)
 
 #staload
-"./../xanadu/prelude/DATS/gint.dats"
+"prelude/DATS/gint.dats"
 #staload
-"./../xanadu/prelude/DATS/gnum.dats"
+"prelude/DATS/gnum.dats"
 #staload
-"./../xanadu/prelude/DATS/gord.dats"
+"prelude/DATS/gord.dats"
 
 (* ****** ****** *)
 
 #staload
-"./../xanadu/prelude/DATS/gseq.dats"
+"prelude/DATS/gseq.dats"
 
 (* ****** ****** *)
 
 #staload
-"./../xanadu/prelude/DATS/list.dats"
+"prelude/DATS/list.dats"
 #staload
-"./../xanadu/prelude/DATS/list_vt.dats"
+"prelude/DATS/list_vt.dats"
 
 (* ****** ****** *)
 //

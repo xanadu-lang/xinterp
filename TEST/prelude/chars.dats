@@ -6,29 +6,22 @@
 (* ****** ****** *)
 //
 #staload
-"./../xanadu\
-/prelude/DATS/gbas.dats"
+"prelude/DATS/gbas.dats"
 #staload
-"./../xanadu\
-/prelude/DATS/gseq.dats"
+"prelude/DATS/gseq.dats"
 #staload
-"./../xanadu\
-/prelude/DATS/unsafe.dats"
+"prelude/DATS/unsafe.dats"
 //
 (* ****** ****** *)
 //
 #staload _ =
-"./../xanadu\
-/prelude/DATS/char.dats"
+"prelude/DATS/char.dats"
 #staload _ =
-"./../xanadu\
-/prelude/DATS/gint.dats"
+"prelude/DATS/gint.dats"
 #staload _ =
-"./../xanadu\
-/prelude/DATS/string.dats"
+"prelude/DATS/string.dats"
 #staload _ =
-"./../xanadu\
-/prelude/DATS/stream_vt.dats"
+"prelude/DATS/stream_vt.dats"
 //
 (* ****** ****** *)
 

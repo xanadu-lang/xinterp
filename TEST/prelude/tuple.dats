@@ -1,8 +1,8 @@
 (* ****** ****** *)
 #staload
-"./../xanadu\
-/prelude/DATS\
-/CATS/Xint/runtime.dats"
+"prelude\
+/DATS/CATS\
+/Xint/runtime.dats"
 (* ****** ****** *)
 
 var x0 = $(0, 1)

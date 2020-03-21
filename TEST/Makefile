@@ -9,83 +9,83 @@ XINTERP="./../bin/xinterp"
 ######
 #
 test:: bools
-bools: ; $(XINTERP) -d ./bools.dats
+bools: ; $(XINTERP) -d ./prelude/bools.dats
 test:: chars
-chars: ; $(XINTERP) -d ./chars.dats
+chars: ; $(XINTERP) -d ./prelude/chars.dats
 #
 ######
 #
 test:: lists
-lists: ; $(XINTERP) -d ./lists.dats
+lists: ; $(XINTERP) -d ./prelude/lists.dats
 #
 ######
 #
 test:: cbref
-cbref: ; $(XINTERP) -d ./cbref.dats
+cbref: ; $(XINTERP) -d ./prelude/cbref.dats
 #
 ######
 #
 test:: foldl
-foldl: ; $(XINTERP) -d ./foldl.dats
+foldl: ; $(XINTERP) -d ./prelude/foldl.dats
 #
 ######
 #
 test:: gfact
-gfact: ; $(XINTERP) -d ./gfact.dats
+gfact: ; $(XINTERP) -d ./prelude/gfact.dats
 #
 ######
 #
 test:: gtest1
-gtest1: ; $(XINTERP) -d ./gtest1.dats
+gtest1: ; $(XINTERP) -d ./prelude/gtest1.dats
 test:: gtest2
-gtest2: ; $(XINTERP) -d ./gtest2.dats
+gtest2: ; $(XINTERP) -d ./prelude/gtest2.dats
 #
 ######
 
 test:: kfact
-kfact: ; $(XINTERP) -d ./kfact.dats
+kfact: ; $(XINTERP) -d ./prelude/kfact.dats
 test:: kfibo
-kfibo: ; $(XINTERP) -d ./kfibo.dats
+kfibo: ; $(XINTERP) -d ./prelude/kfibo.dats
 test:: kisevn
-kisevn: ; $(XINTERP) -d ./kisevn.dats
+kisevn: ; $(XINTERP) -d ./prelude/kisevn.dats
 
 ######
 #
 test:: addrs
-addrs: ; $(XINTERP) -d ./addrs.dats
+addrs: ; $(XINTERP) -d ./prelude/addrs.dats
 #
 test:: dtcon
-dtcon: ; $(XINTERP) -d ./dtcon.dats
+dtcon: ; $(XINTERP) -d ./prelude/dtcon.dats
 #
 test:: pswap
-pswap: ; $(XINTERP) -d ./pswap.dats
+pswap: ; $(XINTERP) -d ./prelude/pswap.dats
 #
 test:: tuple
-tuple: ; $(XINTERP) -d ./tuple.dats
+tuple: ; $(XINTERP) -d ./prelude/tuple.dats
 #
 ######
 
 test:: isAVL
-isAVL: ; $(XINTERP) -d ./isAVL.dats
+isAVL: ; $(XINTERP) -d ./prelude/isAVL.dats
 
 ######
 
 test:: sieve
-sieve: ; $(XINTERP) -d ./sieve.dats
+sieve: ; $(XINTERP) -d ./prelude/sieve.dats
 test:: sieve_vt
-sieve_vt: ; $(XINTERP) -d ./sieve_vt.dats
+sieve_vt: ; $(XINTERP) -d ./prelude/sieve_vt.dats
 
 ######
 
 test:: sieve1
-sieve1: ; $(XINTERP) -d ./sieve1.dats
+sieve1: ; $(XINTERP) -d ./prelude/sieve1.dats
 test:: sieve1_vt
-sieve1_vt: ; $(XINTERP) -d ./sieve1_vt.dats
+sieve1_vt: ; $(XINTERP) -d ./prelude/sieve1_vt.dats
 
 ######
 
 test:: koka-amb
-koka-amb: ; $(XINTERP) -d ./koka-amb.dats
+koka-amb: ; $(XINTERP) -d ./prelude/koka-amb.dats
 
 ######
 

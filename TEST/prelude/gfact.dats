@@ -1,15 +1,16 @@
 (* ****** ****** *)
 #staload _ =
 "prelude\
-/DATS/CATS/Xint/runtime.dats"
+/DATS/CATS\
+/Xint/runtime.dats"
 (* ****** ****** *)
 
 #staload
-"./../xanadu/prelude/DATS/gint.dats"
+"prelude/DATS/gint.dats"
 #staload
-"./../xanadu/prelude/DATS/gnum.dats"
+"prelude/DATS/gnum.dats"
 #staload
-"./../xanadu/prelude/DATS/gord.dats"
+"prelude/DATS/gord.dats"
 
 (* ****** ****** *)
 

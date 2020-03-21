@@ -1,4 +1,9 @@
 (* ****** ****** *)
+#staload _ =
+"prelude\
+/DATS/CATS\
+/Xint/runtime.dats"
+(* ****** ****** *)
 //
 var x0: int = 0
 val p0 = $addr(x0)
