@@ -96,8 +96,12 @@ filter$test<int>(x0) = x0 % 2 = 0 }
 
 (* ****** ****** *)
 //
-val xs8 =
-gseq_idropif(xs1) where
+val xs8 = gseq_drop(xs1, 1)
+//
+(* ****** ****** *)
+//
+val xs9 =
+gseq_idropif(xs8) where
 {
   impltmp
   idropif$test<int>(i0, x0) = x0 <= 3 }
