@@ -44,11 +44,22 @@ val sgn = g_cmp(xs1, xs2)
 
 (* ****** ****** *)
 
-val xs1 =
+val ys1 =
+list_vt_cons(1,
+list_vt_cons(2, list_vt_nil()))
+val ys2 =
 list_vt_cons(1,
 list_vt_cons(2, list_vt_nil()))
 
-val len = list_vt_length<int>(xs1)
+(* ****** ****** *)
+
+val ys3 =
+list_vt_rappend10<int>(ys1, ys2)
+
+(* ****** ****** *)
+
+val ln1 = list_vt_length<int>(ys1)
+val ln3 = list_vt_length<int>(ys3)
 
 (* ****** ****** *)
 
