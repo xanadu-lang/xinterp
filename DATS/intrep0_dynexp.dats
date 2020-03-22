@@ -122,20 +122,20 @@ auxdapp
 : d3pat): ir0pat =
 let
 //
-val () =
-println!
-("\
-auxdapp: \
-d3p0 = ", d3p0)
-//
 val
 loc0 = d3p0.loc()
+//
+val () =
+println!
+("auxdapp: loc0 = ", loc0)
+val () =
+println!
+("auxdapp: d3p0 = ", d3p0)
 //
 val-
 D3Pdapp
 ( d3f0
-, npf1
-, d3ps) = d3p0.node()
+, npf1, d3ps) = d3p0.node()
 //
 val d3ps =
 (

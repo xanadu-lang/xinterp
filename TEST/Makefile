@@ -91,6 +91,8 @@ koka-amb: ; $(XINTERP) -d ./prelude/koka-amb.dats
 
 test-2020-03-21: ; \
 $(XINTERP) -d ./libats_githwxi/test-2020-03-21.dats
+test-2020-03-22: ; \
+$(XINTERP) -d ./libats_githwxi/test-2020-03-22.dats
 
 ######
 
