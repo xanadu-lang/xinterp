@@ -36,6 +36,8 @@ UN =
 "prelude/DATS/list.dats"
 #staload
 "prelude/DATS/list_vt.dats"
+#staload
+"prelude/DATS/stream_vt.dats"
 
 (* ****** ****** *)
 //
@@ -103,9 +105,18 @@ val xs8 = gseq_drop(xs1, 1)
 val xs9 =
 gseq_idropif(xs8) where
 {
-  impltmp
-  idropif$test<int>(i0, x0) = x0 <= 3 }
+impltmp
+idropif$test<int>(i0, x0) = x0 <= 3 }
 //
+(* ****** ****** *)
+
+val xs10 =
+gseq_z2map_list(xs1, xs1)
+where
+{
+impltmp
+z2map$fopr<int,int>(x0, y0) = x0 + y0 }
+
 (* ****** ****** *)
 
 (* end of [gtest2.dats] *)

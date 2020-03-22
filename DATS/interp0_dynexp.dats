@@ -1393,8 +1393,6 @@ case- opt2 of
 ) where
 {
 //
-val loc0 = ire0.loc()
-//
 val-
 IR0Ecase
 ( knd
@@ -1402,6 +1400,9 @@ IR0Ecase
 , ircls) = ire0.node()
 //
 (*
+//
+val loc0 = ire0.loc()
+//
 val () =
 println!("aux_case: loc0 = ", loc0)
 val () =
@@ -1411,6 +1412,12 @@ println!("aux_case: ire0 = ", ire0)
 val
 irv1 =
 interp0_irexp(env0, ire1)
+//
+(*
+val () =
+println!("aux_case: irv1 = ", irv1)
+*)
+//
 val
 opt2 =
 interp0_irclaulst(env0, irv1, ircls)
