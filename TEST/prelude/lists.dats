@@ -26,6 +26,8 @@
 #staload _ =
 "prelude/DATS/list.dats"
 #staload _ =
+"prelude/DATS/list_vt.dats"
+#staload _ =
 "prelude/DATS/stream_vt.dats"
 //
 (* ****** ****** *)
@@ -39,6 +41,14 @@ list_cons(3, list_nil()))
 
 val ans = (xs1 = xs2)
 val sgn = g_cmp(xs1, xs2)
+
+(* ****** ****** *)
+
+val xs1 =
+list_vt_cons(1,
+list_vt_cons(2, list_vt_nil()))
+
+val len = list_vt_length<int>(xs1)
 
 (* ****** ****** *)
 

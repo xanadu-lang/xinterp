@@ -55,6 +55,26 @@ UN = "prelude/SATS/unsafe.sats"
 local
 
 fun
+auxbang
+( d3p0
+: d3pat): ir0pat =
+let
+//
+val
+loc0 = d3p0.loc()
+//
+val-
+D3Pbang
+(d3p1) = d3p0.node()
+//
+val
+irp1 = irerase_dpat(d3p1)
+//
+in
+ir0pat_make_node(loc0, IR0Pbang(irp1))
+end // end of [auxbang]
+
+fun
 auxflat
 ( d3p0
 : d3pat): ir0pat =
@@ -241,6 +261,7 @@ d3p0.node() of
 | D3Pvar(d2v) =>
   ir0pat_make_node(loc0, IR0Pvar(d2v))
 //
+| D3Pbang _ => auxbang(d3p0)
 | D3Pflat _ => auxflat(d3p0)
 | D3Pfree _ => auxfree(d3p0)
 //

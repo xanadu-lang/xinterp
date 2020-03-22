@@ -173,6 +173,7 @@ ir0pat_node =
 //
 | IR0Pvar of (d2var)
 //
+| IR0Pbang of (ir0pat)
 | IR0Pflat of (ir0pat)
 | IR0Pfree of (ir0pat)
 //

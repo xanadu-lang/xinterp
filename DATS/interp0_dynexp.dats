@@ -2476,6 +2476,9 @@ IR0Pany() => true
 IR0Pvar(d2v0) => true
 //
 |
+IR0Pbang(irp1) =>
+interp0_irpat_ck0(irp1, irv0)
+|
 IR0Pflat(irp1) =>
 interp0_irpat_ck0(irp1, irv0)
 |
@@ -2632,14 +2635,17 @@ interp0_insert_d2var
 } (* end of [IR0Pvar] *)
 //
 |
+IR0Pbang(irp1) =>
+interp0_irpat_ck1(env0, irp1, irv0)
+|
 IR0Pflat(irp1) =>
-let
+(
+ ir0pat_leftize( env0, irp1, irv0 )
+) where
+{
 val () =
-interp0_irpat_ck1
-(env0, irp1, irv0)
-in
-  ir0pat_leftize(env0, irp1, irv0)
-end
+interp0_irpat_ck1(env0, irp1, irv0)
+}
 |
 IR0Pfree(irp1) =>
 interp0_irpat_ck1(env0, irp1, irv0)
