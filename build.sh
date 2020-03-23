@@ -1,5 +1,9 @@
 #!/bin/sh
 
+make_all() {
+    make all
+}
+
 #
 # For when this repository is cloned without --recursive flag
 #
@@ -7,10 +11,6 @@ clone_xanadu() {
     if [ ! -d xanadu/srcgen ]; then
 	git clone https://github.com/xanadu-lang/xanadu.git
     fi
-}
-
-make_all() {
-    make libxatsopt all
 }
 
 XINTERP_SCRIPT='#!/bin/sh
@@ -25,7 +25,6 @@ else
     echo "please execute `make libxatsopt all`"
 fi
 '
-
 generate_script() {
     printf "$XINTERP_SCRIPT" > xinterp
     # make the above script executable
