@@ -132,6 +132,7 @@ clean:: ; $(RMF) xinterp_dats.c
 
 cleanall:: clean
 cleanall:: ; $(RMF) ./bin/xinterp
+cleanall:: ; $(RMF) ./bin/xinterp.sh
 cleanall:: ; $(RMF) ./xanadu/lib/libxatsopt.a
 cleanall:: ; $(MAKE) -C ./xanadu/srcgen/xats cleanall
 
