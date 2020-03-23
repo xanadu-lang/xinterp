@@ -54,11 +54,12 @@ list_vt_cons(2, list_vt_nil()))
 (* ****** ****** *)
 
 val ys3 =
-list_vt_rappend10<int>(ys1, ys2)
+list_vt_rappend11<int>(ys1, ys2)
 
 (* ****** ****** *)
 
 val ln1 = list_vt_length<int>(ys1)
+val ln2 = list_vt_length<int>(ys2)
 val ln3 = list_vt_length<int>(ys3)
 
 (* ****** ****** *)

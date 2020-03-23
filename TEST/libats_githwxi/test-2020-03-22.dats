@@ -22,8 +22,7 @@
 (* ****** ****** *)
 
 #staload
-"libats\
-/githwxi/DATS/mygist.dats"
+"libats/githwxi/DATS/mygist.dats"
 
 (* ****** ****** *)
 
