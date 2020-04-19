@@ -786,9 +786,7 @@ d3cs = trans23_declist(d2cs)
 in
 d3cs where
 {
-(*
   val () = tread23_main(d3cs)
-*)
 }
 end // end of [val]
 (*

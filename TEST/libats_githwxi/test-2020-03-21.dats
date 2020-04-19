@@ -37,7 +37,9 @@ case+ !ds of
 ~ strmcon_vt_nil() => list_vt_nil()
 |
 ~ strmcon_vt_cons(d0, ds) =>
-  if d0 > 0 then list_vt_cons(d0, auxloop(ds)) else auxloop(ds)
+  if
+  (d0 > 0)
+  then list_vt_cons(d0, auxloop(ds)) else auxloop(ds)
 )
 //
 in
