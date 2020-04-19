@@ -66,6 +66,13 @@ LIBRARY:=-L"./xanadu/lib" -lxatsopt
 ######
 #
 all:: \
+lxatsopt
+lxatsopt: ; \
+(cd ./xanadu/srcgen/xats && $(MAKE) libxatsopt)
+#
+######
+#
+all:: \
 xinterp
 xinterp: \
 DATS/xinterp.dats \
@@ -73,11 +80,6 @@ $(OBJSATS) $(OBJDATS) ; \
 $(PATSCC) -cleanaft -o ./bin/xinterp \
 $(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC) $(LIBRARY)
 #
-######
-
-libxatsopt: ; \
-(cd ./xanadu/srcgen/xats && $(MAKE) libxatsopt)
-
 ######
 
 BUILD/%_sats.c: \
@@ -130,6 +132,7 @@ clean:: ; $(RMF) xinterp_dats.c
 
 cleanall:: clean
 cleanall:: ; $(RMF) ./bin/xinterp
+cleanall:: ; $(RMF) ./bin/xinterp.sh
 cleanall:: ; $(RMF) ./xanadu/lib/libxatsopt.a
 cleanall:: ; $(MAKE) -C ./xanadu/srcgen/xats cleanall
 
