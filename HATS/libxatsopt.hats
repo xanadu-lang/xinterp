@@ -52,6 +52,8 @@ XANADU_targetloc
 //
 #staload
 "{$XANADU}/SATS/trans23.sats"
+#staload
+"{$XANADU}/SATS/tread23.sats"
 //
 #staload
 "{$XANADU}/SATS/trans33.sats"
