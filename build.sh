@@ -1,6 +1,11 @@
 #!/bin/sh
 
 ######
+#
+# Author:
+# Richar Kent (https://github.com/sparverius)
+#
+######
 
 make_all() {
     make all
