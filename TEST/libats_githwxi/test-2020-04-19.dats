@@ -41,4 +41,9 @@ val len = stream_vt_length(xss)
 
 (* ****** ****** *)
 
+val xss2 = list_nchoose2(xs, 2)
+val len2 = stream_vt_length(xss2)
+
+(* ****** ****** *)
+
 (* end of [test-2020-04-19.dats] *)
