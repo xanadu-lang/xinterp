@@ -64,4 +64,8 @@ val ln3 = list_vt_length<int>(ys3)
 
 (* ****** ****** *)
 
+val ys4 = list_vt_mergesort<int>(ys3)
+
+(* ****** ****** *)
+
 (* end of [lists.dats] *)
