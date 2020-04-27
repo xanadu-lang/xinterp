@@ -46,10 +46,12 @@ val sgn = g_cmp(xs1, xs2)
 
 val ys1 =
 list_vt_cons(1,
-list_vt_cons(2, list_vt_nil()))
+list_vt_cons(2,
+list_vt_cons(3, list_vt_nil())))
 val ys2 =
 list_vt_cons(1,
-list_vt_cons(2, list_vt_nil()))
+list_vt_cons(2,
+list_vt_cons(3, list_vt_nil())))
 
 (* ****** ****** *)
 
