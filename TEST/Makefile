@@ -92,17 +92,17 @@ koka-amb: ; $(XINTERP) -d ./prelude/koka-amb.dats
 test:: \
 test-2020-03-21
 test-2020-03-21: ; \
-$(XINTERP) -d ./libats_githwxi/test-2020-03-21.dats
+$(XINTERP) -d ./xatslib_githwxi/test-2020-03-21.dats
 
 test:: \
 test-2020-03-22
 test-2020-03-22: ; \
-$(XINTERP) -d ./libats_githwxi/test-2020-03-22.dats
+$(XINTERP) -d ./xatslib_githwxi/test-2020-03-22.dats
 
 test:: \
 test-2020-04-19
 test-2020-04-19: ; \
-$(XINTERP) -d ./libats_githwxi/test-2020-04-19.dats
+$(XINTERP) -d ./xatslib_githwxi/test-2020-04-19.dats
 
 ######
 
