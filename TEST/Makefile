@@ -39,6 +39,8 @@ test:: gtest1
 gtest1: ; $(XINTERP) -d ./prelude/gtest1.dats
 test:: gtest2
 gtest2: ; $(XINTERP) -d ./prelude/gtest2.dats
+test:: gtest3
+gtest3: ; $(XINTERP) -d ./prelude/gtest3.dats
 #
 ######
 

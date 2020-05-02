@@ -52,7 +52,7 @@ UN = "prelude/SATS/unsafe.sats"
 #define
 XANADU_targetloc
 "./../xanadu/srcgen/xats"
-
+//
 (* ****** ****** *)
 //
 #staload
@@ -621,7 +621,7 @@ bool_neg
 (x: ir0val): ir0val =
 let
 val-
-IR0Vbtf(x) = x in IR0Vbtf(not(x))
+IR0Vbtf(x)=x in IR0Vbtf(not(x))
 end // end of [bool_neg]
 
 fun
@@ -879,6 +879,48 @@ val-IR0Vint(y) = y in IR0Vint(x % y) end
 
 local
 //
+#staload
+STDIO =
+"libats/libc/SATS/stdio.sats"
+//
+in(*in-of-local*)
+//
+fun
+g_stdin() =
+IR0Vptr($UN.cast(stdin_ref))
+fun
+g_stdout() =
+IR0Vptr($UN.cast(stdout_ref))
+fun
+g_stderr() =
+IR0Vptr($UN.cast(stderr_ref))
+//
+fun
+fgetc_ref
+(fr: ir0val): ir0val =
+let
+val-IR0Vptr(fr) = fr
+in
+  IR0Vint($STDIO.fgetc0($UN.cast(fr)))
+end
+//
+fun
+fputc_ref
+( c0: ir0val
+, fr: ir0val): ir0val =
+let
+val-IR0Vint(c0) = c0
+val-IR0Vptr(fr) = fr
+in
+IR0Vint($STDIO.fputc0_int(c0, $UN.cast(fr)))
+end
+//
+end // end of [local]
+
+(* ****** ****** *)
+
+local
+//
 typedef key = d2cst
 typedef itm = ir0val
 //
@@ -1033,6 +1075,17 @@ end // end of [local]
 (* ****** ****** *)
 
 local
+
+fun
+firfun0
+(
+f0: () -> ir0val
+)
+: ir0valist -<cloref1> ir0val =
+lam(vs) =>
+let
+val-list_nil() = vs in f0((*void*))
+end
 
 fun
 firfun1
@@ -1337,6 +1390,45 @@ d2cst
 ("xint_gint_mod_sint_sint")
 ,
 IR0Vfun(firfun2(gint_mod_sint_sint)))
+//
+(* ****** ****** *)
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_g_stdin")
+,
+IR0Vfun(firfun0(g_stdin)))
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_g_stdout")
+,
+IR0Vfun(firfun0(g_stdout)))
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_g_stderr")
+,
+IR0Vfun(firfun0(g_stderr)))
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_fgetc_ref")
+,
+IR0Vfun(firfun1(fgetc_ref)))
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_fputc_ref")
+,
+IR0Vfun(firfun2(fputc_ref)))
 //
 } (* end of [then] *) 
 end (* end of [interp0_initize_gint] *)
