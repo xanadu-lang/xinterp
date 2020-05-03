@@ -665,6 +665,15 @@ in
   IR0Vchr(int2char0(c))
 end // end of [char_make_sint]
 //
+fun
+sint_make_char
+(x: ir0val): ir0val =
+let
+val-IR0Vchr(c) = x
+in
+  IR0Vint(char2int0(c))
+end // end of [sint_make_char]
+//
 (* ****** ****** *)
 
 fun
@@ -1213,6 +1222,13 @@ d2cst
 ("xint_char_make_sint"),
 IR0Vfun
 (firfun1(char_make_sint)))
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_sint_make_char"),
+IR0Vfun
+(firfun1(sint_make_char)))
 //
 val () =
 the_d2cstdef_insert

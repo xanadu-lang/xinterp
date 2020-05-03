@@ -32,6 +32,11 @@ val () = g_print(b)
 
 (* ****** ****** *)
 
+val eol = sint('\n')
+val eol = sint('\012')
+
+(* ****** ****** *)
+
 val a = "a"
 val b = "b"
 val ab = "ab"
