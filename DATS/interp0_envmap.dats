@@ -655,6 +655,17 @@ val () = print(x) in IR0Vnil() end
 end // end of [bool_print]
 
 (* ****** ****** *)
+//
+fun
+char_make_sint
+(x: ir0val): ir0val =
+let
+val-IR0Vint(c) = x
+in
+  IR0Vchr(int2char0(c))
+end // end of [char_make_sint]
+//
+(* ****** ****** *)
 
 fun
 char_eqzq
@@ -1194,6 +1205,14 @@ d2cst("xint_bool_print")
 IR0Vfun(firfun1(bool_print)))
 //
 (* ****** ****** *)
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_char_make_sint"),
+IR0Vfun
+(firfun1(char_make_sint)))
 //
 val () =
 the_d2cstdef_insert

@@ -88,6 +88,12 @@ xatsopt_strunq
 ( source // "<string>" -> <string>
 : string) : string = "ext#xatsopt_strunq"
 //
+extern
+fun
+xatsopt_chrunq2
+( source // '<slashed>' -> <slashed>
+: string) : char = "ext#xatsopt_chrunq2"
+//
 (* ****** ****** *)
 //
 extern
@@ -259,6 +265,8 @@ case-
 tok.node() of
 | T_CHAR_char(rep) => 
   IR0Vchr(xatsopt_chrunq(rep))
+| T_CHAR_slash(rep) => 
+  IR0Vchr(xatsopt_chrunq2(rep))
 //
 end // end of [auxchr]
 

@@ -24,7 +24,14 @@ UN =
 (* ****** ****** *)
 
 #staload
+"prelude/DATS/bool.dats"
+#staload
+"prelude/DATS/char.dats"
+#staload
 "prelude/DATS/gint.dats"
+
+(* ****** ****** *)
+
 #staload
 "prelude/DATS/gios.dats"
 
@@ -45,6 +52,8 @@ UN =
 (* ****** ****** *)
 
 #staload
+"prelude/DATS/list_vt.dats"
+#staload
 "prelude/DATS/stream_vt.dats"
 
 (* ****** ****** *)
@@ -52,6 +61,11 @@ UN =
 #staload
 "xatslib/libc/DATS/stdio.dats"
 //
+(* ****** ****** *)
+
+val cs =
+g_inp_line_list<>()
+
 (* ****** ****** *)
 
 val cs = g_inp_chars<>()
