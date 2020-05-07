@@ -24,6 +24,11 @@ lists: ; $(XINTERP) -d ./prelude/lists.dats
 #
 ######
 #
+test:: lists
+strms: ; $(XINTERP) -d ./prelude/strms.dats
+#
+######
+#
 test:: cbref
 cbref: ; $(XINTERP) -d ./prelude/cbref.dats
 #
