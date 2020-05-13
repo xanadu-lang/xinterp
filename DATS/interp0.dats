@@ -741,7 +741,8 @@ val
 $FP0.the_filpathlst_pout(pf0 | (*none*))
 *)
 //
-val () = synread_main(d0cs)
+val () =
+synread_program(d0cs)
 //
 (*
 val () =
@@ -757,7 +758,7 @@ d1cs = trans01_declist(d0cs)
 in
 d1cs where
 {
-  val () = tread01_main(d1cs)
+val () = tread01_program(d1cs)
 }
 end // end of [val]
 (*
@@ -774,7 +775,7 @@ d2cs = trans12_declist(d1cs)
 in
 d2cs where
 {
-  val () = tread12_main(d2cs)
+val () = tread12_program(d2cs)
 }
 end // end of [val]
 (*
@@ -791,7 +792,7 @@ d3cs = trans23_declist(d2cs)
 in
 d3cs where
 {
-  val () = tread23_main(d3cs)
+val () = tread23_program(d3cs)
 }
 end // end of [val]
 (*
@@ -804,11 +805,11 @@ val
 d3cs =
 let
 val
-d3cs = trans33_declist(d3cs)
+d3cs = trans33_program(d3cs)
 in
 d3cs where
 {
-  val () = tread33_main(d3cs)
+val () = tread33_program(d3cs)
 }
 end // end of [val]
 (*
