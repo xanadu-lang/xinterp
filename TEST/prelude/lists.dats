@@ -44,6 +44,12 @@ val sgn = g_cmp(xs1, xs2)
 
 (* ****** ****** *)
 
+val xs1 = list_copy_vt(xs1)
+val xs2 = list_copy_vt(xs2)
+val xs3 = list_vt_append(xs1, xs2)
+
+(* ****** ****** *)
+
 val ys1 =
 list_vt_cons(1,
 list_vt_cons(2,
@@ -67,6 +73,20 @@ val ln3 = list_vt_length<int>(ys3)
 (* ****** ****** *)
 
 val ys4 = list_vt_mergesort<int>(ys3)
+
+(* ****** ****** *)
+
+val zs1 =
+list_vt_cons(1, list_vt_nil())
+val zs2 =
+list_vt_cons(2, list_vt_nil())
+val zs3 =
+list_vt_cons(3, list_vt_nil())
+val zss =
+list_vt_cons(zs1,
+list_vt_cons(zs2,
+list_vt_cons(zs3, list_vt_nil())))
+val zs4 = list_vt_concat<int>(zss)
 
 (* ****** ****** *)
 

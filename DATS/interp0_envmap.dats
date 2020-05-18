@@ -784,6 +784,13 @@ let
 val-IR0Vint(x) = x in IR0Vint(~x) end
 //
 fun
+gint_abs_sint
+(x: ir0val): ir0val =
+let
+val-IR0Vint(x) = x in IR0Vint(abs(x))
+end
+//
+fun
 gint_succ_sint
 (x: ir0val): ir0val =
 let
@@ -1314,6 +1321,14 @@ d2cst
 ("xint_gint_neg_sint")
 ,
 IR0Vfun(firfun1(gint_neg_sint)))
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_gint_abs_sint")
+,
+IR0Vfun(firfun1(gint_abs_sint)))
 //
 val () =
 the_d2cstdef_insert

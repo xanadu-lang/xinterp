@@ -340,11 +340,11 @@ auxfcst
 : ir0exp): ir0val =
 let
 //
-(*
+// (*
 val () =
 println!
 ("auxfcst: ire0 = ", ire0)
-*)
+// *)
 //
 val-
 IR0Efcst(d2c) = ire0.node()
