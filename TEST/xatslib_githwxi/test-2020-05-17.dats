@@ -30,7 +30,7 @@
 
 (* ****** ****** *)
 
-val N = 8
+val N = 6
 
 (* ****** ****** *)
 
@@ -44,7 +44,9 @@ gseq_iforall(xs) where
 {
 impltmp
 iforall$test<sint>(i0, x1) =
-if x1 != x0 then abs(x1-x0) != (i0+1) else false
+if
+(x1 != x0)
+then abs(x1-x0) != (i0+1:int) else false
 }
 ) (* qtest *)
 

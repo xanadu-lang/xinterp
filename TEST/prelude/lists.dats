@@ -44,6 +44,13 @@ val sgn = g_cmp(xs1, xs2)
 
 (* ****** ****** *)
 
+val xss =
+list_cons(xs1,
+list_cons(xs2, list_nil()))
+val xs3 = list_concat<int>(xss)
+
+(* ****** ****** *)
+
 val xs1 = list_copy_vt(xs1)
 val xs2 = list_copy_vt(xs2)
 val xs3 = list_vt_append(xs1, xs2)

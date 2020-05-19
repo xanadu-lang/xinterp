@@ -628,6 +628,10 @@ d3e0.node() of
     ir0exp_make_node(loc0, IR0Etalf(ire1))
   end // end of [D3Etalf]
 //
+| D3Eanno
+  ( d3e1, s2e2 ) => irerase_dexp(d3e1)
+  // end of [D3Eanno]
+//
 | D3Enone0((*void*)) =>
   (
     ir0exp_make_node(loc0, IR0Enone0())
