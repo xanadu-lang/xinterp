@@ -11,6 +11,9 @@
 #staload
 "prelude/DATS/gseq.dats"
 (* ****** ****** *)
+#staload
+"prelude/DATS/gseq_vt.dats"
+(* ****** ****** *)
 //
 #staload
 "prelude/DATS/gint.dats"
@@ -119,7 +122,7 @@ loop(qextends(xss), i0+1) else xss
 
 (* ****** ****** *)
 
-val the_nsol = list_vt_length(the_sols)
+val the_nsol = glseq_length0(the_sols)
 
 (* ****** ****** *)
 
