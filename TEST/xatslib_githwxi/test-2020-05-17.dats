@@ -58,22 +58,25 @@ qextend
 : list(int)
 )
 : list_vt(list(int)) =
-(
-  auxlst(0)
-) where
-{
+let
 fun
-auxlst(x0: int) =
+auxlst(x0) =
 if
 (x0 < N)
 then
 (
 if
 qtest(xs, x0)
-then cons_vt(cons(x0, xs), auxlst(x0+1)) else auxlst(x0+1)
+then
+cons_vt
+( cons(x0, xs)
+, auxlst(x0+1)
+) else auxlst(x0+1)
 )
-else list_vt_nil((*void*))
-} (* qextend *)
+else
+list_vt_nil()
+//
+in auxlst(0) end // qextend
 
 (* ****** ****** *)
 
@@ -89,7 +92,8 @@ let
 typedef xs = list(int)
 typedef ys = list_vt(xs)
 impltmp
-map0$fopr<xs><ys>(xs) = qextend(xs)
+map0$fopr
+<xs><ys>(xs) = qextend(xs)
 in
   list_vt_map0<xs><ys>(xss)
 end
@@ -101,16 +105,19 @@ val
 the_sols =
 loop(xss, 0) where
 {
-typedef xs = list(int)
 val
 xss =
 list_vt_sing(list_nil()) 
 fun
 loop
-( xss
-: list_vt(xs), i0: int) =
-if i0 < N then loop(qextends(xss), i0+1) else xss
-}
+(xss, i0) =
+if
+(i0 < N)
+then
+loop(qextends(xss), i0+1) else xss
+} (* end of [where] *)
+
+(* ****** ****** *)
 
 val the_nsol = list_vt_length(the_sols)
 
