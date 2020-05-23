@@ -46,7 +46,7 @@ impltmp
 iforall$test<sint>(i0, x1) =
 if
 (x1 != x0)
-then abs(x1-x0) != (i0+1:int) else false
+then abs(x1-x0) != (i0+1) else false
 }
 ) (* qtest *)
 
