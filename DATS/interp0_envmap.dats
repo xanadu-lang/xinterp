@@ -726,7 +726,7 @@ val-IR0Vchr(y) = y in IR0Vbtf(x != y) end
 (* ****** ****** *)
 //
 fun
-string_head
+string_head_opt
 (x: ir0val): ir0val =
 let
 val-IR0Vstr(x) = x
@@ -734,7 +734,7 @@ val p = string2ptr(x)
 in
   IR0Vchr
   ($UN.ptr0_get<char>(p))
-end // end of [string_head]
+end // end of [string_head_opt]
 fun
 string_head_raw
 (x: ir0val): ir0val =
@@ -1287,8 +1287,8 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("xint_string_head"),
-IR0Vfun(firfun1(string_head)))
+("xint_string_head_opt"),
+IR0Vfun(firfun1(string_head_opt)))
 val () =
 the_d2cstdef_insert
 (
