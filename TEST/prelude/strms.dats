@@ -5,7 +5,15 @@
 /Xint/runtime.dats"
 (* ****** ****** *)
 #staload _ =
+"prelude/DATS/gbas.dats"
+(* ****** ****** *)
+#staload _ =
+"prelude/DATS/gint.dats"
+(* ****** ****** *)
+#staload _ =
 "prelude/DATS/stream.dats"
+#staload _ =
+"prelude/DATS/stream_vt.dats"
 (* ****** ****** *)
 
 #symload
@@ -30,6 +38,12 @@ sieve$test<int>(x1, x2) = (x2 % x1 > 0)
 
 (* ****** ****** *)
 
+val () =
+stream_vt_print<int>(xs)
+
+(* ****** ****** *)
+
+(*
 val-
 cons(x0, xs) = $eval(xs) // x0 = 2
 val-
@@ -42,6 +56,7 @@ val-
 cons(x4, xs) = $eval(xs) // x4 = 11
 val-
 cons(x5, xs) = $eval(xs) // x5 = 13
+*)
 
 (* ****** ****** *)
 
