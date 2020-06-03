@@ -69,13 +69,11 @@ absopen node_type
 in(*in-of-local*)
 
 fun
-qroot
-(): node = list_nil()
+qroot(): node = list_nil()
 
 fun
 qlength
-( xs
-: node) = list_length(xs)
+(xs: node) = list_length(xs)
 
 fun
 qextend
@@ -95,8 +93,7 @@ qtest(xs, x0)
 then
 list_vt_cons
 (list_cons(x0, xs), auxlst(x0+1)) else auxlst(x0+1)
-)
-else list_vt_nil()
+) else list_vt_nil((*void*))
 //
 in auxlst(0) end
 
