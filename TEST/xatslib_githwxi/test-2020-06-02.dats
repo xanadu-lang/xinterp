@@ -27,13 +27,16 @@
 #staload
 "prelude/DATS/list_vt.dats"
 (* ****** ****** *)
+#staload
+"prelude/DATS/stream_vt.dats"
+(* ****** ****** *)
 
 #staload
 "xatslib/githwxi/DATS/gtree.dats"
 
 (* ****** ****** *)
 
-val N = 8
+val N = 6
 
 (* ****** ****** *)
 
@@ -52,6 +55,73 @@ if
 then abs(x1-x0) != (i0+1) else false
 }
 ) (* qtest *)
+
+(* ****** ****** *)
+
+abstype
+node_type == list(int)
+typedef node = node_type
+
+(* ****** ****** *)
+
+local
+absopen node_type
+in(*in-of-local*)
+
+fun
+qroot
+(): node = list_nil()
+
+fun
+qlength
+( xs
+: node) = list_length(xs)
+
+fun
+qextend
+( xs
+: node
+) : list_vt(node) =
+let
+fun
+auxlst
+(x0: int) =
+if
+(x0 < N)
+then
+(
+if
+qtest(xs, x0)
+then
+list_vt_cons
+(list_cons(x0, xs), auxlst(x0+1)) else auxlst(x0+1)
+)
+else list_vt_nil()
+//
+in auxlst(0) end
+
+end // end of [local]
+
+(* ****** ****** *)
+
+impltmp
+gtree_node_childlst<node> = qextend
+
+(* ****** ****** *)
+
+val
+the_sols =
+stream_vt_filter0
+(gtree_dfs_streamize(qroot()))
+where
+{
+impltmp
+filter0$test<node>(xs) = qlength(xs) >= N
+}
+
+(* ****** ****** *)
+
+val the_nsol = stream_vt_length(the_sols)
 
 (* ****** ****** *)
 
