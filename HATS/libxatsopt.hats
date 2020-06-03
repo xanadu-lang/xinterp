@@ -133,4 +133,3 @@ _(*TMP*) =
 (* ****** ****** *)
 
 (* end of [libxatsopt.hats] *)
-

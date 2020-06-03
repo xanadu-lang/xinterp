@@ -21,6 +21,10 @@
 #staload _ =
 "prelude/DATS/string.dats"
 #staload _ =
+"prelude/DATS/list.dats"
+#staload _ =
+"prelude/DATS/list_vt.dats"
+#staload _ =
 "prelude/DATS/stream_vt.dats"
 //
 (* ****** ****** *)
@@ -65,6 +69,19 @@ val Zi = gseq_indexof(alphabet, 'Z')
 val rai = gseq_rindexof(alphabet, 'a')
 val rAi = gseq_rindexof(alphabet, 'A')
 val rZi = gseq_rindexof(alphabet, 'Z')
+
+(* ****** ****** *)
+
+val abc =
+list_cons
+('a'
+,
+list_cons
+('b'
+,
+list_cons
+('c', list_nil())))
+val abc = string_make_list(abc)
 
 (* ****** ****** *)
 

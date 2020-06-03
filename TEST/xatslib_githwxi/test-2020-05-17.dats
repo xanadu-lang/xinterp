@@ -28,11 +28,6 @@
 "prelude/DATS/list_vt.dats"
 (* ****** ****** *)
 
-#staload
-"xatslib/githwxi/DATS/mygist.dats"
-
-(* ****** ****** *)
-
 val N = 6
 
 (* ****** ****** *)
@@ -43,7 +38,7 @@ qtest
 : list(int)
 , x0: sint): bool =
 (
-gseq_iforall(xs) where
+iforall(xs) where
 {
 impltmp
 iforall$test<sint>(i0, x1) =

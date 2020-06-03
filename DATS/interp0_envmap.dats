@@ -724,47 +724,6 @@ val-IR0Vchr(x) = x
 val-IR0Vchr(y) = y in IR0Vbtf(x != y) end
 
 (* ****** ****** *)
-//
-fun
-string_head_opt
-(x: ir0val): ir0val =
-let
-val-IR0Vstr(x) = x
-val p = string2ptr(x)
-in
-  IR0Vchr
-  ($UN.ptr0_get<char>(p))
-end // end of [string_head_opt]
-fun
-string_head_raw
-(x: ir0val): ir0val =
-let
-val-IR0Vstr(x) = x
-val p = string2ptr(x)
-in
-  IR0Vchr
-  ($UN.ptr0_get<char>(p))
-end // end of [string_head_raw]
-fun
-string_tail_raw
-(x: ir0val): ir0val =
-let
-val-IR0Vstr(x) = x
-val p = string2ptr(x)
-in
-IR0Vstr
-($UN.cast(ptr0_succ<char>(p)))
-end // end of [string_tail_raw]
-fun
-string_print
-(x: ir0val): ir0val =
-let
-val-IR0Vstr(x) = x in
-let
-val () = print(x) in IR0Vnil() end
-end // end of [string_print]
-
-(* ****** ****** *)
 
 fun
 gint_print_sint
@@ -901,6 +860,83 @@ gint_mod_sint_sint
 let
 val-IR0Vint(x) = x
 val-IR0Vint(y) = y in IR0Vint(x % y) end
+
+(* ****** ****** *)
+//
+fun
+string_head_opt
+(x: ir0val): ir0val =
+let
+val-IR0Vstr(x) = x
+val p = string2ptr(x)
+in
+  IR0Vchr
+  ($UN.ptr0_get<char>(p))
+end // end of [string_head_opt]
+fun
+string_head_raw
+(x: ir0val): ir0val =
+let
+val-IR0Vstr(x) = x
+val p = string2ptr(x)
+in
+  IR0Vchr
+  ($UN.ptr0_get<char>(p))
+end // end of [string_head_raw]
+fun
+string_tail_raw
+(x: ir0val): ir0val =
+let
+val-IR0Vstr(x) = x
+val p = string2ptr(x)
+in
+IR0Vstr
+($UN.cast(ptr0_succ<char>(p)))
+end // end of [string_tail_raw]
+fun
+string_print
+(x: ir0val): ir0val =
+let
+val-IR0Vstr(x) = x in
+let
+val () = print(x) in IR0Vnil() end
+end // end of [string_print]
+
+(* ****** ****** *)
+
+fun
+strptr_make
+(x: ir0val): ir0val =
+let
+val-IR0Vint(x) = x in
+let
+val x0 =
+g1ofg0(x)
+val () =
+assertloc(x0 >= 0)
+val p0 =
+$UN.castvwtp0{ptr}
+(malloc_gc(i2sz(x0+1)))
+val c0 = '\000'
+val s0 = $UN.cast{string}(p0)
+val () =
+$UN.ptr0_set_at<char>(p0, x0, c0) in IR0Vstr(s0)
+end
+end // end of [strptr_make]
+fun
+strptr_set_at
+( x: ir0val
+, i: ir0val
+, c: ir0val): ir0val =
+let
+val-IR0Vstr(x) = x
+val-IR0Vint(i) = i
+val-IR0Vchr(c) = c in
+let
+val p0 = $UN.cast{ptr}(x)
+val () = $UN.ptr0_set_at<char>(p0, i, c) in IR0Vnil()
+end
+end // end of [strptr_set_at]
 
 (* ****** ****** *)
 
@@ -1141,6 +1177,22 @@ val-list_cons(v2, vs) = vs in f2(v1, v2)
 end
 
 fun
+firfun3
+(
+f3:
+( ir0val
+, ir0val
+, ir0val) -> ir0val
+)
+: ir0valist -<cloref1> ir0val =
+lam(vs) =>
+let
+val-list_cons(v1, vs) = vs
+val-list_cons(v2, vs) = vs
+val-list_cons(v3, vs) = vs in f3(v1, v2, v3)
+end
+
+fun
 d2cst
 (nam: string): d2cst =
 (
@@ -1182,7 +1234,7 @@ local
 val
 the_flag = ref<int>(0)
 
-in
+in(*in-of-local*)
 
 implement
 interp0_initize_gint() =
@@ -1190,6 +1242,7 @@ let
 val n0 = the_flag[]
 val () = the_flag[] := n0+1
 in
+//
 if
 (n0 = 0)
 then
@@ -1280,37 +1333,10 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("xint_string_print"),
-IR0Vfun(firfun1(string_print)))
-//
-val () =
-the_d2cstdef_insert
-(
-d2cst
-("xint_string_head_opt"),
-IR0Vfun(firfun1(string_head_opt)))
-val () =
-the_d2cstdef_insert
-(
-d2cst
-("xint_string_head_raw"),
-IR0Vfun(firfun1(string_head_raw)))
-val () =
-the_d2cstdef_insert
-(
-d2cst
-("xint_string_tail_raw"),
-IR0Vfun(firfun1(string_tail_raw)))
-//
-(* ****** ****** *)
-//
-val () =
-the_d2cstdef_insert
-(
-d2cst
 ("xint_gint_print_sint")
 ,
-IR0Vfun(firfun1(gint_print_sint)))
+IR0Vfun
+(firfun1(gint_print_sint)))
 //
 (* ****** ****** *)
 //
@@ -1320,7 +1346,8 @@ the_d2cstdef_insert
 d2cst
 ("xint_gint_neg_sint")
 ,
-IR0Vfun(firfun1(gint_neg_sint)))
+IR0Vfun
+(firfun1(gint_neg_sint)))
 //
 val () =
 the_d2cstdef_insert
@@ -1328,7 +1355,8 @@ the_d2cstdef_insert
 d2cst
 ("xint_gint_abs_sint")
 ,
-IR0Vfun(firfun1(gint_abs_sint)))
+IR0Vfun
+(firfun1(gint_abs_sint)))
 //
 val () =
 the_d2cstdef_insert
@@ -1336,14 +1364,16 @@ the_d2cstdef_insert
 d2cst
 ("xint_gint_succ_sint")
 ,
-IR0Vfun(firfun1(gint_succ_sint)))
+IR0Vfun
+(firfun1(gint_succ_sint)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
 ("xint_gint_pred_sint")
 ,
-IR0Vfun(firfun1(gint_pred_sint)))
+IR0Vfun
+(firfun1(gint_pred_sint)))
 //
 (* ****** ****** *)
 //
@@ -1353,14 +1383,16 @@ the_d2cstdef_insert
 d2cst
 ("xint_gint_lt_sint_sint")
 ,
-IR0Vfun(firfun2(gint_lt_sint_sint)))
+IR0Vfun
+(firfun2(gint_lt_sint_sint)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
 ("xint_gint_gt_sint_sint")
 ,
-IR0Vfun(firfun2(gint_gt_sint_sint)))
+IR0Vfun
+(firfun2(gint_gt_sint_sint)))
 //
 val () =
 the_d2cstdef_insert
@@ -1368,7 +1400,8 @@ the_d2cstdef_insert
 d2cst
 ("xint_gint_eq_sint_sint")
 ,
-IR0Vfun(firfun2(gint_eq_sint_sint)))
+IR0Vfun
+(firfun2(gint_eq_sint_sint)))
 //
 val () =
 the_d2cstdef_insert
@@ -1376,14 +1409,16 @@ the_d2cstdef_insert
 d2cst
 ("xint_gint_lte_sint_sint")
 ,
-IR0Vfun(firfun2(gint_lte_sint_sint)))
+IR0Vfun
+(firfun2(gint_lte_sint_sint)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
 ("xint_gint_gte_sint_sint")
 ,
-IR0Vfun(firfun2(gint_gte_sint_sint)))
+IR0Vfun
+(firfun2(gint_gte_sint_sint)))
 //
 val () =
 the_d2cstdef_insert
@@ -1391,7 +1426,8 @@ the_d2cstdef_insert
 d2cst
 ("xint_gint_neq_sint_sint")
 ,
-IR0Vfun(firfun2(gint_neq_sint_sint)))
+IR0Vfun
+(firfun2(gint_neq_sint_sint)))
 //
 (* ****** ****** *)
 //
@@ -1401,7 +1437,8 @@ the_d2cstdef_insert
 d2cst
 ("xint_gint_cmp_sint_sint")
 ,
-IR0Vfun(firfun2(gint_cmp_sint_sint)))
+IR0Vfun
+(firfun2(gint_cmp_sint_sint)))
 //
 (* ****** ****** *)
 //
@@ -1411,36 +1448,87 @@ the_d2cstdef_insert
 d2cst
 ("xint_gint_add_sint_sint")
 ,
-IR0Vfun(firfun2(gint_add_sint_sint)))
+IR0Vfun
+(firfun2(gint_add_sint_sint)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
 ("xint_gint_sub_sint_sint")
 ,
-IR0Vfun(firfun2(gint_sub_sint_sint)))
+IR0Vfun
+(firfun2(gint_sub_sint_sint)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
 ("xint_gint_mul_sint_sint")
 ,
-IR0Vfun(firfun2(gint_mul_sint_sint)))
+IR0Vfun
+(firfun2(gint_mul_sint_sint)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
 ("xint_gint_div_sint_sint")
 ,
-IR0Vfun(firfun2(gint_div_sint_sint)))
+IR0Vfun
+(firfun2(gint_div_sint_sint)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
 ("xint_gint_mod_sint_sint")
 ,
-IR0Vfun(firfun2(gint_mod_sint_sint)))
+IR0Vfun
+(firfun2(gint_mod_sint_sint)))
 //
+(* ****** ****** *)
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_string_print"),
+IR0Vfun(firfun1(string_print)))
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_string_head_opt"),
+IR0Vfun
+(firfun1(string_head_opt)))
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_string_head_raw"),
+IR0Vfun
+(firfun1(string_head_raw)))
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_string_tail_raw"),
+IR0Vfun
+(firfun1(string_tail_raw)))
+//
+(* ****** ****** *)
+
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_strptr_make"),
+IR0Vfun(firfun1(strptr_make)))
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_strptr_set_at"),
+IR0Vfun(firfun3(strptr_set_at)))
+
 (* ****** ****** *)
 //
 val () =
@@ -1481,6 +1569,7 @@ d2cst
 IR0Vfun(firfun2(fputc_ref)))
 //
 } (* end of [then] *) 
+//
 end (* end of [interp0_initize_gint] *)
 
 (* ****** ****** *)
