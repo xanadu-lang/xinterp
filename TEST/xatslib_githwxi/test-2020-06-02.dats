@@ -69,11 +69,12 @@ absopen node_type
 in(*in-of-local*)
 
 fun
-qroot(): node = list_nil()
+the_root
+((*void*)): node = list_nil()
 
 fun
-qlength
-(xs: node) = list_length(xs)
+length
+(xs: node): nint = list_length(xs)
 
 fun
 qextend
@@ -109,11 +110,11 @@ gtree_node_childlst<node> = qextend
 val
 the_sols =
 stream_vt_filter0
-(gtree_dfs_streamize(qroot()))
+(gtree_dfs_streamize(the_root()))
 where
 {
 impltmp
-filter0$test<node>(xs) = qlength(xs) >= N
+filter0$test<node>(xs) = length(xs) >= N
 }
 
 (* ****** ****** *)
