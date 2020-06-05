@@ -46,16 +46,18 @@
 (* ****** ****** *)
 //
 fun
-string_mergesort
+string_permutize
 ( cs
-: string): string =
-gseq_mergesort<cgtz,string>(cs)
+: string)
+: stream_vt(string) =
+gseq_permutize<cgtz,string>(cs)
 //
 (* ****** ****** *)
 
-val cs0 = "13524"
-val cs1 = string_mergesort(cs0)
+val cs1 = "12345"
+val css = string_permutize(cs1)
+val css = stream_vt_listize(css)
 
 (* ****** ****** *)
 
-(* end of [test-2020-06-03.dats] *)
+(* end of [test-2020-06-05.dats] *)
