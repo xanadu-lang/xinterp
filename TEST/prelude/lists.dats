@@ -97,4 +97,9 @@ val zs4 = list_vt_concat<int>(zss)
 
 (* ****** ****** *)
 
+val len =
+stream_vt_length(list_vt_permutize<int>(zs4))
+
+(* ****** ****** *)
+
 (* end of [lists.dats] *)

@@ -1593,6 +1593,8 @@ aux_eval
 , ire0: ir0exp): ir0val =
 let
 //
+val loc0 = ire0.loc()
+//
 val-
 IR0Eeval
 (knd0, ire1) = ire0.node()
@@ -1600,12 +1602,14 @@ IR0Eeval
 val
 irv1 = interp0_irexp(env0, ire1)
 //
-(*
+// (*
+val () =
+println!("aux_eval: loc0 = ", loc0)
 val () =
 println!("aux_eval: ire1 = ", ire1)
 val () =
 println!("aux_eval: irv1 = ", irv1)
-*)
+// *)
 //
 in
 //
