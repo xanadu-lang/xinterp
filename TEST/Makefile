@@ -143,6 +143,11 @@ test-2020-06-05
 test-2020-06-05: ; \
 $(XINTERP) -d ./xatslib_githwxi/test-2020-06-05.dats
 
+test:: \
+test-2020-06-07
+test-2020-06-07: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-06-07.dats
+
 ######
 
 clean::
