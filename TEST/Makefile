@@ -136,8 +136,6 @@ test-2020-06-03
 test-2020-06-03: ; \
 $(XINTERP) -d ./xatslib_githwxi/test-2020-06-03.dats
 
-######
-
 test:: \
 test-2020-06-05
 test-2020-06-05: ; \
@@ -147,6 +145,13 @@ test:: \
 test-2020-06-07
 test-2020-06-07: ; \
 $(XINTERP) -d ./xatslib_githwxi/test-2020-06-07.dats
+
+######
+
+test:: \
+test-2020-06-08
+test-2020-06-08: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-06-08.dats
 
 ######
 

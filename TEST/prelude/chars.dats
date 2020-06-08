@@ -85,4 +85,13 @@ val abc = string_make_list(abc)
 
 (* ****** ****** *)
 
+val xyz =
+let
+val x = sint('x')
+in
+string_make_cfun(3, lam(i) => char(x+i))
+end // end of [val]
+
+(* ****** ****** *)
+
 (* end of [chars.dats] *)
