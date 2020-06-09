@@ -905,7 +905,7 @@ end // end of [string_print]
 (* ****** ****** *)
 
 fun
-strptr_make
+strptr_alloc
 (x: ir0val): ir0val =
 let
 val-IR0Vint(x) = x in
@@ -922,7 +922,7 @@ val s0 = $UN.cast{string}(p0)
 val () =
 $UN.ptr0_set_at<char>(p0, x0, c0) in IR0Vstr(s0)
 end
-end // end of [strptr_make]
+end // end of [strptr_alloc]
 fun
 strptr_set_at
 ( x: ir0val
@@ -1520,8 +1520,8 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("xint_strptr_make"),
-IR0Vfun(firfun1(strptr_make)))
+("xint_strptr_alloc"),
+IR0Vfun(firfun1(strptr_alloc)))
 val () =
 the_d2cstdef_insert
 (

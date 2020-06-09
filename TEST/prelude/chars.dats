@@ -89,7 +89,7 @@ val xyz =
 let
 val x = sint('x')
 in
-string_make_cfun(3, lam(i) => char(x+i))
+string_tabulate_cfr(3, lam(i) => char(x+i))
 end // end of [val]
 
 (* ****** ****** *)
