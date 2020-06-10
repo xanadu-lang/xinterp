@@ -1637,12 +1637,13 @@ in
 //
 case- irv1 of
 //
+| IR0Vlft
+  (irlv) =>
+  aux_eval_left(irlv)
+//
 | IR0Vptr
   (ptr0) =>
   $UN.ptr0_get<ir0val>(ptr0)
-//
-| IR0Vlft
-  (irlv) => aux_eval_left(irlv)
 //
 | IR0Vlazy
   (ref0) => aux_eval_lazy(ref0)
