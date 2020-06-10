@@ -940,6 +940,17 @@ end // end of [strptr_set_at]
 
 (* ****** ****** *)
 
+fun
+a0ptr_alloc
+((*void*)): ir0val =
+IR0Vptr
+(
+$UN.castvwtp0
+(array_ptr_alloc<ir0val>(i2sz(1)))
+)
+
+(* ****** ****** *)
+
 local
 //
 #staload
@@ -1521,14 +1532,26 @@ the_d2cstdef_insert
 (
 d2cst
 ("xint_strptr_alloc"),
-IR0Vfun(firfun1(strptr_alloc)))
+IR0Vfun
+(firfun1(strptr_alloc)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
 ("xint_strptr_set_at"),
-IR0Vfun(firfun3(strptr_set_at)))
+IR0Vfun
+(firfun3(strptr_set_at)))
 
+(* ****** ****** *)
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst("xint_a0ptr_alloc")
+,
+IR0Vfun
+( firfun0(a0ptr_alloc)) )
+//
 (* ****** ****** *)
 //
 val () =

@@ -77,6 +77,11 @@ dtcon: ; $(XINTERP) -d ./prelude/dtcon.dats
 test:: pswap
 pswap: ; $(XINTERP) -d ./prelude/pswap.dats
 #
+######
+#
+test:: array
+array: ; $(XINTERP) -d ./prelude/array.dats
+#
 test:: tuple
 tuple: ; $(XINTERP) -d ./prelude/tuple.dats
 #

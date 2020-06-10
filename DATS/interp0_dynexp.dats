@@ -1129,6 +1129,7 @@ aux_assgn
 , ire0
 : ir0exp): ir0val =
 let
+//
 val-
 IR0Eassgn
 ( irel
@@ -1139,6 +1140,17 @@ interp0_irexp(env0, irel)
 val
 irvr = 
 interp0_irexp(env0, irer)
+//
+val () =
+println!
+("aux_assgn: ire0 = ", ire0)
+val () =
+println!
+("aux_assgn: irvl = ", irvl)
+val () =
+println!
+("aux_assgn: irvr = ", irvr)
+//
 in
 case- irvl of
 |
@@ -1152,7 +1164,7 @@ IR0LVref(r0) =>
 ) where
 {
   val () =
-  (r0[] := Some(irvr))
+  ( r0[] := Some(irvr) )
 } (* end of [IR0LVref] *)
 |
 //
@@ -1187,6 +1199,16 @@ val () =
 aux_assgn_pflt(irvr, irlv)
 }
 )
+|
+IR0Vptr(p0) =>
+(
+  IR0Vnil()
+) where
+{
+val () =
+$UN.ptr0_set<ir0val>(p0, irvr)
+}
+//
 end // end of [aux_assgn]
 //
 and
@@ -1614,6 +1636,10 @@ println!("aux_eval: irv1 = ", irv1)
 in
 //
 case- irv1 of
+//
+| IR0Vptr
+  (ptr0) =>
+  $UN.ptr0_get<ir0val>(ptr0)
 //
 | IR0Vlft
   (irlv) => aux_eval_left(irlv)
