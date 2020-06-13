@@ -939,7 +939,7 @@ end
 end // end of [strptr_set_at]
 
 (* ****** ****** *)
-
+//
 fun
 a0ptr_alloc
 ((*void*)): ir0val =
@@ -948,7 +948,99 @@ IR0Vptr
 $UN.castvwtp0
 (array_ptr_alloc<ir0val>(i2sz(1)))
 )
-
+//
+fun
+a0ref_get
+(A: ir0val): ir0val =
+let
+val-
+IR0Vptr(A) = A
+in
+  $UN.ptr0_get<ir0val>(A)
+end
+fun
+a0ref_set
+( A: ir0val
+, x: ir0val): ir0val =
+let
+val-IR0Vptr(A) = A
+in
+IR0Vnil() where
+{
+val () = $UN.ptr0_set<ir0val>(A, x)
+}
+end
+//
+(* ****** ****** *)
+//
+fun
+a1ptr_alloc
+(n: ir0val): ir0val =
+let
+val-
+IR0Vint(n) = n
+val n = g1ofg0(n)
+val () = assert(n >= 0)
+in
+IR0Vptr
+(
+$UN.castvwtp0
+(
+arrayptr_make_uninitized<ir0val>(i2sz(n))
+)
+)
+end // end of [a1ptr_alloc]
+//
+fun
+a1ref_get_at
+( A: ir0val
+, i: ir0val): ir0val =
+(
+  a1ptr_get_at(A, i)
+)
+and
+a1ptr_get_at
+( A: ir0val
+, i: ir0val): ir0val =
+let
+  val-IR0Vptr(A) = A
+  val-IR0Vint(i) = i
+in
+  $UN.ptr0_get_at<ir0val>(A, i)
+end // end of [a1ref_get_at]
+//
+fun
+a1ref_set_at
+( A: ir0val
+, i: ir0val
+, x: ir0val): ir0val =
+(
+  a1ptr_set_at(A, i, x)
+)
+and
+a1ptr_set_at
+( A: ir0val
+, i: ir0val
+, x: ir0val): ir0val =
+(
+  a1ptr_set_at_raw(A, i, x)
+)
+and
+a1ptr_set_at_raw
+( A: ir0val
+, i: ir0val
+, x: ir0val): ir0val =
+let
+  val-IR0Vptr(A) = A
+  val-IR0Vint(i) = i
+in
+  IR0Vnil where
+  {
+  val () =
+  $UN.ptr0_set_at<ir0val>(A, i, x)
+  }
+end // end of [a1ref_set_at_raw]
+//
 (* ****** ****** *)
 
 local
@@ -1547,10 +1639,79 @@ IR0Vfun
 val () =
 the_d2cstdef_insert
 (
-d2cst("xint_a0ptr_alloc")
+d2cst
+("xint_a0ptr_alloc")
 ,
 IR0Vfun
-( firfun0(a0ptr_alloc)) )
+(firfun0(a0ptr_alloc)))
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst("xint_a0ref_get")
+,
+IR0Vfun
+( firfun1(a0ref_get)) )
+val () =
+the_d2cstdef_insert
+(
+d2cst("xint_a0ref_set")
+,
+IR0Vfun
+( firfun2(a0ref_set)) )
+//
+(* ****** ****** *)
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_a1ptr_alloc")
+,
+IR0Vfun
+(firfun1(a1ptr_alloc)))
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_a1ref_get_at")
+,
+IR0Vfun
+(firfun2(a1ref_get_at)))
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_a1ptr_get_at")
+,
+IR0Vfun
+(firfun2(a1ptr_get_at)))
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_a1ref_set_at")
+,
+IR0Vfun
+(firfun3(a1ref_set_at)))
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_a1ptr_set_at")
+,
+IR0Vfun
+(firfun3(a1ptr_set_at)))
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_a1ptr_set_at_raw")
+,
+IR0Vfun
+(firfun3(a1ptr_set_at_raw)))
 //
 (* ****** ****** *)
 //
