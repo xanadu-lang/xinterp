@@ -53,4 +53,25 @@ val y2 = sub(B1, 2)
 
 (* ****** ****** *)
 
+val
+bs =
+gseq_map_list(B1) where
+{
+  impltmp
+  a1ref_length<int>(B1) = 10
+  impltmp
+  map$fopr<int><int>(x) = (x)
+}
+
+(* ****** ****** *)
+
+val
+sum = gseq_add(B1) where
+{
+  impltmp
+  a1ref_length<int>(B1) = 10
+}
+
+(* ****** ****** *)
+
 (* end of [array.dats] *)
