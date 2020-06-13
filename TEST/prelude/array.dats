@@ -13,9 +13,11 @@
 "prelude/DATS/gord.dats"
 #staload
 "prelude/DATS/gseq.dats"
+#staload
+"prelude/DATS/gseq_vt.dats"
 //
 (* ****** ****** *)
-#staload
+#staload _ =
 "prelude/DATS/unsafe.dats"
 (* ****** ****** *)
 //
@@ -28,6 +30,11 @@
 #staload _ =
 "prelude/DATS/string.dats"
 //
+(* ****** ****** *)
+#staload _ =
+"prelude/DATS/list.dats"
+#staload _ =
+"prelude/DATS/list_vt.dats"
 (* ****** ****** *)
 //
 val A0 =
@@ -53,6 +60,17 @@ val y2 = sub(B1, 2)
 
 (* ****** ****** *)
 
+val () =
+rforeach(length(B1)) where
+{
+impltmp
+a1ref_length<int>(B1) = 10
+impltmp
+rforeach$work<int>(i0) = sub(B1, i0, i0+1)
+}
+
+(* ****** ****** *)
+
 val
 bs =
 gseq_map_list(B1) where
@@ -68,8 +86,28 @@ gseq_map_list(B1) where
 val
 sum = gseq_add(B1) where
 {
-  impltmp
-  a1ref_length<int>(B1) = 10
+  impltmp a1ref_length<int>(B1) = 10
+}
+
+(* ****** ****** *)
+
+val B2 =
+a1ref_make_list(xs) where
+{
+  val xs =
+  list_cons
+  (1,list_cons(2, list_nil()))
+}
+
+(* ****** ****** *)
+
+val B3 =
+a1ref_make_list_vt(xs) where
+{
+  val xs =
+  list_vt_cons(1,
+  list_vt_cons(2,
+  list_vt_cons(3, list_vt_nil())))
 }
 
 (* ****** ****** *)
