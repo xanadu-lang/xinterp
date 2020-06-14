@@ -35,6 +35,8 @@
 "prelude/DATS/list.dats"
 #staload _ =
 "prelude/DATS/list_vt.dats"
+#staload _ =
+"prelude/DATS/stream_vt.dats"
 (* ****** ****** *)
 //
 val A0 =
@@ -109,6 +111,15 @@ a1ref_make_list_vt(xs) where
   list_vt_cons(2,
   list_vt_cons(3, list_vt_nil())))
 }
+
+(* ****** ****** *)
+
+val xss =
+gseq_permutize(B3) where
+{
+impltmp a1ref_length<int>(B1) = 3
+}
+val len = length(xss)
 
 (* ****** ****** *)
 

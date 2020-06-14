@@ -1377,22 +1377,22 @@ val
 irv1 =
 interp0_irexp(env0, ire1)
 //
-(*
+// (*
 val () =
 println!
 ("aux_if0: ire1 = ", ire1)
 val () =
 println!
 ("aux_if0: irv1 = ", irv1)
-*)
+// *)
 //
 in
 //
 case- irv1 of
 |
-IR0Vbtf(tf) =>
+IR0Vbtf(btf) =>
 if
-(tf)
+btf
 then
 interp0_irexp(env0, ire2)
 else
