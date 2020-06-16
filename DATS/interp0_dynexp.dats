@@ -112,6 +112,57 @@ case- opt of ~Some_vt(idx2) => idx2
 end // end of [pcon_lab2idx]
 //
 (* ****** ****** *)
+local
+//
+fun
+auxget_at
+( irvs
+: ir0valist
+, i0: int): ir0val =
+(
+case- irvs of
+(*
+|
+list_nil
+() => IR0Verror()
+*)
+|
+list_cons
+(irv0, irvs) =>
+(
+if
+(i0 <= 0)
+then irv0
+else auxget_at(irvs, i0-1)
+)
+) (* end of [auxget_at] *)
+//
+in(* in-of-local *)
+//
+fun
+ir0val_con_arg
+( irv0
+: ir0val, i0: int): ir0val =
+(
+  auxget_at(irvs, i0)
+) where
+{
+val-IR0Vcon(d2c1, irvs) = irv0
+}
+//
+fun
+ir0val_tup_arg
+( irv0
+: ir0val, i0: int): ir0val =
+(
+  auxget_at(irvs, i0)
+) where
+{
+val-IR0Vtuple(knd0, irvs) = irv0
+}
+//
+end // end of [local]
+(* ****** ****** *)
 
 implement
 interp0_program
@@ -770,12 +821,11 @@ case-
 irvs of
 (*
 |
-list_nil() =>
-IR0Verror()
+list_nil
+() => IR0Verror()
 *)
 |
-list_cons
-(irv0, irvs) =>
+list_cons(irv0, irvs) =>
 (
 if
 (i0 <= 0)
@@ -1043,12 +1093,11 @@ case-
 irvs of
 (*
 |
-list_nil() =>
-IR0Verror()
+list_nil
+() => IR0Verror()
 *)
 |
-list_cons
-(irv0, irvs) =>
+list_cons(irv0, irvs) =>
 (
 if
 (i0 <= 0)
@@ -1669,12 +1718,11 @@ case-
 irvs of
 (*
 |
-list_nil() =>
-IR0Verror()
+list_nil
+() => IR0Verror()
 *)
 |
-list_cons
-(irv0, irvs) =>
+list_cons(irv0, irvs) =>
 (
 if
 (i0 <= 0)
@@ -1863,8 +1911,8 @@ case-
 irvs of
 (*
 |
-list_nil() =>
-IR0Verror()
+list_nil
+() => IR0Verror()
 *)
 |
 list_cons
@@ -1945,9 +1993,9 @@ in
 }
 end // end of [IR0LVpcon]
 (*
-|
+| // HX: It can happend: $(!x, !y)
 IR0LVpbox _ => // HX: can it happen?
-|
+| // HX: It can happend: @(!x, !y)
 IR0LVpflt _ => // HX: can it happen?
 *)
 ) (* end of [IR0Vlft] *)
@@ -2186,33 +2234,40 @@ val env0 =
 intpenv_make_fenv(fenv)
 in
 let
-  val-
-  list_cons
-  (ira0, iras) = iras
-  val+
-  IR0ARGsome
-  (npf1, irps) = ira0
-  val
-  irps = auxnpf(npf1, irps)
-  val () =
-  interp0_irpatlst_ck1(env0, irps, irvs)
+//
+val-
+list_cons
+(ira0, iras) = iras
+val+
+IR0ARGsome
+(npf1, irps) = ira0
+//
+val
+irps = auxnpf(npf1, irps)
+//
+val () =
+interp0_irpatlst_ck1(env0, irps, irvs)
+//
+val irv0 =
+(
+case+ iras of
+|
+list_nil() =>
+( irv0 ) where
+{
   val irv0 =
-  (
-  case+ iras of
-  | list_nil() =>
-    ( irv0 ) where
-    {
-      val irv0 =
-      interp0_irexp_fun(env0, body)
-    }
-  | list_cons _ =>
-    (
-      IR0Vlam(fenv, iras, body)
-    ) where
-    {
-      val fenv = intpenv_take_fenv(env0)
-    }
-  ) : ir0val // end of [val]
+  interp0_irexp_fun(env0, body)
+}
+|
+list_cons _ =>
+(
+  IR0Vlam(fenv, iras, body)
+) where
+{
+  val fenv = intpenv_take_fenv(env0)
+}
+) : ir0val // end of [val]
+//
 in
   let
   val () = intpenv_free_fenv(env0) in irv0
@@ -2579,7 +2634,41 @@ end // end of [list_cons]
 (* ****** ****** *)
 
 fun
-ir0pat_leftize
+ir0pat_flatq
+(irp0: ir0pat) =
+(
+case+
+irp0.node() of
+|
+IR0Pcapp
+(d2c0, irps) => auxlst(irps)
+(*
+|
+IR0Ptuple
+(knd0, irps) => auxlst(irps)
+*)
+| _ (* else *) => false
+) where
+{
+fun
+auxlst
+( xs
+: ir0patlst): bool =
+(
+case+ xs of
+| list_nil() => false
+| list_cons(x0, xs) =>
+  (
+  case+ x0.node() of
+  | IR0Pbang _ => true | _ => auxlst(xs)
+  )
+)
+}
+
+(* ****** ****** *)
+
+fun
+ir0pat_leftize0
 ( env0
 : !intpenv
 , irp1: ir0pat
@@ -2616,7 +2705,14 @@ interp0_insert_d2var
   val irv1 =
   IR0Vlft(IR0LVpcon(irv0, lab2))
 }
-| _(*non-IR0Pvar*) => ()
+|
+_(*non-IR0Pvar*) =>
+let
+val
+irv1 = ir0val_con_arg(irv0, i0)
+in
+interp0_irpat_ck1(env0, irp1, irv1)
+end
 )
 and
 auxirps
@@ -2637,6 +2733,91 @@ case+ irps of
   }
 )
 }
+
+(* ****** ****** *)
+
+fun
+ir0pat_leftize1
+( env0
+: !intpenv
+, irp1: ir0pat
+, irv0: ir0val): void =
+(
+case+
+irp1.node() of
+|
+IR0Pcapp
+(d2c1, irps) =>
+auxirps(env0, 0(*index*), irps)
+|
+_ (*non-IR0Pcapp*) => ((*void*))
+) where
+{
+fun
+auxirp1
+( env0
+: !intpenv
+, i0: int
+, irp1: ir0pat): void =
+(
+case+
+irp1.node() of
+|
+IR0Pbang(irp2) =>
+(
+case+
+irp2.node() of
+|
+IR0Pvar(d2v1) =>
+(
+interp0_insert_d2var
+  (env0, d2v1, irv1)
+) where
+{
+  val lab2 =
+  label_make_int(i0)
+  val irv1 =
+  IR0Vlft(IR0LVpcon(irv0, lab2))
+}
+|
+_(*non-IR0Pvar*) =>
+let
+val
+irv1 = ir0val_con_arg(irv0, i0)
+in
+interp0_irpat_ck1(env0, irp1, irv1)
+end
+)
+|
+_(*non-IR0Pbang*) =>
+let
+val
+irv1 = ir0val_con_arg(irv0, i0)
+in
+interp0_irpat_ck1(env0, irp1, irv1)
+end
+)
+and
+auxirps
+( env0
+: !intpenv
+, i0: int
+, irps: ir0patlst): void =
+(
+case+ irps of
+| list_nil() => ()
+| list_cons
+  (irp1, irps) =>
+  (
+    auxirps(env0, i0+1, irps)
+  ) where
+  {
+    val () = auxirp1(env0, i0, irp1)
+  }
+)
+} (* end of [ir0pat_leftize1] *)
+
+(* ****** ****** *)
 
 implement
 interp0_irpat_ck1
@@ -2674,17 +2855,17 @@ interp0_insert_d2var
 } (* end of [IR0Pvar] *)
 //
 |
-IR0Pbang(irp1) =>
-interp0_irpat_ck1(env0, irp1, irv0)
-|
 IR0Pflat(irp1) =>
 (
- ir0pat_leftize( env0, irp1, irv0 )
+ir0pat_leftize0(env0, irp1, irv0)
 ) where
 {
 val () =
 interp0_irpat_ck1(env0, irp1, irv0)
 }
+|
+IR0Pbang(irp1) =>
+interp0_irpat_ck1(env0, irp1, irv0)
 |
 IR0Pfree(irp1) =>
 interp0_irpat_ck1(env0, irp1, irv0)
@@ -2692,10 +2873,25 @@ interp0_irpat_ck1(env0, irp1, irv0)
 |
 IR0Pcapp(d2c0, irps) =>
 (
+let
+val
+test =
+ir0pat_flatq(irp0)
+in
+if
+test
+then
+(
+ ir0pat_leftize1(env0, irp0, irv0)
+)
+else
+(
 case- irv0 of
 |
 IR0Vcon(d2c1, irvs) =>
 interp0_irpatlst_ck1(env0, irps, irvs)
+)
+end // end of [let]
 )
 //
 |

@@ -125,12 +125,14 @@ let
 val
 loc0 = d3p0.loc()
 //
+(*
 val () =
 println!
 ("auxdapp: loc0 = ", loc0)
 val () =
 println!
 ("auxdapp: d3p0 = ", d3p0)
+*)
 //
 val-
 D3Pdapp
