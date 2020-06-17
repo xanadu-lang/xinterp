@@ -2677,7 +2677,7 @@ case+ xs of
   | IR0Pbang _ => true | _ => auxlst(xs)
   )
 )
-}
+} (* end of [ir0pat_flatq] *)
 
 (* ****** ****** *)
 
@@ -2746,7 +2746,7 @@ case+ irps of
     val () = auxirp1(env0, i0, irp1)
   }
 )
-}
+} (* end of [ir0pat_leftize0] *)
 
 (* ****** ****** *)
 
@@ -2918,8 +2918,8 @@ case+ irps of
 
 implement
 interp0_irpat_ck1
-  (env0, irp0, irv0) =
-let
+( env0
+, irp0, irv0 ) = let
 //
 (*
 val () =
