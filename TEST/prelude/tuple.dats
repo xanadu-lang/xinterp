@@ -39,5 +39,12 @@ val () = (z0.1).1 := 3
 val z2 = z0
 
 (* ****** ****** *)
+//
+val uv = $(10, 20)
+val $(!u1, !v2) = uv
+val ((*void*)) = u1 := v2
+val ((*void*)) = v2 := u1
+//
+(* ****** ****** *)
 
 (* end of [tuple.dats] *)

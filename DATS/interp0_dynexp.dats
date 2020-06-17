@@ -1992,12 +1992,22 @@ in
   val idx2 = pcon_lab2idx(lab2)
 }
 end // end of [IR0LVpcon]
+//
+|
+IR0LVpbox
+(irv1, lab2, idx2) =>
+(
+  auxget_at(irvs, idx2)
+) where
+{
+val-IR0Vtuple(knd0, irvs) = irv1
+} (* end of [IR0LVpbox] *)
+//
 (*
-| // HX: It can happend: $(!x, !y)
-IR0LVpbox _ => // HX: can it happen?
-| // HX: It can happend: @(!x, !y)
-IR0LVpflt _ => // HX: can it happen?
+|
+IR0LVpflt _ => // can it happen?
 *)
+//
 ) (* end of [IR0Vlft] *)
 //
 end (* end of [IR0Evar] *)
@@ -2639,15 +2649,19 @@ ir0pat_flatq
 (
 case+
 irp0.node() of
+//
 |
 IR0Pcapp
 (d2c0, irps) => auxlst(irps)
-(*
+//
 |
 IR0Ptuple
-(knd0, irps) => auxlst(irps)
-*)
-| _ (* else *) => false
+(knd0, irps) =>
+if
+(knd0 != 0)
+then auxlst(irps) else false
+//
+| _ (* non-con-tup *) => false
 ) where
 {
 fun
@@ -2737,7 +2751,7 @@ case+ irps of
 (* ****** ****** *)
 
 fun
-ir0pat_leftize1
+ir0pat_leftize1_con
 ( env0
 : !intpenv
 , irp1: ir0pat
@@ -2815,7 +2829,90 @@ case+ irps of
     val () = auxirp1(env0, i0, irp1)
   }
 )
-} (* end of [ir0pat_leftize1] *)
+} (* end of [ir0pat_leftize1_con] *)
+
+(* ****** ****** *)
+
+fun
+ir0pat_leftize1_tup
+( env0
+: !intpenv
+, irp1: ir0pat
+, irv0: ir0val): void =
+(
+case+
+irp1.node() of
+|
+IR0Ptuple
+(knd0, irps) =>
+auxirps(env0, 0(*i0*), irps)
+|
+_ (*non-IR0Pcapp*) => ((*void*))
+) where
+{
+fun
+auxirp1
+( env0
+: !intpenv
+, i0: int
+, irp1: ir0pat): void =
+(
+case+
+irp1.node() of
+|
+IR0Pbang(irp2) =>
+(
+case+
+irp2.node() of
+|
+IR0Pvar(d2v1) =>
+(
+interp0_insert_d2var
+  (env0, d2v1, irv1)
+) where
+{
+val lab2 =
+label_make_int(i0)
+val irv1 =
+IR0Vlft(IR0LVpbox(irv0, lab2, i0))
+}
+|
+_(*non-IR0Pvar*) =>
+let
+val
+irv1 = ir0val_tup_arg(irv0, i0)
+in
+interp0_irpat_ck1(env0, irp1, irv1)
+end
+)
+|
+_(*non-IR0Pbang*) =>
+let
+val
+irv1 = ir0val_tup_arg(irv0, i0)
+in
+interp0_irpat_ck1(env0, irp1, irv1)
+end
+)
+and
+auxirps
+( env0
+: !intpenv
+, i0: int
+, irps: ir0patlst): void =
+(
+case+ irps of
+| list_nil() => ()
+| list_cons
+  (irp1, irps) =>
+  (
+    auxirps(env0, i0+1, irps)
+  ) where
+  {
+    val () = auxirp1(env0, i0, irp1)
+  }
+)
+} (* end of [ir0pat_leftize1_tup] *)
 
 (* ****** ****** *)
 
@@ -2882,7 +2979,7 @@ if
 test
 then
 (
- ir0pat_leftize1(env0, irp0, irv0)
+ir0pat_leftize1_con(env0, irp0, irv0)
 )
 else
 (
@@ -2897,6 +2994,19 @@ end // end of [let]
 |
 IR0Ptuple(knd0, irps) =>
 (
+let
+val
+test =
+ir0pat_flatq(irp0)
+in
+if
+test
+then
+(
+ir0pat_leftize1_tup(env0, irp0, irv0)
+)
+else
+(
 case- irv0 of
 |
 IR0Vtuple(knd1, irvs) =>
@@ -2904,6 +3014,8 @@ let
 val () = assertloc(knd0 = knd1)
 in
 interp0_irpatlst_ck1(env0, irps, irvs)
+end
+)
 end
 )
 //
