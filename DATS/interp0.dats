@@ -819,7 +819,17 @@ println!
 *)
 //
 val
+d3cs =
+let
+val
 d3cs = trans3t_program(d3cs)
+val
+d3cs = trans3x_program(d3cs)
+in
+let
+val () = tread3x_program(d3cs) in d3cs
+end
+end // end of [val]
 (*
 val () =
 println!

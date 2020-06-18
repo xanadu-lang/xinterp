@@ -32,7 +32,7 @@ length
 ( xs
 : list(a)): int =
 (
-  foldl(xs, 0)
+  foldl<a><int>(xs, 0)
 ) where
 {
   implement

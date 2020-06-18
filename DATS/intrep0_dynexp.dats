@@ -369,6 +369,11 @@ d3e0.node() of
 | D3Evar(d2v) =>
   ir0exp_make_node
   (loc0, IR0Evar(d2v))
+| D3Evknd
+  ( knd, d2v ) =>
+  ir0exp_make_node
+  (loc0, IR0Evar(d2v))
+//
 | D3Econ1(d2c) =>
   ir0exp_make_node
   (loc0, IR0Econ1(d2c))

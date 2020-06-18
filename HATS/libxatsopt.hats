@@ -63,6 +63,11 @@ XANADU_targetloc
 #staload
 "{$XANADU}/SATS/trans3t.sats"
 //
+#staload
+"{$XANADU}/SATS/trans3x.sats"
+#staload
+"{$XANADU}/SATS/tread3x.sats"
+//
 (* ****** ****** *)
 //
 #staload
