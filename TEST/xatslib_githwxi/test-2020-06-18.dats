@@ -11,8 +11,6 @@
 (* ****** ****** *)
 #staload
 "prelude/DATS/gseq.dats"
-#staload
-"prelude/DATS/gseq_vt.dats"
 (* ****** ****** *)
 //
 #staload
@@ -25,16 +23,8 @@
 "prelude/DATS/string.dats"
 //
 #staload
-"prelude/DATS/unsafe.dats"
-//
-(* ****** ****** *)
-#staload
-"prelude/DATS/list.dats"
-#staload
-"prelude/DATS/list_vt.dats"
-(* ****** ****** *)
-#staload
 "prelude/DATS/stream_vt.dats"
+//
 (* ****** ****** *)
 
 typedef tvar = string
