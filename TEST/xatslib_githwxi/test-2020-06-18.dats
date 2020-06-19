@@ -49,8 +49,8 @@ term2 =
 | TM2app of (term2, term2)
 where
 {
-typedef
-tenv2 = list@(tvar, term2)
+  typedef
+  tenv2 = list@(tvar, term2)
 }
 (* ****** ****** *)
 
