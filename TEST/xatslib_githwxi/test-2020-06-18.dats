@@ -43,16 +43,15 @@ datatype
 term2 =
 | TM2var of tvar
 | TM2lam of
-  ( term1
-  , list@(tvar, term2))
+  ( term1, tenv2 )
 | TM2laz of
-  ( term1
-  , list@(tvar, term2))
+  ( term1, tenv2 )
 | TM2app of (term2, term2)
-
+where
+{
 typedef
 tenv2 = list@(tvar, term2)
-
+}
 (* ****** ****** *)
 
 #extern
