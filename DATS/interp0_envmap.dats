@@ -1897,6 +1897,17 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
+("xint_gflt_cmp_dflt_dflt")
+,
+IR0Vfun
+(firfun2(gflt_cmp_dflt_dflt)))
+//
+(* ****** ****** *)
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
 ("xint_gflt_add_dflt_dflt")
 ,
 IR0Vfun
