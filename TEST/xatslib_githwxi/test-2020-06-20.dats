@@ -102,21 +102,9 @@ case+ x0 of
 )
 
 (* ****** ****** *)
-
-(*
-val add23 =
-expr_eval(Add(Int(2), Int(3)))
-val sub23 =
-expr_eval(Sub(Int(2), Int(3)))
-val mul23 =
-expr_eval(Mul(Int(2), Int(3)))
-val div23 =
-expr_eval(Div(Int(2), Int(3)))
-*)
-
-(* ****** ****** *)
+//
 val
-EPSILON = 0.000001
+EPSILON = 1E-6
 fun
 expr_iseqz
 (x0: expr): bool =
@@ -210,6 +198,7 @@ end // end of [map0$fopr]
 //
 (* ****** ****** *)
 
+(*
 fun
 nodes_childlst
 ( xss
@@ -229,6 +218,15 @@ stream_vt_append
 (node_childlst(xs), nodes_childlst(xss))
 )
 )
+*)
+fun
+nodes_childlst(xss) =
+(
+stream_vt_mapstrm0(xss)
+) where
+{
+impltmp mapstrm0$fopr<node> = node_childlst
+}
 
 (* ****** ****** *)
 
@@ -285,12 +283,14 @@ val xs = play(3, 3, 8, 8)
 val-cons_vt(x0, xs) = !xs in $free(xs); x0
 end
 //
+(*
 val
 sol_4_4_10_10 =
 let
 val xs = play(4, 4, 10, 10)
 val-cons_vt(x0, xs) = !xs in $free(xs); x0
 end
+*)
 //
 (* ****** ****** *)
 
