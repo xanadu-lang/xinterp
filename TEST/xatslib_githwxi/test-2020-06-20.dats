@@ -163,10 +163,9 @@ node_childlst
 : node
 )
 : stream_vt(node) =
-stream_vt_concat<node>
 (
-  stream_vt_map0
-  (list_nchoose2(xs, 2))
+stream_vt_maplst0
+(list_nchoose2(xs, 2))
 ) where
 {
 typedef
@@ -176,8 +175,8 @@ xs = list(x0)
 typedef
 xss = stream_vt(xs)
 impltmp
-map0$fopr
-<(xs,xs)><xss>
+maplst0$fopr
+<(xs,xs)><xs>
   (pp) =
 let
 val xx = pp.0
@@ -187,7 +186,7 @@ list_cons
 ( x1
 , list_cons(x2, _)) = xx
 in
-gseq_map_stream<x0><xs>
+list_map_vt<x0><xs>
 (fopr_expr_expr(x1, x2)) where
 {
 impltmp
