@@ -322,6 +322,22 @@ tok.node() of
 end // end of [auxchr]
 
 fun
+auxflt
+( ire0
+: ir0exp): ir0val =
+let
+val-
+IR0Eflt(tok) = ire0.node()
+in(*in-of-let*)
+//
+case-
+tok.node() of
+| T_FLOAT1(rep) =>
+  IR0Vflt(g0string2float(rep))
+//
+end // end of [auxstr]
+
+fun
 auxstr
 ( ire0
 : ir0exp): ir0val =
@@ -2102,6 +2118,7 @@ ire0.node() of
 | IR0Ebtf _ => auxbtf(ire0)
 | IR0Echr _ => auxchr(ire0)
 //
+| IR0Eflt _ => auxflt(ire0)
 | IR0Estr _ => auxstr(ire0)
 //
 | IR0Etop _ => auxtop(ire0)

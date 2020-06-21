@@ -219,10 +219,8 @@ x0.node() of
   fprint!(out, "IR0Ebtf(", tok, ")")
 | IR0Echr(tok) =>
   fprint!(out, "IR0Echr(", tok, ")")
-(*
 | IR0Eflt(tok) =>
   fprint!(out, "IR0Eflt(", tok, ")")
-*)
 | IR0Estr(tok) =>
   fprint!(out, "IR0Estr(", tok, ")")
 //
