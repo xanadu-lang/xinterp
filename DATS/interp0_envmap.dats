@@ -615,6 +615,12 @@ end // end of [interp0_insert_d2var]
 end // end of [local]
 
 (* ****** ****** *)
+//
+// For
+// some functions declared
+// in prelude/SATS/bool.sats
+//
+(* ****** ****** *)
 
 fun
 bool_neg
@@ -654,6 +660,12 @@ let
 val () = print(x) in IR0Vnil() end
 end // end of [bool_print]
 
+(* ****** ****** *)
+//
+// For
+// some functions declared
+// in prelude/SATS/char.sats
+//
 (* ****** ****** *)
 //
 fun
@@ -724,6 +736,12 @@ val-IR0Vchr(x) = x
 val-IR0Vchr(y) = y in IR0Vbtf(x != y) end
 
 (* ****** ****** *)
+//
+// For
+// some functions declared
+// in prelude/SATS/gint.sats
+//
+(* ****** ****** *)
 
 fun
 gint_print_sint
@@ -749,6 +767,8 @@ let
 val-IR0Vint(x) = x in IR0Vint(abs(x))
 end
 //
+(* ****** ****** *)
+//
 fun
 gint_succ_sint
 (x: ir0val): ir0val =
@@ -761,7 +781,7 @@ let
 val-IR0Vint(x) = x in IR0Vint(x - 1) end
 //
 (* ****** ****** *)
-
+//
 fun
 gint_lt_sint_sint
 ( x: ir0val
@@ -776,7 +796,15 @@ gint_gt_sint_sint
 let
 val-IR0Vint(x) = x
 val-IR0Vint(y) = y in IR0Vbtf(x > y) end
-
+//
+fun
+gint_eq_sint_sint
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vint(x) = x
+val-IR0Vint(y) = y in IR0Vbtf(x = y) end
+//
 fun
 gint_lte_sint_sint
 ( x: ir0val
@@ -791,14 +819,7 @@ gint_gte_sint_sint
 let
 val-IR0Vint(x) = x
 val-IR0Vint(y) = y in IR0Vbtf(x >= y) end
-
-fun
-gint_eq_sint_sint
-( x: ir0val
-, y: ir0val): ir0val =
-let
-val-IR0Vint(x) = x
-val-IR0Vint(y) = y in IR0Vbtf(x = y) end
+//
 fun
 gint_neq_sint_sint
 ( x: ir0val
@@ -861,6 +882,161 @@ let
 val-IR0Vint(x) = x
 val-IR0Vint(y) = y in IR0Vint(x % y) end
 
+(* ****** ****** *)
+//
+// For
+// some functions declared
+// in prelude/SATS/gflt.sats
+//
+(* ****** ****** *)
+//
+fun
+gflt_i_dflt
+(x: ir0val): ir0val =
+let
+val-IR0Vint(x) = x
+in
+IR0Vflt(g0int2float_int_double(x))
+end
+//
+(* ****** ****** *)
+//
+fun
+gflt_neg_dflt
+(x: ir0val): ir0val =
+let
+val-IR0Vflt(x) = x in IR0Vflt(~x) end
+//
+fun
+gflt_abs_dflt
+(x: ir0val): ir0val =
+let
+val-IR0Vflt(x) = x in IR0Vflt(abs(x))
+end
+//
+(* ****** ****** *)
+//
+fun
+gflt_succ_dflt
+(x: ir0val): ir0val =
+let
+val-IR0Vflt(x) = x in IR0Vflt(x + 1) end
+fun
+gflt_pred_dflt
+(x: ir0val): ir0val =
+let
+val-IR0Vflt(x) = x in IR0Vflt(x - 1) end
+//
+(* ****** ****** *)
+//
+fun
+gflt_lt_dflt_dflt
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vflt(x) = x
+val-IR0Vflt(y) = y in IR0Vbtf(x < y) end
+fun
+gflt_gt_dflt_dflt
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vflt(x) = x
+val-IR0Vflt(y) = y in IR0Vbtf(x > y) end
+//
+fun
+gflt_eq_dflt_dflt
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vflt(x) = x
+val-IR0Vflt(y) = y in IR0Vbtf(x = y) end
+//
+fun
+gflt_lte_dflt_dflt
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vflt(x) = x
+val-IR0Vflt(y) = y in IR0Vbtf(x <= y) end
+fun
+gflt_gte_dflt_dflt
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vflt(x) = x
+val-IR0Vflt(y) = y in IR0Vbtf(x >= y) end
+//
+fun
+gflt_neq_dflt_dflt
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vflt(x) = x
+val-IR0Vflt(y) = y in IR0Vbtf(x != y) end
+//
+(* ****** ****** *)
+//
+fun
+gflt_cmp_dflt_dflt
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vflt(x) = x
+val-IR0Vflt(y) = y in IR0Vint(compare(x, y)) end
+//
+(* ****** ****** *)
+
+fun
+gflt_add_dflt_dflt
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vflt(x) = x
+val-IR0Vflt(y) = y in IR0Vflt(x + y) end
+
+fun
+gflt_sub_dflt_dflt
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vflt(x) = x
+val-IR0Vflt(y) = y in IR0Vflt(x - y) end
+
+(* ****** ****** *)
+
+fun
+gflt_mul_dflt_dflt
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vflt(x) = x
+val-IR0Vflt(y) = y in IR0Vflt(x * y) end
+
+fun
+gflt_div_dflt_dflt
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vflt(x) = x
+val-IR0Vflt(y) = y in IR0Vflt(x / y) end
+
+(*
+fun
+gflt_mod_dflt_dflt
+( x: ir0val
+, y: ir0val): ir0val =
+let
+val-IR0Vflt(x) = x
+val-IR0Vflt(y) = y in IR0Vflt(x % y) end
+*)
+
+(* ****** ****** *)
+//
+// For
+// some functions declared
+// in prelude/SATS/string.sats
+//
 (* ****** ****** *)
 //
 fun
@@ -1351,6 +1527,14 @@ if
 then
 {
 //
+(* ****** ****** *)
+//
+// For
+// some functions declared
+// in prelude/SATS/bool.sats
+//
+(* ****** ****** *)
+//
 val () =
 the_d2cstdef_insert
 (
@@ -1375,6 +1559,12 @@ the_d2cstdef_insert
 d2cst("xint_bool_print")
 ,
 IR0Vfun(firfun1(bool_print)))
+//
+(* ****** ****** *)
+//
+// For
+// some functions declared
+// in prelude/SATS/char.sats
 //
 (* ****** ****** *)
 //
@@ -1429,6 +1619,12 @@ the_d2cstdef_insert
 d2cst("xint_char_print")
 ,
 IR0Vfun(firfun1(char_print)))
+//
+(* ****** ****** *)
+//
+// For
+// some functions declared
+// in prelude/SATS/gint.sats
 //
 (* ****** ****** *)
 //
@@ -1585,6 +1781,166 @@ d2cst
 ,
 IR0Vfun
 (firfun2(gint_mod_sint_sint)))
+//
+(* ****** ****** *)
+//
+// For
+// some functions declared
+// in prelude/SATS/gflt.sats
+//
+(* ****** ****** *)
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_gflt_i_dflt")
+,
+IR0Vfun
+(firfun1(gflt_i_dflt)))
+//
+(* ****** ****** *)
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_gflt_neg_dflt")
+,
+IR0Vfun
+(firfun1(gflt_neg_dflt)))
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_gflt_abs_dflt")
+,
+IR0Vfun
+(firfun1(gflt_abs_dflt)))
+//
+(* ****** ****** *)
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_gflt_succ_dflt")
+,
+IR0Vfun
+(firfun1(gflt_succ_dflt)))
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_gflt_pred_dflt")
+,
+IR0Vfun
+(firfun1(gflt_pred_dflt)))
+//
+(* ****** ****** *)
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_gflt_lt_dflt_dflt")
+,
+IR0Vfun
+(firfun2(gflt_lt_dflt_dflt)))
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_gflt_gt_dflt_dflt")
+,
+IR0Vfun
+(firfun2(gflt_gt_dflt_dflt)))
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_gflt_eq_dflt_dflt")
+,
+IR0Vfun
+(firfun2(gflt_eq_dflt_dflt)))
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_gflt_lte_dflt_dflt")
+,
+IR0Vfun
+(firfun2(gflt_lte_dflt_dflt)))
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_gflt_gte_dflt_dflt")
+,
+IR0Vfun
+(firfun2(gflt_gte_dflt_dflt)))
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_gflt_neq_dflt_dflt")
+,
+IR0Vfun
+(firfun2(gflt_neq_dflt_dflt)))
+//
+(* ****** ****** *)
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_gflt_add_dflt_dflt")
+,
+IR0Vfun
+(firfun2(gflt_add_dflt_dflt)))
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_gflt_sub_dflt_dflt")
+,
+IR0Vfun
+(firfun2(gflt_sub_dflt_dflt)))
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_gflt_mul_dflt_dflt")
+,
+IR0Vfun
+(firfun2(gflt_mul_dflt_dflt)))
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_gflt_div_dflt_dflt")
+,
+IR0Vfun
+(firfun2(gflt_div_dflt_dflt)))
+(*
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_gflt_mod_dflt_dflt")
+,
+IR0Vfun
+(firfun2(gflt_mod_dflt_dflt)))
+*)
+//
+(* ****** ****** *)
+//
+// For
+// some functions declared
+// in prelude/SATS/string.sats
 //
 (* ****** ****** *)
 //
