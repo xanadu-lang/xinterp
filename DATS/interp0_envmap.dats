@@ -1224,6 +1224,9 @@ local
 #staload
 STDIO =
 "libats/libc/SATS/stdio.sats"
+#staload
+STDLIB =
+"libats/libc/SATS/stdlib.sats"
 //
 in(*in-of-local*)
 //
@@ -1243,7 +1246,7 @@ fgetc_ref
 let
 val-IR0Vptr(fr) = fr
 in
-  IR0Vint($STDIO.fgetc0($UN.cast(fr)))
+IR0Vint($STDIO.fgetc0($UN.cast(fr)))
 end
 //
 fun
@@ -1254,7 +1257,29 @@ let
 val-IR0Vint(c0) = c0
 val-IR0Vptr(fr) = fr
 in
-IR0Vint($STDIO.fputc0_int(c0, $UN.cast(fr)))
+IR0Vint
+($STDIO.fputc0_int(c0, $UN.cast(fr)))
+end
+//
+(* ****** ****** *)
+//
+fun
+rand_nint_limit
+( x0 : ir0val ): ir0val  =
+let
+//
+val-IR0Vint(x0) = x0
+//
+val x0 = g1ofg0(x0)
+val () = assert(x0 > 0)
+val r0 = $STDLIB.random()
+//
+val x0 = $UN.cast{uint}(x0)
+val r0 = $UN.cast{uint}(r0)
+//
+in
+IR0Vint
+($UN.cast{int}(g0uint_mod_uint(r0, x0)))
 end
 //
 end // end of [local]
@@ -2118,6 +2143,14 @@ d2cst
 ("xint_fputc_ref")
 ,
 IR0Vfun(firfun2(fputc_ref)))
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_rand_nint_limit")
+,
+IR0Vfun(firfun1(rand_nint_limit)))
 //
 } (* end of [then] *) 
 //
