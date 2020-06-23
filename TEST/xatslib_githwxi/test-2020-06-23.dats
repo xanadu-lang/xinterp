@@ -47,10 +47,6 @@
 "xatslib/githwxi/DATS/mytest.dats"
 (* ****** ****** *)
 
-impltmp rand<int>() = 0
-
-(* ****** ****** *)
-
 impltmp
 {a:t0}
 rand<list(a)>() =
@@ -80,9 +76,18 @@ end
 
 (* ****** ****** *)
 
+local
+impltmp
+rand<int>() =
+rand_nint_limit<>(2)
+in
 val
 test1 =
 mytest_fun_asso(list_append<int>)
+val
+test2 =
+mytest_fun_comm(list_append<int>)
+end
 
 (* ****** ****** *)
 
