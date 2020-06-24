@@ -47,6 +47,7 @@
 "xatslib/githwxi/DATS/mytest.dats"
 (* ****** ****** *)
 
+(*
 impltmp
 {a:t0}
 rand<list(a)>() =
@@ -73,6 +74,7 @@ list_vt_cons
 in
   auxlst(rand_list<a>((*void*)))
 end
+*)
 
 (* ****** ****** *)
 

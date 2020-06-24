@@ -2613,7 +2613,11 @@ case- irv0 of
 |
 IR0Vcon(d2c1, irvs) =>
 if
-d2c0=d2c1
+(
+d2c0.tag()
+=
+d2c1.tag()
+)
 then
 interp0_irpatlst_ck0(irps, irvs)
 else false
