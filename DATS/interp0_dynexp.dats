@@ -2573,6 +2573,24 @@ case+ xs of
 
 (* ****** ****** *)
 
+fun
+interp0_d2con_ck0
+( d2c1
+: d2con
+, d2c2
+: d2con ) : bool =
+let
+  val tag1 = d2c1.tag((*void*))
+in
+  if
+  (tag1 < 0)
+  then (d2c1 = d2c2)
+  else (tag1 = d2c2.tag((*void*)))
+  // end of [if]
+end // end of [interp0_d2con_ck0]
+
+(* ****** ****** *)
+
 implement
 interp0_irpat_ck0
   (irp0, irv0) =
@@ -2597,26 +2615,28 @@ IR0Pany() => true
 IR0Pvar(d2v0) => true
 //
 |
-IR0Pbang(irp1) =>
+IR0Pbang
+( irp1 ) =>
 interp0_irpat_ck0(irp1, irv0)
 |
-IR0Pflat(irp1) =>
+IR0Pflat
+( irp1 ) =>
 interp0_irpat_ck0(irp1, irv0)
 |
-IR0Pfree(irp1) =>
+IR0Pfree
+( irp1 ) =>
 interp0_irpat_ck0(irp1, irv0)
 //
 |
-IR0Pcapp(d2c0, irps) =>
+IR0Pcapp
+(d2c0, irps) =>
 (
 case- irv0 of
 |
 IR0Vcon(d2c1, irvs) =>
 if
 (
-d2c0.tag()
-=
-d2c1.tag()
+interp0_d2con_ck0(d2c0, d2c1)
 )
 then
 interp0_irpatlst_ck0(irps, irvs)
