@@ -84,12 +84,12 @@ rand<int>() =
 rand_nint_limit<>(2)
 in
 val
-test1 =
+test1 = // true
 mytest_fun_asso(list_append<int>)
 val
-test2 =
+test2 = // false
 mytest_fun_comm(list_append<int>)
-end
+end // end of [local]
 
 (* ****** ****** *)
 
