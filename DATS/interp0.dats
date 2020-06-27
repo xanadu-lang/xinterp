@@ -1290,9 +1290,9 @@ val+
 list_cons
 (arg0, args) = args where
 {
-  val
-  args =
-  parse_commarglst(argc, argv)
+  val args =
+    parse_commarglst(argc, argv)
+  // end of [val]
 } (* end of [val] *)
 //
 var
@@ -1319,8 +1319,7 @@ st0: cmdstate =
 //
 } (* end of [var] *)
 //
-val () =
-process_cmdline(st0, args)
+val () = process_cmdline(st0, args)
 //
 in
 //

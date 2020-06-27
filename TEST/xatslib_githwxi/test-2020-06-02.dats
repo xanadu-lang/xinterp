@@ -32,7 +32,7 @@
 (* ****** ****** *)
 
 #staload
-"xatslib/githwxi/DATS/gtree.dats"
+"xatslib/githwxi/DATS/gtree1.dats"
 
 (* ****** ****** *)
 

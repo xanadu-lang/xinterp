@@ -1069,6 +1069,7 @@ in
 IR0Vstr
 ($UN.cast(ptr0_succ<char>(p)))
 end // end of [string_tail_raw]
+//
 fun
 string_print
 (x: ir0val): ir0val =
@@ -1076,8 +1077,24 @@ let
 val-IR0Vstr(x) = x in
 let
 val () = print(x) in IR0Vnil() end
-end // end of [string_print]
-
+end // end of [ string_print ]
+//
+(* ****** ****** *)
+//
+fun
+string_get_at
+(x: ir0val
+,i: ir0val): ir0val =
+let
+val-IR0Vstr(x) = x
+val-IR0Vint(i) = i in
+let
+val p = string2ptr(x)
+in
+IR0Vchr($UN.ptr0_get_at<char>(p, i))
+end
+end // end of [ string_get_at ]
+//
 (* ****** ****** *)
 
 fun
@@ -1984,13 +2001,6 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("xint_string_print"),
-IR0Vfun(firfun1(string_print)))
-//
-val () =
-the_d2cstdef_insert
-(
-d2cst
 ("xint_string_head_opt"),
 IR0Vfun
 (firfun1(string_head_opt)))
@@ -2008,6 +2018,22 @@ d2cst
 ("xint_string_tail_raw"),
 IR0Vfun
 (firfun1(string_tail_raw)))
+//
+(* ****** ****** *)
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_string_print"),
+IR0Vfun(firfun1(string_print)))
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_string_get_at"),
+IR0Vfun(firfun2(string_get_at)))
 //
 (* ****** ****** *)
 
