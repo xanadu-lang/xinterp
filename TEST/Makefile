@@ -126,15 +126,21 @@ test-2020-03-22
 test-2020-03-22: ; \
 $(XINTERP) -d ./xatslib_githwxi/test-2020-03-22.dats
 
+######
+
 test:: \
 test-2020-04-19
 test-2020-04-19: ; \
 $(XINTERP) -d ./xatslib_githwxi/test-2020-04-19.dats
 
+######
+
 test:: \
 test-2020-05-17
 test-2020-05-17: ; \
 $(XINTERP) -d ./xatslib_githwxi/test-2020-05-17.dats
+
+######
 
 test:: \
 test-2020-06-02
@@ -156,14 +162,10 @@ test-2020-06-07
 test-2020-06-07: ; \
 $(XINTERP) -d ./xatslib_githwxi/test-2020-06-07.dats
 
-######
-
 test:: \
 test-2020-06-08
 test-2020-06-08: ; \
 $(XINTERP) -d ./xatslib_githwxi/test-2020-06-08.dats
-
-######
 
 test:: \
 test-2020-06-17
@@ -174,8 +176,6 @@ test:: \
 test-2020-06-18
 test-2020-06-18: ; \
 $(XINTERP) -d ./xatslib_githwxi/test-2020-06-18.dats
-
-######
 
 test:: \
 test-2020-06-20
@@ -191,6 +191,16 @@ test:: \
 test-2020-06-23
 test-2020-06-23: ; \
 $(XINTERP) -d ./xatslib_githwxi/test-2020-06-23.dats
+
+test:: \
+test-2020-06-26
+test-2020-06-26: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-06-26.dats
+
+test:: \
+test-2020-06-27
+test-2020-06-27: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-06-27.dats
 
 ######
 

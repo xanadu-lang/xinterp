@@ -130,42 +130,44 @@ list_vt_nil()
 in loop(i0, r0) end where
 {
 //
-  typedef
-  i0 = nintlte(26)
-  typedef
-  r0 = list_vt(string_vt(n))
+typedef
+i0 = nintlte(26)
+typedef
+r0 = list_vt(string_vt(n))
 //
-  fun
-  loop
-  (i0: i0, r0: r0): r0 =
-  if
-  (i0 = 0)
-  then r0 else
-  let
+fun
+loop
+(i0: i0, r0: r0): r0 =
+if
+(i0 = 0)
+then r0 else
+let
   val i1 = pred(i0)
-  val c1 = string_get_at(alpha, i1)
+  val c1 =
+  string_get_at(alpha, i1)
+in
+  if
+  (c0 = c1)
+  then loop(i1, r0) else let
+    val cs =
+    string_fset_at(cs, i0, c1)
   in
-    if
-    (c0 = c1)
-    then loop(i1, r0)
-    else let
-      val cs =
-      string_fset_at(cs, i0, c1)
-    in
-      loop(i1, list_vt_cons(cs, r0))
-    end
-  end (*end-of-else*)
+    loop(i1, list_vt_cons(cs, r0))
+  end
+end (*end-of-else*)
 //
 }
 end // end of [helper2]
 
 (* ****** ****** *)
-
+//
+local
 impltmp
-g_free<string_vt>(cs) = ()
-
+g_free<string_vt>(cs) = () // leak!
+in
 val nword = length(helper1("water"))
-
+end
+//
 (* ****** ****** *)
 
 (* end of [test-2020-06-26.dats] *)
