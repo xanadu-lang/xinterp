@@ -8,6 +8,8 @@
 #staload
 "prelude/DATS/gbas.dats"
 #staload
+"prelude/DATS/gnum.dats"
+#staload
 "prelude/DATS/gseq.dats"
 #staload
 "prelude/DATS/unsafe.dats"
@@ -91,6 +93,16 @@ val x = sint('x')
 in
 string_tabulate_cfr(3, lam(i) => char(x+i))
 end // end of [val]
+
+(* ****** ****** *)
+
+val avg =
+(
+gseq_map_add(xyz) / 3
+) where
+{
+  impltmp map$fopr<char><sint>(c) = sint(c)
+}
 
 (* ****** ****** *)
 
