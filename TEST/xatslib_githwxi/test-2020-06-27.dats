@@ -86,4 +86,46 @@ val f91_23 = f91(23)
 
 (* ****** ****** *)
 
+fun
+fibo(n: int) =
+(
+dvdcnq_solve<i><o>(n)
+) where
+{
+//
+typedef i = int
+typedef o = int
+//
+impltmp
+dvdcnq_divide<i><o>
+(x0) =
+list_vt_pair(x0-1, x0-2)
+impltmp
+dvdcnq_solve_cmb<i><o>(rs) =
+(
+r1 + r2
+) where
+{
+val- ~
+list_vt_cons(r1, rs) = rs
+val- ~
+list_vt_cons(r2, rs) = rs
+}
+//
+impltmp
+dvdcnq_solve_rec<i><o> =
+lam(x0) => fibo(x0)
+impltmp
+dvdcnq_solve_try<i><o> =
+lam(x0) =>
+if x0 >= 2 then either_l(x0) else either_r(x0)
+//
+} (* where *) // end of [fibonacci]
+
+(* ****** ****** *)
+
+val fibo10 = fibo(10)
+
+(* ****** ****** *)
+
 (* end of [test-2020-06-27.dats] *)
