@@ -61,7 +61,7 @@ dvdcnq_divide<i><o>
 (x0) =
 list_vt_sing(x0+11)
 impltmp
-dvdcnq_solve_cmb<i><o>(rs) =
+dvdcnq_solved_cmb<i><o>(rs) =
 (
 f91(r1)
 ) where
@@ -75,7 +75,9 @@ dvdcnq_solve_rec<i><o>(x0) = f91(x0)
 //
 impltmp
 dvdcnq_solve_try<i><o>(x0) =
-if x0 <= 100 then either_l(x0) else either_r(x0-10)
+if
+(x0 <= 100)
+then either_l(x0) else either_r(x0-10)
 //
 } (* where *) // end of [f91]
 
@@ -101,7 +103,7 @@ dvdcnq_divide<i><o>
 (x0) =
 list_vt_pair(x0-1, x0-2)
 impltmp
-dvdcnq_solve_cmb<i><o>(rs) =
+dvdcnq_solved_cmb<i><o>(rs) =
 (
 r1 + r2
 ) where
@@ -118,9 +120,11 @@ lam(x0) => fibo(x0)
 impltmp
 dvdcnq_solve_try<i><o> =
 lam(x0) =>
-if x0 >= 2 then either_l(x0) else either_r(x0)
+if
+(x0 >= 2)
+then either_l(x0) else either_r(x0)
 //
-} (* where *) // end of [fibonacci]
+} (* where *) // end of [fibo]
 
 (* ****** ****** *)
 
