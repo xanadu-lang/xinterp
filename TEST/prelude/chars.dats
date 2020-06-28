@@ -74,6 +74,18 @@ val rZi = gseq_rindexof(alphabet, 'Z')
 
 (* ****** ****** *)
 
+val a =
+list_cons<cgtz>
+('a', list_nil())
+val b =
+list_cons<cgtz>
+('b', list_nil())
+val c =
+list_cons<cgtz>
+('c', list_nil())
+
+(* ****** ****** *)
+
 val abc =
 list_cons
 ('a'

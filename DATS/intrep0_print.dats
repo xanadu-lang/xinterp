@@ -235,15 +235,24 @@ x0.node() of
 | IR0Ecst1(d2c) =>
   fprint!(out, "IR0Ecst1(", d2c, ")")
 //
+| IR0Efcon(d2c) =>
+  fprint!(out, "IR0Efcon(", d2c, ")")
 | IR0Efcst(d2c) =>
   fprint!(out, "IR0Efcst(", d2c, ")")
 //
+| IR0Etcon
+  (d2c1, ti3a, ti2s) =>
+  fprint!
+  ( out
+  , "IR0Etcon("
+  , d2c1, "; ", ti3a, "; ", ti2s, ")")
 | IR0Etcst
   (d2c1, ti3a, ti2s) =>
   fprint!
   ( out
   , "IR0Etcst("
   , d2c1, "; ", ti3a, "; ", ti2s, ")")
+//
 | IR0Etimp
   ( ire1
   , targ, irc2, tsub) =>

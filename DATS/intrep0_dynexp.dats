@@ -384,15 +384,24 @@ d3e0.node() of
   ir0exp_make_node
   (loc0, IR0Ecst1(d2c))
 //
+| D3Efcon(d2c) =>
+  ir0exp_make_node
+  (loc0, IR0Efcon(d2c))
 | D3Efcst(d2c) =>
   ir0exp_make_node
   (loc0, IR0Efcst(d2c))
 //
+| D3Etcon
+  (d2c1, ti3a, ti2s) =>
+  ir0exp_make_node
+  ( loc0
+  , IR0Etcon(d2c1, ti3a, ti2s))
 | D3Etcst
   (d2c1, ti3a, ti2s) =>
   ir0exp_make_node
   ( loc0
   , IR0Etcst(d2c1, ti3a, ti2s))
+//
 | D3Etimp
   ( d3e1(*tcst*), targ
   , d3cl(*impl*), tsub) =>

@@ -363,6 +363,8 @@ val-
 IR0Etop(tok) = ire0.node()
 }
 
+(* ****** ****** *)
+
 fun
 auxvar
 ( env0
@@ -385,6 +387,8 @@ in
 case- opt of ~Some_vt(irv) => irv
 end // end of [auxvar]
 
+(* ****** ****** *)
+
 fun
 auxcon1
 ( env0
@@ -398,6 +402,24 @@ lam(arg) => IR0Vcon(d2c0, arg)
 {
 val-IR0Econ1(d2c0) = ire0.node()
 }
+
+(* ****** ****** *)
+
+fun
+auxfcon
+( env0
+: !intpenv
+, ire0
+: ir0exp): ir0val =
+IR0Vfun
+(
+lam(arg) => IR0Vcon(d2c0, arg)
+) where
+{
+val-IR0Efcon(d2c0) = ire0.node()
+}
+
+(* ****** ****** *)
 
 fun
 auxfcst
@@ -441,6 +463,22 @@ interp0_search_d2cst(env0, d2c)
 } (* end of [else] *)
 //
 end // end of [auxfcst]
+
+(* ****** ****** *)
+
+fun
+auxtcon
+( env0
+: !intpenv
+, ire0
+: ir0exp): ir0val =
+IR0Vfun
+(
+lam(arg) => IR0Vcon(d2c0, arg)
+) where
+{
+val-IR0Etcon(d2c0, _, _) = ire0.node()
+}
 
 (* ****** ****** *)
 
@@ -2127,11 +2165,14 @@ ire0.node() of
 //
 | IR0Econ1 _ => auxcon1(env0, ire0)
 //
+| IR0Efcon _ => auxfcon(env0, ire0)
 | IR0Efcst _ => auxfcst(env0, ire0)
 //
+| IR0Etcon _ => auxtcon(env0, ire0)
 (*
 | IR0Etcst _ => auxtcst(env0, ire0)
 *)
+//
 | IR0Etimp _ => auxtimp(env0, ire0)
 //
 | IR0Edapp _ => auxdapp(env0, ire0)

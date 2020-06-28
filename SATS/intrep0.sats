@@ -260,7 +260,12 @@ ir0exp_node =
 | IR0Econ1 of (d2con)
 | IR0Ecst1 of (d2cst)
 //
+| IR0Efcon of (d2con)
 | IR0Efcst of (d2cst)
+//
+| IR0Etcon of
+  ( d2con
+  , ti3arg, ti2arglst)
 | IR0Etcst of
   ( d2cst
   , ti3arg, ti2arglst)
