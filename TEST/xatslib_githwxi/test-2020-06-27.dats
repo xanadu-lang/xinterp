@@ -299,11 +299,15 @@ list_vt_cons(6,
 list_vt_cons(4,
 list_vt_cons(0,
 list_vt_cons(9,
-list_vt_cons(1, list_vt_nil()))))))))))
+list_vt_cons(1,
+list_vt_nil()))))))))))
+val
+xs_sorted = mergesort<int>(xs)
 
 (* ****** ****** *)
-
-val ys = mergesort<int>(xs)
+val
+ys_sorted =
+mergesort<int>(rand_list<int>())
 
 (* ****** ****** *)
 
