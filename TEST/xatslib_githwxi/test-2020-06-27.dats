@@ -272,18 +272,20 @@ list_vt_cons(r1, rs) = rs
 val- ~
 list_vt_cons(r2, rs) = rs
 //
-val-
-~list_vt_nil((*void*)) = rs
+val- ~
+list_vt_nil((*void*)) = rs
 //
 in
-let
-var xs: ?xs in merge(r1, r2, xs); xs
-end
+  let
+    var xs: ?xs
+  in
+    merge(r1, r2, xs); xs
+  end
 end
 //
 } // end of [where] // [amain]
 in
-  amain(T(xs, length(xs)))
+  amain( T(xs, length(xs)) )
 end // end of [let]
 end (* end of [mergesort] *)
 
@@ -305,9 +307,9 @@ val
 xs_sorted = mergesort<int>(xs)
 
 (* ****** ****** *)
+
 val
-ys_sorted =
-mergesort<int>(rand_list<int>())
+ys_sorted = mergesort<int>(rand())
 
 (* ****** ****** *)
 

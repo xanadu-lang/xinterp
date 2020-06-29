@@ -21,7 +21,13 @@
 "prelude/DATS/gseq.dats"
 (* ****** ****** *)
 #staload
+"prelude/DATS/bool.dats"
+#staload
+"prelude/DATS/char.dats"
+#staload
 "prelude/DATS/gint.dats"
+#staload
+"prelude/DATS/string.dats"
 (* ****** ****** *)
 #staload
 UN =
@@ -113,6 +119,21 @@ where
 {
 impltmp
 z2map$fopr<int,int>(x0, y0) = x0 + y0 }
+
+(* ****** ****** *)
+
+val xs11 =
+gseq_imap_list("abcde") where
+{
+impltmp
+imap$fopr<cgtz><(nint,cgtz)>(i,c) = (i,c)
+}
+val xs12 =
+gseq_imap_rlist("abcde") where
+{
+impltmp
+imap$fopr<cgtz><(nint,cgtz)>(i,c) = (i,c)
+}
 
 (* ****** ****** *)
 
