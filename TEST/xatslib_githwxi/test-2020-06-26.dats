@@ -97,7 +97,7 @@ helper2
 implfun
 helper1
 {n}(cs) =
-stream_vt_maplst0
+stream_vt_maplist0
 (
 gint_streamize_nint(length(cs))
 ) where
@@ -107,7 +107,7 @@ x0 = nintlt(n)
 typedef
 y0 = string_vt(n)
 impltmp
-maplst0$fopr<x0><y0>(i0) = helper2(cs, i0)
+maplist0$fopr<x0><y0>(i0) = helper2(cs, i0)
 }
 
 (* ****** ****** *)

@@ -44,6 +44,11 @@ gfact: ; $(XINTERP) -d ./prelude/gfact.dats
 #
 ######
 #
+test:: gfors
+gfors: ; $(XINTERP) -d ./prelude/gfors.dats
+#
+######
+#
 test:: gints
 gints: ; $(XINTERP) -d ./prelude/gints.dats
 #

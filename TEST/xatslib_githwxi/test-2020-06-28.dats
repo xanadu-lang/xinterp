@@ -114,12 +114,15 @@ end (* end of [helper1] *)
 //
 (* ****** ****** *)
 //
+(*
 local
 impltmp
 g_free<string_vt>(cs) = () // leak!
 in
 val nword = length(helper1("water"))
 end
+*)
+val words = listize(helper1("water"))
 //
 (* ****** ****** *)
 
