@@ -14,11 +14,11 @@ impltmp
 <x0>(*tmp*)
 stream_filter(xs) =
 (
-stream_mapopt(xs)
+stream_mapoptn(xs)
 ) where
 {
 impltmp
-mapopt$fopr<x0><x0>(x0) = 
+mapoptn$fopr<x0><x0>(x0) = 
 if
 filter$test(x0)
 then optn_vt_cons(x0) else optn_vt_nil()

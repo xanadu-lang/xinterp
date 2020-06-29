@@ -99,13 +99,15 @@ typedef x0 = cgtz
 typedef xs = string
 typedef y0 = cgtz
 typedef ys = string
-typedef z0 = string_vt(n)
 impltmp
 x2imap$fopr
-<x0,y0><z0>
-(i, c0, j, c1) = string_fset_at(cs, i, c1)
+<x0,y0>
+( i, c0
+, j, c1 ) =
+string_fset_at(cs, i, c1)
 impltmp
-x2ifilter$test<x0,y0>(i, c0, j, c1) = (c0 != c1)
+x2ifilter$test<x0,y0>
+(_, c0, _, c1) = (c0 != c1)
 in
   gseq_x2imapopt_stream(cs, alpha)
 end (* end of [helper1] *)

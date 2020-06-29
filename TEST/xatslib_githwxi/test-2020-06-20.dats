@@ -164,7 +164,7 @@ node_childlst
 )
 : stream_vt(node) =
 (
-stream_vt_maplst0
+stream_vt_maplist0
 (list_nchoose2(xs, 2))
 ) where
 {
@@ -175,7 +175,7 @@ xs = list(x0)
 typedef
 xss = stream_vt(xs)
 impltmp
-maplst0$fopr
+maplist0$fopr
 <(xs,xs)><xs>
   (pp) =
 let
@@ -246,13 +246,13 @@ val
 xss = nodes_childlst(xss)
 in
 (
-stream_vt_mapopt0<xs><x0>(xss)
+stream_vt_mapoptn0<xs><x0>(xss)
 ) where
 {
 typedef x0 = expr
 typedef xs = list(x0)
 impltmp
-mapopt0$fopr
+mapoptn0$fopr
 <xs><x0>(xs) =
 let
 val-
