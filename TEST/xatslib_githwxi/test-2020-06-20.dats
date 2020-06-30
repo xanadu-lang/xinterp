@@ -52,6 +52,9 @@ local
 absopen rat_type
 in
 //
+fun
+rat(f0: dflt): rat = f0
+//
 impltmp
 g_i<rat> = gflt_i_dflt<>
 //
@@ -104,7 +107,8 @@ case+ x0 of
 (* ****** ****** *)
 //
 val
-EPSILON = 1E-6
+EPSILON = rat(1E-6)
+//
 fun
 expr_iseqz
 (x0: expr): bool =
