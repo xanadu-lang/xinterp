@@ -415,6 +415,8 @@ d3e0.node() of
       (ire1, targ, ircl, tsub))
   end
 //
+| D3Esap0
+  (d3e1, _) => irerase_dexp(d3e1)
 | D3Esap1
   (d3e1, _) => irerase_dexp(d3e1)
 //

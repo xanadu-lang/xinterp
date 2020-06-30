@@ -12,6 +12,8 @@
 #staload
 "prelude/DATS/gord.dats"
 #staload
+"prelude/DATS/gfor.dats"
+#staload
 "prelude/DATS/gseq.dats"
 #staload
 "prelude/DATS/gseq_vt.dats"
