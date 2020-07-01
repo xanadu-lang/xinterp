@@ -49,6 +49,11 @@ gfors: ; $(XINTERP) -d ./prelude/gfors.dats
 #
 ######
 #
+test:: gfuns
+gfuns: ; $(XINTERP) -d ./prelude/gfuns.dats
+#
+######
+#
 test:: gints
 gints: ; $(XINTERP) -d ./prelude/gints.dats
 #

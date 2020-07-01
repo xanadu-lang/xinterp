@@ -68,7 +68,7 @@ g_inp_line_list<>()
 
 (* ****** ****** *)
 
-val cs = g_inp_chars<>()
+val cs = g_inp_cstream<>()
 val ln = stream_vt_length(cs)
 
 (* ****** ****** *)
