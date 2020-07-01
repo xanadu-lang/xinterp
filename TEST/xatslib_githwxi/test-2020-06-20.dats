@@ -176,7 +176,7 @@ typedef
 x0 = expr
 typedef
 xs = list(x0)
-typedef
+vwtpdef
 xss = stream_vt(xs)
 impltmp
 maplist0$fopr

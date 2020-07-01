@@ -214,7 +214,7 @@ let
 //
 typedef
 out = xs
-datavtype
+datavwtp
 inp = T of (xs, nint)
 //
 fun

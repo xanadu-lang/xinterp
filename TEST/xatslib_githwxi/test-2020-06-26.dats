@@ -104,7 +104,7 @@ gint_streamize_nint(length(cs))
 {
 typedef
 x0 = nintlt(n)
-typedef
+vwtpdef
 y0 = string_vt(n)
 impltmp
 maplist0$fopr<x0><y0>(i0) = helper2(cs, i0)
@@ -132,7 +132,7 @@ in loop(i0, r0) end where
 //
 typedef
 i0 = nintlte(26)
-typedef
+vwtpdef
 r0 = list_vt(string_vt(n))
 //
 fun

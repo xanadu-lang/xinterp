@@ -63,7 +63,7 @@ fun
 fact(n:int): int =
 let
 //
-typedef
+vwtpdef
 int2 = $(int, int)
 //
 fun
