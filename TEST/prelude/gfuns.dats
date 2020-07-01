@@ -10,6 +10,8 @@
 #staload
 "prelude/DATS/gnum.dats"
 #staload
+"prelude/DATS/gord.dats"
+#staload
 "prelude/DATS/gfor.dats"
 #staload
 "prelude/DATS/gfun.dats"
@@ -40,6 +42,7 @@
 //
 (* ****** ****** *)
 
+val ans0 = fmemq(5)(3)
 val ans1 = fmemq("abcde")('a')
 val ans2 = fnot(fmemq("abcde"))('z')
 
