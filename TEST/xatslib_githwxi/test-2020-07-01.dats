@@ -169,18 +169,17 @@ words = list_vt(word)
 //
 val words =
 let
-val (inp, res) =
-let
-vwtpdef res = words
-in
+val
+(inp, res) =
 parser_apply
+(*
 <tok><words>
+*)
 (p_words, the_input)
-end
 in
   case-
   res of ~some_vt(words) => words
-end
+end // end of [val words]
 //
 (* ****** ****** *)
 
