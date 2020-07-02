@@ -69,8 +69,8 @@ gtest1: ; $(XINTERP) -d ./prelude/gtest1.dats
 test:: gtest2
 gtest2: ; $(XINTERP) -d ./prelude/gtest2.dats
 test:: gtest3
-gtest3: ; \
-$(ECHO) "Hello!" | $(XINTERP) -d ./prelude/gtest3.dats
+gtest3: ; $(ECHO) \
+"Hello!" | $(XINTERP) -d ./prelude/gtest3.dats
 #
 ######
 
@@ -216,6 +216,14 @@ test:: \
 test-2020-06-28
 test-2020-06-28: ; \
 $(XINTERP) -d ./xatslib_githwxi/test-2020-06-28.dats
+
+######
+
+test:: \
+test-2020-07-01
+test-2020-07-01: ; \
+$(ECHO) "Hello, world!" | \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-07-01.dats
 
 ######
 
