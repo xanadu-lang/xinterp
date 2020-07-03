@@ -90,17 +90,6 @@ parcmbr_input
 typedef tok = char
 //
 (* ****** ****** *)
-
-impltmp
-<x0,xs>
-gseq_append
-(xs, ys) =
-gseq_unlist_vt
-(append
-(listize(xs), listize(ys))
-) (* end of [gseq_append] *)
-
-(* ****** ****** *)
 //
 val
 alpha =
