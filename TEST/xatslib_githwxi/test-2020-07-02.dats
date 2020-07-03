@@ -132,6 +132,8 @@ p_RPAREN = fp_sat(p_token, ')')
 
 val p_LAM = fp_lit(p_ident, "lam")
 
+val p_EQGT = fp_lit(p_symbl, "=>")
+
 (* ****** ****** *)
 
 (* end of [test-2020-07-02.dats] *)
