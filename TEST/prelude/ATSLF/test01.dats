@@ -19,7 +19,7 @@ FIB2(n+2, r0+r1) of
 //
 #extern
 fun
-fact{n:nat}
+fibo{n:nat}
 ( n0
 : int(n)
 )
@@ -29,7 +29,7 @@ fact{n:nat}
 (* ****** ****** *)
 
 implfun
-fact{n}(n0) =
+fibo{n}(n0) =
 (
 if
 (n0 = 0)
@@ -42,13 +42,17 @@ then
 (FIB1() | 1)
 else
 let
-val (pf0 | r0) = fact(n0-2)
-val (pf1 | r1) = fact(n0-1)
+val (pf0 | r0) = fibo(n0-2)
+val (pf1 | r1) = fibo(n0-1)
 in
   (FIB2(pf0, pf1) | r0 + r1)
 end
 )
-) (* end of [fact] *)
+) (* end of [fibo] *)
+
+(* ****** ****** *)
+
+val res = fibo(10)
 
 (* ****** ****** *)
 
