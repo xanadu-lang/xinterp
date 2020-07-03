@@ -90,97 +90,48 @@ parcmbr_input
 typedef tok = char
 //
 (* ****** ****** *)
-
-impltmp
-<x0,xs>
-gseq_append
-(xs, ys) =
-gseq_unlist_vt
-(append
-(listize(xs), listize(ys))
-) (* end of [gseq_append] *)
-
-(* ****** ****** *)
 //
 val
-alpha =
-gseq_append
-(
-"abcdefghijklmnopqrstuvwxyz"
-,
-"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-)
+idfst =
+("_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+val
+idrst =
+("_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
 //
 (* ****** ****** *)
 
 val
-p_token =
-parcmbr_token<tok>()
-val
-fp_sat =
-parcmbr_sat<tok><tok>
-
-(* ****** ****** *)
-//
-val
-p_ltr0 =
+p_idfst
 fp_sat
-(p_token, fmemq(alpha))
+(p_token, fmemq(idfst))
 val
-p_nltr =
+p_idrst
 fp_sat
-(p_token, fnot(fmemq(alpha)))
-//
-(* ****** ****** *)
-
-#symload
-fp_map with parcmbr_map
-#symload
-fp_ignore with parcmbr_ignore
-#symload
-fp_repeat0 with parcmbr_repeat0
-#symload
-fp_repeat1 with parcmbr_repeat1
+(p_token, fmemq(idrst))
 
 (* ****** ****** *)
 
 val
-p_word =
-fp_map
-(
-fp_ignore(p_nltr)
->>
-fp_repeat1(p_ltr0)
+p_ident =
+fp_seq2map
+(p_idfst, fp_repeat0(p_idrst)
 ,
-lam(cs) =>
-string_make_list_vt(cs)
-)
+lam(x0, xs) =>
+string_make_list_vt(cons_vt(x0, xs)))
+
+(* ****** ****** *)
+
 val
-p_words = fp_repeat0(p_word)
-
-(* ****** ****** *)
-
-typedef
-word = string
-vwtpdef
-words = list_vt(word)
-
-(* ****** ****** *)
-//
-val words =
-let
+p_COMMA = fp_lit(p_token, ',')
 val
-(inp, res) =
-parser_apply
-(*
-<tok><words>
-*)
-(p_words, the_input)
-in
-  case-
-  res of ~some_vt(words) => words
-end // end of [val words]
-//
+p_LPAREN = fp_sat(p_token, '(')
+val
+p_RPAREN = fp_sat(p_token, ')')
+
 (* ****** ****** *)
 
-(* end of [test-2020-07-01.dats] *)
+val p_LAM = fp_lit(p_ident, "lam")
+
+(* ****** ****** *)
+
+(* end of [test-2020-07-02.dats] *)
