@@ -50,7 +50,7 @@ string_permutize
 ( cs
 : string)
 : stream_vt(string) =
-gseq_permutize<cgtz,string>(cs)
+gseq_permutize<string><cgtz>(cs)
 //
 (* ****** ****** *)
 

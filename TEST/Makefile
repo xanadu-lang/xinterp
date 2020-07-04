@@ -13,116 +13,151 @@ XINTERP="./../bin/xinterp"
 ######
 #
 test:: bools
-bools: ; $(XINTERP) -d ./prelude/bools.dats
+bools: ; \
+$(XINTERP) -d ./prelude/bools.dats
 test:: chars
-chars: ; $(XINTERP) -d ./prelude/chars.dats
+chars: ; \
+$(XINTERP) -d ./prelude/chars.dats
 #
 ######
 #
 test:: lists
-lists: ; $(XINTERP) -d ./prelude/lists.dats
+lists: ; \
+$(XINTERP) -d ./prelude/lists.dats
 #
 ######
 #
 test:: lists
-strms: ; $(XINTERP) -d ./prelude/strms.dats
+strms: ; \
+$(XINTERP) -d ./prelude/strms.dats
 #
 ######
 #
 test:: cbref
-cbref: ; $(XINTERP) -d ./prelude/cbref.dats
+cbref: ; \
+$(XINTERP) -d ./prelude/cbref.dats
 #
 ######
 #
 test:: foldl
-foldl: ; $(XINTERP) -d ./prelude/foldl.dats
+foldl: ; \
+$(XINTERP) -d ./prelude/foldl.dats
 #
 ######
 #
 test:: gfact
-gfact: ; $(XINTERP) -d ./prelude/gfact.dats
+gfact: ; \
+$(XINTERP) -d ./prelude/gfact.dats
 #
 ######
 #
 test:: gfors
-gfors: ; $(XINTERP) -d ./prelude/gfors.dats
+gfors: ; \
+$(XINTERP) -d ./prelude/gfors.dats
 #
 ######
 #
 test:: gfuns
-gfuns: ; $(XINTERP) -d ./prelude/gfuns.dats
+gfuns: ; \
+$(XINTERP) -d ./prelude/gfuns.dats
 #
 ######
 #
 test:: gints
-gints: ; $(XINTERP) -d ./prelude/gints.dats
+gints: ; \
+$(XINTERP) -d ./prelude/gints.dats
 #
 ######
 #
 test:: gpats
-gpats: ; $(XINTERP) -d ./prelude/gpats.dats
+gpats: ; \
+$(XINTERP) -d ./prelude/gpats.dats
 #
 ######
 #
 test:: gtest1
-gtest1: ; $(XINTERP) -d ./prelude/gtest1.dats
+gtest1: ; \
+$(XINTERP) -d ./prelude/gtest1.dats
 test:: gtest2
-gtest2: ; $(XINTERP) -d ./prelude/gtest2.dats
+gtest2: ; \
+$(XINTERP) -d ./prelude/gtest2.dats
 test:: gtest3
-gtest3: ; $(ECHO) \
-"Hello!" | $(XINTERP) -d ./prelude/gtest3.dats
+gtest3: ; \
+$(ECHO) "Hello!" | \
+$(XINTERP) -d ./prelude/gtest3.dats
 #
 ######
 
 test:: kfact
-kfact: ; $(XINTERP) -d ./prelude/kfact.dats
+kfact: ; \
+$(XINTERP) -d ./prelude/kfact.dats
 test:: kfibo
-kfibo: ; $(XINTERP) -d ./prelude/kfibo.dats
+kfibo: ; \
+$(XINTERP) -d ./prelude/kfibo.dats
 test:: kisevn
-kisevn: ; $(XINTERP) -d ./prelude/kisevn.dats
+kisevn: ; \
+$(XINTERP) -d ./prelude/kisevn.dats
 
 ######
 #
 test:: addrs
-addrs: ; $(XINTERP) -d ./prelude/addrs.dats
+addrs: ; \
+$(XINTERP) -d ./prelude/addrs.dats
 #
 test:: dtcon
-dtcon: ; $(XINTERP) -d ./prelude/dtcon.dats
+dtcon: ; \
+$(XINTERP) -d ./prelude/dtcon.dats
 #
 test:: pswap
-pswap: ; $(XINTERP) -d ./prelude/pswap.dats
+pswap: ; \
+$(XINTERP) -d ./prelude/pswap.dats
 #
 ######
 #
 test:: array
-array: ; $(XINTERP) -d ./prelude/array.dats
+array: ; \
+$(XINTERP) -d ./prelude/array.dats
 #
 test:: tuple
-tuple: ; $(XINTERP) -d ./prelude/tuple.dats
+tuple: ; \
+$(XINTERP) -d ./prelude/tuple.dats
 #
 ######
 
 test:: isAVL
-isAVL: ; $(XINTERP) -d ./prelude/isAVL.dats
+isAVL: ; \
+$(XINTERP) -d ./prelude/isAVL.dats
 
 ######
 
 test:: sieve
-sieve: ; $(XINTERP) -d ./prelude/sieve.dats
+sieve: ; \
+$(XINTERP) -d ./prelude/sieve.dats
 test:: sieve_vt
-sieve_vt: ; $(XINTERP) -d ./prelude/sieve_vt.dats
+sieve_vt: ; \
+$(XINTERP) -d ./prelude/sieve_vt.dats
 
 ######
 
 test:: sieve1
-sieve1: ; $(XINTERP) -d ./prelude/sieve1.dats
+sieve1: ; \
+$(XINTERP) -d ./prelude/sieve1.dats
 test:: sieve1_vt
-sieve1_vt: ; $(XINTERP) -d ./prelude/sieve1_vt.dats
+sieve1_vt: ; \
+$(XINTERP) -d ./prelude/sieve1_vt.dats
 
 ######
 
 test:: koka-amb
-koka-amb: ; $(XINTERP) -d ./prelude/koka-amb.dats
+koka-amb: ; \
+$(XINTERP) -d ./prelude/koka-amb.dats
+
+######
+
+test:: \
+ATSLF_test01
+ATSLF_test01: ; \
+$(XINTERP) -d ./prelude/ATSLF/test01.dats
 
 ######
 

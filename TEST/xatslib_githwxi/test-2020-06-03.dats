@@ -47,9 +47,8 @@
 //
 fun
 string_mergesort
-( cs
-: string): string =
-gseq_mergesort<cgtz,string>(cs)
+(cs: string) =
+gseq_mergesort(cs)
 //
 (* ****** ****** *)
 

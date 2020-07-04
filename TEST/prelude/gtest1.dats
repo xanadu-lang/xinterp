@@ -34,7 +34,7 @@ UN =
 
 impltmp
 gseq_forall
-<int,int>
+<int><int>
   (xs) = loop(0) where
 {
 //
@@ -50,7 +50,7 @@ if i >= xs then true else
 impltmp
 {x0:type}
 gseq_forall
-<x0,list(x0)>
+<list(x0)><x0>
   (xs) = loop(xs) where
 {
 //
