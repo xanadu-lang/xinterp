@@ -71,7 +71,7 @@ array = a1ref
 fun
 <a:t0>
 <n:i0>
-dotprod
+dotprodn
 ( xs: array(a, n)
 , ys: array(a, n)): a
 (* ****** ****** *)
@@ -79,7 +79,7 @@ dotprod
 (*
 impltmp
 <a><n>
-dotprod(xs, ys) =
+dotprodn(xs, ys) =
 z2foldl
 (xs, ys, r0) where
 {
@@ -96,7 +96,7 @@ z2foldl$fopr<x0,y0><r0>(r0, x0, y0) = r0 + x0 * y0
 
 impltmp
 <a><n>
-dotprod(xs, ys) =
+dotprodn(xs, ys) =
 (
 let
 val () =
@@ -121,9 +121,34 @@ $UN.p2tr_set
 (p0, r0+sub(xs,i0)*sub(ys,i0))
 end
 //
-} (* end of [dotprod] *)
+} (* end of [dotprodn] *)
 
-
+(* ****** ****** *)
+abstype Z
+abstype S(type)
+(* ****** ****** *)
+#extern
+fun
+<a:t0>
+<N:t0>
+<n:i0>
+dotprodN
+( xs: array(a, n)
+, ys: array(a, n)): a
+(* ****** ****** *)
+impltmp
+{a:t0}
+dotprodN
+<a><Z><0>(_, _) = g_0<a>()
+(* ****** ****** *)
+impltmp
+{a:t0}
+{N:t0}
+{n:i0}
+dotprodN
+<a><S(N)><n+1>
+{n1 > 0}(xs, ys) =
+head(xs)*head(ys)+dotprodN<a><N><n>(tail(xs),tail(ys))
 (* ****** ****** *)
 
 (* end of [test-2020-07-03.dats] *)
