@@ -112,7 +112,7 @@ val () =
 val p0 = $addr(r0)
 //
 implement
-x1forint$work(i0) =
+x1forint$work<n>(i0) =
 let
 val r0 = 
 $UN.p2tr_get(p0)
@@ -162,7 +162,14 @@ list_cons(3, list_nil())))
 
 (* ****** ****** *)
 
-val ans =
+val ans1 =
+(
+dotprodn<int><3>(B3, B3)
+) where
+{
+impltmp a1ref_length<_><3>() = 3
+}
+val ans2 =
 dotprodN<int><S(S(S(Z)))><3>(B3, B3)
 
 (* ****** ****** *)
