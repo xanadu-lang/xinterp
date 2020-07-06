@@ -114,8 +114,7 @@ val p0 = $addr(r0)
 implement
 x1forint$work<n>(i0) =
 let
-val r0 = 
-$UN.p2tr_get(p0)
+val r0 = $UN.p2tr_get(p0)
 in
 $UN.p2tr_set
 (p0, r0+sub(xs,i0)*sub(ys,i0))
@@ -148,7 +147,8 @@ impltmp
 dotprodN
 <a><S(N)><n+1>
 {n >= 0}(xs, ys) =
-head(xs)*head(ys)+dotprodN<a><N><n>(tail(xs),tail(ys))
+head(xs)*head(ys)+
+dotprodN<a><N><n>(tail(xs),tail(ys))
 (* ****** ****** *)
 
 val B3 =
@@ -169,6 +169,9 @@ dotprodn<int><3>(B3, B3)
 {
 impltmp a1ref_length<_><3>() = 3
 }
+
+(* ****** ****** *)
+
 val ans2 =
 dotprodN<int><S(S(S(Z)))><3>(B3, B3)
 
