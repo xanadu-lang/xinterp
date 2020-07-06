@@ -1185,14 +1185,31 @@ arrayptr_make_uninitized<ir0val>(i2sz(n))
 end // end of [a1ptr_alloc]
 //
 fun
-a1ref_get_at
+a1ref_head_raw
+(A: ir0val): ir0val =
+let
+  val-IR0Vptr(A) = A
+in
+  $UN.ptr0_get<ir0val>(A)
+end // end of [a1ref_head_raw]
+fun
+a1ref_tail_raw
+(A: ir0val): ir0val =
+let
+  val-IR0Vptr(A) = A
+in
+  IR0Vptr(ptr_succ<ir0val>(A))
+end // end of [a1ref_tail_raw]
+//
+fun
+a1ref_get_at_raw
 ( A: ir0val
 , i: ir0val): ir0val =
 (
-  a1ptr_get_at(A, i)
+  a1ptr_get_at_raw(A, i)
 )
 and
-a1ptr_get_at
+a1ptr_get_at_raw
 ( A: ir0val
 , i: ir0val): ir0val =
 let
@@ -1200,18 +1217,10 @@ let
   val-IR0Vint(i) = i
 in
   $UN.ptr0_get_at<ir0val>(A, i)
-end // end of [a1ref_get_at]
+end // end of [a1ref_get_at_raw]
 //
 fun
-a1ref_set_at
-( A: ir0val
-, i: ir0val
-, x: ir0val): ir0val =
-(
-  a1ptr_set_at(A, i, x)
-)
-and
-a1ptr_set_at
+a1ref_set_at_raw
 ( A: ir0val
 , i: ir0val
 , x: ir0val): ir0val =
@@ -2093,35 +2102,44 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("xint_a1ref_get_at")
+("xint_a1ref_head_raw")
 ,
 IR0Vfun
-(firfun2(a1ref_get_at)))
+(firfun1(a1ref_head_raw)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
-("xint_a1ptr_get_at")
+("xint_a1ref_tail_raw")
 ,
 IR0Vfun
-(firfun2(a1ptr_get_at)))
+(firfun1(a1ref_tail_raw)))
 //
 val () =
 the_d2cstdef_insert
 (
 d2cst
-("xint_a1ref_set_at")
+("xint_a1ref_get_at_raw")
 ,
 IR0Vfun
-(firfun3(a1ref_set_at)))
+(firfun2(a1ref_get_at_raw)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
-("xint_a1ptr_set_at")
+("xint_a1ptr_get_at_raw")
 ,
 IR0Vfun
-(firfun3(a1ptr_set_at)))
+(firfun2(a1ptr_get_at_raw)))
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("xint_a1ref_set_at_raw")
+,
+IR0Vfun
+(firfun3(a1ref_set_at_raw)))
 val () =
 the_d2cstdef_insert
 (

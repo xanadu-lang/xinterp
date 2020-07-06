@@ -147,8 +147,24 @@ impltmp
 {n:i0}
 dotprodN
 <a><S(N)><n+1>
-{n1 > 0}(xs, ys) =
+{n >= 0}(xs, ys) =
 head(xs)*head(ys)+dotprodN<a><N><n>(tail(xs),tail(ys))
+(* ****** ****** *)
+
+val B3 =
+a1ref_make_list(xs) where
+{
+val xs =
+list_cons(1,
+list_cons(2,
+list_cons(3, list_nil())))
+}
+
+(* ****** ****** *)
+
+val ans =
+dotprodN<int><S(S(S(Z)))><3>(B3, B3)
+
 (* ****** ****** *)
 
 (* end of [test-2020-07-03.dats] *)
