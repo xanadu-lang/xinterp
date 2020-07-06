@@ -150,6 +150,52 @@ dotprodN
 head(xs)*head(ys)+
 dotprodN<a><N><n>(tail(xs),tail(ys))
 (* ****** ****** *)
+#extern
+fun
+<a:t0>
+<N:t0>
+<n:i0>
+dotprodN2
+( xs: array(a, n)
+, ys: array(a, n)): a
+(* ****** ****** *)
+#extern
+fun
+<a:t0>
+<D:t0> // D = n-i
+<n:i0
+,i:i0>
+dotprodN2_
+( i0: int(i)
+, xs: array(a, n)
+, ys: array(a, n)): a
+(* ****** ****** *)
+impltmp
+{a:t0}
+{N:t0}
+{n:i0}
+dotprodN2<a><N><n>(xs, ys) =
+dotprodN2_<a><N><n,0>(0, xs, ys)
+(* ****** ****** *)
+impltmp
+{a:t0}
+{n:i0
+,i:i0}
+dotprodN2_
+<a><Z><n,i>(_, _, _) = g_0<a>()
+(* ****** ****** *)
+impltmp
+{a:t0}
+{D:t0}
+{n:i0
+,i:i0}
+dotprodN2_
+<a><S(D)><n,i>
+{n-i >= 1}
+(i0, xs, ys) =
+sub(xs,i0)*sub(ys,i0)+
+dotprodN2_<a><D><n,i+1>(i0+1, xs, ys)
+(* ****** ****** *)
 
 val B3 =
 a1ref_make_list(xs) where
@@ -161,20 +207,19 @@ list_cons(3, list_nil())))
 }
 
 (* ****** ****** *)
-
 val ans1 =
 (
-dotprodn<int><3>(B3, B3)
+dotprodn<int>(B3, B3)
 ) where
 {
 impltmp a1ref_length<_><3>() = 3
 }
-
 (* ****** ****** *)
-
 val ans2 =
-dotprodN<int><S(S(S(Z)))><3>(B3, B3)
-
+dotprodN<int><S(S(S(Z)))>(B3, B3)
+(* ****** ****** *)
+val ans3 =
+dotprodN2<int><S(S(S(Z)))>(B3, B3)
 (* ****** ****** *)
 
 (* end of [test-2020-07-03.dats] *)
