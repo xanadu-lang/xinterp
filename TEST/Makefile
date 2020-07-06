@@ -261,6 +261,11 @@ $(ECHO) "Hello, world!" | \
 $(XINTERP) -d ./xatslib_githwxi/test-2020-07-01.dats
 
 test:: \
+test-2020-07-03
+test-2020-07-03: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-07-03.dats
+
+test:: \
 test-2020-07-05
 test-2020-07-05: ; \
 $(XINTERP) -d ./xatslib_githwxi/test-2020-07-05.dats

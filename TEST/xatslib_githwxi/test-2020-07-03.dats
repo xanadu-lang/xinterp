@@ -12,6 +12,8 @@
 #staload
 "prelude/DATS/gbas.dats"
 #staload
+"prelude/DATS/gnum.dats"
+#staload
 "prelude/DATS/gord.dats"
 (* ****** ****** *)
 #staload
@@ -49,9 +51,12 @@
 #staload
 "prelude/DATS/list.dats"
 #staload
-"prelude/DATS/list_vt.dats"
+"prelude/DATS/array.dats"
 #staload
 "prelude/DATS/stream.dats"
+//
+#staload
+"prelude/DATS/list_vt.dats"
 #staload
 "prelude/DATS/stream_vt.dats"
 //
@@ -59,7 +64,9 @@
 #staload
 "xatslib/libc/DATS/stdio.dats"
 (* ****** ****** *)
-
+sexpdef
+array = a1ref
+(* ****** ****** *)
 #extern
 fun
 <a:t0>
@@ -67,9 +74,9 @@ fun
 dotprod
 ( xs: array(a, n)
 , ys: array(a, n)): a
-
 (* ****** ****** *)
 
+(*
 impltmp
 <a><n>
 dotprod(xs, ys) =
@@ -85,6 +92,37 @@ val r0 = g_0<r0>()
 impltmp
 z2foldl$fopr<x0,y0><r0>(r0, x0, y0) = r0 + x0 * y0
 }
+*)
+
+impltmp
+<a><n>
+dotprod(xs, ys) =
+(
+let
+val () =
+g_x1forint
+(
+a1ref_length(xs)) in r0 end
+) where
+{
+//
+var r0: ?a
+val () =
+(r0 := g_0<a>())
+val p0 = $addr(r0)
+//
+implement
+x1forint$work(i0) =
+let
+val r0 = 
+$UN.p2tr_get(p0)
+in
+$UN.p2tr_set
+(p0, r0+sub(xs,i0)*sub(ys,i0))
+end
+//
+} (* end of [dotprod] *)
+
 
 (* ****** ****** *)
 
