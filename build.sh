@@ -8,7 +8,7 @@
 ######
 
 make_all() {
-    make all
+    make -C srcgen all
 }
 
 ######

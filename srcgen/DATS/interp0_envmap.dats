@@ -51,7 +51,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 #define
 XANADU_targetloc
-"./../xanadu/srcgen/xats"
+"./../../xanadu/srcgen/xats"
 //
 (* ****** ****** *)
 //

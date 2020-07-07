@@ -13,6 +13,8 @@ RMF=rm -f
 MAKE=make
 
 ######
+XANADU="./../xanadu"
+######
 
 PATSCC=$(PATSHOME)/bin/patscc
 PATSOPT=$(PATSHOME)/bin/patsopt
@@ -57,18 +59,17 @@ OBJDATS := \
 $(patsubst %.dats, BUILD/%_dats.o, $(SRCDATS))
 
 ######
-
 INCLUDE:=
 INCLUDE+=-I"."
-INCLUDE+=-I"./xanadu/srcgen/xats"
-LIBRARY:=-L"./xanadu/lib" -lxatsopt
-
+INCLUDE+=-I"$(XANADU)/srcgen/xats"
+######
+LIBRARY:=-L"$(XANADU)/lib" -lxatsopt
 ######
 #
 all:: \
 lxatsopt
 lxatsopt: ; \
-(cd ./xanadu/srcgen/xats && $(MAKE) libxatsopt)
+(cd $(XANADU)/srcgen/xats && $(MAKE) libxatsopt)
 #
 ######
 #
@@ -77,7 +78,7 @@ xinterp
 xinterp: \
 DATS/xinterp.dats \
 $(OBJSATS) $(OBJDATS) ; \
-$(PATSCC) -cleanaft -o ./bin/xinterp \
+$(PATSCC) -cleanaft -o ./../bin/xinterp \
 $(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC) $(LIBRARY)
 #
 ######
@@ -133,8 +134,8 @@ clean:: ; $(RMF) xinterp_dats.c
 cleanall:: clean
 cleanall:: ; $(RMF) ./bin/xinterp
 cleanall:: ; $(RMF) ./bin/xinterp.sh
-cleanall:: ; $(RMF) ./xanadu/lib/libxatsopt.a
-cleanall:: ; $(MAKE) -C ./xanadu/srcgen/xats cleanall
+cleanall:: ; $(RMF) $(XANADU)/lib/libxatsopt.a
+cleanall:: ; $(MAKE) -C $(XANADU)/srcgen/xats cleanall
 
 ######
 

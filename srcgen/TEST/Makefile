@@ -8,7 +8,7 @@ ECHO=echo
 
 ######
 
-XINTERP="./../bin/xinterp"
+XINTERP="./../../bin/xinterp"
 
 ######
 #
