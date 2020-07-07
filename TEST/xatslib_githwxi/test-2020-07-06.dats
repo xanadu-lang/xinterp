@@ -246,9 +246,9 @@ val ans21 = accept ("+123456789", regexp_int) // true
 val ans22 = accept ("-123456789", regexp_int) // true
 val ans23 = accept ("?123456789", regexp_int) // false
 val ans31 = accept ("abcde.sats", regexp_dot_sats) // true
-val ans32 = accept ("abcde.sats", regexp_dot_dats) // false
+val ans32 = accept ("abcde.dats", regexp_dot_dats) // true
 val ans41 = accept ("abcde.dats", regexp_dot_sats) // false
-val ans42 = accept ("abcde.dats", regexp_dot_dats) // true
+val ans42 = accept ("abcde.sats", regexp_dot_dats) // false
 
 (* ****** ****** *)
 
