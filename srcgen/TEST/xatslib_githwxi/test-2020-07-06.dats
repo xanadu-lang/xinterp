@@ -4,11 +4,13 @@
 //
 (* ****** ****** *)
 //
-// HX-2012-07-20: ported to ATS2
+// HX-2012-06-21:
+// compiled to
+// run with ATS/Postiats
 //
 (* ****** ****** *)
 //
-// HX-2012-06-21: compiled to run with ATS/Postiats
+// HX-2012-07-20: ported to ATS2
 //
 (* ****** ****** *)
 //
@@ -129,7 +131,7 @@ fun acc
 in
 //
 case+ p of
-| Any() =>
+| Any =>
   (if i > 0 then k (i-1, 1) else false)
 
 | Emp() => k (i, b)
@@ -227,28 +229,28 @@ val regexp_digit = Chars ('0', '9')
 val regexp_digits = Rep (Chars ('0', '9'))
 
 val regexp_uint =
-  Alt (Char '0', Seq (Chars ('1', '9'), regexp_digits))
+  Alt(Char '0', Seq(Chars('1', '9'), regexp_digits))
 
 val regexp_int =
-  Alt (regexp_uint, Seq (Alt (Char '-', Char '+'), regexp_uint))
+  Alt(regexp_uint, Seq(Alt(Char '-', Char '+'), regexp_uint))
 
 val regexp_dot_sats =
-  Seq (Rep(Any()), Seq (Char '.', Seq (Char 's', Seq (Char 'a', Seq (Char 't', Char 's')))))
+  Seq(Rep Any, Seq(Char '.', Seq(Char 's', Seq(Char 'a', Seq(Char 't', Char 's')))))
 
 val regexp_dot_dats =
-  Seq (Rep(Any()), Seq (Char '.', Seq (Char 'd', Seq (Char 'a', Seq (Char 't', Char 's')))))
+  Seq(Rep(Any()), Seq(Char '.', Seq(Char 'd', Seq(Char 'a', Seq(Char 't', Char 's')))))
 
 (* ****** ****** *)
 
-val ans10 = accept ("123456789", regexp_int) // true
-val ans20 = accept ("abcdefghi", regexp_int) // false
-val ans21 = accept ("+123456789", regexp_int) // true
-val ans22 = accept ("-123456789", regexp_int) // true
-val ans23 = accept ("?123456789", regexp_int) // false
-val ans31 = accept ("abcde.sats", regexp_dot_sats) // true
-val ans32 = accept ("abcde.dats", regexp_dot_dats) // true
-val ans41 = accept ("abcde.dats", regexp_dot_sats) // false
-val ans42 = accept ("abcde.sats", regexp_dot_dats) // false
+val ans10 = accept("123456789", regexp_int) // true
+val ans20 = accept("abcdefghi", regexp_int) // false
+val ans21 = accept("+123456789", regexp_int) // true
+val ans22 = accept("-123456789", regexp_int) // true
+val ans23 = accept("?123456789", regexp_int) // false
+val ans31 = accept("abcde.sats", regexp_dot_sats) // true
+val ans32 = accept("abcde.dats", regexp_dot_dats) // true
+val ans41 = accept("abcde.dats", regexp_dot_sats) // false
+val ans42 = accept("abcde.sats", regexp_dot_dats) // false
 
 (* ****** ****** *)
 
