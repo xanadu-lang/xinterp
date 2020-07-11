@@ -2010,11 +2010,11 @@ let
 val
 irv0 = auxvar(env0, ire0)
 //
-(*
+// (*
 val () =
 println!
 ("aux_flat_main: irv0 = ", irv0)
-*)
+// *)
 //
 in
 //
@@ -2092,10 +2092,10 @@ let
 val-
 IR0Etalf(ire1) = ire0.node()
 //
-(*
+// (*
 val () =
 println!("aux_talf: ire1 = ", ire1)
-*)
+// *)
 //
 in
 case-
@@ -2762,7 +2762,19 @@ case+ xs of
 } (* end of [ir0pat_flatq] *)
 
 (* ****** ****** *)
-
+//
+(*
+HX-2020-07-10:
+Lefitization needs to
+be annotated explicitly;
+in the following patterns,
+[x0] is a val but [xs] is a var:
+//
+@list_cons(x0, !xs) // xs: read-only
+@list_vt_cons(x0, !xs) // xs: writable
+//
+*)
+(*
 fun
 ir0pat_leftize0
 ( env0
@@ -2829,7 +2841,8 @@ case+ irps of
   }
 )
 } (* end of [ir0pat_leftize0] *)
-
+*)
+//
 (* ****** ****** *)
 
 fun
@@ -3036,7 +3049,9 @@ interp0_insert_d2var
 |
 IR0Pflat(irp1) =>
 (
+(*
 ir0pat_leftize0(env0, irp1, irv0)
+*)
 ) where
 {
 val () =

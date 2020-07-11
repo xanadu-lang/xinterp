@@ -27,7 +27,7 @@ double1
 case+ xs0 of
 |list_vt_nil() => ()
 |
-@list_vt_cons(x0, xs1) =>
+@list_vt_cons(!x0, xs1) =>
 (x0 := 2*x0; double1(xs1); $fold(xs0))
 )
 fun
