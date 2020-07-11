@@ -116,8 +116,7 @@ x1forint$work<n>(i0) =
 let
 val r0 = $UN.p2tr_get(p0)
 in
-$UN.p2tr_set
-(p0, r0+sub(xs,i0)*sub(ys,i0))
+$UN.p2tr_set(p0, r0+xs[i0]*ys[i0])
 end
 //
 } (* end of [dotprodn] *)
@@ -193,7 +192,7 @@ dotprodN2_
 <a><S(D)><n,i>
 {n-i >= 1}
 (i0, xs, ys) =
-sub(xs,i0)*sub(ys,i0)+
+xs[i0]*ys[i0]+
 dotprodN2_<a><D><n,i+1>(i0+1, xs, ys)
 (* ****** ****** *)
 

@@ -56,11 +56,11 @@ val () = print(A0)
 
 val B1 =
 a1ref_make_nval<int>(10, 0)
-val y0 = sub(B1, 0)
-val () = sub(B1, 1, 1)
-val y1 = sub(B1, 1)
-val () = sub(B1, 2, 2)
-val y2 = sub(B1, 2)
+val y0 = get_at(B1, 0)
+val () = set_at(B1, 1, 1)
+val y1 = get_at(B1, 1)
+val () = set_at(B1, 2, 2)
+val y2 = get_at(B1, 2)
 
 (* ****** ****** *)
 
@@ -70,7 +70,7 @@ rforeach(length(B1)) where
 impltmp
 a1ref_length<int>(B1) = 10
 impltmp
-rforeach$work<int>(i0) = sub(B1, i0, i0+1)
+rforeach$work<int>(i0) = set_at(B1, i0, i0+1)
 }
 
 (* ****** ****** *)

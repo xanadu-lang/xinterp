@@ -139,14 +139,14 @@ case+ p of
 | Char c => (
     if
     (i > 0)
-    then (if c = sub(cs0,i0-i) then k (i-1, 1) else false)
+    then (if c = cs0[i0-i] then k (i-1, 1) else false)
     else false
   ) // end of [Char]
 
 | Char_not c => (
     if
     (i > 0)
-    then (if c != sub(cs0, i0-i) then k (i-1, 1) else false)
+    then (if c != cs0[i0-i] then k (i-1, 1) else false)
     else false
   ) // end of [Char_not]
 
@@ -155,7 +155,7 @@ case+ p of
     if
     (i > 0)
     then let
-      val c0 = sub(cs0, i0-i)
+      val c0 = cs0[i0-i]
     in
       if
       (c1 <= c0)
@@ -168,11 +168,11 @@ case+ p of
     if
     (i > 0)
     then let
-      val c0 = sub(cs0, i0-i)
+      val c0 = cs0[i0-i]
     in 
       if
       (c0 < c1)
-      then k (i-1, 1) else if c0 > c2 then k (i-1, 1) else false
+      then k(i-1, 1) else if c0 > c2 then k(i-1, 1) else false
     end else false
   ) // end of [Chars_not]
 //
@@ -185,7 +185,8 @@ case+ p of
       acc
       ( cs0, i0, p0, i, 0,
         lam (i', b') =>
-        if b' = 0 then false else acc (cs0, i0, p, i', 1, k)
+          if b' = 0 then false else acc (cs0, i0, p, i', 1, k)
+        // end of [lam]
       ) // end of [acc]
     ) // end of [if]
   ) // end of [Rep]

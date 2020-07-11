@@ -92,7 +92,7 @@ x1forint$work<n>(i0) =
 let
 val j0 = n1 - i0
 in
-$UN.p2tr_list_vt_cons(p0, sub(A0, j0))
+$UN.p2tr_list_vt_cons(p0, A0[j0])
 end
 //
 in
@@ -120,7 +120,7 @@ val n0 = a1ref_length(A0)
 //
 impltmp
 x1forint$work<n>(i0) =
-$UN.p2tr_list_vt_cons(p0, sub(A0, i0))
+$UN.p2tr_list_vt_cons(p0, A0[i0])
 //
 in
   g_x1forint(n0); $UN.castlin10(res)
@@ -129,12 +129,12 @@ end
 (* ****** ****** *)
 
 val A1 =
-a1ref_make_nval<int>(5, 0)
-val y0 = sub(A1, 0, 0)
-val () = sub(A1, 1, 1)
-val () = sub(A1, 2, 2)
-val () = sub(A1, 3, 3)
-val () = sub(A1, 4, 4)
+a1ref_make_nval(5, 0)
+val y0 = set_at(A1, 0, 0)
+val () = set_at(A1, 1, 1)
+val () = set_at(A1, 2, 2)
+val () = set_at(A1, 3, 3)
+val () = set_at(A1, 4, 4)
 
 (* ****** ****** *)
 

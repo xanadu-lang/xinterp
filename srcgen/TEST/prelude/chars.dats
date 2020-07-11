@@ -85,8 +85,9 @@ list_cons<cgtz>
 ('c', list_nil())
 
 (* ****** ****** *)
-
-val abc =
+//
+val
+abc =
 list_cons
 ('a'
 ,
@@ -95,8 +96,16 @@ list_cons
 ,
 list_cons
 ('c', list_nil())))
-val abc = string_make_list(abc)
-
+val a = abc[0]
+and b = abc[1]
+and c = abc[2]
+//
+val
+abc = string_make_list(abc)
+val a = abc[0]
+and b = abc[1]
+and c = abc[2]
+//
 (* ****** ****** *)
 
 val xyz =
