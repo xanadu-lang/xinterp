@@ -68,18 +68,20 @@
 
 extern
 fun
-<a:t0
-,b:t0>
+<a:t0>
+<b:t0>
 list_fold_left
-(
-  xs: list(a)
-, init: b, fopr: (b, a) -<cfr> b
+( xs
+: list(a)
+, init: b
+, fopr: (b, a) -<cfr> b
 ) : b // end-of-function
 
 (* ****** ****** *)
 
 implement
-<a,b>(*tmp*)
+<a>
+<b>(*tmp*)
 list_fold_left
   (xs, init, fopr) = let
 //
@@ -91,10 +93,11 @@ auxmain
 ) : b = (
 //
 case+ xs of
-| list_nil() => init
-| list_cons(x, xs) =>
-    auxmain(fopr(init, x), xs)
-  // end of [list_cons]
+|
+list_nil() => init
+|
+list_cons(x, xs) =>
+auxmain(fopr(init, x), xs)
 //
 ) (* auxmain *)
 //
@@ -116,7 +119,7 @@ list_length
 ) : int =
 (
 //
-list_fold_left<a,int>
+list_fold_left
   (xs, 0, lam(xs, x) => xs + 1)
 //
 ) (* list_length *)
@@ -129,8 +132,10 @@ xs: list(a)
 ) : list(a) =
 (
 //
-list_fold_left<a,list(a)>
-  (xs, list_nil(), lam(xs, x) => list_cons(x, xs))
+list_fold_left
+( xs
+, list_nil()
+, lam(xs, x) => list_cons(x, xs) )
 //
 ) (* list_reverse *)
 
@@ -141,16 +146,17 @@ fact =
 lam
 {n:nat}
 (n: int(n)) =>
-list_fold_left<int,int>
+list_fold_left
 (
-  list_vt2t(xs)
-, 1, lam(r, x) => r*(x)
+list_vt2t(xs), 1, lam(r, x) => (r)*x
 ) where
 {
-  val xs =
-  map_list(n) where
-  { impltmp map$fopr<int><int>(x) = x + 1 }
-}
+val xs =
+map_list(n)
+where
+  impltmp map$fopr<int><int>(x) = x + 1
+endwhr
+} (* end-of-val *)
 //
 (* ****** ****** *)
 
