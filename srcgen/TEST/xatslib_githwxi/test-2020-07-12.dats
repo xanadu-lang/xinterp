@@ -66,33 +66,35 @@
 //
 (* ****** ****** *)
 
-#extern
+extern
 fun
 <a:t0
 ,b:t0>
-list_fold_right
+list_fold_left
 (
   xs: list(a)
-, fopr: (a, b) -<cfr> b, sink: b
+, init: b, fopr: (b, a) -<cfr> b
 ) : b // end-of-function
 
 (* ****** ****** *)
 
 implement
 <a,b>(*tmp*)
-list_fold_right
-  (xs, fopr, sink) = let
+list_fold_left
+  (xs, init, fopr) = let
 //
 fun
 auxmain
 {n:nat} .<n>.
 (
-  xs: list(a, n)
+  init: b, xs: list(a, n)
 ) : b = (
 //
 case+ xs of
-| list_nil() => sink
-| list_cons(x, xs) => fopr(x, auxmain(xs))
+| list_nil() => init
+| list_cons(x, xs) =>
+    auxmain(fopr(init, x), xs)
+  // end of [list_cons]
 //
 ) (* auxmain *)
 //
@@ -101,8 +103,8 @@ val () = lemma_list_param(xs)
 *)
 //
 in
-  auxmain(xs)
-end // end of [list_fold_right]
+  auxmain(init, xs)
+end // end of [list_fold_left]
 
 (* ****** ****** *)
 
@@ -114,30 +116,10 @@ list_length
 ) : int =
 (
 //
-list_fold_right<a,int>
-  (xs, lam(x, xs) => xs + 1, 0)
+list_fold_left<a,int>
+  (xs, 0, lam(xs, x) => xs + 1)
 //
 ) (* list_length *)
-
-fun
-<a:t0>
-list_append
-(
-xs: list(a)
-,
-ys: list(a)
-) : list(a) = let
-//
-(*
-val () = lemma_list_param(ys)
-*)
-//
-in
-//
-list_fold_right<a,list(a)>
-  (xs, lam(x, xs) => list_cons(x, xs), ys)
-//
-end (* list_append *)
 
 fun
 <a:t0>
@@ -147,58 +129,28 @@ xs: list(a)
 ) : list(a) =
 (
 //
-list_fold_right<a,list(a)>
-( xs
-, lam(x, xs) =>
-  list_append<a>(xs, list_cons(x, list_nil()))
-, list_nil((*void*))
-) (* end of [list_fold_right] *)
+list_fold_left<a,list(a)>
+  (xs, list_nil(), lam(xs, x) => list_cons(x, xs))
 //
 ) (* list_reverse *)
-
-(* ****** ****** *)
-
-fun
-<a:t0>
-list_find_rightmost
-(
-  xs: list(a)
-, p0: (a) -<cfr> bool
-) : optn(a) = let
-//
-excptcon FoundExn of (a)
-//
-in
-//
-try
-let
-//
-val _ =
-list_fold_right<a,int>
-( xs
-, lam(x, xs) =>
-  if
-  p0(x)
-  then $raise(FoundExn(x)) else (0)
-, 0(*nominal*)
-)
-//
-in
-  none((*void*))
-end
-with ~FoundExn(x) => some(x)
-endtry
-//
-endlet (* end of [list_find_rightmost] *)
 
 (* ****** ****** *)
 //
 val
 fact =
 lam
-{n:nat}(n:int(n)) =>
-list_fold_right<int,int>
-(list_vt2t(listize(n)), lam(x, r) => (x+1)*r, 1)
+{n:nat}
+(n: int(n)) =>
+list_fold_left<int,int>
+(
+  list_vt2t(xs)
+, 1, lam(r, x) => r*(x)
+) where
+{
+  val xs =
+  map_list(n) where
+  { impltmp map$fopr<int><int>(x) = x + 1 }
+}
 //
 (* ****** ****** *)
 
@@ -206,4 +158,4 @@ val fact10 = fact(10)
 
 (* ****** ****** *)
 
-(* end of [test-2020-07-11.dats] *)
+(* end of [test-2020-07-12.dats] *)
