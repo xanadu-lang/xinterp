@@ -90,15 +90,10 @@ myfix
 //
 val
 fact =
-myfix{int-<cfr>int}
-(
+myfix
+{int-<cfr>int}(
 lam(ff)(x) =>
-if
-(x > 0)
-then
-let val f = !ff in x * f(x-1)
-end
-else (1)
+if (x > 0) then (!ff)(x-1) else 1
 )
 (* ****** ****** *)
 
