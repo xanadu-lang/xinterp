@@ -19,6 +19,8 @@ UN =
 (* ****** ****** *)
 
 #staload
+"prelude/DATS/gbas.dats"
+#staload
 "prelude/DATS/gint.dats"
 #staload
 "prelude/DATS/gnum.dats"
@@ -73,6 +75,13 @@ list_cons(2,
 list_cons(3,
 list_cons(4, list_nil()))))
 //
+(* ****** ****** *)
+
+val y3 =
+gseq_memberq(xs, 3)
+val n5 =
+gseq_memberq(xs, 5)
+
 (* ****** ****** *)
 //
 val l0 = gseq_length(x0)
