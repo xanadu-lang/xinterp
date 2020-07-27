@@ -24,8 +24,8 @@ which is available [here](http://www.ats-lang.org/Downloads.html)
 ```
 cd xinterp
 ./bin/xinterp -h
-./bin/xinterp -d TEST/prelude/kfibo.dats
-./bin/xinterp -d TEST/prelude/sieve.dats
+./bin/xinterp -d srcgen/TEST/prelude/kfibo.dats
+./bin/xinterp -d srcgen/TEST/prelude/sieve.dats
 ```
 
 ### Remarks
