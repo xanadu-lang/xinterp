@@ -403,7 +403,8 @@ d3e0.node() of
   , IR0Etcst(d2c1, ti3a, ti2s))
 //
 | D3Etimp
-  ( d3e1(*tcst*), targ
+  ( stmp
+  , d3e1(*tcst*), targ
   , d3cl(*impl*), tsub) =>
   let
   val ire1 = irerase_dexp(d3e1)
@@ -932,7 +933,8 @@ d3cl.node() of
   end
 //
 | D3Cimpdecl3
-  ( tok, mopt
+  ( tok
+  , stmp, mopt
   , sqas, tqas
   , id2c, ti3a, ti2s, f3as, res0, body) =>
   let
