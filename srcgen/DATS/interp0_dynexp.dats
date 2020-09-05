@@ -166,7 +166,7 @@ end // end of [local]
 
 implement
 interp0_program
-  (irdcls) =
+  (dcls) =
 let
 //
 val () =
@@ -177,7 +177,7 @@ env0 =
 intpenv_make_nil()
 //
 val () =
-interp0_irdclist(env0, irdcls)
+interp0_irdclist(env0, dcls)
 //
 val () = intpenv_free_nil(env0)
 //
@@ -2602,14 +2602,16 @@ interp0_irdclist
   (env0, xs) =
 (
 case+ xs of
-| list_nil() => ()
-| list_cons(x0, xs) =>
-  (
-    interp0_irdclist(env0, xs)
-  ) where
-  {
-    val () = interp0_irdcl(env0, x0)
-  }
+|
+list_nil() => ()
+|
+list_cons(x0, xs) =>
+let
+  val () =
+  interp0_irdcl(env0, x0)
+in
+  interp0_irdclist(env0, xs)
+end // end of [list_cons]
 ) (* end of [interp0_irdclist] *)
 
 (* ****** ****** *)
@@ -2621,13 +2623,13 @@ interp0_d2con_ck0
 , d2c2
 : d2con ) : bool =
 let
-  val tag1 = d2c1.tag((*void*))
+val tag1 = d2c1.tag((*void*))
 in
-  if
-  (tag1 < 0)
-  then (d2c1 = d2c2)
-  else (tag1 = d2c2.tag((*void*)))
-  // end of [if]
+if
+(tag1 < 0)
+then (d2c1 = d2c2)
+else (tag1 = d2c2.tag((*void*)))
+// end of [if]
 end // end of [interp0_d2con_ck0]
 
 (* ****** ****** *)
