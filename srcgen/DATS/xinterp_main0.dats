@@ -63,6 +63,8 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
+//
+#staload "./../SATS/xinterp.sats"
 #staload "./../SATS/interp0.sats"
 //
 (* ****** ****** *)
@@ -1276,7 +1278,7 @@ end // end of [process_cmdline2]
 in (* in-of-local *)
 
 implement
-interp0_main0
+xinterp_main0
   (argc, argv) = let
 //
 val

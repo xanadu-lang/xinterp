@@ -37,88 +37,10 @@
 //
 (* ****** ****** *)
 //
-#include
-"share/atspre_staload.hats"
-#staload
-UN = "prelude/SATS/unsafe.sats"
-//
-(* ****** ****** *)
-//
-#staload "./../SATS/xinterp.sats"
-#staload "./../SATS/interp0.sats"
-//
-(* ****** ****** *)
-//
-#dynload "./../DATS/intrep0.dats"
-#dynload "./../DATS/intrep0_print.dats"
-#dynload "./../DATS/intrep0_dynexp.dats"
-//
-#dynload "./../DATS/xinterp_main0.dats"
-//
-#dynload "./../DATS/interp0_print.dats"
-#dynload "./../DATS/interp0_envmap.dats"
-#dynload "./../DATS/interp0_dynexp.dats"
-//
-(* ****** ****** *)
-//
-extern
 fun
-echo_argc_argv
-  {n:nat}
-( out: FILEref
-, argc: int(n)
-, argv: !argv(n)): void
-//
-implement
-echo_argc_argv
-{n}
-(out, argc, argv) =
-(
-loop(argv, 0(*i0*))
-) where
-{
-fun
-loop
-{ i:nat
-| i <= n} .<n-i>.
-( argv
-: !argv(n)
-, i0: int(i)): void =
-(
-if
-(i0 >= argc)
-then
-fprintln!(out)
-else
-let
-val () =
-if
-(i0 > 0)
-then
-fprint(out, ' ')
-in
-fprint(out, argv[i0]); loop(argv, i0+1)
-end
-)
-} (* end of [ech0_argc_argv] *)
-//
-(* ****** ****** *)
-//
-implement
-main0(argc, argv) =
-(
-//
-if
-(argc >= 2)
-then xinterp_main0(argc, argv)
-else prerrln! ("Hello from ATS3(xinterp)!")
-// end of [if]
-) where
-{
-  val out = stderr_ref
-  val ( ) = echo_argc_argv(out, argc, argv)
-} (* end of [main0] *)
+xinterp_main0
+{n:int | n >= 1}(int(n), !argv(n)): void
 //
 (* ****** ****** *)
 
-(* end of [xint_xinterp.dats] *)
+(* end of [xinterp.sats] *)

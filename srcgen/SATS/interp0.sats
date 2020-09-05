@@ -415,11 +415,5 @@ fun
 interp0_fprint_d2varmap(FILEref): void
 //
 (* ****** ****** *)
-//
-fun
-interp0_main0
-{n:int | n >= 1}(int(n), !argv(n)): void
-//
-(* ****** ****** *)
 
 (* end of [xint_interp0.sats] *)
