@@ -46,7 +46,7 @@ SRCDATS := \
 intrep0.dats \
 intrep0_print.dats \
 intrep0_dynexp.dats \
-interp0.dats \
+xinterp_main0.dats \
 interp0_print.dats \
 interp0_envmap.dats \
 interp0_dynexp.dats \

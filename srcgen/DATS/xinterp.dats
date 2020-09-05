@@ -52,7 +52,8 @@ UN = "prelude/SATS/unsafe.sats"
 #dynload "./../DATS/intrep0_print.dats"
 #dynload "./../DATS/intrep0_dynexp.dats"
 //
-#dynload "./../DATS/interp0.dats"
+#dynload "./../DATS/xinterp_main0.dats"
+//
 #dynload "./../DATS/interp0_print.dats"
 #dynload "./../DATS/interp0_envmap.dats"
 #dynload "./../DATS/interp0_dynexp.dats"
