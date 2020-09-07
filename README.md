@@ -32,6 +32,6 @@ cd xinterp
 
 - Xinterp is for debugging the implementation of Xanadu
 
-- Xinterp is not meant to be a practical interpreter for Xanadu
+- Xinterp is *not* meant to be a practical interpreter for Xanadu
 
 - This project should be constantly under construction for quite some time
