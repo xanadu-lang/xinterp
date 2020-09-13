@@ -11,7 +11,7 @@
 #staload _ =
 "prelude\
 /DATS/CATS\
-/Xint/runtime.dats"
+/Xint/basics.dats"
 (* ****** ****** *)
 #staload
 "prelude/DATS/gbas.dats"

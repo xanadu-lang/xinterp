@@ -355,19 +355,19 @@ the_preludes_load(XHOME)
 //
 (*
 HX-2020-03-08:
-The runtime for primitive functions
+The basics for primitive functions
 *)
 //
 val () =
 the_prelude_load
 ( XHOME
 , 1(*dynamic*)
-, "prelude/DATS/CATS/Xint/runtime.dats")
+, "prelude/DATS/CATS/Xint/basics.dats")
 val () =
 the_prelude_load
 ( XHOME
 , 1(*dynamic*)
-, "xatslib/libc/DATS/CATS/Xint/runtime.dats")
+, "xatslib/libc/DATS/CATS/Xint/basics.dats")
 //
 } (* end of [then] *) // end-of-if
 ) (* end of [the_preludes_load_if] *)

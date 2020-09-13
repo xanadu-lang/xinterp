@@ -26,7 +26,7 @@ tcc -run -DATS_MEMALLOC_LIBC -I${PATSHOME} -I${PATSHOME}/ccomp/runtime -
 #staload _ =
 "prelude\
 /DATS/CATS\
-/Xint/runtime.dats"
+/Xint/basics.dats"
 (* ****** ****** *)
 #staload
 "prelude/DATS/gbas.dats"

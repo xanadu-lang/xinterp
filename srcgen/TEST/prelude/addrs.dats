@@ -2,7 +2,7 @@
 #staload _ =
 "prelude\
 /DATS/CATS\
-/Xint/runtime.dats"
+/Xint/basics.dats"
 (* ****** ****** *)
 //
 var x0: int = 0
