@@ -280,11 +280,18 @@ x0.node() of
   ( out
   , "IR0Epbox("
   , ire1, "; ", lab2, "; ", idx2, ")")
+//
 | IR0Eproj
   (ire1, lab2, idx2) =>
   fprint!
   ( out
   , "IR0Eproj("
+  , ire1, "; ", lab2, "; ", idx2, ")")
+| IR0Eplft
+  (ire1, lab2, idx2) =>
+  fprint!
+  ( out
+  , "IR0Eplft("
   , ire1, "; ", lab2, "; ", idx2, ")")
 //
 | IR0Elet(irds, ire1) =>

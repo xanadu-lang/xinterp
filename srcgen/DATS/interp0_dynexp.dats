@@ -963,13 +963,33 @@ in
 case- irv1 of
 |
 IR0Vtuple
-(knd, irvs) =>
-auxget_at(irvs, idx2)
+(knd, irvs) => auxget_at(irvs, idx2)
+//
+end // end of [auxproj]
+
+fun
+auxplft
+( env0
+: !intpenv
+, ire0
+: ir0exp): ir0val =
+let
+val-
+IR0Eplft
+( ire1
+, lab2
+, idx2) = ire0.node()
+val
+irv1 =
+interp0_irexp(env0, ire1)
+in
+//
+case- irv1 of
 |
 IR0Vlft(irlv) =>
 IR0Vlft(IR0LVpflt(irlv, lab2, idx2))
 //
-end // end of [auxproj]
+end // end of [auxplft]
 
 end // end of [local]
 
@@ -2101,7 +2121,7 @@ IR0LVpflt _ => // can it happen?
 //
 end (* end of [IR0Evar] *)
 |
-IR0Eproj
+IR0Eplft
 (ire1, lab2, idx2) =>
 let
 val irv1 = aux_flat_main(env0, ire1)
@@ -2157,7 +2177,7 @@ val
 irv1 = interp0_irexp(env0, ire1)
 in
 IR0Vlft(IR0LVpbox(irv1, lab2, idx2))
-end // end of [IR0Eproj]
+end // end of [IR0Epbox]
 |
 IR0Eeval(knd0, ire1) =>
 let
@@ -2215,6 +2235,7 @@ ire0.node() of
 | IR0Epcon _ => auxpcon(env0, ire0)
 | IR0Epbox _ => auxpbox(env0, ire0)
 | IR0Eproj _ => auxproj(env0, ire0)
+| IR0Eplft _ => auxplft(env0, ire0)
 //
 | IR0Elet
   (ircs, ire1) => aux_let(env0, ire0)

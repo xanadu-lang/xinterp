@@ -283,7 +283,11 @@ ir0exp_node =
 | IR0Epbox of
   ( ir0exp//rcd
   , label(*proj*), int(*index*))
+//
 | IR0Eproj of
+  ( ir0exp//rcd
+  , label(*proj*), int(*index*))
+| IR0Eplft of
   ( ir0exp//rcd
   , label(*proj*), int(*index*))
 //
