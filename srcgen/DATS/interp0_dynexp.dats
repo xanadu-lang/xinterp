@@ -919,6 +919,31 @@ IR0Vcon
 end // end of [auxpcon]
 
 fun
+auxpbox
+( env0
+: !intpenv
+, ire0
+: ir0exp): ir0val =
+let
+val-
+IR0Epbox
+( ire1
+, lab2
+, idx2) = ire0.node()
+val
+irv1 =
+interp0_irexp(env0, ire1)
+in
+//
+case- irv1 of
+|
+IR0Vtuple
+(knd, irvs) =>
+auxget_at(irvs, idx2)
+//
+end // end of [auxpbox]
+
+fun
 auxproj
 ( env0
 : !intpenv
@@ -1706,6 +1731,16 @@ interp0_irexp(env0, ire2)
 in
 IR0Vlft(IR0LVpcon(irv2, lab2))
 end
+|
+IR0Epbox
+(ire2, lab2, idx2) =>
+let
+val
+irv2 =
+interp0_irexp(env0, ire2)
+in
+IR0Vlft(IR0LVpbox(irv2, lab2, idx2))
+end
 //
 end // end of [aux_addr]
 //
@@ -2115,7 +2150,7 @@ in
 IR0Vlft(IR0LVpcon(irv1, lab2))
 end // end of [IR0Epcon]
 |
-IR0Eproj
+IR0Epbox
 (ire1, lab2, idx2) =>
 let
 val
@@ -2178,6 +2213,7 @@ ire0.node() of
 | IR0Edapp _ => auxdapp(env0, ire0)
 //
 | IR0Epcon _ => auxpcon(env0, ire0)
+| IR0Epbox _ => auxpbox(env0, ire0)
 | IR0Eproj _ => auxproj(env0, ire0)
 //
 | IR0Elet

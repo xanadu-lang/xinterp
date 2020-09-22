@@ -87,6 +87,12 @@ length(xs): int =
 (
 case+ xs of
 | mylist_nil() => 0
+| mylist_cons
+  (
+  _
+  ,
+  mylist_cons(_, xs)
+  ) => 2 + length(xs)
 | mylist_cons(_, xs) => 1 + length(xs)
 )
 }

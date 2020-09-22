@@ -274,6 +274,12 @@ x0.node() of
   fprint!
   ( out
   , "IR0Epcon(", ire1, "; ", lab2, ")")
+| IR0Epbox
+  (ire1, lab2, idx2) =>
+  fprint!
+  ( out
+  , "IR0Epbox("
+  , ire1, "; ", lab2, "; ", idx2, ")")
 | IR0Eproj
   (ire1, lab2, idx2) =>
   fprint!

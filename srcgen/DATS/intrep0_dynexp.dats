@@ -441,6 +441,15 @@ d3e0.node() of
       (loc0, IR0Epcon(ire1, lab2))
     // ir0exp_make_node
   end
+| D3Epbox
+  (d3e1, lab2, idx2) => let
+    val
+    ire1 = irerase_dexp(d3e1)
+  in
+    ir0exp_make_node
+      (loc0, IR0Epbox(ire1, lab2, idx2))
+    // ir0exp_make_node
+  end
 | D3Eproj
   (d3e1, lab2, idx2) => let
     val

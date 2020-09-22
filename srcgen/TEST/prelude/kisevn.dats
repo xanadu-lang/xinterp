@@ -27,4 +27,3 @@ val isodd10 = kisodd(10, lam r => r)
 (* ****** ****** *)
 
 (* end of [kisevn.dats] *)
-
