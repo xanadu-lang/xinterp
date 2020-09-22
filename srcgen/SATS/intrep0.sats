@@ -290,6 +290,9 @@ ir0exp_node =
 | IR0Eplft of
   ( ir0exp//rcd
   , label(*proj*), int(*index*))
+| IR0Epptr of
+  ( ir0exp//rcd
+  , label(*proj*), int(*index*))
 //
 | IR0Elet of (ir0dclist, ir0exp)
 | IR0Ewhere of (ir0exp, ir0dclist)

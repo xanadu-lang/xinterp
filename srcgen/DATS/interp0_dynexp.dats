@@ -950,6 +950,16 @@ auxproj
 , ire0
 : ir0exp): ir0val =
 let
+//
+val
+loc0 = ire0.loc()
+val () =
+println!
+("auxproj: loc0 = ", loc0)
+val () =
+println!
+("auxproj: ire0 = ", ire0)
+//
 val-
 IR0Eproj
 ( ire1
@@ -990,6 +1000,30 @@ IR0Vlft(irlv) =>
 IR0Vlft(IR0LVpflt(irlv, lab2, idx2))
 //
 end // end of [auxplft]
+
+fun
+auxpptr
+( env0
+: !intpenv
+, ire0
+: ir0exp): ir0val =
+let
+val-
+IR0Epptr
+( ire1
+, lab2
+, idx2) = ire0.node()
+val
+irv1 =
+interp0_irexp(env0, ire1)
+in
+//
+case- irv1 of
+|
+IR0Vlft(irlv) =>
+IR0Vlft(IR0LVpflt(irlv, lab2, idx2))
+//
+end // end of [auxpptr]
 
 end // end of [local]
 
@@ -2124,12 +2158,15 @@ end (* end of [IR0Evar] *)
 IR0Eplft
 (ire1, lab2, idx2) =>
 let
-val irv1 = aux_flat_main(env0, ire1)
+val
+irv1 = aux_flat_main(env0, ire1)
 in
 case- irv1 of
-| IR0Vtuple
-  (knd, irvs) => auxget_at(irvs, idx2)
-end
+|
+IR0Vtuple
+(knd, irvs) => auxget_at(irvs, idx2)
+end // end of [IR0Eplft]
+//
 ) (* end of [aux_flat_main] *)
 
 end // end of [local]
@@ -2236,6 +2273,7 @@ ire0.node() of
 | IR0Epbox _ => auxpbox(env0, ire0)
 | IR0Eproj _ => auxproj(env0, ire0)
 | IR0Eplft _ => auxplft(env0, ire0)
+| IR0Epptr _ => auxpptr(env0, ire0)
 //
 | IR0Elet
   (ircs, ire1) => aux_let(env0, ire0)

@@ -450,6 +450,14 @@ d3e0.node() of
     (loc0, IR0Epbox(ire1, lab2, idx2))
   end
 //
+| D3Eproj
+  (d3e1, lab2, idx2) => let
+    val
+    ire1 = irerase_dexp(d3e1)
+  in
+    ir0exp_make_node
+    (loc0, IR0Eproj(ire1, lab2, idx2))
+  end
 | D3Eplft
   (d3e1, lab2, idx2) => let
     val
@@ -458,13 +466,13 @@ d3e0.node() of
     ir0exp_make_node
     (loc0, IR0Eplft(ire1, lab2, idx2))
   end
-| D3Eproj
+| D3Epptr
   (d3e1, lab2, idx2) => let
     val
     ire1 = irerase_dexp(d3e1)
   in
     ir0exp_make_node
-    (loc0, IR0Eproj(ire1, lab2, idx2))
+    (loc0, IR0Epptr(ire1, lab2, idx2))
   end
 //
 | D3Elet(d3cs, d3e1) =>

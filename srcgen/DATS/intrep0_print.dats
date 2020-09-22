@@ -293,6 +293,12 @@ x0.node() of
   ( out
   , "IR0Eplft("
   , ire1, "; ", lab2, "; ", idx2, ")")
+| IR0Epptr
+  (ire1, lab2, idx2) =>
+  fprint!
+  ( out
+  , "IR0Epptr("
+  , ire1, "; ", lab2, "; ", idx2, ")")
 //
 | IR0Elet(irds, ire1) =>
   fprint!
