@@ -1,4 +1,15 @@
 (* ****** ****** *)
+(* ****** ****** *)
+#staload
+"prelude/DATS/gint.dats"
+#staload
+"prelude/DATS/char.dats"
+#staload
+"prelude/DATS/string.dats"
+(* ****** ****** *)
+#staload
+"prelude/DATS/tuple.dats"
+(* ****** ****** *)
 #staload
 "prelude\
 /DATS/CATS\
@@ -10,6 +21,10 @@ val x1 = x0
 val () = x0.0 := 1
 val () = x0.1 := 2
 val x2 = x0
+val () =
+(g_print(x1); g_print('\n'))
+val () =
+(g_print(x2); g_print('\n'))
 
 (* ****** ****** *)
 
@@ -21,6 +36,10 @@ val () =
 val () =
 ($eval(p0)).1 := 2
 val y2 = y0
+val () =
+(g_print(y1); g_print('\n'))
+val () =
+(g_print(y2); g_print('\n'))
 
 (* ****** ****** *)
 
@@ -37,6 +56,10 @@ val () = z0.0 := 1
 val () = (z0.1).0 := 2
 val () = (z0.1).1 := 3
 val z2 = z0
+val () =
+(g_print(z1); g_print('\n'))
+val () =
+(g_print(z2); g_print('\n'))
 
 (* ****** ****** *)
 //

@@ -2090,7 +2090,15 @@ aux_flat_main
 : !intpenv
 , ire0
 : ir0exp): ir0val =
-(
+let
+//
+(*
+val () =
+println!
+("aux_flat_main: ire0 = ", ire0)
+*)
+//
+in
 case-
 ire0.node() of
 |
@@ -2098,13 +2106,6 @@ IR0Evar _ =>
 let
 val
 irv0 = auxvar(env0, ire0)
-//
-// (*
-val () =
-println!
-("aux_flat_main: irv0 = ", irv0)
-// *)
-//
 in
 //
 case- irv0 of
@@ -2114,22 +2115,19 @@ IR0Vlft
 (
 case- irlv of
 |
-IR0LVref
-  (r0) =>
+IR0LVref(r0) =>
 let
-  val-
-  Some(irv1) = r0[] in irv1
+val-Some(irv1) = r0[] in irv1
 end
 |
 IR0LVpcon
 (irv1, lab2) =>
 let
 val-
-IR0Vcon
-(d2c1, irvs) = irv1
+IR0Vcon(d2c1, irvs) = irv1
 in
 (
-  auxget_at(irvs, idx2)
+  auxget_at( irvs, idx2 )
 ) where
 {
   val idx2 = pcon_lab2idx(lab2)
@@ -2167,7 +2165,7 @@ IR0Vtuple
 (knd, irvs) => auxget_at(irvs, idx2)
 end // end of [IR0Eplft]
 //
-) (* end of [aux_flat_main] *)
+end (* let *) // end of [aux_flat_main]
 
 end // end of [local]
 
