@@ -1976,7 +1976,7 @@ aux_free
 ( IR0Vnil() ) where
 {
 val-
-IR0Efree(ire1) = ire0.node()
+IR0Efree(knd0, ire1) = ire0.node()
 }
 //
 (* ****** ****** *)
@@ -2306,19 +2306,18 @@ ire0.node() of
   // IR0Etry
 //
 | IR0Eaddr(ire1) => aux_addr(env0, ire0)
-//
-| IR0Eeval(_, _) => aux_eval(env0, ire0)
+| IR0Eflat(ire1) => aux_flat(env0, ire0)
+| IR0Etalf(ire1) => aux_talf(env0, ire0)
 //
 | IR0Efold(ire1) => aux_fold(env0, ire0)
-| IR0Efree(ire1) => aux_free(env0, ire0)
+//
+| IR0Eeval(_, _) => aux_eval(env0, ire0)
+| IR0Efree(_, _) => aux_free(env0, ire0)
 //
 | IR0Eraise(ire1) => aux_raise(env0, ire0)
 //
 | IR0Elazy(ire1) => aux_lazy(env0, ire0)
 | IR0Ellazy(_, _) => aux_llazy(env0, ire0)
-//
-| IR0Eflat(ire1) => aux_flat(env0, ire0)
-| IR0Etalf(ire1) => aux_talf(env0, ire0)
 //
 | IR0Enone0((*void*)) => IR0Vnil(*void*)
 //

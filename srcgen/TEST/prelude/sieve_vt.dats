@@ -72,6 +72,8 @@ val-
 ~cons_vt(x3, xs) = $eval(xs) // x3 = 7
 val-
 ~cons_vt(x4, xs) = $eval(xs) // x4 = 11
+val-
+~cons_vt(x5, xs) = $eval(xs) // x5 = 13
 
 (* ****** ****** *)
 

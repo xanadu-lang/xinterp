@@ -321,18 +321,32 @@ ir0exp_node =
 | IR0Etry of (ir0exp, ir0claulst)
 //
 | IR0Eaddr of (ir0exp(*l-value*))
+| IR0Eflat of (ir0exp(*l-value*))
+| IR0Etalf of (ir0exp(*IR0Eflat*))
 //
+| IR0Efold of (ir0exp(*open-con*))
+//
+(*
 // HX-2019-12-18:
-// knd=0: undecided
-// knd=1: derefence
+// knd=0: general
+// knd=1: ptr-dref
 // knd=2: lazy-eval
 // knd=3: llazy-eval
+*)
 | IR0Eeval of
     (int(*knd*), ir0exp(*source*))
   // IR0Eeval
 //
-| IR0Efold of (ir0exp(*open-con*))
-| IR0Efree of (ir0exp(*free-con*))
+(*
+// HX-2020-09-26:
+// knd=0: general
+// knd=1: ptr-free
+// knd=2: con-free
+// knd=3: llazy-free
+*)
+| IR0Efree of
+    (int(*knd*), ir0exp(*source*))
+  // IR0Efree
 //
 | IR0Eraise of (ir0exp(*lin-exn*))
 //
@@ -340,9 +354,6 @@ ir0exp_node =
   (ir0exp(*eval*))
 | IR0Ellazy of
   (ir0exp(*eval*), ir0explst(*frees*))
-//
-| IR0Eflat of (ir0exp(*l-value*))
-| IR0Etalf of (ir0exp(*IR0Eflat*))
 //
 | IR0Enone0 of () | IR0Enone1 of d3exp
 //
