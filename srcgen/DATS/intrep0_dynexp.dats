@@ -57,7 +57,7 @@ local
 fun
 auxbang
 ( d3p0
-: d3pat): ir0pat =
+: d3pat): i0pat =
 let
 //
 val
@@ -71,13 +71,13 @@ val
 irp1 = irerase_dpat(d3p1)
 //
 in
-ir0pat_make_node(loc0, IR0Pbang(irp1))
+i0pat_make_node(loc0, I0Pbang(irp1))
 end // end of [auxbang]
 
 fun
 auxflat
 ( d3p0
-: d3pat): ir0pat =
+: d3pat): i0pat =
 let
 //
 val
@@ -91,13 +91,13 @@ val
 irp1 = irerase_dpat(d3p1)
 //
 in
-ir0pat_make_node(loc0, IR0Pflat(irp1))
+i0pat_make_node(loc0, I0Pflat(irp1))
 end // end of [auxflat]
 
 fun
 auxfree
 ( d3p0
-: d3pat): ir0pat =
+: d3pat): i0pat =
 let
 //
 val
@@ -111,7 +111,7 @@ val
 irp1 = irerase_dpat(d3p1)
 //
 in
-ir0pat_make_node(loc0, IR0Pfree(irp1))
+i0pat_make_node(loc0, I0Pfree(irp1))
 end // end of [auxfree]
 
 (* ****** ****** *)
@@ -119,7 +119,7 @@ end // end of [auxfree]
 fun
 auxdapp
 ( d3p0
-: d3pat): ir0pat =
+: d3pat): i0pat =
 let
 //
 val
@@ -174,7 +174,7 @@ case-
 d3f0.node() of
 |
 D3Pcon1(d2c0) =>
-ir0pat_make_node(loc0, IR0Pcapp(d2c0, irps))
+i0pat_make_node(loc0, I0Pcapp(d2c0, irps))
 //
 end // end of [auxdapp]
 
@@ -183,7 +183,7 @@ end // end of [auxdapp]
 fun
 aux_tuple
 ( d3p0
-: d3pat): ir0pat =
+: d3pat): i0pat =
 let
 //
 val
@@ -205,7 +205,7 @@ fun
 auxlst
 ( npf1: int
 , d3ps
-: d3patlst): ir0patlst =
+: d3patlst): i0patlst =
 (
 case+ d3ps of
 |
@@ -229,7 +229,7 @@ end
 } (* where *) // end-of-val
 //
 in
-ir0pat_make_node(loc0, IR0Ptuple(knd0, irps))
+i0pat_make_node(loc0, I0Ptuple(knd0, irps))
 end // end of [aux_tuple]
 
 in(*in-of-local*)
@@ -247,21 +247,21 @@ case+
 d3p0.node() of
 //
 | D3Pnil() =>
-  ir0pat_make_node
-  (loc0, IR0Pnil((*void*)))
+  i0pat_make_node
+  (loc0, I0Pnil((*void*)))
 | D3Pany() =>
-  ir0pat_make_node
-  (loc0, IR0Pany((*void*)))
+  i0pat_make_node
+  (loc0, I0Pany((*void*)))
 //
 | D3Pint(tok) =>
-  ir0pat_make_node
-  (loc0, IR0Pint(tok))
+  i0pat_make_node
+  (loc0, I0Pint(tok))
 | D3Pbtf(tok) =>
-  ir0pat_make_node
-  (loc0, IR0Pbtf(tok))
+  i0pat_make_node
+  (loc0, I0Pbtf(tok))
 //
 | D3Pvar(d2v) =>
-  ir0pat_make_node(loc0, IR0Pvar(d2v))
+  i0pat_make_node(loc0, I0Pvar(d2v))
 //
 | D3Pbang _ => auxbang(d3p0)
 | D3Pflat _ => auxflat(d3p0)
@@ -274,7 +274,7 @@ d3p0.node() of
 | D3Panno(d3p1, _) => irerase_dpat(d3p1)
 //
 | _(*rest-of-d3pat*) =>
-  ir0pat_make_node(loc0, IR0Pnone1(d3p0))
+  i0pat_make_node(loc0, I0Pnone1(d3p0))
 //
 end // end of [irerase_dpat]
 
@@ -289,11 +289,11 @@ list_vt2t(irps) where
 {
 val
 irps =
-list_map<d3pat><ir0pat>
+list_map<d3pat><i0pat>
   (d3ps) where
 {
 implement
-list_map$fopr<d3pat><ir0pat>(d3p) = irerase_dpat(d3p)
+list_map$fopr<d3pat><i0pat>(d3p) = irerase_dpat(d3p)
 }
 } (* end of [irerase_dpatlst] *)
 
@@ -317,11 +317,11 @@ f3a0.node() of
 | F3ARGsome_dyn
     (npf, d3ps) =>
   (
-    list_cons(ir0a, iras)
+    list_cons(i0a, iras)
   ) where
   {
-    val ir0a =
-    IR0ARGsome
+    val i0a =
+    I0ARGsome
     (npf, irerase_dpatlst(d3ps))
     val iras = irerase_farglst(f3as)
   }
@@ -350,57 +350,57 @@ case+
 d3e0.node() of
 //
 | D3Eint(tok) =>
-  ir0exp_make_node
-  (loc0, IR0Eint(tok))
+  i0exp_make_node
+  (loc0, I0Eint(tok))
 | D3Ebtf(tok) =>
-  ir0exp_make_node
-  (loc0, IR0Ebtf(tok))
+  i0exp_make_node
+  (loc0, I0Ebtf(tok))
 | D3Echr(tok) =>
-  ir0exp_make_node
-  (loc0, IR0Echr(tok))
+  i0exp_make_node
+  (loc0, I0Echr(tok))
 | D3Eflt(tok) =>
-  ir0exp_make_node
-  (loc0, IR0Eflt(tok))
+  i0exp_make_node
+  (loc0, I0Eflt(tok))
 | D3Estr(tok) =>
-  ir0exp_make_node
-  (loc0, IR0Estr(tok))
+  i0exp_make_node
+  (loc0, I0Estr(tok))
 //
 | D3Etop(tok) =>
-  ir0exp_make_node
-  (loc0, IR0Etop(tok))
+  i0exp_make_node
+  (loc0, I0Etop(tok))
 //
 | D3Evar(d2v) =>
-  ir0exp_make_node
-  (loc0, IR0Evar(d2v))
+  i0exp_make_node
+  (loc0, I0Evar(d2v))
 | D3Evknd
   ( knd, d2v ) =>
-  ir0exp_make_node
-  (loc0, IR0Evar(d2v))
+  i0exp_make_node
+  (loc0, I0Evar(d2v))
 //
 | D3Econ1(d2c) =>
-  ir0exp_make_node
-  (loc0, IR0Econ1(d2c))
+  i0exp_make_node
+  (loc0, I0Econ1(d2c))
 | D3Ecst1(d2c) =>
-  ir0exp_make_node
-  (loc0, IR0Ecst1(d2c))
+  i0exp_make_node
+  (loc0, I0Ecst1(d2c))
 //
 | D3Efcon(d2c) =>
-  ir0exp_make_node
-  (loc0, IR0Efcon(d2c))
+  i0exp_make_node
+  (loc0, I0Efcon(d2c))
 | D3Efcst(d2c) =>
-  ir0exp_make_node
-  (loc0, IR0Efcst(d2c))
+  i0exp_make_node
+  (loc0, I0Efcst(d2c))
 //
 | D3Etcon
   (d2c1, ti3a, ti2s) =>
-  ir0exp_make_node
+  i0exp_make_node
   ( loc0
-  , IR0Etcon(d2c1, ti3a, ti2s))
+  , I0Etcon(d2c1, ti3a, ti2s))
 | D3Etcst
   (d2c1, ti3a, ti2s) =>
-  ir0exp_make_node
+  i0exp_make_node
   ( loc0
-  , IR0Etcst(d2c1, ti3a, ti2s))
+  , I0Etcst(d2c1, ti3a, ti2s))
 //
 | D3Etimp
   ( stmp
@@ -410,9 +410,9 @@ d3e0.node() of
   val ire1 = irerase_dexp(d3e1)
   val ircl = irerase_decl(d3cl)
   in
-    ir0exp_make_node
+    i0exp_make_node
     ( loc0
-    , IR0Etimp
+    , I0Etimp
       (ire1, targ, ircl, tsub))
   end
 //
@@ -427,9 +427,9 @@ d3e0.node() of
   val irf0 = irerase_dexp(d3f0)
   val ires = irerase_dexplst(d3es)
   in
-    ir0exp_make_node
+    i0exp_make_node
     ( loc0
-    , IR0Edapp(irf0, npf1, ires))
+    , I0Edapp(irf0, npf1, ires))
   end
 //
 | D3Epcon
@@ -437,17 +437,17 @@ d3e0.node() of
     val
     ire1 = irerase_dexp(d3e1)
   in
-    ir0exp_make_node
-      (loc0, IR0Epcon(ire1, lab2))
-    // ir0exp_make_node
+    i0exp_make_node
+      (loc0, I0Epcon(ire1, lab2))
+    // i0exp_make_node
   end
 | D3Epbox
   (d3e1, lab2, idx2) => let
     val
     ire1 = irerase_dexp(d3e1)
   in
-    ir0exp_make_node
-    (loc0, IR0Epbox(ire1, lab2, idx2))
+    i0exp_make_node
+    (loc0, I0Epbox(ire1, lab2, idx2))
   end
 //
 | D3Eproj
@@ -455,24 +455,24 @@ d3e0.node() of
     val
     ire1 = irerase_dexp(d3e1)
   in
-    ir0exp_make_node
-    (loc0, IR0Eproj(ire1, lab2, idx2))
+    i0exp_make_node
+    (loc0, I0Eproj(ire1, lab2, idx2))
   end
 | D3Eplft
   (d3e1, lab2, idx2) => let
     val
     ire1 = irerase_dexp(d3e1)
   in
-    ir0exp_make_node
-    (loc0, IR0Eplft(ire1, lab2, idx2))
+    i0exp_make_node
+    (loc0, I0Eplft(ire1, lab2, idx2))
   end
 | D3Epptr
   (d3e1, lab2, idx2) => let
     val
     ire1 = irerase_dexp(d3e1)
   in
-    ir0exp_make_node
-    (loc0, IR0Epptr(ire1, lab2, idx2))
+    i0exp_make_node
+    (loc0, I0Epptr(ire1, lab2, idx2))
   end
 //
 | D3Elet(d3cs, d3e1) =>
@@ -485,8 +485,8 @@ d3e0.node() of
     val
     ire1 = irerase_dexp(d3e1)
     in
-      ir0exp_make_node
-      (loc0, IR0Elet(ircs, ire1))
+      i0exp_make_node
+      (loc0, I0Elet(ircs, ire1))
     end
   end
 | D3Ewhere(d3e1, d3cs) =>
@@ -496,8 +496,8 @@ d3e0.node() of
     val
     ircs = irerase_declist(d3cs)
   in
-    ir0exp_make_node
-    (loc0, IR0Ewhere(ire1, ircs))
+    i0exp_make_node
+    (loc0, I0Ewhere(ire1, ircs))
   end
 //
 | D3Eseqn
@@ -509,8 +509,8 @@ d3e0.node() of
   val
   ires = irerase_dexplst(d3es)
   in
-    ir0exp_make_node
-    (loc0, IR0Eseqn(ires, ire1))
+    i0exp_make_node
+    (loc0, I0Eseqn(ires, ire1))
   end
 //
 | D3Etuple
@@ -519,9 +519,9 @@ d3e0.node() of
     val
     ires = irerase_dexplst(d3es)
   in
-    ir0exp_make_node
+    i0exp_make_node
     ( loc0
-    , IR0Etuple(knd0, npf1, ires))
+    , I0Etuple(knd0, npf1, ires))
   end
 //
 | D3Eassgn(d3el, d3er) =>
@@ -531,8 +531,8 @@ d3e0.node() of
     val
     irer = irerase_dexp(d3er)
   in
-    ir0exp_make_node
-    ( loc0, IR0Eassgn(irel, irer))
+    i0exp_make_node
+    ( loc0, I0Eassgn(irel, irer))
   end
 //
 | D3Eif0
@@ -545,8 +545,8 @@ d3e0.node() of
     val
     opt3 = irerase_dexpopt(opt3)
   in
-    ir0exp_make_node
-    (loc0, IR0Eif0(ire1, ire2, opt3))
+    i0exp_make_node
+    (loc0, I0Eif0(ire1, ire2, opt3))
   end
 //
 | D3Ecase
@@ -555,8 +555,8 @@ d3e0.node() of
     val ire1 = irerase_dexp(d3e1)
     val ircls = irerase_dclaulst(d3cls)
   in
-    ir0exp_make_node
-    (loc0, IR0Ecase(knd0, ire1, ircls))
+    i0exp_make_node
+    (loc0, I0Ecase(knd0, ire1, ircls))
   end
 //
 | D3Elam
@@ -575,9 +575,9 @@ d3e0.node() of
       val
       body = irerase_dexp(body)
     in
-      ir0exp_make_node
+      i0exp_make_node
       ( loc0
-      , IR0Elam(knd0, iras, body))
+      , I0Elam(knd0, iras, body))
     end
   end
 | D3Efix
@@ -596,9 +596,9 @@ d3e0.node() of
       val
       body = irerase_dexp(body)
     in
-      ir0exp_make_node
+      i0exp_make_node
       ( loc0
-      , IR0Efix(knd0, d2v0, iras, body))
+      , I0Efix(knd0, d2v0, iras, body))
     end
   end
 //
@@ -608,35 +608,35 @@ d3e0.node() of
     val ire1 = irerase_dexp(d3e1)
     val ircls = irerase_dclaulst(d3cls)
   in
-    ir0exp_make_node
-    (loc0, IR0Etry(ire1, ircls))
+    i0exp_make_node
+    (loc0, I0Etry(ire1, ircls))
   end
 //
 | D3Eaddr(d3e1) =>
   let
     val ire1 = irerase_dexp(d3e1)
   in
-    ir0exp_make_node(loc0, IR0Eaddr(ire1))
+    i0exp_make_node(loc0, I0Eaddr(ire1))
   end // end of [D3Eaddr]
 //
 | D3Eflat(d3e1) =>
   let
     val ire1 = irerase_dexp(d3e1)
   in
-    ir0exp_make_node(loc0, IR0Eflat(ire1))
+    i0exp_make_node(loc0, I0Eflat(ire1))
   end // end of [D3Eflat]
 | D3Etalf(d3e1) =>
   let
     val ire1 = irerase_dexp(d3e1)
   in
-    ir0exp_make_node(loc0, IR0Etalf(ire1))
+    i0exp_make_node(loc0, I0Etalf(ire1))
   end // end of [D3Etalf]
 //
 | D3Efold(d3e1) =>
   let
     val ire1 = irerase_dexp(d3e1)
   in
-    ir0exp_make_node(loc0, IR0Efold(ire1))
+    i0exp_make_node(loc0, I0Efold(ire1))
   end // end of [D3Efold]
 //
 | D3Eeval
@@ -644,7 +644,7 @@ d3e0.node() of
   let
     val ire1 = irerase_dexp(d3e1)
   in
-    ir0exp_make_node(loc0, IR0Eeval(knd0, ire1))
+    i0exp_make_node(loc0, I0Eeval(knd0, ire1))
   end // end of [D3Eeval]
 //
 | D3Efree
@@ -652,28 +652,28 @@ d3e0.node() of
   let
     val ire1 = irerase_dexp(d3e1)
   in
-    ir0exp_make_node(loc0, IR0Efree(knd0, ire1))
+    i0exp_make_node(loc0, I0Efree(knd0, ire1))
   end // end of [D3Efree]
 //
 | D3Eraise(d3e1) =>
   let
     val ire1 = irerase_dexp(d3e1)
   in
-    ir0exp_make_node(loc0, IR0Eraise(ire1))
+    i0exp_make_node(loc0, I0Eraise(ire1))
   end // end of [D3Eraise]
 //
 | D3Elazy(d3e1) =>
   let
     val ire1 = irerase_dexp(d3e1)
   in
-    ir0exp_make_node(loc0, IR0Elazy(ire1))
+    i0exp_make_node(loc0, I0Elazy(ire1))
   end // end of [D3Elazy]
 | D3Ellazy(d3e1, d3es) =>
   let
     val ire1 = irerase_dexp(d3e1)
     val ires = irerase_dexplst(d3es)
   in
-    ir0exp_make_node(loc0, IR0Ellazy(ire1, ires))
+    i0exp_make_node(loc0, I0Ellazy(ire1, ires))
   end // end of [D3Ellazy]
 //
 | D3Eanno
@@ -682,12 +682,12 @@ d3e0.node() of
 //
 | D3Enone0((*void*)) =>
   (
-    ir0exp_make_node(loc0, IR0Enone0())
+    i0exp_make_node(loc0, I0Enone0())
   )
 //
 | _(*rest-of-d3exp*) =>
   (
-    ir0exp_make_node(loc0, IR0Enone1(d3e0))
+    i0exp_make_node(loc0, I0Enone1(d3e0))
   )
 //
 end // end of [irerase_dexp]
@@ -710,11 +710,11 @@ list_vt2t(ires) where
 {
 val
 ires =
-list_map<d3exp><ir0exp>
+list_map<d3exp><i0exp>
   (d3es) where
 {
 implement
-list_map$fopr<d3exp><ir0exp>(d3e) = irerase_dexp(d3e)
+list_map$fopr<d3exp><i0exp>(d3e) = irerase_dexp(d3e)
 }
 } (* end of [irerase_dexplst] *)
 
@@ -731,8 +731,8 @@ d3g0.node() of
 |
 D3GUAexp(d3e1) =>
 (
-  ir0gua_make_node
-  (loc0, IR0GUAexp(ire1))
+  i0gua_make_node
+  (loc0, I0GUAexp(ire1))
 ) where
 {
   val ire1 = irerase_dexp(d3e1)
@@ -740,8 +740,8 @@ D3GUAexp(d3e1) =>
 |
 D3GUAmat(d3e1, d3p2) =>
 (
-  ir0gua_make_node
-  (loc0, IR0GUAmat(ire1, irp2))
+  i0gua_make_node
+  (loc0, I0GUAmat(ire1, irp2))
 ) where
 {
   val ire1 = irerase_dexp(d3e1)
@@ -756,11 +756,11 @@ list_vt2t(irgs) where
 {
 val
 irgs =
-list_map<d3gua><ir0gua>
+list_map<d3gua><i0gua>
   (d3gs) where
 {
 implement
-list_map$fopr<d3gua><ir0gua>(d3g) = irerase_dgua(d3g)
+list_map$fopr<d3gua><i0gua>(d3g) = irerase_dgua(d3g)
 }
 } (* end of [irerase_dgualst] *)
 
@@ -777,8 +777,8 @@ d3gp.node() of
 |
 D3GPATpat(d3p1) =>
 (
-  ir0gpat_make_node
-  (loc0, IR0GPATpat(irp1))
+  i0gpat_make_node
+  (loc0, I0GPATpat(irp1))
 ) where
 {
   val irp1 = irerase_dpat(d3p1)
@@ -786,8 +786,8 @@ D3GPATpat(d3p1) =>
 |
 D3GPATgua(d3p1, d3gs) =>
 (
-  ir0gpat_make_node
-  (loc0, IR0GPATgua(irp1, irgs))
+  i0gpat_make_node
+  (loc0, I0GPATgua(irp1, irgs))
 ) where
 {
   val irp1 = irerase_dpat(d3p1)
@@ -808,8 +808,8 @@ d3cl.node() of
 |
 D3CLAUpat(d3gp) =>
 (
-  ir0clau_make_node
-  (loc0, IR0CLAUpat(irgp))
+  i0clau_make_node
+  (loc0, I0CLAUpat(irgp))
 ) where
 {
   val
@@ -818,8 +818,8 @@ D3CLAUpat(d3gp) =>
 |
 D3CLAUexp(d3gp, d3e2) =>
 (
-  ir0clau_make_node
-  (loc0, IR0CLAUexp(irgp, ire2))
+  i0clau_make_node
+  (loc0, I0CLAUexp(irgp, ire2))
 ) where
 {
 //
@@ -838,11 +838,11 @@ list_vt2t(ircls) where
 {
 val
 ircls =
-list_map<d3clau><ir0clau>
+list_map<d3clau><i0clau>
   (d3cls) where
 {
 implement
-list_map$fopr<d3clau><ir0clau>(d3cl) = irerase_dclau(d3cl)
+list_map$fopr<d3clau><i0clau>(d3cl) = irerase_dclau(d3cl)
 }
 } (* end of [irerase_dclaulst] *)
 
@@ -853,7 +853,7 @@ local
 fun
 aux_include
 ( d3cl
-: d3ecl): ir0dcl =
+: d3ecl): i0dcl =
 let
 //
 val
@@ -873,11 +873,11 @@ case+ dopt of
   None()
 | Some(d3cs) =>
   Some(irerase_declist(d3cs))
-) : ir0dclistopt
+) : i0dclistopt
 in
-ir0dcl_make_node
+i0dcl_make_node
 ( loc0
-, IR0Cinclude(tok, src, knd, fopt, iropt)
+, I0Cinclude(tok, src, knd, fopt, iropt)
 )
 end // end of [aux_include]
 
@@ -898,8 +898,8 @@ d3cl.node() of
 | D3Cstatic
   (tok, d3c1) =>
   (
-  ir0dcl_make_node
-    (loc0, IR0Cstatic(tok, irc1))
+  i0dcl_make_node
+    (loc0, I0Cstatic(tok, irc1))
   ) where
   {
     val irc1 = irerase_decl(d3c1)
@@ -907,8 +907,8 @@ d3cl.node() of
 | D3Cextern
   (tok, d3c1) =>
   (
-  ir0dcl_make_node
-    (loc0, IR0Cextern(tok, irc1))
+  i0dcl_make_node
+    (loc0, I0Cextern(tok, irc1))
   ) where
   {
     val irc1 = irerase_decl(d3c1)
@@ -922,9 +922,9 @@ d3cl.node() of
   val head = irerase_declist(head)
   val body = irerase_declist(body)
   in
-    ir0dcl_make_node
-      (loc0, IR0Clocal(head, body))
-    // ir0dcl_make_node
+    i0dcl_make_node
+      (loc0, I0Clocal(head, body))
+    // i0dcl_make_node
   end
 //
 | D3Cvaldecl
@@ -933,8 +933,8 @@ d3cl.node() of
     val
     irds = irerase_valdeclist(v3ds)
   in
-    ir0dcl_make_node
-    (loc0, IR0Cvaldecl(tok, mopt, irds))
+    i0dcl_make_node
+    (loc0, I0Cvaldecl(tok, mopt, irds))
   end
 //
 | D3Cvardecl
@@ -943,8 +943,8 @@ d3cl.node() of
     val
     irds = irerase_vardeclist(v3ds)
   in
-    ir0dcl_make_node
-    (loc0, IR0Cvardecl(tok, mopt, irds))
+    i0dcl_make_node
+    (loc0, I0Cvardecl(tok, mopt, irds))
   end
 //
 | D3Cfundecl
@@ -953,9 +953,9 @@ d3cl.node() of
     val
     irds = irerase_fundeclist(f3ds)
   in
-    ir0dcl_make_node
+    i0dcl_make_node
     ( loc0
-    , IR0Cfundecl(tok, mopt, tqas, irds))
+    , I0Cfundecl(tok, mopt, tqas, irds))
   end
 //
 | D3Cimpdecl3
@@ -970,15 +970,15 @@ d3cl.node() of
     val
     body = irerase_dexp(body)
   in
-    ir0dcl_make_node
+    i0dcl_make_node
     ( loc0
-    , IR0Cimpdecl3
+    , I0Cimpdecl3
       ( tok, mopt, sqas, tqas
       , id2c, ti3a, ti2s, iras, body))
   end
 //
 | _(*rest-of-d3ecl*) =>
-  ir0dcl_make_node(loc0, IR0Cnone1(d3cl))
+  i0dcl_make_node(loc0, I0Cnone1(d3cl))
 //
 end // end of [irerase_decl]
 
@@ -993,11 +993,11 @@ list_vt2t(ircs) where
 {
 val
 ircs =
-list_map<d3ecl><ir0dcl>
+list_map<d3ecl><i0dcl>
   (d3cs) where
 {
 implement
-list_map$fopr<d3ecl><ir0dcl>(d3c) = irerase_decl(d3c)
+list_map$fopr<d3ecl><i0dcl>(d3c) = irerase_decl(d3c)
 }
 } (* end of [irerase_declist] *)
 
@@ -1018,7 +1018,7 @@ val pat = irerase_dpat(pat)
 val def = irerase_dexpopt(def)
 //
 in
-IR0VALDECL(@{loc=loc,pat=pat,def=def})
+I0VALDECL(@{loc=loc,pat=pat,def=def})
 end // end of [irerase_valdecl]
 
 implement
@@ -1028,11 +1028,11 @@ list_vt2t(irds) where
 {
 val
 irds =
-list_map<v3aldecl><ir0valdecl>
+list_map<v3aldecl><i0valdecl>
   (v3ds) where
 {
 implement
-list_map$fopr<v3aldecl><ir0valdecl>(v3d) = irerase_valdecl(v3d)
+list_map$fopr<v3aldecl><i0valdecl>(v3d) = irerase_valdecl(v3d)
 }
 } (* end of [irerase_valdeclist] *)
 
@@ -1052,7 +1052,7 @@ val ini = rcd.ini
 val ini = irerase_dexpopt(ini)
 //
 in
-IR0VARDECL(@{loc=loc,d2v=d2v,ini=ini})
+I0VARDECL(@{loc=loc,d2v=d2v,ini=ini})
 end // end of [irerase_vardecl]
 
 implement
@@ -1062,11 +1062,11 @@ list_vt2t(irds) where
 {
 val
 irds =
-list_map<v3ardecl><ir0vardecl>
+list_map<v3ardecl><i0vardecl>
   (v3ds) where
 {
 implement
-list_map$fopr<v3ardecl><ir0vardecl>(v3d) = irerase_vardecl(v3d)
+list_map$fopr<v3ardecl><i0vardecl>(v3d) = irerase_vardecl(v3d)
 }
 } (* end of [irerase_vardeclist] *)
 
@@ -1093,16 +1093,16 @@ case+ a3g of
   None()
 | Some(f3as) =>
   Some(irerase_farglst(f3as))
-) : ir0arglstopt
+) : i0arglstopt
 //
 val def = irerase_dexpopt(def)
 //
 in
-IR0FUNDECL(
+I0FUNDECL(
 @{
  loc=loc
 ,nam=nam,d2c=d2c,a2g=a2g, a3g=a3g,def=def}
-)(*IR0FUNDECL*)
+)(*I0FUNDECL*)
 end // end of [irerase_fundecl]
 
 implement
@@ -1112,14 +1112,14 @@ list_vt2t(irds) where
 {
 val
 irds =
-list_map<f3undecl><ir0fundecl>
+list_map<f3undecl><i0fundecl>
   (f3ds) where
 {
 implement
-list_map$fopr<f3undecl><ir0fundecl>(v3d) = irerase_fundecl(v3d)
+list_map$fopr<f3undecl><i0fundecl>(v3d) = irerase_fundecl(v3d)
 }
 } (* end of [irerase_fundeclist] *)
 
 (* ****** ****** *)
 
-(* end of [intrep0_erase.dats] *)
+(* end of [intrep0_dynexp.dats] *)

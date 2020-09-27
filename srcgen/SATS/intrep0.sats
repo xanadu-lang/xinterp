@@ -123,38 +123,38 @@ typedef ti2arglst = $D2E.ti2arglst
 
 (* ****** ****** *)
 
-abstype ir0pat_tbox = ptr
-typedef ir0pat = ir0pat_tbox
-typedef ir0patlst = List0(ir0pat)
+abstype i0pat_tbox = ptr
+typedef i0pat = i0pat_tbox
+typedef i0patlst = List0(i0pat)
 
 (* ****** ****** *)
 //
-abstype ir0dcl_tbox = ptr
-typedef ir0dcl = ir0dcl_tbox
-typedef ir0dclist = List0(ir0dcl)
+abstype i0dcl_tbox = ptr
+typedef i0dcl = i0dcl_tbox
+typedef i0dclist = List0(i0dcl)
 //
-typedef ir0dclistopt = Option(ir0dclist)
+typedef i0dclistopt = Option(i0dclist)
 //
 (* ****** ****** *)
 
-abstype ir0exp_tbox = ptr
-typedef ir0exp = ir0exp_tbox
-typedef ir0explst = List0(ir0exp)
-typedef ir0expopt = Option(ir0exp)
+abstype i0exp_tbox = ptr
+typedef i0exp = i0exp_tbox
+typedef i0explst = List0(i0exp)
+typedef i0expopt = Option(i0exp)
 
 (* ****** ****** *)
 
-abstype ir0gua_tbox = ptr
-typedef ir0gua = ir0gua_tbox
-typedef ir0gualst = List0(ir0gua)
+abstype i0gua_tbox = ptr
+typedef i0gua = i0gua_tbox
+typedef i0gualst = List0(i0gua)
 
-abstype ir0clau_tbox = ptr
-typedef ir0clau = ir0clau_tbox
-typedef ir0claulst = List0(ir0clau)
+abstype i0clau_tbox = ptr
+typedef i0clau = i0clau_tbox
+typedef i0claulst = List0(i0clau)
 
-abstype ir0gpat_tbox = ptr
-typedef ir0gpat = ir0gpat_tbox
-typedef ir0gpatlst = List0(ir0gpat)
+abstype i0gpat_tbox = ptr
+typedef i0gpat = i0gpat_tbox
+typedef i0gpatlst = List0(i0gpat)
 
 (* ****** ****** *)
 //
@@ -163,168 +163,168 @@ typedef token = $LEX.token
 (* ****** ****** *)
 
 datatype
-ir0pat_node =
+i0pat_node =
 //
-| IR0Pnil of ()
-| IR0Pany of ()
+| I0Pnil of ()
+| I0Pany of ()
 //
-| IR0Pint of (token)
-| IR0Pbtf of (token)
+| I0Pint of (token)
+| I0Pbtf of (token)
 //
-| IR0Pvar of (d2var)
+| I0Pvar of (d2var)
 //
-| IR0Pbang of (ir0pat)
-| IR0Pflat of (ir0pat)
-| IR0Pfree of (ir0pat)
+| I0Pbang of (i0pat)
+| I0Pflat of (i0pat)
+| I0Pfree of (i0pat)
 //
-| IR0Pcapp of (d2con, ir0patlst)
+| I0Pcapp of (d2con, i0patlst)
 //
-| IR0Ptuple of (int(*knd*), ir0patlst)
+| I0Ptuple of (int(*knd*), i0patlst)
 //
-| IR0Pnone0 of () | IR0Pnone1 of (d3pat)
+| I0Pnone0 of () | I0Pnone1 of (d3pat)
 //
 (* ****** ****** *)
 //
 fun
-ir0pat_get_loc
-(x0: ir0pat): loc_t
+i0pat_get_loc
+(x0: i0pat): loc_t
 fun
-ir0pat_get_node
-(x0: ir0pat): ir0pat_node
+i0pat_get_node
+(x0: i0pat): i0pat_node
 //
 overload
-.loc with ir0pat_get_loc
+.loc with i0pat_get_loc
 overload
-.node with ir0pat_get_node
+.node with i0pat_get_node
 //
 (* ****** ****** *)
 //
 fun
-ir0pat_make_node
-(loc_t, ir0pat_node): ir0pat
+i0pat_make_node
+(loc_t, i0pat_node): i0pat
 //
 (* ****** ****** *)
 //
 fun
-print_ir0pat: print_type(ir0pat)
+print_i0pat: print_type(i0pat)
 fun
-prerr_ir0pat: prerr_type(ir0pat)
-overload print with print_ir0pat
-overload prerr with prerr_ir0pat
+prerr_i0pat: prerr_type(i0pat)
+overload print with print_i0pat
+overload prerr with prerr_i0pat
 //
 fun
-fprint_ir0pat: fprint_type(ir0pat)
-overload fprint with fprint_ir0pat
+fprint_i0pat: fprint_type(i0pat)
+overload fprint with fprint_i0pat
 //
 (* ****** ****** *)
 //
 datatype
-ir0arg =
-| IR0ARGsome of
-  (int(*npf*), ir0patlst)
+i0arg =
+| I0ARGsome of
+  (int(*npf*), i0patlst)
 //
 typedef
-ir0arglst = List0(ir0arg)
+i0arglst = List0(i0arg)
 typedef
-ir0arglstopt = Option(ir0arglst)
+i0arglstopt = Option(i0arglst)
 //
 (* ****** ****** *)
 //
 fun
-print_ir0arg: print_type(ir0arg)
+print_i0arg: print_type(i0arg)
 fun
-prerr_ir0arg: prerr_type(ir0arg)
-overload print with print_ir0arg
-overload prerr with prerr_ir0arg
+prerr_i0arg: prerr_type(i0arg)
+overload print with print_i0arg
+overload prerr with prerr_i0arg
 //
 fun
-fprint_ir0arg: fprint_type(ir0arg)
-overload fprint with fprint_ir0arg
+fprint_i0arg: fprint_type(i0arg)
+overload fprint with fprint_i0arg
 //
 (* ****** ****** *)
 //
 datatype
-ir0exp_node =
+i0exp_node =
 //
-| IR0Eint of (token)
-| IR0Ebtf of (token)
-| IR0Echr of (token)
+| I0Eint of (token)
+| I0Ebtf of (token)
+| I0Echr of (token)
 //
-| IR0Eflt of (token)
-| IR0Estr of (token)
+| I0Eflt of (token)
+| I0Estr of (token)
 //
-| IR0Etop of (token)
+| I0Etop of (token)
 //
-| IR0Evar of (d2var)
+| I0Evar of (d2var)
 //
-| IR0Econ1 of (d2con)
-| IR0Ecst1 of (d2cst)
+| I0Econ1 of (d2con)
+| I0Ecst1 of (d2cst)
 //
-| IR0Efcon of (d2con)
-| IR0Efcst of (d2cst)
+| I0Efcon of (d2con)
+| I0Efcst of (d2cst)
 //
-| IR0Etcon of
+| I0Etcon of
   ( d2con
   , ti3arg, ti2arglst)
-| IR0Etcst of
+| I0Etcst of
   ( d2cst
   , ti3arg, ti2arglst)
 //
-| IR0Etimp of
-  ( ir0exp, t2ypelst(*targ*)
-  , ir0dcl, t2ypelst(*tsub*))
+| I0Etimp of
+  ( i0exp, t2ypelst(*targ*)
+  , i0dcl, t2ypelst(*tsub*))
 //
-| IR0Edapp of
-  ( ir0exp
-  , int(*npf*), ir0explst)
+| I0Edapp of
+  ( i0exp
+  , int(*npf*), i0explst)
 //
-| IR0Epcon of
-  ( ir0exp, label(*proj*))
-| IR0Epbox of
-  ( ir0exp//rcd
+| I0Epcon of
+  ( i0exp, label(*proj*))
+| I0Epbox of
+  ( i0exp//rcd
   , label(*proj*), int(*index*))
 //
-| IR0Eproj of
-  ( ir0exp//rcd
+| I0Eproj of
+  ( i0exp//rcd
   , label(*proj*), int(*index*))
-| IR0Eplft of
-  ( ir0exp//rcd
+| I0Eplft of
+  ( i0exp//rcd
   , label(*proj*), int(*index*))
-| IR0Epptr of
-  ( ir0exp//rcd
+| I0Epptr of
+  ( i0exp//rcd
   , label(*proj*), int(*index*))
 //
-| IR0Elet of (ir0dclist, ir0exp)
-| IR0Ewhere of (ir0exp, ir0dclist)
+| I0Elet of (i0dclist, i0exp)
+| I0Ewhere of (i0exp, i0dclist)
 //
-| IR0Eseqn of
-  (ir0explst(*semi*), ir0exp(*last*))
+| I0Eseqn of
+  (i0explst(*semi*), i0exp(*last*))
 //
-| IR0Etuple of
-  (int(*knd*), int(*npf*), ir0explst)
+| I0Etuple of
+  (int(*knd*), int(*npf*), i0explst)
 //
-| IR0Eassgn of
-  (ir0exp(*left*), ir0exp(*right*))
+| I0Eassgn of
+  (i0exp(*left*), i0exp(*right*))
 //
-| IR0Eif0 of
-  ( ir0exp(*cond*)
-  , ir0exp(*then*), ir0expopt(*else*))
+| I0Eif0 of
+  ( i0exp(*cond*)
+  , i0exp(*then*), i0expopt(*else*))
 //
-| IR0Ecase of
-  (int(*knd*), ir0exp, ir0claulst)
+| I0Ecase of
+  (int(*knd*), i0exp, i0claulst)
 //
-| IR0Elam of
-  (int(*knd*), ir0arglst, ir0exp)
-| IR0Efix of
-  (int(*knd*), d2var, ir0arglst, ir0exp)
+| I0Elam of
+  (int(*knd*), i0arglst, i0exp)
+| I0Efix of
+  (int(*knd*), d2var, i0arglst, i0exp)
 //
-| IR0Etry of (ir0exp, ir0claulst)
+| I0Etry of (i0exp, i0claulst)
 //
-| IR0Eaddr of (ir0exp(*l-value*))
-| IR0Eflat of (ir0exp(*l-value*))
-| IR0Etalf of (ir0exp(*IR0Eflat*))
+| I0Eaddr of (i0exp(*l-value*))
+| I0Eflat of (i0exp(*l-value*))
+| I0Etalf of (i0exp(*I0Eflat*))
 //
-| IR0Efold of (ir0exp(*open-con*))
+| I0Efold of (i0exp(*open-con*))
 //
 (*
 // HX-2019-12-18:
@@ -333,9 +333,9 @@ ir0exp_node =
 // knd=2: lazy-eval
 // knd=3: llazy-eval
 *)
-| IR0Eeval of
-    (int(*knd*), ir0exp(*source*))
-  // IR0Eeval
+| I0Eeval of
+    (int(*knd*), i0exp(*source*))
+  // I0Eeval
 //
 (*
 // HX-2020-09-26:
@@ -344,209 +344,209 @@ ir0exp_node =
 // knd=2: con-free
 // knd=3: llazy-free
 *)
-| IR0Efree of
-    (int(*knd*), ir0exp(*source*))
-  // IR0Efree
+| I0Efree of
+    (int(*knd*), i0exp(*source*))
+  // I0Efree
 //
-| IR0Eraise of (ir0exp(*lin-exn*))
+| I0Eraise of (i0exp(*lin-exn*))
 //
-| IR0Elazy of
-  (ir0exp(*eval*))
-| IR0Ellazy of
-  (ir0exp(*eval*), ir0explst(*frees*))
+| I0Elazy of
+  (i0exp(*eval*))
+| I0Ellazy of
+  (i0exp(*eval*), i0explst(*frees*))
 //
-| IR0Enone0 of () | IR0Enone1 of d3exp
+| I0Enone0 of () | I0Enone1 of d3exp
 //
 (* ****** ****** *)
 //
 datatype
-ir0gua_node =
-| IR0GUAexp of (ir0exp)
-| IR0GUAmat of (ir0exp, ir0pat)
+i0gua_node =
+| I0GUAexp of (i0exp)
+| I0GUAmat of (i0exp, i0pat)
 //
 datatype
-ir0clau_node =
-| IR0CLAUpat of ir0gpat
-| IR0CLAUexp of (ir0gpat, ir0exp)
+i0clau_node =
+| I0CLAUpat of i0gpat
+| I0CLAUexp of (i0gpat, i0exp)
 and
-ir0gpat_node =
-| IR0GPATpat of (ir0pat)
-| IR0GPATgua of (ir0pat, ir0gualst)
+i0gpat_node =
+| I0GPATpat of (i0pat)
+| I0GPATgua of (i0pat, i0gualst)
 //
 (* ****** ****** *)
 //
 fun
-ir0exp_get_loc
-(x0: ir0exp): loc_t
+i0exp_get_loc
+(x0: i0exp): loc_t
 fun
-ir0exp_get_node
-(x0: ir0exp): ir0exp_node
+i0exp_get_node
+(x0: i0exp): i0exp_node
 //
-overload .loc with ir0exp_get_loc
-overload .node with ir0exp_get_node
+overload .loc with i0exp_get_loc
+overload .node with i0exp_get_node
 //
 (* ****** ****** *)
 //
 fun
-ir0exp_make_node
-(loc_t, ir0exp_node): ir0exp
+i0exp_make_node
+(loc_t, i0exp_node): i0exp
 //
 (* ****** ****** *)
 //
 fun
-print_ir0exp: print_type(ir0exp)
+print_i0exp: print_type(i0exp)
 fun
-prerr_ir0exp: prerr_type(ir0exp)
-overload print with print_ir0exp
-overload prerr with prerr_ir0exp
+prerr_i0exp: prerr_type(i0exp)
+overload print with print_i0exp
+overload prerr with prerr_i0exp
 //
 fun
-fprint_ir0exp: fprint_type(ir0exp)
-overload fprint with fprint_ir0exp
+fprint_i0exp: fprint_type(i0exp)
+overload fprint with fprint_i0exp
 //
 (* ****** ****** *)
 //
 fun
-ir0gua_get_loc
-(x0: ir0gua): loc_t
+i0gua_get_loc
+(x0: i0gua): loc_t
 fun
-ir0gua_get_node
-(x0: ir0gua): ir0gua_node
+i0gua_get_node
+(x0: i0gua): i0gua_node
 //
-overload .loc with ir0gua_get_loc
-overload .node with ir0gua_get_node
+overload .loc with i0gua_get_loc
+overload .node with i0gua_get_node
 //
 (* ****** ****** *)
 //
 fun
-ir0gua_make_node
-(loc_t, ir0gua_node): ir0gua
+i0gua_make_node
+(loc_t, i0gua_node): i0gua
 //
 (* ****** ****** *)
 //
 fun
-print_ir0gua: print_type(ir0gua)
+print_i0gua: print_type(i0gua)
 fun
-prerr_ir0gua: prerr_type(ir0gua)
-overload print with print_ir0gua
-overload prerr with prerr_ir0gua
+prerr_i0gua: prerr_type(i0gua)
+overload print with print_i0gua
+overload prerr with prerr_i0gua
 //
 fun
-fprint_ir0gua: fprint_type(ir0gua)
-overload fprint with fprint_ir0gua
+fprint_i0gua: fprint_type(i0gua)
+overload fprint with fprint_i0gua
 //
 (* ****** ****** *)
 //
 fun
-ir0clau_get_loc
-(x0: ir0clau): loc_t
+i0clau_get_loc
+(x0: i0clau): loc_t
 fun
-ir0clau_get_node
-(x0: ir0clau): ir0clau_node
+i0clau_get_node
+(x0: i0clau): i0clau_node
 //
-overload .loc with ir0clau_get_loc
-overload .node with ir0clau_get_node
+overload .loc with i0clau_get_loc
+overload .node with i0clau_get_node
 //
 (* ****** ****** *)
 //
 fun
-ir0clau_make_node
-(loc_t, ir0clau_node): ir0clau
+i0clau_make_node
+(loc_t, i0clau_node): i0clau
 //
 (* ****** ****** *)
 //
 fun
-ir0gpat_get_loc
-(x0: ir0gpat): loc_t
+i0gpat_get_loc
+(x0: i0gpat): loc_t
 fun
-ir0gpat_get_node
-(x0: ir0gpat): ir0gpat_node
+i0gpat_get_node
+(x0: i0gpat): i0gpat_node
 //
-overload .loc with ir0gpat_get_loc
-overload .node with ir0gpat_get_node
-//
-(* ****** ****** *)
-//
-fun
-ir0gpat_make_node
-(loc_t, ir0gpat_node): ir0gpat
+overload .loc with i0gpat_get_loc
+overload .node with i0gpat_get_node
 //
 (* ****** ****** *)
 //
 fun
-print_ir0clau:print_type(ir0clau)
-fun
-prerr_ir0clau:prerr_type(ir0clau)
-overload print with print_ir0clau
-overload prerr with prerr_ir0clau
+i0gpat_make_node
+(loc_t, i0gpat_node): i0gpat
+//
+(* ****** ****** *)
 //
 fun
-print_ir0gpat:print_type(ir0gpat)
+print_i0clau:print_type(i0clau)
 fun
-prerr_ir0gpat:prerr_type(ir0gpat)
-overload print with print_ir0gpat
-overload prerr with prerr_ir0gpat
+prerr_i0clau:prerr_type(i0clau)
+overload print with print_i0clau
+overload prerr with prerr_i0clau
 //
 fun
-fprint_ir0clau:fprint_type(ir0clau)
-overload fprint with fprint_ir0clau
+print_i0gpat:print_type(i0gpat)
 fun
-fprint_ir0gpat:fprint_type(ir0gpat)
-overload fprint with fprint_ir0gpat
+prerr_i0gpat:prerr_type(i0gpat)
+overload print with print_i0gpat
+overload prerr with prerr_i0gpat
+//
+fun
+fprint_i0clau:fprint_type(i0clau)
+overload fprint with fprint_i0clau
+fun
+fprint_i0gpat:fprint_type(i0gpat)
+overload fprint with fprint_i0gpat
 //
 (* ****** ****** *)
 //
 datatype
-ir0valdecl =
-IR0VALDECL of @{
+i0valdecl =
+I0VALDECL of @{
   loc= loc_t
-, pat= ir0pat
-, def= ir0expopt
+, pat= i0pat
+, def= i0expopt
 }
 //
 typedef
-ir0valdeclist = List0(ir0valdecl)
+i0valdeclist = List0(i0valdecl)
 //
 fun
-print_ir0valdecl(ir0valdecl): void
+print_i0valdecl(i0valdecl): void
 fun
-prerr_ir0valdecl(ir0valdecl): void
+prerr_i0valdecl(i0valdecl): void
 fun
-fprint_ir0valdecl: fprint_type(ir0valdecl)
+fprint_i0valdecl: fprint_type(i0valdecl)
 //
-overload print with print_ir0valdecl
-overload prerr with prerr_ir0valdecl
-overload fprint with fprint_ir0valdecl
+overload print with print_i0valdecl
+overload prerr with prerr_i0valdecl
+overload fprint with fprint_i0valdecl
 //
 (* ****** ****** *)
 //
 datatype
-ir0vardecl =
-IR0VARDECL of @{
+i0vardecl =
+I0VARDECL of @{
   loc= loc_t
 , d2v= d2var
-, ini= ir0expopt
+, ini= i0expopt
 }
 //
 typedef
-ir0vardeclist = List0(ir0vardecl)
+i0vardeclist = List0(i0vardecl)
 //
 fun
-print_ir0vardecl(ir0vardecl): void
+print_i0vardecl(i0vardecl): void
 fun
-prerr_ir0vardecl(ir0vardecl): void
+prerr_i0vardecl(i0vardecl): void
 fun
-fprint_ir0vardecl: fprint_type(ir0vardecl)
+fprint_i0vardecl: fprint_type(i0vardecl)
 //
-overload print with print_ir0vardecl
-overload prerr with prerr_ir0vardecl
-overload fprint with fprint_ir0vardecl
+overload print with print_i0vardecl
+overload prerr with prerr_i0vardecl
+overload fprint with fprint_i0vardecl
 //
 (* ****** ****** *)
 //
 datatype
-ir0fundecl =
-IR0FUNDECL of @{
+i0fundecl =
+I0FUNDECL of @{
   loc= loc_t
 //
 , nam= d2var
@@ -555,59 +555,59 @@ IR0FUNDECL of @{
 , a2g=
   f2arglst
 , a3g=
-  ir0arglstopt
+  i0arglstopt
 //
-, def= ir0expopt
+, def= i0expopt
 }
 //
 typedef
-ir0fundeclist = List0(ir0fundecl)
+i0fundeclist = List0(i0fundecl)
 //
 fun
-print_ir0fundecl(ir0fundecl): void
+print_i0fundecl(i0fundecl): void
 fun
-prerr_ir0fundecl(ir0fundecl): void
+prerr_i0fundecl(i0fundecl): void
 fun
-fprint_ir0fundecl: fprint_type(ir0fundecl)
+fprint_i0fundecl: fprint_type(i0fundecl)
 //
-overload print with print_ir0fundecl
-overload prerr with prerr_ir0fundecl
-overload fprint with fprint_ir0fundecl
+overload print with print_i0fundecl
+overload prerr with prerr_i0fundecl
+overload fprint with fprint_i0fundecl
 //
 (* ****** ****** *)
 //
 datatype
-ir0dcl_node =
+i0dcl_node =
 //
-| IR0Cstatic of
-  (token(*STATIC*), ir0dcl)
-| IR0Cextern of
-  (token(*EXTERN*), ir0dcl)
+| I0Cstatic of
+  (token(*STATIC*), i0dcl)
+| I0Cextern of
+  (token(*EXTERN*), i0dcl)
 //
-| IR0Cinclude of
+| I0Cinclude of
   ( token
   , d1exp // src
   , int(*knd*) // sta/dyn: 0/1
   , filpathopt
-  , ir0dclistopt) // file inclusion
+  , i0dclistopt) // file inclusion
 //
-| IR0Clocal of
-  (ir0dclist, ir0dclist)
+| I0Clocal of
+  (i0dclist, i0dclist)
 //
-| IR0Cvaldecl of
+| I0Cvaldecl of
   ( token(*knd*)
-  , $D1E.decmodopt, ir0valdeclist)
+  , $D1E.decmodopt, i0valdeclist)
 //
-| IR0Cvardecl of
+| I0Cvardecl of
   ( token(*knd*)
-  , $D1E.decmodopt, ir0vardeclist)
+  , $D1E.decmodopt, i0vardeclist)
 //
-| IR0Cfundecl of
+| I0Cfundecl of
   ( token(*knd*)
   , $D1E.decmodopt
-  , $D2E.tq2arglst, ir0fundeclist)
+  , $D2E.tq2arglst, i0fundeclist)
 //
-| IR0Cimpdecl3 of
+| I0Cimpdecl3 of
   ( token(*impkind*)
   , $D1E.decmodopt
   , $D2E.sq2arglst
@@ -615,110 +615,110 @@ ir0dcl_node =
   , $D2E.impld2cst
   , $D3E.ti3arg
   , $D2E.ti2arglst
-  , ir0arglst, ir0exp)
+  , i0arglst, i0exp)
 //
-| IR0Cnone0 of () | IR0Cnone1 of (d3ecl)
+| I0Cnone0 of () | I0Cnone1 of (d3ecl)
 //
 (* ****** ****** *)
 //
 fun
-ir0dcl_get_loc
-(x0: ir0dcl): loc_t
+i0dcl_get_loc
+(x0: i0dcl): loc_t
 fun
-ir0dcl_get_node
-(x0: ir0dcl): ir0dcl_node
+i0dcl_get_node
+(x0: i0dcl): i0dcl_node
 //
 overload
-.loc with ir0dcl_get_loc
+.loc with i0dcl_get_loc
 overload
-.node with ir0dcl_get_node
+.node with i0dcl_get_node
 //
 (* ****** ****** *)
 //
 fun
-ir0dcl_make_node
-(loc_t, ir0dcl_node): ir0dcl
+i0dcl_make_node
+(loc_t, i0dcl_node): i0dcl
 //
 (* ****** ****** *)
 //
 fun
-print_ir0dcl: print_type(ir0dcl)
+print_i0dcl: print_type(i0dcl)
 fun
-prerr_ir0dcl: prerr_type(ir0dcl)
-overload print with print_ir0dcl
-overload prerr with prerr_ir0dcl
+prerr_i0dcl: prerr_type(i0dcl)
+overload print with print_i0dcl
+overload prerr with prerr_i0dcl
 //
 fun
-fprint_ir0dcl: fprint_type(ir0dcl)
-overload fprint with fprint_ir0dcl
-//
-(* ****** ****** *)
-//
-fun
-irerase_dpat(d3pat): ir0pat
-fun
-irerase_dpatlst(d3patlst): ir0patlst
+fprint_i0dcl: fprint_type(i0dcl)
+overload fprint with fprint_i0dcl
 //
 (* ****** ****** *)
 //
 fun
-irerase_farglst(f3arglst): ir0arglst
+irerase_dpat(d3pat): i0pat
+fun
+irerase_dpatlst(d3patlst): i0patlst
 //
 (* ****** ****** *)
 //
 fun
-irerase_dexp(d3exp): ir0exp
+irerase_farglst(f3arglst): i0arglst
+//
+(* ****** ****** *)
+//
 fun
-irerase_dexpopt(d3expopt): ir0expopt
+irerase_dexp(d3exp): i0exp
 fun
-irerase_dexplst(d3explst): ir0explst
+irerase_dexpopt(d3expopt): i0expopt
+fun
+irerase_dexplst(d3explst): i0explst
 //
 (* ****** ****** *)
 
 fun
-irerase_dgua(d3gua): ir0gua
+irerase_dgua(d3gua): i0gua
 fun
-irerase_dclau(d3clau): ir0clau
+irerase_dclau(d3clau): i0clau
 fun
-irerase_dgpat(d3gpat): ir0gpat
+irerase_dgpat(d3gpat): i0gpat
 fun
-irerase_dgualst(d3gualst): ir0gualst
+irerase_dgualst(d3gualst): i0gualst
 fun
-irerase_dclaulst(d3claulst): ir0claulst
+irerase_dclaulst(d3claulst): i0claulst
 
 (* ****** ****** *)
 //
 fun
-irerase_decl(d3ecl): ir0dcl
+irerase_decl(d3ecl): i0dcl
 fun
-irerase_declist(d3eclist): ir0dclist
+irerase_declist(d3eclist): i0dclist
 //
 (* ****** ****** *)
 //
 fun
 irerase_valdecl
-(irvd: $D3E.v3aldecl): ir0valdecl
+(irvd: $D3E.v3aldecl): i0valdecl
 fun
 irerase_valdeclist
-(irvds: $D3E.v3aldeclist): ir0valdeclist
+(irvds: $D3E.v3aldeclist): i0valdeclist
 //
 (* ****** ****** *)
 //
 fun
 irerase_vardecl
-(irvd: $D3E.v3ardecl): ir0vardecl
+(irvd: $D3E.v3ardecl): i0vardecl
 fun
 irerase_vardeclist
-(irvds: $D3E.v3ardeclist): ir0vardeclist
+(irvds: $D3E.v3ardeclist): i0vardeclist
 //
 (* ****** ****** *)
 //
 fun
 irerase_fundecl
-(irfd: $D3E.f3undecl): ir0fundecl
+(irfd: $D3E.f3undecl): i0fundecl
 fun
 irerase_fundeclist
-(irfds: $D3E.f3undeclist): ir0fundeclist
+(irfds: $D3E.f3undeclist): i0fundeclist
 //
 (* ****** ****** *)
 

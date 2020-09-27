@@ -66,143 +66,143 @@ typedef d2cst = $D2E.d2cst
 
 (* ****** ****** *)
 
-typedef ir0pat = $INT.ir0pat
-typedef ir0arg = $INT.ir0arg
-typedef ir0exp = $INT.ir0exp
-typedef ir0dcl = $INT.ir0dcl
+typedef i0pat = $INT.i0pat
+typedef i0arg = $INT.i0arg
+typedef i0exp = $INT.i0exp
+typedef i0dcl = $INT.i0dcl
 
-typedef ir0gua = $INT.ir0gua
-typedef ir0gpat = $INT.ir0gpat
-typedef ir0clau = $INT.ir0clau
+typedef i0gua = $INT.i0gua
+typedef i0gpat = $INT.i0gpat
+typedef i0clau = $INT.i0clau
 
-typedef ir0patlst = $INT.ir0patlst
-typedef ir0arglst = $INT.ir0arglst
-typedef ir0explst = $INT.ir0explst
-typedef ir0expopt = $INT.ir0expopt
-typedef ir0dclist = $INT.ir0dclist
+typedef i0patlst = $INT.i0patlst
+typedef i0arglst = $INT.i0arglst
+typedef i0explst = $INT.i0explst
+typedef i0expopt = $INT.i0expopt
+typedef i0dclist = $INT.i0dclist
 
-typedef ir0gualst = $INT.ir0gualst
-typedef ir0claulst = $INT.ir0claulst
+typedef i0gualst = $INT.i0gualst
+typedef i0claulst = $INT.i0claulst
 
-typedef ir0valdecl = $INT.ir0valdecl
-typedef ir0vardecl = $INT.ir0vardecl
-typedef ir0fundecl = $INT.ir0fundecl
-typedef ir0valdeclist = $INT.ir0valdeclist
-typedef ir0vardeclist = $INT.ir0vardeclist
-typedef ir0fundeclist = $INT.ir0fundeclist
+typedef i0valdecl = $INT.i0valdecl
+typedef i0vardecl = $INT.i0vardecl
+typedef i0fundecl = $INT.i0fundecl
+typedef i0valdeclist = $INT.i0valdeclist
+typedef i0vardeclist = $INT.i0vardeclist
+typedef i0fundeclist = $INT.i0fundeclist
 
 (* ****** ****** *)
 
-abstype ir0env_tbox = ptr
-typedef ir0env = ir0env_tbox
+abstype i0env_tbox = ptr
+typedef i0env = i0env_tbox
 
 (* ****** ****** *)
 //
 datatype
-ir0val =
+i0val =
 //
-| IR0Vnil of ()
+| I0Vnil of ()
 //
-| IR0Vint of int
-| IR0Vptr of ptr
+| I0Vint of int
+| I0Vptr of ptr
 //
-| IR0Vbtf of bool
-| IR0Vchr of char
+| I0Vbtf of bool
+| I0Vchr of char
 //
-| IR0Vflt of double
-| IR0Vstr of string
+| I0Vflt of double
+| I0Vstr of string
 //
 (*
-| IR0Vvar of d2var
-| IR0Vcon of d2con
-| IR0Vcst of d2cst
+| I0Vvar of d2var
+| I0Vcon of d2con
+| I0Vcst of d2cst
 *)
 //
-| IR0Vlft of ir0lftval
+| I0Vlft of i0lftval
 //
-| IR0Vcon of
-    (d2con, ir0valist)
+| I0Vcon of
+    (d2con, i0valist)
 //
-| IR0Vfun of ir0valfun
+| I0Vfun of i0valfun
 //
-| IR0Vtuple of
-  (int(*knd*), ir0valist)
+| I0Vtuple of
+  (int(*knd*), i0valist)
 //
-| IR0Vlam of
-  (ir0env, ir0arglst, ir0exp)
-| IR0Vfix of
-  (ir0env, d2var, ir0arglst, ir0exp)
+| I0Vlam of
+  (i0env, i0arglst, i0exp)
+| I0Vfix of
+  (i0env, d2var, i0arglst, i0exp)
 (*
-| IR0Vfix2 of
-  ( ir0env
+| I0Vfix2 of
+  ( i0env
   , d2var(*f*)
-  , ir0arglst, ir0exp, ir0exp)
+  , i0arglst, i0exp, i0exp)
 *)
-| IR0Vfixs of
-  ( ir0env
+| I0Vfixs of
+  ( i0env
   , d2var(*f*)
-  , ir0arglst, ir0exp, ir0explst)
+  , i0arglst, i0exp, i0explst)
 //
-| IR0Vlazy of ref(ir0lazval)
-| IR0Vllazy of
-  ( ir0env
-  , ir0exp(*eval*), ir0explst(*frees*))
+| I0Vlazy of ref(i0lazval)
+| I0Vllazy of
+  ( i0env
+  , i0exp(*eval*), i0explst(*frees*))
 //
-| IR0Verror of () | IR0Vnone1 of (ir0exp)
-//
-and
-ir0lftval =
-| IR0LVref of ref(ir0valopt)
-//
-| IR0LVpcon of (ir0val, label)
-//
-| IR0LVpbox of
-  (ir0val, label, int(*index*))
-| IR0LVpflt of
-  (ir0lftval, label, int(*index*))
+| I0Verror of () | I0Vnone1 of (i0exp)
 //
 and
-ir0lazval =
-| IR0LVval of ir0val(*value*)
-| IR0LVexp of (ir0env, ir0exp) // thunk
+i0lftval =
+| I0LVref of ref(i0valopt)
+//
+| I0LVpcon of (i0val, label)
+//
+| I0LVpbox of
+  (i0val, label, int(*index*))
+| I0LVpflt of
+  (i0lftval, label, int(*index*))
+//
+and
+i0lazval =
+| I0LVval of i0val(*value*)
+| I0LVexp of (i0env, i0exp) // thunk
 //
 where
 //
-ir0valist = List0(ir0val)
+i0valist = List0(i0val)
 and
-ir0valopt = Option(ir0val)
+i0valopt = Option(i0val)
 and
-ir0valfun = (ir0valist -<cloref1> ir0val)
+i0valfun = (i0valist -<cloref1> i0val)
 //
 (* ****** ****** *)
 //
 fun
-print_ir0val: print_type(ir0val)
+print_i0val: print_type(i0val)
 fun
-prerr_ir0val: prerr_type(ir0val)
-overload print with print_ir0val
-overload prerr with prerr_ir0val
+prerr_i0val: prerr_type(i0val)
+overload print with print_i0val
+overload prerr with prerr_i0val
 //
 fun
-fprint_ir0val: fprint_type(ir0val)
-overload fprint with fprint_ir0val
+fprint_i0val: fprint_type(i0val)
+overload fprint with fprint_i0val
 //
 (* ****** ****** *)
 //
 fun
-print_ir0lftval(ir0lftval): void
+print_i0lftval(i0lftval): void
 fun
-prerr_ir0lftval(ir0lftval): void
+prerr_i0lftval(i0lftval): void
 fun
-fprint_ir0lftval: fprint_type ir0lftval
+fprint_i0lftval: fprint_type i0lftval
 //
-overload print with print_ir0lftval
-overload prerr with prerr_ir0lftval
-overload fprint with fprint_ir0lftval
+overload print with print_i0lftval
+overload prerr with prerr_i0lftval
+overload fprint with fprint_i0lftval
 //
 (* ****** ****** *)
 
-exception IR0EXN of ir0val
+exception I0EXN of i0val
 
 (* ****** ****** *)
 
@@ -212,24 +212,24 @@ vtypedef intpenv = intpenv_vtbox
 (* ****** ****** *)
 //
 fun
-ir0env_make_nil(): ir0env
+i0env_make_nil(): i0env
 //
 fun
 intpenv_make_nil(): intpenv
 fun
-intpenv_make_fenv(ir0env): intpenv
+intpenv_make_fenv(i0env): intpenv
 //
 (* ****** ****** *)
 //
 fun
-intpenv_take_fenv(!intpenv): ir0env
+intpenv_take_fenv(!intpenv): i0env
 //
 (* ****** ****** *)
 //
 fun
-intpenv_bind_fix(!intpenv, ir0val): void
+intpenv_bind_fix(!intpenv, i0val): void
 fun
-intpenv_bind_fixs(!intpenv, ir0val): void
+intpenv_bind_fixs(!intpenv, i0val): void
 //
 (* ****** ****** *)
 //
@@ -258,12 +258,12 @@ fun
 interp0_search_d2cst
 ( env
 : !intpenv
-, d2c: d2cst): Option_vt(ir0val)
+, d2c: d2cst): Option_vt(i0val)
 fun
 interp0_search_d2var
 ( env
 : !intpenv
-, d2v: d2var): Option_vt(ir0val)
+, d2v: d2var): Option_vt(i0val)
 
 (* ****** ****** *)
 //
@@ -271,64 +271,64 @@ fun
 interp0_insert_d2cst
 ( env
 : !intpenv
-, d2c: d2cst, irv: ir0val): void
+, d2c: d2cst, irv: i0val): void
 //
 fun
 interp0_insert_d2var
 ( env
 : !intpenv
-, d2v: d2var, irv: ir0val): void
+, d2v: d2var, irv: i0val): void
 //
 (* ****** ****** *)
 //
 fun
 interp0_irdcl
-(env: !intpenv, irc: ir0dcl): void
+(env: !intpenv, irc: i0dcl): void
 fun
 interp0_irdclist
-(env: !intpenv, ircs: ir0dclist): void
+(env: !intpenv, ircs: i0dclist): void
 //
 fun
 interp0_irexp
-(env: !intpenv, ire: ir0exp): ir0val
+(env: !intpenv, ire: i0exp): i0val
 fun
 interp0_irexplst
-(env: !intpenv, ires: ir0explst): ir0valist
+(env: !intpenv, ires: i0explst): i0valist
 fun
 interp0_irexpopt
-(env: !intpenv, opt0: ir0expopt): ir0valopt
+(env: !intpenv, opt0: i0expopt): i0valopt
 //
 (* ****** ****** *)
 //
 fun
 interp0_fcall_lam
-(irf0: ir0val, irvs: ir0valist): ir0val
+(irf0: i0val, irvs: i0valist): i0val
 fun
 interp0_fcall_fix
-(irf0: ir0val, irvs: ir0valist): ir0val
+(irf0: i0val, irvs: i0valist): i0val
 fun
 interp0_fcall_fixs
-(irf0: ir0val, irvs: ir0valist): ir0val
+(irf0: i0val, irvs: i0valist): i0val
 //
 (* ****** ****** *)
 //
 fun
 interp0_irpat_ck0
-(irp0: ir0pat, irv0: ir0val): bool
+(irp0: i0pat, irv0: i0val): bool
 fun
 interp0_irpatlst_ck0
-(irps: ir0patlst, irvs: ir0valist): bool
+(irps: i0patlst, irvs: i0valist): bool
 //
 fun
 interp0_irpat_ck1
 ( env
 : !intpenv
-, irp0: ir0pat, irv0: ir0val): void
+, irp0: i0pat, irv0: i0val): void
 fun
 interp0_irpatlst_ck1
 ( env
 : !intpenv
-, irps: ir0patlst, irvs: ir0valist): void
+, irps: i0patlst, irvs: i0valist): void
 //
 (* ****** ****** *)
 //
@@ -336,14 +336,14 @@ fun
 interp0_irgpat_ck2
 ( env
 : !intpenv
-, irgp: ir0gpat, irv0: ir0val): bool
+, irgp: i0gpat, irv0: i0val): bool
 //
 fun
 interp0_irgua_ck2
-(env: !intpenv, irg0: ir0gua): bool
+(env: !intpenv, irg0: i0gua): bool
 fun
 interp0_irgualst_ck2
-(env: !intpenv, irgs: ir0gualst): bool
+(env: !intpenv, irgs: i0gualst): bool
 //
 (* ****** ****** *)
 //
@@ -351,47 +351,47 @@ fun
 interp0_irclau
 ( env
 : !intpenv
-, irv0: ir0val
-, ircl: ir0clau): Option_vt(ir0val)
+, irv0: i0val
+, ircl: i0clau): Option_vt(i0val)
 fun
 interp0_irclaulst
 ( env
 : !intpenv
-, irv0: ir0val
-, ircls: ir0claulst): Option_vt(ir0val)
+, irv0: i0val
+, ircls: i0claulst): Option_vt(i0val)
 //
 (* ****** ****** *)
 
 fun
-interp0_ir0valdecl
-(env: !intpenv, irvd: ir0valdecl): void
+interp0_i0valdecl
+(env: !intpenv, irvd: i0valdecl): void
 fun
-interp0_ir0valdeclist
-(env: !intpenv, irvds: ir0valdeclist): void
+interp0_i0valdeclist
+(env: !intpenv, irvds: i0valdeclist): void
 
 (* ****** ****** *)
 
 fun
-interp0_ir0vardecl
-(env: !intpenv, irvd: ir0vardecl): void
+interp0_i0vardecl
+(env: !intpenv, irvd: i0vardecl): void
 fun
-interp0_ir0vardeclist
-(env: !intpenv, irvds: ir0vardeclist): void
+interp0_i0vardeclist
+(env: !intpenv, irvds: i0vardeclist): void
 
 (* ****** ****** *)
 
 fun
-interp0_ir0fundecl
-(env: !intpenv, irfd: ir0fundecl): void
+interp0_i0fundecl
+(env: !intpenv, irfd: i0fundecl): void
 fun
-interp0_ir0fundeclist
-(env: !intpenv, irfds: ir0fundeclist): void
+interp0_i0fundeclist
+(env: !intpenv, irfds: i0fundeclist): void
 
 (* ****** ****** *)
 //
 fun
-interp0_ir0impdecl3
-(env: !intpenv, irdcl: ir0dcl(*impdecl3*)): void
+interp0_i0impdecl3
+(env: !intpenv, irdcl: i0dcl(*impdecl3*)): void
 //
 (* ****** ****** *)
 
@@ -405,7 +405,7 @@ interp0_initize_gint(): void
 (* ****** ****** *)
 
 fun
-interp0_program(xs: ir0dclist): void
+interp0_program(xs: i0dclist): void
 
 (* ****** ****** *)
 //

@@ -95,318 +95,318 @@ fprint_val<ti2arg> = fprint_ti2arg
 (* ****** ****** *)
 
 implement
-fprint_val<ir0pat> = fprint_ir0pat
+fprint_val<i0pat> = fprint_i0pat
 implement
-fprint_val<ir0arg> = fprint_ir0arg
+fprint_val<i0arg> = fprint_i0arg
 implement
-fprint_val<ir0exp> = fprint_ir0exp
+fprint_val<i0exp> = fprint_i0exp
 implement
-fprint_val<ir0dcl> = fprint_ir0dcl
+fprint_val<i0dcl> = fprint_i0dcl
 
 (* ****** ****** *)
 
 (*
 implement
-fprint_val<ir0arglst> = fprint_ir0arglst
+fprint_val<i0arglst> = fprint_i0arglst
 *)
 
 (* ****** ****** *)
 //
 implement
-fprint_val<ir0gua> = fprint_ir0gua
+fprint_val<i0gua> = fprint_i0gua
 implement
-fprint_val<ir0clau> = fprint_ir0clau
+fprint_val<i0clau> = fprint_i0clau
 implement
-fprint_val<ir0gpat> = fprint_ir0gpat
+fprint_val<i0gpat> = fprint_i0gpat
 //
 (* ****** ****** *)
 //
 implement
-print_ir0pat(x0) =
-fprint_ir0pat(stdout_ref, x0)
+print_i0pat(x0) =
+fprint_i0pat(stdout_ref, x0)
 implement
-prerr_ir0pat(x0) =
-fprint_ir0pat(stderr_ref, x0)
+prerr_i0pat(x0) =
+fprint_i0pat(stderr_ref, x0)
 //
 implement
-fprint_ir0pat
+fprint_i0pat
   (out, x0) =
 (
 case+ x0.node() of
 //
-| IR0Pnil() =>
-  fprint!(out, "IR0Pnil(", ")")
-| IR0Pany() =>
-  fprint!(out, "IR0Pany(", ")")
+| I0Pnil() =>
+  fprint!(out, "I0Pnil(", ")")
+| I0Pany() =>
+  fprint!(out, "I0Pany(", ")")
 //
-| IR0Pint(tok) =>
-  fprint!(out, "IR0Pint(", tok, ")")
-| IR0Pbtf(tok) =>
-  fprint!(out, "IR0Pbtf(", tok, ")")
+| I0Pint(tok) =>
+  fprint!(out, "I0Pint(", tok, ")")
+| I0Pbtf(tok) =>
+  fprint!(out, "I0Pbtf(", tok, ")")
 //
-| IR0Pvar(d2v) =>
-  fprint!(out, "IR0Pvar(", d2v, ")")
+| I0Pvar(d2v) =>
+  fprint!(out, "I0Pvar(", d2v, ")")
 //
-| IR0Pbang(irp1) =>
-  fprint!(out, "IR0Pbang(", irp1, ")")
-| IR0Pflat(irp1) =>
-  fprint!(out, "IR0Pflat(", irp1, ")")
-| IR0Pfree(irp1) =>
-  fprint!(out, "IR0Pfree(", irp1, ")")
+| I0Pbang(irp1) =>
+  fprint!(out, "I0Pbang(", irp1, ")")
+| I0Pflat(irp1) =>
+  fprint!(out, "I0Pflat(", irp1, ")")
+| I0Pfree(irp1) =>
+  fprint!(out, "I0Pfree(", irp1, ")")
 //
-| IR0Pcapp(d2c0, irps) =>
+| I0Pcapp(d2c0, irps) =>
   fprint!
   ( out
-  , "IR0Pcapp(", d2c0, "; ", irps, ")")
+  , "I0Pcapp(", d2c0, "; ", irps, ")")
 //
-| IR0Ptuple(knd, irps) =>
+| I0Ptuple(knd, irps) =>
   fprint!
   ( out
-  , "IR0Ptuple(", knd, "; ", irps, ")")
+  , "I0Ptuple(", knd, "; ", irps, ")")
 //
-| IR0Pnone0() =>
-    fprint!(out, "IR0Pnone0(", ")")
-  // end of [IR0Pnone0]
-| IR0Pnone1(d3p) =>
-    fprint!(out, "IR0Pnone1(", d3p, ")")
-  // end of [IR0Pnone1]
+| I0Pnone0() =>
+    fprint!(out, "I0Pnone0(", ")")
+  // end of [I0Pnone0]
+| I0Pnone1(d3p) =>
+    fprint!(out, "I0Pnone1(", d3p, ")")
+  // end of [I0Pnone1]
 //
 )
 //
 (* ****** ****** *)
 //
 implement
-print_ir0arg(x0) =
-fprint_ir0arg(stdout_ref, x0)
+print_i0arg(x0) =
+fprint_i0arg(stdout_ref, x0)
 implement
-prerr_ir0arg(x0) =
-fprint_ir0arg(stderr_ref, x0)
+prerr_i0arg(x0) =
+fprint_i0arg(stderr_ref, x0)
 //
 implement
-fprint_ir0arg
+fprint_i0arg
   (out, x0) =
 let
-val+IR0ARGsome(npf, irps) = x0
+val+I0ARGsome(npf, irps) = x0
 in
 fprint!
-(out, "IR0ARGsome(", npf, "; ", irps, ")")
-end // end of [fprint_ir0arg]
+(out, "I0ARGsome(", npf, "; ", irps, ")")
+end // end of [fprint_i0arg]
 //
 (*
 implement
-fprint_ir0arglst(out, xs) = fprint!(out, xs)
+fprint_i0arglst(out, xs) = fprint!(out, xs)
 *)
 //
 (* ****** ****** *)
 //
 implement
-print_ir0exp(x0) =
-fprint_ir0exp(stdout_ref, x0)
+print_i0exp(x0) =
+fprint_i0exp(stdout_ref, x0)
 implement
-prerr_ir0exp(x0) =
-fprint_ir0exp(stderr_ref, x0)
+prerr_i0exp(x0) =
+fprint_i0exp(stderr_ref, x0)
 //
 implement
-fprint_ir0exp
+fprint_i0exp
   (out, x0) =
 (
 case+
 x0.node() of
 //
-| IR0Eint(tok) =>
-  fprint!(out, "IR0Eint(", tok, ")")
-| IR0Ebtf(tok) =>
-  fprint!(out, "IR0Ebtf(", tok, ")")
-| IR0Echr(tok) =>
-  fprint!(out, "IR0Echr(", tok, ")")
-| IR0Eflt(tok) =>
-  fprint!(out, "IR0Eflt(", tok, ")")
-| IR0Estr(tok) =>
-  fprint!(out, "IR0Estr(", tok, ")")
+| I0Eint(tok) =>
+  fprint!(out, "I0Eint(", tok, ")")
+| I0Ebtf(tok) =>
+  fprint!(out, "I0Ebtf(", tok, ")")
+| I0Echr(tok) =>
+  fprint!(out, "I0Echr(", tok, ")")
+| I0Eflt(tok) =>
+  fprint!(out, "I0Eflt(", tok, ")")
+| I0Estr(tok) =>
+  fprint!(out, "I0Estr(", tok, ")")
 //
-| IR0Etop(tok) =>
-  fprint!(out, "IR0Etop(", tok, ")")
+| I0Etop(tok) =>
+  fprint!(out, "I0Etop(", tok, ")")
 //
-| IR0Evar(d2v) =>
-  fprint!(out, "IR0Evar(", d2v, ")")
+| I0Evar(d2v) =>
+  fprint!(out, "I0Evar(", d2v, ")")
 //
-| IR0Econ1(d2c) =>
-  fprint!(out, "IR0Econ1(", d2c, ")")
-| IR0Ecst1(d2c) =>
-  fprint!(out, "IR0Ecst1(", d2c, ")")
+| I0Econ1(d2c) =>
+  fprint!(out, "I0Econ1(", d2c, ")")
+| I0Ecst1(d2c) =>
+  fprint!(out, "I0Ecst1(", d2c, ")")
 //
-| IR0Efcon(d2c) =>
-  fprint!(out, "IR0Efcon(", d2c, ")")
-| IR0Efcst(d2c) =>
-  fprint!(out, "IR0Efcst(", d2c, ")")
+| I0Efcon(d2c) =>
+  fprint!(out, "I0Efcon(", d2c, ")")
+| I0Efcst(d2c) =>
+  fprint!(out, "I0Efcst(", d2c, ")")
 //
-| IR0Etcon
+| I0Etcon
   (d2c1, ti3a, ti2s) =>
   fprint!
   ( out
-  , "IR0Etcon("
+  , "I0Etcon("
   , d2c1, "; ", ti3a, "; ", ti2s, ")")
-| IR0Etcst
+| I0Etcst
   (d2c1, ti3a, ti2s) =>
   fprint!
   ( out
-  , "IR0Etcst("
+  , "I0Etcst("
   , d2c1, "; ", ti3a, "; ", ti2s, ")")
 //
-| IR0Etimp
+| I0Etimp
   ( ire1
   , targ, irc2, tsub) =>
   fprint!
   ( out
-  , "IR0Etimp("
+  , "I0Etimp("
   , ire1, "; "
   , targ, "; ", irc2, "; ", tsub, ")")
 //
-| IR0Edapp
+| I0Edapp
   (irf0, npf1, ires) =>
   fprint!
   ( out
-  , "IR0Edapp("
+  , "I0Edapp("
   , irf0, "; ", npf1, "; ", ires, ")")
 //
-| IR0Epcon
+| I0Epcon
   (ire1, lab2) =>
   fprint!
   ( out
-  , "IR0Epcon(", ire1, "; ", lab2, ")")
-| IR0Epbox
+  , "I0Epcon(", ire1, "; ", lab2, ")")
+| I0Epbox
   (ire1, lab2, idx2) =>
   fprint!
   ( out
-  , "IR0Epbox("
+  , "I0Epbox("
   , ire1, "; ", lab2, "; ", idx2, ")")
 //
-| IR0Eproj
+| I0Eproj
   (ire1, lab2, idx2) =>
   fprint!
   ( out
-  , "IR0Eproj("
+  , "I0Eproj("
   , ire1, "; ", lab2, "; ", idx2, ")")
-| IR0Eplft
+| I0Eplft
   (ire1, lab2, idx2) =>
   fprint!
   ( out
-  , "IR0Eplft("
+  , "I0Eplft("
   , ire1, "; ", lab2, "; ", idx2, ")")
-| IR0Epptr
+| I0Epptr
   (ire1, lab2, idx2) =>
   fprint!
   ( out
-  , "IR0Epptr("
+  , "I0Epptr("
   , ire1, "; ", lab2, "; ", idx2, ")")
 //
-| IR0Elet(irds, ire1) =>
+| I0Elet(irds, ire1) =>
   fprint!
   ( out
-  , "IR0Elet(", irds, "; ", ire1, ")")
-| IR0Ewhere(ire1, irds) =>
+  , "I0Elet(", irds, "; ", ire1, ")")
+| I0Ewhere(ire1, irds) =>
   fprint!
   ( out
-  , "IR0Ewhere(", ire1, "; ", irds, ")")
+  , "I0Ewhere(", ire1, "; ", irds, ")")
 //
-| IR0Eseqn
+| I0Eseqn
   (ires, ire1) =>
   fprint!
   ( out
-  , "IR0Eseqn(", ires, "; ", ire1, ")")
+  , "I0Eseqn(", ires, "; ", ire1, ")")
 //
-| IR0Etuple
+| I0Etuple
   (knd0, npf1, ires) =>
   fprint!
   ( out
-  , "IR0Etuple("
+  , "I0Etuple("
   , knd0, "; ", npf1, "; ", ires, ")")
 //
-| IR0Eassgn(irel, irer) =>
+| I0Eassgn(irel, irer) =>
   fprint!
   ( out
-  , "IR0Eassgn(", irel, "; ", irer, ")")
+  , "I0Eassgn(", irel, "; ", irer, ")")
 //
-| IR0Eif0
+| I0Eif0
   (ire1, ire2, opt3) =>
   fprint!
-  ( out, "IR0Eif0("
+  ( out, "I0Eif0("
   , ire1, "; ", ire2, "; ", opt3, ")")
 //
-| IR0Ecase
+| I0Ecase
   (knd0, ire1, ircls) =>
   fprint!
-  ( out, "IR0Ecase("
+  ( out, "I0Ecase("
   , knd0, "; ", ire1, "; ", "...", ")")
 //
-| IR0Elam
+| I0Elam
   (knd0, farg, body) =>
   fprint!
-  ( out, "IR0Elam("
+  ( out, "I0Elam("
   , knd0, "; ", farg, "; ", body, ")")
-| IR0Efix
+| I0Efix
   (knd0, d2v0, farg, body) =>
   fprint!
-  ( out, "IR0Efix("
+  ( out, "I0Efix("
   , knd0, "; "
   , d2v0, "; ", farg, "; ", body, ")")
 //
-| IR0Etry(ire1, ircls) =>
+| I0Etry(ire1, ircls) =>
   fprint!
   ( out
-  , "IR0Etry(", ire1, "; ", "...", ")")
+  , "I0Etry(", ire1, "; ", "...", ")")
 //
-| IR0Eaddr(ire1) =>
+| I0Eaddr(ire1) =>
   (
-    fprint!(out, "IR0Eaddr(", ire1, ")")
+    fprint!(out, "I0Eaddr(", ire1, ")")
   )
-| IR0Eflat(ire1) =>
+| I0Eflat(ire1) =>
   (
-    fprint!(out, "IR0Eflat(", ire1, ")")
+    fprint!(out, "I0Eflat(", ire1, ")")
   )
-| IR0Etalf(ire1) =>
+| I0Etalf(ire1) =>
   (
-    fprint!(out, "IR0Etalf(", ire1, ")")
-  )
-//
-| IR0Efold(ire1) =>
-  (
-    fprint!(out, "IR0Efold(", ire1, ")")
+    fprint!(out, "I0Etalf(", ire1, ")")
   )
 //
-| IR0Eeval
+| I0Efold(ire1) =>
+  (
+    fprint!(out, "I0Efold(", ire1, ")")
+  )
+//
+| I0Eeval
   (knd0, ire1) =>
   fprint!
   ( out
-  , "IR0Eeval(", knd0, "; ", ire1, ")")
-| IR0Efree
+  , "I0Eeval(", knd0, "; ", ire1, ")")
+| I0Efree
   (knd0, ire1) =>
   fprint!
   ( out
-  , "IR0Efree(", knd0, "; ", ire1, ")")
+  , "I0Efree(", knd0, "; ", ire1, ")")
 //
-| IR0Eraise(ire1) =>
+| I0Eraise(ire1) =>
   (
-    fprint!(out, "IR0Eraise(", ire1, ")")
+    fprint!(out, "I0Eraise(", ire1, ")")
   )
 //
-| IR0Elazy(ire1) =>
+| I0Elazy(ire1) =>
   (
-    fprint!(out, "IR0Elazy(", ire1, ")")
+    fprint!(out, "I0Elazy(", ire1, ")")
   )
-| IR0Ellazy
+| I0Ellazy
   (ire1, ires(*frees*)) =>
   fprint!
   ( out
-  , "IR0Ellazy(", ire1, "; ", ires, ")")
+  , "I0Ellazy(", ire1, "; ", ires, ")")
 //
-| IR0Enone0(   ) =>
+| I0Enone0(   ) =>
   (
-    fprint!(out, "IR0Enone0(", ")")
+    fprint!(out, "I0Enone0(", ")")
   )
-| IR0Enone1(d3e1) =>
+| I0Enone1(d3e1) =>
   (
-    fprint!(out, "IR0Enone1(", d3e1, ")")
+    fprint!(out, "I0Enone1(", d3e1, ")")
   )
 //
 )
@@ -414,127 +414,127 @@ x0.node() of
 (* ****** ****** *)
 //
 implement
-print_ir0gua(x0) =
-fprint_ir0gua(stdout_ref, x0)
+print_i0gua(x0) =
+fprint_i0gua(stdout_ref, x0)
 implement
-prerr_ir0gua(x0) =
-fprint_ir0gua(stderr_ref, x0)
+prerr_i0gua(x0) =
+fprint_i0gua(stderr_ref, x0)
 //
 implement
-fprint_ir0gua
+fprint_i0gua
   (out, x0) =
 (
 case+
 x0.node() of
-| IR0GUAexp(ir0e) =>
+| I0GUAexp(i0e) =>
   fprint!
-  (out, "IR0GUAexp(", ir0e, ")")
-| IR0GUAmat(ir0e, ir0p) =>
+  (out, "I0GUAexp(", i0e, ")")
+| I0GUAmat(i0e, i0p) =>
   fprint!
-  (out, "IR0GUAmat(", ir0e, "; ", ir0p, ")")
-) (* end of [fprint_ir0gua] *)
+  (out, "I0GUAmat(", i0e, "; ", i0p, ")")
+) (* end of [fprint_i0gua] *)
 //
 (* ****** ****** *)
 //
 implement
-print_ir0clau(x0) =
-fprint_ir0clau(stdout_ref, x0)
+print_i0clau(x0) =
+fprint_i0clau(stdout_ref, x0)
 implement
-prerr_ir0clau(x0) =
-fprint_ir0clau(stderr_ref, x0)
+prerr_i0clau(x0) =
+fprint_i0clau(stderr_ref, x0)
 //
 implement
-print_ir0gpat(x0) =
-fprint_ir0gpat(stdout_ref, x0)
+print_i0gpat(x0) =
+fprint_i0gpat(stdout_ref, x0)
 implement
-prerr_ir0gpat(x0) =
-fprint_ir0gpat(stderr_ref, x0)
+prerr_i0gpat(x0) =
+fprint_i0gpat(stderr_ref, x0)
 //
 implement
-fprint_ir0clau
+fprint_i0clau
   (out, x0) =
 (
 case+
 x0.node() of
 //
 |
-IR0CLAUpat(ir0gp) =>
+I0CLAUpat(i0gp) =>
 fprint!
-(out, "IR0CLAUpat(", ir0gp, ")")
+(out, "I0CLAUpat(", i0gp, ")")
 //
 |
-IR0CLAUexp(ir0gp, d0e0) =>
+I0CLAUexp(i0gp, d0e0) =>
 fprint!
-(out, "IR0CLAUexp(", ir0gp, "; ", d0e0, ")")
+(out, "I0CLAUexp(", i0gp, "; ", d0e0, ")")
 //
-) (* end of [fprint_ir0clau] *)
+) (* end of [fprint_i0clau] *)
 //
 implement
-fprint_ir0gpat
+fprint_i0gpat
   (out, x0) =
 (
 case+
 x0.node() of
 //
 |
-IR0GPATpat(ir0p) =>
+I0GPATpat(i0p) =>
 fprint!
-(out, "IR0GPATpat(", ir0p, ")")
+(out, "I0GPATpat(", i0p, ")")
 //
 |
-IR0GPATgua(ir0p, ir0gs) =>
+I0GPATgua(i0p, i0gs) =>
 fprint!
-(out, "IR0GPATgua(", ir0p, "; ", ir0gs, ")")
+(out, "I0GPATgua(", i0p, "; ", i0gs, ")")
 //
-) (* end of [fprint_ir0gpat] *)
+) (* end of [fprint_i0gpat] *)
 //
 (* ****** ****** *)
 //
 implement
-print_ir0dcl(x0) =
-fprint_ir0dcl(stdout_ref, x0)
+print_i0dcl(x0) =
+fprint_i0dcl(stdout_ref, x0)
 implement
-prerr_ir0dcl(x0) =
-fprint_ir0dcl(stderr_ref, x0)
+prerr_i0dcl(x0) =
+fprint_i0dcl(stderr_ref, x0)
 //
 local
 
 implement
-fprint_val<ir0valdecl> = fprint_ir0valdecl
+fprint_val<i0valdecl> = fprint_i0valdecl
 implement
-fprint_val<ir0vardecl> = fprint_ir0vardecl
+fprint_val<i0vardecl> = fprint_i0vardecl
 implement
-fprint_val<ir0fundecl> = fprint_ir0fundecl
+fprint_val<i0fundecl> = fprint_i0fundecl
 
 in(*in-of-local*)
 
 implement
-fprint_ir0dcl
+fprint_i0dcl
   (out, x0) =
 (
 case+ x0.node() of
 //
-| IR0Cstatic
+| I0Cstatic
   (tok, irc1) =>
   fprint!
   ( out
-  , "IR0Cstatic("
+  , "I0Cstatic("
   , tok, "; ", irc1, ")")
-| IR0Cextern
+| I0Cextern
   (tok, irc1) =>
   fprint!
   ( out
-  , "IR0Cextern("
+  , "I0Cextern("
   , tok, "; ", irc1, ")")
 //
-| IR0Cinclude
+| I0Cinclude
   ( tok
   , src, knd
   , fopt, body) =>
   (
   fprint!
   ( out
-  , "IR0Cinclude("
+  , "I0Cinclude("
   , "src= ", src, "; "
   , "knd= ", knd, "; "
   , fopt, "; ", body, ")")
@@ -547,49 +547,49 @@ case+ x0.node() of
     | Some _ => "Some(<irdcls>)"): string
   }
 //
-| IR0Clocal
+| I0Clocal
   (head, body) =>
   fprint!
   ( out
-  , "IR0Clocal("
+  , "I0Clocal("
   , head, "; ", body, ")")
 //
-| IR0Cvaldecl
+| I0Cvaldecl
   (knd, mopt, irds) =>
   fprint!
   ( out
-  , "IR0Cvaldecl("
+  , "I0Cvaldecl("
   , knd, "; ", mopt, "; ", irds, ")")
 //
-| IR0Cvardecl
+| I0Cvardecl
   (knd, mopt, irds) =>
   fprint!
   ( out
-  , "IR0Cvardecl("
+  , "I0Cvardecl("
   , knd, "; ", mopt, "; ", irds, ")")
 //
-| IR0Cfundecl
+| I0Cfundecl
   (knd, mopt, tqas, irds) =>
   fprint!
   ( out
-  , "IR0Cfundecl("
+  , "I0Cfundecl("
   , knd, "; ", mopt, "; ", tqas, "; ", irds, ")")
 //
-| IR0Cimpdecl3
+| I0Cimpdecl3
   ( knd, mopt
   , sqas, tqas, id2c
   , ti3a, ti2s, iras, body) =>
   fprint!
   ( out
-  , "IR0Cimpdecl3("
+  , "I0Cimpdecl3("
   , knd, "; ", mopt, "; "
   , sqas, "; ", tqas, "; ", id2c, "; "
   , ti3a, "; ", ti2s, "; ", iras, "; ", body, ")")
 //
-| IR0Cnone0() =>
-    fprint!(out, "IR0Cnone0(", ")")
-| IR0Cnone1(d3cl) =>
-    fprint!(out, "IR0Cnone1(", d3cl, ")")
+| I0Cnone0() =>
+    fprint!(out, "I0Cnone0(", ")")
+| I0Cnone1(d3cl) =>
+    fprint!(out, "I0Cnone1(", d3cl, ")")
 //
 )
 //
@@ -598,68 +598,68 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
-print_ir0valdecl(x0) =
-fprint_ir0valdecl(stdout_ref, x0)
+print_i0valdecl(x0) =
+fprint_i0valdecl(stdout_ref, x0)
 implement
-prerr_ir0valdecl(x0) =
-fprint_ir0valdecl(stderr_ref, x0)
+prerr_i0valdecl(x0) =
+fprint_i0valdecl(stderr_ref, x0)
 //
 implement
-fprint_ir0valdecl
+fprint_i0valdecl
   (out, x0) = let
 //
-val+IR0VALDECL(rcd) = x0
+val+I0VALDECL(rcd) = x0
 //
 in
   fprint!
   ( out
-  , "IR0VALDECL@{"
+  , "I0VALDECL@{"
   , ", pat=", rcd.pat
   , ", def=", rcd.def, "}")
-end // end of [fprint_ir0valdecl]
+end // end of [fprint_i0valdecl]
 //
 (* ****** ****** *)
 //
 implement
-print_ir0vardecl(x0) =
-fprint_ir0vardecl(stdout_ref, x0)
+print_i0vardecl(x0) =
+fprint_i0vardecl(stdout_ref, x0)
 implement
-prerr_ir0vardecl(x0) =
-fprint_ir0vardecl(stderr_ref, x0)
+prerr_i0vardecl(x0) =
+fprint_i0vardecl(stderr_ref, x0)
 //
 implement
-fprint_ir0vardecl
+fprint_i0vardecl
   (out, x0) = let
 //
-val+IR0VARDECL(rcd) = x0
+val+I0VARDECL(rcd) = x0
 //
 in
   fprint!
   ( out
-  , "IR0VARDECL@{"
+  , "I0VARDECL@{"
   , ", d2v=", rcd.d2v
   , ", ini=", rcd.ini, "}")
-end // end of [fprint_ir0vardecl]
+end // end of [fprint_i0vardecl]
 //
 (* ****** ****** *)
 //
 implement
-print_ir0fundecl(x0) =
-fprint_ir0fundecl(stdout_ref, x0)
+print_i0fundecl(x0) =
+fprint_i0fundecl(stdout_ref, x0)
 implement
-prerr_ir0fundecl(x0) =
-fprint_ir0fundecl(stderr_ref, x0)
+prerr_i0fundecl(x0) =
+fprint_i0fundecl(stderr_ref, x0)
 //
 implement
-fprint_ir0fundecl
+fprint_i0fundecl
   (out, x0) = let
 //
-val+IR0FUNDECL(rcd) = x0
+val+I0FUNDECL(rcd) = x0
 //
 in
   fprint!
   ( out
-  , "IR0FUNDECL@{"
+  , "I0FUNDECL@{"
   , ", nam=", rcd.nam
   , ", d2c=", rcd.d2c
   , ", a2g=", rcd.a2g
@@ -667,7 +667,7 @@ in
   , ", a3g=", rcd.a3g
 *)
   , ", def=", rcd.def, "}")
-end // end of [fprint_ir0fundecl]
+end // end of [fprint_i0fundecl]
 //
 (* ****** ****** *)
 
