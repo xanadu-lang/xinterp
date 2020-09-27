@@ -1098,7 +1098,7 @@ end // end of [ string_get_at ]
 (* ****** ****** *)
 
 fun
-strptr_alloc
+strtmp_vt_alloc
 (x: i0val): i0val =
 let
 val-I0Vint(x) = x in
@@ -1115,9 +1115,9 @@ val s0 = $UN.cast{string}(p0)
 val () =
 $UN.ptr0_set_at<char>(p0, x0, c0) in I0Vstr(s0)
 end
-end // end of [strptr_alloc]
+end // end of [strtmp_vt_alloc]
 fun
-strptr_set_at
+strtmp_vt_set_at
 ( x: i0val
 , i: i0val
 , c: i0val): i0val =
@@ -1129,7 +1129,7 @@ let
 val p0 = $UN.cast{ptr}(x)
 val () = $UN.ptr0_set_at<char>(p0, i, c) in I0Vnil()
 end
-end // end of [strptr_set_at]
+end // end of [strtmp_vt_set_at]
 
 (* ****** ****** *)
 //
@@ -2035,14 +2035,16 @@ the_d2cstdef_insert
 (
 d2cst
 ("Xint_string_print"),
-I0Vfun(firfun1(string_print)))
+I0Vfun
+(firfun1(string_print)))
 //
 val () =
 the_d2cstdef_insert
 (
 d2cst
 ("Xint_string_get_at"),
-I0Vfun(firfun2(string_get_at)))
+I0Vfun
+(firfun2(string_get_at)))
 //
 (* ****** ****** *)
 
@@ -2050,16 +2052,16 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_strptr_alloc"),
+("Xint_strtmp_vt_alloc"),
 I0Vfun
-(firfun1(strptr_alloc)))
+(firfun1(strtmp_vt_alloc)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_strptr_set_at"),
+("Xint_strtmp_vt_set_at"),
 I0Vfun
-(firfun3(strptr_set_at)))
+(firfun3(strtmp_vt_set_at)))
 
 (* ****** ****** *)
 //
