@@ -351,10 +351,10 @@ x0.node() of
   , knd0, "; "
   , d2v0, "; ", farg, "; ", body, ")")
 //
-| I0Etry(ire1, ircls) =>
+| I0Etry0(ire1, ircls) =>
   fprint!
   ( out
-  , "I0Etry(", ire1, "; ", "...", ")")
+  , "I0Etry0(", ire1, "; ", "...", ")")
 //
 | I0Eaddr(ire1) =>
   (

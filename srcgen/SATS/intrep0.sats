@@ -318,7 +318,7 @@ i0exp_node =
 | I0Efix of
   (int(*knd*), d2var, i0arglst, i0exp)
 //
-| I0Etry of (i0exp, i0claulst)
+| I0Etry0 of (i0exp, i0claulst)
 //
 | I0Eaddr of (i0exp(*l-value*))
 | I0Eflat of (i0exp(*l-value*))

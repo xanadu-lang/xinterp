@@ -223,11 +223,11 @@ end // end of [interp0_irexp_fun]
 //
 extern
 fun
-interp0_irexp_try
+interp0_irexp_try0
 (env: !intpenv, ire: i0exp): i0val
 //
 implement
-interp0_irexp_try
+interp0_irexp_try0
   (env0, ire0) =
 let
 val env0 =
@@ -253,7 +253,7 @@ val () = intpenv_pop0_try1(env0)
 prval
 ((*void*)) = $UN.cast2void(env0) in $raise(exn)
 end
-end // end of [interp0_irexp_try]
+end // end of [interp0_irexp_try0]
 //
 (* ****** ****** *)
 
@@ -1687,7 +1687,7 @@ end // end of [aux_fix]
 (* ****** ****** *)
 
 fun
-aux_try
+aux_try0
 ( env0
 : !intpenv
 , ire0
@@ -1695,7 +1695,7 @@ aux_try
 let
 //
 val-
-I0Etry
+I0Etry0
 ( ire1
 , ircls) = ire0.node()
 //
@@ -1714,7 +1714,7 @@ env0 =
 $UN.castvwtp0{intpenv}(env0)
 val
 irv1 =
-interp0_irexp_try(env0, ire1)
+interp0_irexp_try0(env0, ire1)
 val () = intpenv_pop0_try1(env0)
 //
 prval
@@ -1741,7 +1741,7 @@ case- opt2 of
 | ~Some_vt(irv2) => irv2
 end
 //
-end (* end of [aux_try] *)
+end (* end of [aux_try0] *)
 
 (* ****** ****** *)
 //
@@ -2295,15 +2295,15 @@ ire0.node() of
   // I0Ecase
 //
 | I0Elam
-    (_, _, _) => aux_lam(env0, ire0)
+  ( _, _, _ ) => aux_lam(env0, ire0)
   // I0Elam
 | I0Efix
-    (_, _, _, _) => aux_fix(env0, ire0)
+  (_, _, _, _) => aux_fix(env0, ire0)
   // I0Efix
 //
-| I0Etry
-    (ire1, ircls) => aux_try(env0, ire0)
-  // I0Etry
+| I0Etry0
+  (ire1, ircls) => aux_try0(env0, ire0)
+  // I0Etry0
 //
 | I0Eaddr(ire1) => aux_addr(env0, ire0)
 | I0Eflat(ire1) => aux_flat(env0, ire0)

@@ -602,14 +602,14 @@ d3e0.node() of
     end
   end
 //
-| D3Etry
+| D3Etry0
   (tok0, d3e1, d3cls) =>
   let
     val ire1 = irerase_dexp(d3e1)
     val ircls = irerase_dclaulst(d3cls)
   in
     i0exp_make_node
-    (loc0, I0Etry(ire1, ircls))
+    (loc0, I0Etry0(ire1, ircls))
   end
 //
 | D3Eaddr(d3e1) =>
