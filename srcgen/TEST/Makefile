@@ -127,6 +127,9 @@ $(XINTERP) -d ./prelude/tuple.dats
 test:: isAVL
 isAVL: ; \
 $(XINTERP) -d ./prelude/isAVL.dats
+test:: isAVL
+rfind: ; \
+$(XINTERP) -d ./prelude/rfind.dats
 
 ######
 
