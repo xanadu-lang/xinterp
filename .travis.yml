@@ -40,14 +40,8 @@ script:
   - cd ${PATSHOME}
   - ./configure&&make CC=${GCC} all
   # Building Xanadu
-  - cd ${XATSHOME}/srcgen
-  - echo 'running unit-tests...'
-  - (cd xutl/TEST && make testall)
-  - (cd xutl/TEST/Posix && make testall)
-  - echo 'building ATS-Xanadu...'
-  - (cd xats && make all)
-  - echo 'running integration tests...'
-  - (cd xats/TEST && make XATSOPT=./../xatsopt testall)
+  - (sh ./build.sh)
+  - (cd srcgen/TEST && time make > output)
 
 after_script:
   - date
