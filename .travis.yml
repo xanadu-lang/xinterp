@@ -20,7 +20,8 @@ before_install:
   - date
   - export PATSHOME=${HOME}/ATS2
   - export PATH=${PATH}:${PATSHOME}/bin
-  - export XATSHOME=${TRAVIS_BUILD_DIR}
+  - export XINTERP0=${TRAVIS_BUILD_DIR}
+  - export XATSHOME=${XINTERP0}/xanadu/.
   - export GCC=gcc
   - export CLANG=clang
 
@@ -40,6 +41,7 @@ script:
   - cd ${PATSHOME}
   - ./configure&&make CC=${GCC} all
   # Building Xanadu
+  - cd ${XINTERP0}
   - (sh ./build.sh)
   - (cd srcgen/TEST && time make > output)
 
