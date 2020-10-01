@@ -1,6 +1,6 @@
 ######
 #
-# For building xinterp
+# For testing xinterp
 #
 ######
 
@@ -321,13 +321,10 @@ test-2020-09-19: ; \
 $(XINTERP) -d ./xatslib_githwxi/test-2020-09-19.dats
 
 ######
-
-clean::
-
+clean:: ; rm -f *~
 ######
-
 cleanall:: clean
-
+cleanall:: ; rm -f output
 ######
 
 ###### end of [Makefile] ######

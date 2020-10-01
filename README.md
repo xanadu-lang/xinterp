@@ -2,6 +2,10 @@
 
 An interpreter for assigning dynamic semantics to Xanadu
 
+## Build Status
+
+* [![Build Status](https://travis-ci.org/xanadu-lang/xinterp.svg?branch=master)](https://travis-ci.org/xanadu-lang/xinterp) Ubuntu
+
 ### Download
 
 ```
