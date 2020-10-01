@@ -11,6 +11,8 @@ ECHO=echo
 XINTERP="./../../bin/xinterp"
 
 ######
+all:: test
+######
 #
 test:: bools
 bools: ; \
@@ -320,6 +322,10 @@ test-2020-09-19
 test-2020-09-19: ; \
 $(XINTERP) -d ./xatslib_githwxi/test-2020-09-19.dats
 
+######
+#
+# HX: for cleaning up
+#
 ######
 clean:: ; rm -f *~
 ######
