@@ -1,5 +1,4 @@
 (* ****** ****** *)
-(* ****** ****** *)
 #staload
 "prelude/DATS/gint.dats"
 #staload
@@ -12,8 +11,7 @@
 (* ****** ****** *)
 #staload
 "prelude\
-/DATS/CATS\
-/Xint/basics.dats"
+/DATS/CATS/Xint/basics.dats"
 (* ****** ****** *)
 
 var x0 = $(0, 1)

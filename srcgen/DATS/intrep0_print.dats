@@ -213,6 +213,11 @@ fprint_i0exp
 case+
 x0.node() of
 //
+| I0Ei00(int) =>
+  fprint!(out, "I0Ei00(", int, ")")
+| I0Es00(str) =>
+  fprint!(out, "I0Es00(", str, ")")
+//
 | I0Eint(tok) =>
   fprint!(out, "I0Eint(", tok, ")")
 | I0Ebtf(tok) =>

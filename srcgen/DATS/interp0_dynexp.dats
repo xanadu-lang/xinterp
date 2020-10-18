@@ -259,6 +259,30 @@ end // end of [interp0_irexp_try0]
 
 local
 
+(* ****** ****** *)
+
+fun
+auxi00
+( ire0
+: i0exp): i0val =
+I0Vint(int) where
+{
+val-
+I0Ei00(int) = ire0.node()
+} (* end of [auxi00] *)
+
+fun
+auxs00
+( ire0
+: i0exp): i0val =
+I0Vstr(str) where
+{
+val-
+I0Es00(str) = ire0.node()
+} (* end of [auxs00] *)
+
+(* ****** ****** *)
+
 fun
 auxint
 ( ire0
@@ -274,6 +298,8 @@ tok.node() of
   I0Vint(g0string2int(rep))
 //
 end // end of [auxint]
+
+(* ****** ****** *)
 
 fun
 auxbtf
@@ -321,6 +347,8 @@ tok.node() of
 //
 end // end of [auxchr]
 
+(* ****** ****** *)
+
 fun
 auxflt
 ( ire0
@@ -352,6 +380,8 @@ tok.node() of
   I0Vstr(xatsopt_strunq(rep))
 //
 end // end of [auxstr]
+
+(* ****** ****** *)
 
 fun
 auxtop
@@ -2242,10 +2272,12 @@ in
 case+
 ire0.node() of
 //
+| I0Ei00 _ => auxi00(ire0)
+| I0Es00 _ => auxs00(ire0)
+//
 | I0Eint _ => auxint(ire0)
 | I0Ebtf _ => auxbtf(ire0)
 | I0Echr _ => auxchr(ire0)
-//
 | I0Eflt _ => auxflt(ire0)
 | I0Estr _ => auxstr(ire0)
 //

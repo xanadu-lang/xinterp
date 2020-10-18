@@ -134,6 +134,12 @@ rfind: ; \
 $(XINTERP) -d ./prelude/rfind.dats
 
 ######
+#
+test:: gmacro
+gmacro: ; \
+$(XINTERP) -d ./prelude/gmacro.dats
+#
+######
 
 test:: sieve
 sieve: ; \

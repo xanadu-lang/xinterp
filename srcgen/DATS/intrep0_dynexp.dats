@@ -349,6 +349,13 @@ in
 case+
 d3e0.node() of
 //
+| D3Ei00(int) =>
+  i0exp_make_node
+  (loc0, I0Ei00(int))
+| D3Es00(str) =>
+  i0exp_make_node
+  (loc0, I0Es00(str))
+//
 | D3Eint(tok) =>
   i0exp_make_node
   (loc0, I0Eint(tok))

@@ -246,10 +246,12 @@ overload fprint with fprint_i0arg
 datatype
 i0exp_node =
 //
+| I0Ei00 of (int)
+| I0Es00 of string
+//
 | I0Eint of (token)
 | I0Ebtf of (token)
 | I0Echr of (token)
-//
 | I0Eflt of (token)
 | I0Estr of (token)
 //
