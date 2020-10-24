@@ -1,4 +1,8 @@
 (* ****** ****** *)
+(*
+** N-queen puzzle
+*)
+(* ****** ****** *)
 #staload _ =
 "prelude\
 /DATS/CATS\
@@ -35,9 +39,12 @@
 "xatslib/githwxi/DATS/gtree1.dats"
 
 (* ****** ****** *)
-
+//
+(*
 val N = 6
-
+*)
+#define N 6
+//
 (* ****** ****** *)
 
 fun
