@@ -41,6 +41,12 @@
 "prelude/DATS/stream_vt.dats"
 (* ****** ****** *)
 //
+#staload _ =
+"prelude\
+/DATS/CATS/Xint/array.dats"
+//
+(* ****** ****** *)
+//
 val A0 =
 a0ref_make(0)
 val x0 =

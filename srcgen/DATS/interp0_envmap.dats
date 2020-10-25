@@ -1589,25 +1589,25 @@ then
 val () =
 the_d2cstdef_insert
 (
-d2cst("Xint_bool_neg")
+d2cst("XINTERP_bool_neg")
 ,
 I0Vfun(firfun1(bool_neg)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("Xint_bool_add")
+d2cst("XINTERP_bool_add")
 ,
 I0Vfun(firfun2(bool_add)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("Xint_bool_mul")
+d2cst("XINTERP_bool_mul")
 ,
 I0Vfun(firfun2(bool_mul)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("Xint_bool_print")
+d2cst("XINTERP_bool_print")
 ,
 I0Vfun(firfun1(bool_print)))
 //
@@ -1623,51 +1623,51 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_char_make_sint"),
+("XINTERP_char_make_sint"),
 I0Vfun
 (firfun1(char_make_sint)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_sint_make_char"),
+("XINTERP_sint_make_char"),
 I0Vfun
 (firfun1(sint_make_char)))
 //
 val () =
 the_d2cstdef_insert
 (
-d2cst("Xint_char_eqzq"),
+d2cst("XINTERP_char_eqzq"),
 I0Vfun(firfun1(char_eqzq)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("Xint_char_neqzq"),
+d2cst("XINTERP_char_neqzq"),
 I0Vfun(firfun1(char_neqzq)))
 //
 val () =
 the_d2cstdef_insert
 (
-d2cst("Xint_char_cmp")
+d2cst("XINTERP_char_cmp")
 ,
 I0Vfun(firfun2(char_cmp)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("Xint_char_equal")
+d2cst("XINTERP_char_equal")
 ,
 I0Vfun(firfun2(char_equal)))
 val () =
 the_d2cstdef_insert
 (
-d2cst("Xint_char_noteq")
+d2cst("XINTERP_char_noteq")
 ,
 I0Vfun(firfun2(char_noteq)))
 //
 val () =
 the_d2cstdef_insert
 (
-d2cst("Xint_char_print")
+d2cst("XINTERP_char_print")
 ,
 I0Vfun(firfun1(char_print)))
 //
@@ -1683,7 +1683,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gint_print_sint")
+("XINTERP_gint_print_sint")
 ,
 I0Vfun
 (firfun1(gint_print_sint)))
@@ -1694,7 +1694,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gint_neg_sint")
+("XINTERP_gint_neg_sint")
 ,
 I0Vfun
 (firfun1(gint_neg_sint)))
@@ -1703,7 +1703,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gint_abs_sint")
+("XINTERP_gint_abs_sint")
 ,
 I0Vfun
 (firfun1(gint_abs_sint)))
@@ -1712,7 +1712,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gint_succ_sint")
+("XINTERP_gint_succ_sint")
 ,
 I0Vfun
 (firfun1(gint_succ_sint)))
@@ -1720,7 +1720,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gint_pred_sint")
+("XINTERP_gint_pred_sint")
 ,
 I0Vfun
 (firfun1(gint_pred_sint)))
@@ -1731,7 +1731,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gint_lt_sint_sint")
+("XINTERP_gint_lt_sint_sint")
 ,
 I0Vfun
 (firfun2(gint_lt_sint_sint)))
@@ -1739,7 +1739,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gint_gt_sint_sint")
+("XINTERP_gint_gt_sint_sint")
 ,
 I0Vfun
 (firfun2(gint_gt_sint_sint)))
@@ -1748,7 +1748,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gint_eq_sint_sint")
+("XINTERP_gint_eq_sint_sint")
 ,
 I0Vfun
 (firfun2(gint_eq_sint_sint)))
@@ -1757,7 +1757,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gint_lte_sint_sint")
+("XINTERP_gint_lte_sint_sint")
 ,
 I0Vfun
 (firfun2(gint_lte_sint_sint)))
@@ -1765,7 +1765,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gint_gte_sint_sint")
+("XINTERP_gint_gte_sint_sint")
 ,
 I0Vfun
 (firfun2(gint_gte_sint_sint)))
@@ -1774,7 +1774,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gint_neq_sint_sint")
+("XINTERP_gint_neq_sint_sint")
 ,
 I0Vfun
 (firfun2(gint_neq_sint_sint)))
@@ -1785,7 +1785,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gint_cmp_sint_sint")
+("XINTERP_gint_cmp_sint_sint")
 ,
 I0Vfun
 (firfun2(gint_cmp_sint_sint)))
@@ -1796,7 +1796,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gint_add_sint_sint")
+("XINTERP_gint_add_sint_sint")
 ,
 I0Vfun
 (firfun2(gint_add_sint_sint)))
@@ -1804,7 +1804,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gint_sub_sint_sint")
+("XINTERP_gint_sub_sint_sint")
 ,
 I0Vfun
 (firfun2(gint_sub_sint_sint)))
@@ -1812,7 +1812,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gint_mul_sint_sint")
+("XINTERP_gint_mul_sint_sint")
 ,
 I0Vfun
 (firfun2(gint_mul_sint_sint)))
@@ -1820,7 +1820,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gint_div_sint_sint")
+("XINTERP_gint_div_sint_sint")
 ,
 I0Vfun
 (firfun2(gint_div_sint_sint)))
@@ -1828,7 +1828,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gint_mod_sint_sint")
+("XINTERP_gint_mod_sint_sint")
 ,
 I0Vfun
 (firfun2(gint_mod_sint_sint)))
@@ -1845,7 +1845,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gflt_i_dflt")
+("XINTERP_gflt_i_dflt")
 ,
 I0Vfun
 (firfun1(gflt_i_dflt)))
@@ -1856,7 +1856,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gflt_neg_dflt")
+("XINTERP_gflt_neg_dflt")
 ,
 I0Vfun
 (firfun1(gflt_neg_dflt)))
@@ -1865,7 +1865,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gflt_abs_dflt")
+("XINTERP_gflt_abs_dflt")
 ,
 I0Vfun
 (firfun1(gflt_abs_dflt)))
@@ -1876,7 +1876,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gflt_succ_dflt")
+("XINTERP_gflt_succ_dflt")
 ,
 I0Vfun
 (firfun1(gflt_succ_dflt)))
@@ -1885,7 +1885,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gflt_pred_dflt")
+("XINTERP_gflt_pred_dflt")
 ,
 I0Vfun
 (firfun1(gflt_pred_dflt)))
@@ -1896,7 +1896,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gflt_lt_dflt_dflt")
+("XINTERP_gflt_lt_dflt_dflt")
 ,
 I0Vfun
 (firfun2(gflt_lt_dflt_dflt)))
@@ -1904,7 +1904,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gflt_gt_dflt_dflt")
+("XINTERP_gflt_gt_dflt_dflt")
 ,
 I0Vfun
 (firfun2(gflt_gt_dflt_dflt)))
@@ -1912,7 +1912,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gflt_eq_dflt_dflt")
+("XINTERP_gflt_eq_dflt_dflt")
 ,
 I0Vfun
 (firfun2(gflt_eq_dflt_dflt)))
@@ -1921,7 +1921,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gflt_lte_dflt_dflt")
+("XINTERP_gflt_lte_dflt_dflt")
 ,
 I0Vfun
 (firfun2(gflt_lte_dflt_dflt)))
@@ -1929,7 +1929,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gflt_gte_dflt_dflt")
+("XINTERP_gflt_gte_dflt_dflt")
 ,
 I0Vfun
 (firfun2(gflt_gte_dflt_dflt)))
@@ -1937,7 +1937,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gflt_neq_dflt_dflt")
+("XINTERP_gflt_neq_dflt_dflt")
 ,
 I0Vfun
 (firfun2(gflt_neq_dflt_dflt)))
@@ -1948,7 +1948,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gflt_cmp_dflt_dflt")
+("XINTERP_gflt_cmp_dflt_dflt")
 ,
 I0Vfun
 (firfun2(gflt_cmp_dflt_dflt)))
@@ -1959,7 +1959,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gflt_add_dflt_dflt")
+("XINTERP_gflt_add_dflt_dflt")
 ,
 I0Vfun
 (firfun2(gflt_add_dflt_dflt)))
@@ -1967,7 +1967,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gflt_sub_dflt_dflt")
+("XINTERP_gflt_sub_dflt_dflt")
 ,
 I0Vfun
 (firfun2(gflt_sub_dflt_dflt)))
@@ -1975,7 +1975,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gflt_mul_dflt_dflt")
+("XINTERP_gflt_mul_dflt_dflt")
 ,
 I0Vfun
 (firfun2(gflt_mul_dflt_dflt)))
@@ -1983,7 +1983,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gflt_div_dflt_dflt")
+("XINTERP_gflt_div_dflt_dflt")
 ,
 I0Vfun
 (firfun2(gflt_div_dflt_dflt)))
@@ -1992,7 +1992,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_gflt_mod_dflt_dflt")
+("XINTERP_gflt_mod_dflt_dflt")
 ,
 I0Vfun
 (firfun2(gflt_mod_dflt_dflt)))
@@ -2010,21 +2010,21 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_string_head_opt"),
+("XINTERP_string_head_opt"),
 I0Vfun
 (firfun1(string_head_opt)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_string_head_raw"),
+("XINTERP_string_head_raw"),
 I0Vfun
 (firfun1(string_head_raw)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_string_tail_raw"),
+("XINTERP_string_tail_raw"),
 I0Vfun
 (firfun1(string_tail_raw)))
 //
@@ -2034,7 +2034,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_string_print"),
+("XINTERP_string_print"),
 I0Vfun
 (firfun1(string_print)))
 //
@@ -2042,7 +2042,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_string_get_at"),
+("XINTERP_string_get_at"),
 I0Vfun
 (firfun2(string_get_at)))
 //
@@ -2052,14 +2052,14 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_strtmp_vt_alloc"),
+("XINTERP_strtmp_vt_alloc"),
 I0Vfun
 (firfun1(strtmp_vt_alloc)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_strtmp_vt_set_at"),
+("XINTERP_strtmp_vt_set_at"),
 I0Vfun
 (firfun3(strtmp_vt_set_at)))
 
@@ -2069,7 +2069,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_a0ptr_alloc")
+("XINTERP_a0ptr_alloc")
 ,
 I0Vfun
 (firfun0(a0ptr_alloc)))
@@ -2077,14 +2077,14 @@ I0Vfun
 val () =
 the_d2cstdef_insert
 (
-d2cst("Xint_a0ref_get")
+d2cst("XINTERP_a0ref_get")
 ,
 I0Vfun
 ( firfun1(a0ref_get)) )
 val () =
 the_d2cstdef_insert
 (
-d2cst("Xint_a0ref_set")
+d2cst("XINTERP_a0ref_set")
 ,
 I0Vfun
 ( firfun2(a0ref_set)) )
@@ -2095,7 +2095,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_a1ptr_alloc")
+("XINTERP_a1ptr_alloc")
 ,
 I0Vfun
 (firfun1(a1ptr_alloc)))
@@ -2104,7 +2104,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_a1ref_head_raw")
+("XINTERP_a1ref_head_raw")
 ,
 I0Vfun
 (firfun1(a1ref_head_raw)))
@@ -2112,7 +2112,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_a1ref_tail_raw")
+("XINTERP_a1ref_tail_raw")
 ,
 I0Vfun
 (firfun1(a1ref_tail_raw)))
@@ -2121,7 +2121,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_a1ref_get_at_raw")
+("XINTERP_a1ref_get_at_raw")
 ,
 I0Vfun
 (firfun2(a1ref_get_at_raw)))
@@ -2129,7 +2129,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_a1ptr_get_at_raw")
+("XINTERP_a1ptr_get_at_raw")
 ,
 I0Vfun
 (firfun2(a1ptr_get_at_raw)))
@@ -2138,7 +2138,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_a1ref_set_at_raw")
+("XINTERP_a1ref_set_at_raw")
 ,
 I0Vfun
 (firfun3(a1ref_set_at_raw)))
@@ -2146,7 +2146,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_a1ptr_set_at_raw")
+("XINTERP_a1ptr_set_at_raw")
 ,
 I0Vfun
 (firfun3(a1ptr_set_at_raw)))
@@ -2157,21 +2157,21 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_g_stdin")
+("XINTERP_g_stdin")
 ,
 I0Vfun(firfun0(g_stdin)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_g_stdout")
+("XINTERP_g_stdout")
 ,
 I0Vfun(firfun0(g_stdout)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_g_stderr")
+("XINTERP_g_stderr")
 ,
 I0Vfun(firfun0(g_stderr)))
 //
@@ -2179,14 +2179,14 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_fgetc_ref")
+("XINTERP_fgetc_ref")
 ,
 I0Vfun(firfun1(fgetc_ref)))
 val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_fputc_ref")
+("XINTERP_fputc_ref")
 ,
 I0Vfun(firfun2(fputc_ref)))
 //
@@ -2194,7 +2194,7 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("Xint_rand_nint_limit")
+("XINTERP_rand_nint_limit")
 ,
 I0Vfun(firfun1(rand_nint_limit)))
 //
