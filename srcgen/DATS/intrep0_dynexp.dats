@@ -51,8 +51,111 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/intrep0.sats"
 //
 (* ****** ****** *)
+//
+extern
+fun
+xatsopt_chrunq
+( source // '<char>' -> <char>
+: string) : char = "ext#xatsopt_chrunq"
+extern
+fun
+xatsopt_strunq
+( source // "<string>" -> <string>
+: string) : string = "ext#xatsopt_strunq"
+//
+(* ****** ****** *)
 
 local
+
+(* ****** ****** *)
+
+fun
+auxint
+( d3p0
+: d3pat): i0pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val-
+D3Pint
+(tok) = d3p0.node()
+//
+val int =
+(
+case-
+tok.node() of
+| T_INT1(rep) =>
+  g0string2int(rep)
+) : int // end-of-val
+//
+in
+i0pat_make_node(loc0, I0Pint(int))
+end
+
+(* ****** ****** *)
+
+fun
+auxbtf
+( d3p0
+: d3pat): i0pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val-
+D3Pbtf
+(tok) = d3p0.node()
+//
+val btf =
+(
+case-
+tok.node() of
+|
+T_IDENT_alp(rep) =>
+(
+ifval
+(c0 = 't', true, false)
+) where
+{
+val p0 = string2ptr(rep)
+val c0 = $UN.ptr0_get<char>(p0)
+}
+) : bool // end-of-val
+//
+in
+i0pat_make_node(loc0, I0Pbtf(btf))
+end
+
+(* ****** ****** *)
+
+fun
+auxstr
+( d3p0
+: d3pat): i0pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val-
+D3Pstr
+(tok) = d3p0.node()
+//
+val str =
+(
+case-
+tok.node() of
+|
+T_STRING_closed
+  (rep) =>
+  xatsopt_strunq(rep)
+) : string // end-of-val
+//
+in
+i0pat_make_node(loc0, I0Pstr(str))
+end
+
+(* ****** ****** *)
 
 fun
 auxbang
@@ -248,20 +351,18 @@ d3p0.node() of
 //
 | D3Pnil() =>
   i0pat_make_node
-  (loc0, I0Pnil((*void*)))
+  (loc0, I0Pnil())
 | D3Pany() =>
   i0pat_make_node
-  (loc0, I0Pany((*void*)))
-//
-| D3Pint(tok) =>
-  i0pat_make_node
-  (loc0, I0Pint(tok))
-| D3Pbtf(tok) =>
-  i0pat_make_node
-  (loc0, I0Pbtf(tok))
+  (loc0, I0Pany())
 //
 | D3Pvar(d2v) =>
-  i0pat_make_node(loc0, I0Pvar(d2v))
+  i0pat_make_node
+  (loc0, I0Pvar(d2v))
+//
+| D3Pint _ => auxint(d3p0)
+| D3Pbtf _ => auxbtf(d3p0)
+| D3Pstr _ => auxstr(d3p0)
 //
 | D3Pbang _ => auxbang(d3p0)
 | D3Pflat _ => auxflat(d3p0)

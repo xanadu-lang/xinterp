@@ -2777,9 +2777,26 @@ case-
 irp0.node() of
 //
 |
-I0Pany() => true
+I0Pany _ => true
 |
-I0Pvar(d2v0) => true
+I0Pvar _ => true
+//
+|
+I0Pint
+( int1 ) =>
+(
+case- irv0 of
+|
+I0Vint(int0) => (int0=int1)
+)
+|
+I0Pbtf
+( btf1 ) =>
+(
+case- irv0 of
+|
+I0Vbtf(btf0) => (btf0=btf1)
+)
 //
 |
 I0Pbang
@@ -3171,6 +3188,21 @@ val () =
 interp0_insert_d2var
   (env0, d2v0, irv0)
 } (* end of [I0Pvar] *)
+//
+|
+I0Pint(int1) =>
+(
+case- irv0 of
+|
+I0Vint(int0) => ()
+)
+|
+I0Pbtf(btf1) =>
+(
+case- irv0 of
+|
+I0Vbtf(btf0) => ()
+)
 //
 |
 I0Pflat(irp1) =>

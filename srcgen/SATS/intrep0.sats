@@ -168,8 +168,9 @@ i0pat_node =
 | I0Pnil of ()
 | I0Pany of ()
 //
-| I0Pint of (token)
-| I0Pbtf of (token)
+| I0Pint of (int)
+| I0Pbtf of (bool)
+| I0Pstr of string
 //
 | I0Pvar of (d2var)
 //

@@ -139,13 +139,15 @@ case+ x0.node() of
 | I0Pany() =>
   fprint!(out, "I0Pany(", ")")
 //
+| I0Pvar(d2v) =>
+  fprint!(out, "I0Pvar(", d2v, ")")
+//
 | I0Pint(tok) =>
   fprint!(out, "I0Pint(", tok, ")")
 | I0Pbtf(tok) =>
   fprint!(out, "I0Pbtf(", tok, ")")
-//
-| I0Pvar(d2v) =>
-  fprint!(out, "I0Pvar(", d2v, ")")
+| I0Pstr(tok) =>
+  fprint!(out, "I0Pstr(", tok, ")")
 //
 | I0Pbang(irp1) =>
   fprint!(out, "I0Pbang(", irp1, ")")
