@@ -28,6 +28,31 @@
 "prelude/DATS/stream_vt.dats"
 //
 (* ****** ****** *)
+
+fun
+digit
+(c0: char): sint =
+(
+case c0 of
+| '0' => 0
+| '1' => 1
+| '2' => 2
+| '3' => 3
+| '4' => 4
+| '5' => 5
+| '6' => 6
+| '7' => 7
+| '8' => 8
+| '9' => 9
+| _ (* else *) => -1
+)
+
+val _0_ = digit('0')
+val _1_ = digit('0')
+val _9_ = digit('9')
+val _a_ = digit('a')
+
+(* ****** ****** *)
 fun
 fact(n: int): int =
 (

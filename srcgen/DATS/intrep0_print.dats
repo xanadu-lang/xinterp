@@ -146,6 +146,8 @@ case+ x0.node() of
   fprint!(out, "I0Pint(", tok, ")")
 | I0Pbtf(tok) =>
   fprint!(out, "I0Pbtf(", tok, ")")
+| I0Pchr(tok) =>
+  fprint!(out, "I0Pchr(", tok, ")")
 | I0Pstr(tok) =>
   fprint!(out, "I0Pstr(", tok, ")")
 //

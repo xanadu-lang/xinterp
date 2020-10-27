@@ -170,6 +170,7 @@ i0pat_node =
 //
 | I0Pint of (int)
 | I0Pbtf of (bool)
+| I0Pchr of (char)
 | I0Pstr of string
 //
 | I0Pvar of (d2var)

@@ -81,18 +81,14 @@ extern
 fun
 xatsopt_chrunq
 ( source // '<char>' -> <char>
-: string) : char = "ext#xatsopt_chrunq"
+: string
+) : char = "ext#xatsopt_chrunq"
 extern
 fun
 xatsopt_strunq
-( source // "<string>" -> <string>
-: string) : string = "ext#xatsopt_strunq"
-//
-extern
-fun
-xatsopt_chrunq2
-( source // '<slashed>' -> <slashed>
-: string) : char = "ext#xatsopt_chrunq2"
+( source//"<string>" -> <string>
+: string
+) : string = "ext#xatsopt_strunq"
 //
 (* ****** ****** *)
 //
@@ -287,17 +283,13 @@ fun
 auxint
 ( ire0
 : i0exp): i0val =
-let
+(
+I0Vint(token2dint(tok))
+) where
+{
 val-
 I0Eint(tok) = ire0.node()
-in(*in-of-let*)
-//
-case-
-tok.node() of
-| T_INT1(rep) =>
-  I0Vint(g0string2int(rep))
-//
-end // end of [auxint]
+} (* end of [auxint] *)
 
 (* ****** ****** *)
 
@@ -329,23 +321,18 @@ I0Vbtf
 //
 end // end of [auxbtf]
 
+(* ****** ****** *)
+
 fun
 auxchr
 ( ire0
 : i0exp): i0val =
-let
-val-
-I0Echr(tok) = ire0.node()
-in(*in-of-let*)
-//
-case-
-tok.node() of
-| T_CHAR_char(rep) => 
-  I0Vchr(xatsopt_chrunq(rep))
-| T_CHAR_slash(rep) => 
-  I0Vchr(xatsopt_chrunq2(rep))
-//
-end // end of [auxchr]
+(
+I0Vchr(token2dchr(tok))
+) where
+{
+val-I0Echr(tok) = ire0.node()
+} (* end of [auxchr] *)
 
 (* ****** ****** *)
 
@@ -353,33 +340,23 @@ fun
 auxflt
 ( ire0
 : i0exp): i0val =
-let
-val-
-I0Eflt(tok) = ire0.node()
-in(*in-of-let*)
-//
-case-
-tok.node() of
-| T_FLOAT1(rep) =>
-  I0Vflt(g0string2float(rep))
-//
-end // end of [auxstr]
+(
+I0Vflt(token2dflt(tok))
+) where
+{
+val-I0Eflt(tok) = ire0.node()
+} (* end of [auxflt] *)
 
 fun
 auxstr
 ( ire0
 : i0exp): i0val =
-let
-val-
-I0Estr(tok) = ire0.node()
-in(*in-of-let*)
-//
-case-
-tok.node() of
-| T_STRING_closed(rep) =>
-  I0Vstr(xatsopt_strunq(rep))
-//
-end // end of [auxstr]
+(
+I0Vstr(token2dstr(tok))
+) where
+{
+val-I0Estr(tok) = ire0.node()
+} (* end of [auxstr] *)
 
 (* ****** ****** *)
 
@@ -387,10 +364,10 @@ fun
 auxtop
 ( ire0
 : i0exp): i0val =
-(I0Vnil()) where
+(
+  I0Vnil() ) where
 {
-val-
-I0Etop(tok) = ire0.node()
+val-I0Etop(tok) = ire0.node()
 }
 
 (* ****** ****** *)
@@ -2797,6 +2774,14 @@ case- irv0 of
 |
 I0Vbtf(btf0) => (btf0=btf1)
 )
+|
+I0Pchr
+( chr1 ) =>
+(
+case- irv0 of
+|
+I0Vchr(chr0) => (chr0=chr1)
+)
 //
 |
 I0Pbang
@@ -3193,15 +3178,25 @@ interp0_insert_d2var
 I0Pint(int1) =>
 (
 case- irv0 of
-|
-I0Vint(int0) => ()
+| I0Vint(int0) => ()
 )
 |
 I0Pbtf(btf1) =>
 (
 case- irv0 of
+| I0Vbtf(btf0) => ()
+)
 |
-I0Vbtf(btf0) => ()
+I0Pchr(chr1) =>
+(
+case- irv0 of
+| I0Vchr(chr0) => ()
+)
+|
+I0Pstr(str1) =>
+(
+case- irv0 of
+| I0Vstr(str0) => ()
 )
 //
 |

@@ -81,13 +81,8 @@ val-
 D3Pint
 (tok) = d3p0.node()
 //
-val int =
-(
-case-
-tok.node() of
-| T_INT1(rep) =>
-  g0string2int(rep)
-) : int // end-of-val
+val
+int = token2dint(tok)
 //
 in
 i0pat_make_node(loc0, I0Pint(int))
@@ -107,24 +102,30 @@ val-
 D3Pbtf
 (tok) = d3p0.node()
 //
-val btf =
-(
-case-
-tok.node() of
-|
-T_IDENT_alp(rep) =>
-(
-ifval
-(c0 = 't', true, false)
-) where
-{
-val p0 = string2ptr(rep)
-val c0 = $UN.ptr0_get<char>(p0)
-}
-) : bool // end-of-val
+val btf = token2sbtf(tok)
 //
 in
 i0pat_make_node(loc0, I0Pbtf(btf))
+end
+
+(* ****** ****** *)
+
+fun
+auxchr
+( d3p0
+: d3pat): i0pat =
+let
+//
+val
+loc0 = d3p0.loc()
+val-
+D3Pchr
+(tok) = d3p0.node()
+//
+val chr = token2dchr(tok)
+//
+in
+i0pat_make_node(loc0, I0Pchr(chr))
 end
 
 (* ****** ****** *)
@@ -141,15 +142,7 @@ val-
 D3Pstr
 (tok) = d3p0.node()
 //
-val str =
-(
-case-
-tok.node() of
-|
-T_STRING_closed
-  (rep) =>
-  xatsopt_strunq(rep)
-) : string // end-of-val
+val str = token2dstr(tok)
 //
 in
 i0pat_make_node(loc0, I0Pstr(str))
@@ -362,6 +355,7 @@ d3p0.node() of
 //
 | D3Pint _ => auxint(d3p0)
 | D3Pbtf _ => auxbtf(d3p0)
+| D3Pchr _ => auxchr(d3p0)
 | D3Pstr _ => auxstr(d3p0)
 //
 | D3Pbang _ => auxbang(d3p0)
