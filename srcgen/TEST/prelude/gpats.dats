@@ -48,7 +48,7 @@ case c0 of
 )
 
 val _0_ = digit('0')
-val _1_ = digit('0')
+val _1_ = digit('1')
 val _9_ = digit('9')
 val _a_ = digit('a')
 
