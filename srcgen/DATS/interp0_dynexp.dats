@@ -293,6 +293,7 @@ I0Eint(tok) = ire0.node()
 
 (* ****** ****** *)
 
+(*
 fun
 auxbtf
 ( ire0
@@ -320,6 +321,17 @@ I0Vbtf
 }
 //
 end // end of [auxbtf]
+*)
+fun
+auxbtf
+( ire0
+: i0exp): i0val =
+(
+I0Vbtf(token2dbtf(tok))
+) where
+{
+val-I0Ebtf(tok) = ire0.node()
+} (* end of [auxbtf] *)
 
 (* ****** ****** *)
 
