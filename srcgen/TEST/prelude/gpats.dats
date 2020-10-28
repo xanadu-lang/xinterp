@@ -30,6 +30,19 @@
 (* ****** ****** *)
 
 fun
+not
+(b0: bool): bool =
+(
+case+ b0 of
+| true => false
+| false => true
+)
+
+val ntrue = not(true)
+
+(* ****** ****** *)
+
+fun
 digit
 (c0: char): sint =
 (
