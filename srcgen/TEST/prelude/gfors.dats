@@ -1,9 +1,4 @@
 (* ****** ****** *)
-#staload _ =
-"prelude\
-/DATS/CATS\
-/Xint/basics.dats"
-(* ****** ****** *)
 //
 #staload
 "prelude/DATS/gbas.dats"
@@ -36,6 +31,10 @@
 #staload _ =
 "prelude/DATS/stream_vt.dats"
 //
+(* ****** ****** *)
+#staload _ =
+"prelude\
+/DATS/CATS/Xint/basics.dats"
 (* ****** ****** *)
 
 val () =

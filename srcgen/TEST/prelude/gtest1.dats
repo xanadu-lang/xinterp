@@ -3,21 +3,13 @@
 ** for g-sequences
 *)
 (* ****** ****** *)
-#staload _ =
-"prelude\
-/DATS/CATS\
-/Xint/basics.dats"
-(* ****** ****** *)
-
 #staload
 UN =
 "prelude/SATS/unsafe.sats"
 #staload
-// UN =
+UN =
 "prelude/DATS/unsafe.dats"
-
 (* ****** ****** *)
-
 #staload
 "prelude/DATS/gbas.dats"
 #staload
@@ -26,12 +18,13 @@ UN =
 "prelude/DATS/gnum.dats"
 #staload
 "prelude/DATS/gord.dats"
-
 (* ****** ****** *)
-
 #staload
 "prelude/DATS/gseq.dats"
-
+(* ****** ****** *)
+#staload _ =
+"prelude\
+/DATS/CATS/Xint/basics.dats"
 (* ****** ****** *)
 
 impltmp

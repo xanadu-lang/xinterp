@@ -3,16 +3,6 @@
 ** for g-sequences
 *)
 (* ****** ****** *)
-#staload _ =
-"prelude\
-/DATS/CATS\
-/Xint/basics.dats"
-(* ****** ****** *)
-#staload _ =
-"xatslib\
-/libc/DATS/CATS\
-/Xint/basics.dats"
-(* ****** ****** *)
 
 #staload
 UN =
@@ -61,6 +51,14 @@ UN =
 #staload
 "xatslib/libc/DATS/stdio.dats"
 //
+(* ****** ****** *)
+#staload _ =
+"prelude\
+/DATS/CATS/Xint/basics.dats"
+(* ****** ****** *)
+#staload _ =
+"xatslib\
+/libc/DATS/CATS/Xint/basics.dats"
 (* ****** ****** *)
 
 val cs =

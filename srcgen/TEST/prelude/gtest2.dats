@@ -3,11 +3,6 @@
 ** for g-sequences
 *)
 (* ****** ****** *)
-#staload _ =
-"prelude\
-/DATS/CATS\
-/Xint/basics.dats"
-(* ****** ****** *)
 //
 #staload
 "prelude/DATS/gbas.dats"
@@ -42,6 +37,10 @@ UN =
 "prelude/DATS/list_vt.dats"
 #staload
 "prelude/DATS/stream_vt.dats"
+(* ****** ****** *)
+#staload _ =
+"prelude\
+/DATS/CATS/Xint/basics.dats"
 (* ****** ****** *)
 //
 val xs1 =

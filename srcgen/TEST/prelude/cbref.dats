@@ -1,8 +1,7 @@
 (* ****** ****** *)
 #staload _ =
 "prelude\
-/DATS/CATS\
-/Xint/basics.dats"
+/DATS/CATS/Xint/basics.dats"
 (* ****** ****** *)
 
 fun
