@@ -305,14 +305,14 @@ extern
 fun
 the_fixity_load
 (
-XATSHOME: string
+XATSENV: string
 ) : void =
   "ext#libxatsopt_the_fixity_load"
 extern
 fun
 the_basics_load
 (
-XATSHOME: string
+XATSENV: string
 ,
 stadyn: int, given: string
 ) : void =
@@ -322,7 +322,7 @@ extern
 fun
 the_prelude_load
 (
-XATSHOME: string
+XATSENV: string
 ,
 stadyn: int, given: string
 ) : void =
@@ -332,7 +332,7 @@ extern
 fun
 the_preludes_load
 (
-  XATSHOME: string
+  XATSENV: string
 ) : void =
   "ext#libxatsopt_the_preludes_load"
 //
@@ -420,7 +420,7 @@ arg0= commarg
 ,
 wtk0= waitknd
 ,
-ATSHOME= string
+XATSENV= string
 ,
 prelude= int
 ,
@@ -680,7 +680,7 @@ stadyn =
 waitknd_get_stadyn(wtk0)
 //
 val
-XATSHOME = st0.ATSHOME
+XATSENV = st0.XATSENV
 //
 val () =
 ifcase
@@ -716,7 +716,7 @@ then
 //
 val () =
 the_preludes_load_if
-(XATSHOME, st0.prelude)
+(XATSENV, st0.prelude)
 // end of [val]
 //
 val () = (st0.inpfil0 := fp0)
@@ -1282,11 +1282,11 @@ xinterp_main0
   (argc, argv) = let
 //
 val
-XATSHOME =
+XATSENV =
 $GLO.the_XATSHOME_get((*void*))
 //
 val () = 
-$FP0.the_includes_push(XATSHOME)
+$FP0.the_includes_push(XATSENV)
 //
 val+
 list_cons
@@ -1303,7 +1303,7 @@ st0: cmdstate =
   arg0= arg0
 , wtk0= WTKnone()
 //
-, ATSHOME= XATSHOME
+, XATSENV= XATSENV
 //
 , prelude= 0(*~loaded*)
 //
