@@ -358,6 +358,13 @@ HX-2020-03-08:
 The basics for primitive functions
 *)
 //
+(*
+//
+// HX-2020-10-31:
+// This should also be loaded
+// EXTERNALLY for template resolution.
+//
+*)
 val () =
 the_prelude_load
 ( XHOME
