@@ -3,6 +3,10 @@
 "prelude\
 /DATS/CATS\
 /Xint/basics.dats"
+#staload _ =
+"xatslib\
+/libc/DATS/CATS\
+/Xint/basics.dats"
 (* ****** ****** *)
 #staload
 "prelude/DATS/gbas.dats"
@@ -11,12 +15,6 @@
 (* ****** ****** *)
 #staload
 "prelude/DATS/gseq.dats"
-(* ****** ****** *)
-#staload
-"prelude/DATS/gios.dats"
-(* ****** ****** *)
-#staload
-"prelude/DATS/rand.dats"
 (* ****** ****** *)
 //
 #staload
@@ -40,6 +38,9 @@
 #staload
 "prelude/DATS/stream_vt.dats"
 //
+(* ****** ****** *)
+#staload
+"xatslib/libc/DATS/rand.dats"
 (* ****** ****** *)
 #staload
 "xatslib/githwxi/DATS/dvdcnq.dats"
@@ -310,7 +311,7 @@ xs_sorted = mergesort<int>(xs)
 (* ****** ****** *)
 
 val
-ys_sorted = mergesort<int>(rand())
+ys_sorted = mergesort<int>(g_rand())
 
 (* ****** ****** *)
 

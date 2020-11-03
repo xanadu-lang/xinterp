@@ -23,11 +23,6 @@ UN =
 (* ****** ****** *)
 
 #staload
-"prelude/DATS/gios.dats"
-
-(* ****** ****** *)
-
-#staload
 "prelude/DATS/gbas.dats"
 #staload
 "prelude/DATS/gnum.dats"
@@ -48,6 +43,10 @@ UN =
 
 (* ****** ****** *)
 //
+#staload
+"xatslib/libc/SATS/gios.sats"
+#staload
+"xatslib/libc/DATS/gios.dats"
 #staload
 "xatslib/libc/DATS/stdio.dats"
 //

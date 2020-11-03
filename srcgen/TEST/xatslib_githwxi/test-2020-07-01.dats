@@ -21,12 +21,6 @@
 #staload
 "prelude/DATS/gseq.dats"
 (* ****** ****** *)
-#staload
-"prelude/DATS/gios.dats"
-(* ****** ****** *)
-#staload
-"prelude/DATS/rand.dats"
-(* ****** ****** *)
 //
 #staload
 "prelude/DATS/bool.dats"
@@ -55,6 +49,9 @@
 #staload
 "prelude/DATS/stream_vt.dats"
 //
+(* ****** ****** *)
+#staload
+"xatslib/libc/DATS/gios.dats"
 (* ****** ****** *)
 #staload
 "xatslib/libc/DATS/stdio.dats"

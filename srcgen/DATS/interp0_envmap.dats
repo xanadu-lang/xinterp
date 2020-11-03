@@ -1290,7 +1290,7 @@ end
 (* ****** ****** *)
 //
 fun
-rand_nint_limit
+nint_rand_limit
 ( x0 : i0val ): i0val  =
 let
 //
@@ -2194,9 +2194,9 @@ val () =
 the_d2cstdef_insert
 (
 d2cst
-("XINTERP_rand_nint_limit")
+("XINTERP_nint_rand_limit")
 ,
-I0Vfun(firfun1(rand_nint_limit)))
+I0Vfun(firfun1(nint_rand_limit)))
 //
 } (* end of [then] *) 
 //

@@ -29,12 +29,6 @@
 #staload
 "prelude/DATS/gseq.dats"
 (* ****** ****** *)
-#staload
-"prelude/DATS/gios.dats"
-(* ****** ****** *)
-#staload
-"prelude/DATS/rand.dats"
-(* ****** ****** *)
 //
 #staload
 "prelude/DATS/bool.dats"

@@ -3,6 +3,10 @@
 "prelude\
 /DATS/CATS\
 /Xint/basics.dats"
+#staload _ =
+"xatslib\
+/libc/DATS/CATS\
+/Xint/basics.dats"
 (* ****** ****** *)
 #staload
 "prelude/DATS/gbas.dats"
@@ -11,12 +15,6 @@
 (* ****** ****** *)
 #staload
 "prelude/DATS/gseq.dats"
-(* ****** ****** *)
-#staload
-"prelude/DATS/gios.dats"
-(* ****** ****** *)
-#staload
-"prelude/DATS/rand.dats"
 (* ****** ****** *)
 //
 #staload
@@ -42,6 +40,9 @@
 //
 (* ****** ****** *)
 #staload
+"xatslib/libc/DATS/rand.dats"
+(* ****** ****** *)
+#staload
 "xatslib/githwxi/DATS/mygist.dats"
 #staload
 "xatslib/githwxi/DATS/mytest.dats"
@@ -50,7 +51,7 @@
 (*
 impltmp
 {a:t0}
-rand<list(a)>() =
+g_rand<list(a)>() =
 let
 fun
 auxlst
@@ -72,7 +73,7 @@ list_vt_cons
 )
 )
 in
-  auxlst(rand_list<a>((*void*)))
+  auxlst(list_rand<a>((*void*)))
 end
 *)
 
@@ -80,8 +81,8 @@ end
 
 local
 impltmp
-rand<int>() =
-rand_nint_limit<>(2)
+g_rand<int>() =
+nint_rand_limit<>(2)
 in
 val
 test1 = // true

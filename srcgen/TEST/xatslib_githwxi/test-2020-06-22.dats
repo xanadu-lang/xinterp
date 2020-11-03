@@ -36,6 +36,9 @@
 //
 (* ****** ****** *)
 #staload
+"xatslib/libc/DATS/rand.dats"
+(* ****** ****** *)
+#staload
 "xatslib/githwxi/DATS/mygist.dats"
 #staload
 "xatslib/githwxi/DATS/mytest.dats"
@@ -61,13 +64,13 @@ val
 fact10 =
 mytest_fun(fact) where
 {
-  impltmp rand<int>() = 10
+impltmp g_rand<int>() = 10
 }
 val
 fibo10 =
 mytest_fun(fibo) where
 {
-  impltmp rand<int>() = 10
+impltmp g_rand<int>() = 10
 }
 
 (* ****** ****** *)
