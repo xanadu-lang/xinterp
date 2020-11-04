@@ -3,22 +3,25 @@
 # For testing xinterp
 #
 ######
-
 ECHO=echo
-
 ######
-
-XINTERP="./../../bin/xinterp"
-
+XINTERP=\
+"./../../bin/xinterp"
 ######
 all:: test
 ######
 #
 test:: bools
 bools: ; \
+export \
+XATSHOME=\
+"$(shell pwd)/../../xanadu" && \
 $(XINTERP) -d ./prelude/bools.dats
 test:: chars
 chars: ; \
+export \
+XATSHOME=\
+"$(shell pwd)/../../xanadu" && \
 $(XINTERP) -d ./prelude/chars.dats
 #
 ######
@@ -338,5 +341,4 @@ clean:: ; rm -f *~
 cleanall:: clean
 cleanall:: ; rm -f output
 ######
-
 ###### end of [Makefile_output] ######
