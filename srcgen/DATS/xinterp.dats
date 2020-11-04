@@ -130,11 +130,11 @@ prerrln!
 } (* else *) // end of [if]
 ) where
 {
-(*
+// (*
   val out = stderr_ref
   val ( ) =
   echo_argc_argv(out, argc, argv)
-*)
+// *)
 } (* end of [main0] *)
 //
 (* ****** ****** *)
