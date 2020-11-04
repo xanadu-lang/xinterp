@@ -38,6 +38,11 @@
 (* ****** ****** *)
 //
 fun
+the_XATSHOME_get((*void*)): string
+//
+(* ****** ****** *)
+//
+fun
 xinterp_main0
 {n:int | n >= 1}(int(n), !argv(n)): void
 //

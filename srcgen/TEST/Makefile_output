@@ -10,18 +10,14 @@ XINTERP=\
 ######
 all:: test
 ######
+test:: ; $(XINTERP)
+######
 #
 test:: bools
 bools: ; \
-export \
-XATSHOME=\
-"$(shell pwd)/../../xanadu" && \
-$(XINTERP) -d ./prelude/bools.dats
+$(XINTERP) -d ./prelude/chars.dats
 test:: chars
 chars: ; \
-export \
-XATSHOME=\
-"$(shell pwd)/../../xanadu" && \
 $(XINTERP) -d ./prelude/chars.dats
 #
 ######
@@ -341,4 +337,6 @@ clean:: ; rm -f *~
 cleanall:: clean
 cleanall:: ; rm -f output
 ######
+# export XATSHOME=$(XANADU)
+# XANADU=$(shell pwd)/../../xanadu
 ###### end of [Makefile_output] ######

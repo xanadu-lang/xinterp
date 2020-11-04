@@ -110,13 +110,31 @@ main0(argc, argv) =
 //
 if
 (argc >= 2)
-then xinterp_main0(argc, argv)
-else prerrln! ("Hello from ATS3(xinterp)!")
-// end of [if]
+then
+(
+xinterp_main0(argc, argv)
+)
+else
+{
+val () =
+prerrln!
+("Hello from ATS3(xinterp)!")
+//
+val
+XATSHOME = the_XATSHOME_get()
+val
+((*void*)) =
+prerrln!
+("xinterp: XATSHOME=",XATSHOME)
+//
+} (* else *) // end of [if]
 ) where
 {
+(*
   val out = stderr_ref
-  val ( ) = echo_argc_argv(out, argc, argv)
+  val ( ) =
+  echo_argc_argv(out, argc, argv)
+*)
 } (* end of [main0] *)
 //
 (* ****** ****** *)
