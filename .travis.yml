@@ -41,8 +41,8 @@ script:
   # Building Xanadu
   - cd ${XINTERP0}
   - (sh ./build.sh)
-  # (cd srcgen/TEST && time make)
-  - (cd srcgen/TEST && time make > output)
+  # (cd srcgen/TEST && time make -f Makefile_test)
+  - (cd srcgen/TEST && time make -f Makefile_test > output)
 
 after_script:
   - date
