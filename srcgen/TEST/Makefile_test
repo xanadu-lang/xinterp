@@ -4,7 +4,11 @@
 #
 ######
 
-test:: \
+all::
+
+######
+
+all:: \
 test_output
 
 ######
@@ -23,4 +27,4 @@ cleanall:: clean
 cleanall:: ; rm -f output
 ######
 
-###### end of [Makefile] ######
+###### end of [Makefile_test] ######

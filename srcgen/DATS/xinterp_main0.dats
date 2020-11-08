@@ -57,14 +57,14 @@ UN="prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload
-STDIO =
-"libats/libc/SATS/stdio.sats"
+#include
+"./../HATS/libxatsopt.hats"
 //
 (* ****** ****** *)
 //
-#include
-"./../HATS/libxatsopt.hats"
+#staload
+STDIO =
+"libats/libc/SATS/stdio.sats"
 //
 (* ****** ****** *)
 //
@@ -283,24 +283,6 @@ fprintln! (out, "  --tycheck (for typechecking only)");
 fprint_newline (out); // HX: needed for flushing out the output
 //
 end // end of [xatsopt_usage]
-//
-(* ****** ****** *)
-//
-extern
-fun
-xatsopt_version
-  (out: FILEref): void
-implement
-xatsopt_version
-  (out) = let
-  val MAJOR = 0
-  val MINOR = 0
-  val MICRO = 0
-in
-  fprint!(out, "ATS/Xanadu version ");
-  fprint!(out, MAJOR, ".", MINOR, ".", MICRO);
-  fprintln!(out, " Copyright (c) 2018-20?? Hongwei Xi")
-end // end of [xatsopt_version]
 //
 (* ****** ****** *)
 //
@@ -729,123 +711,24 @@ the_preludes_load_if
 (XATSENV, st0.prelude)
 // end of [val]
 //
-val () = (st0.inpfil0 := fp0)
+val () =
+(st0.inpfil0 := fp0)
 //
 val
 (pf0 | ()) =
 $FP0.the_filpathlst_push(fp0)
+//
 val
-d0cs =
-let
-val opt =
+p0kg =
 parse_from_filpath_toplevel
   (stadyn, fp0)
-in
-case+ opt of
-| ~Some_vt(d0cs) => d0cs
-| ~None_vt((*void*)) => list_nil()
-end : d0eclist // end-of-val
 //
 prval () = $UN.castview0{void}(pf0)
+//
 (*
 val
 ((*popped*)) =
 $FP0.the_filpathlst_pout(pf0 | (*none*))
-*)
-//
-val () =
-synread_program(d0cs)
-//
-(*
-val () =
-println!
-("process_fpath: d0cs = ", d0cs)
-*)
-//
-val
-d1cs =
-let
-val
-d1cs = trans01_declist(d0cs)
-in
-d1cs where
-{
-val () = tread01_program(d1cs)
-}
-end // end of [val]
-(*
-val () =
-println!
-("process_fpath: d1cs = ", d1cs)
-*)
-//
-val
-d2cs = 
-let
-val
-d2cs = trans12_declist(d1cs)
-in
-d2cs where
-{
-val () = tread12_program(d2cs)
-}
-end // end of [val]
-(*
-val () =
-println!
-("process_fpath: d2cs = ", d2cs)
-*)
-//
-val
-d3cs =
-let
-val
-d3cs = trans23_declist(d2cs)
-in
-d3cs where
-{
-val () = tread23_program(d3cs)
-}
-end // end of [val]
-(*
-val () =
-println!
-("process_fpath: d3cs = ", d3cs)
-*)
-//
-val
-d3cs =
-let
-val
-d3cs = trans33_program(d3cs)
-in
-d3cs where
-{
-val () = tread33_program(d3cs)
-}
-end // end of [val]
-(*
-val () =
-println!
-("process_fpath: d3cs = ", d3cs)
-*)
-//
-val
-d3cs =
-let
-val
-d3cs = trans3t_program(d3cs)
-val
-d3cs = trans3x_program(d3cs)
-in
-let
-val () = tread3x_program(d3cs) in d3cs
-end
-end // end of [val]
-(*
-val () =
-println!
-("process_fpath: d3cs = ", d3cs)
 *)
 //
 val () =
@@ -871,6 +754,23 @@ val () =
 (
   the_dexpenv_println((*void*))
 )
+//
+val
+d3cs =
+let
+val
+p3kg =
+trans03_package(p0kg)
+//
+val+D3TRANSD(rcd) = p3kg
+//
+in
+  case+
+  rcd.transd of
+  | None() =>
+    list_nil((*void*))
+  | Some(d3cs) => d3cs
+end : d3eclist // end-of-val
 //
 val
 irdcls = irerase_declist(d3cs)
