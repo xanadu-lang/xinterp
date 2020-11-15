@@ -27,6 +27,8 @@ XANADU_targetloc
 "{$XANADU}/SATS/lexing.sats"
 //
 #staload
+"{$XANADU}/SATS/staexp0.sats"
+#staload
 "{$XANADU}/SATS/dynexp0.sats"
 #staload
 "{$XANADU}/SATS/parsing.sats"
@@ -34,12 +36,18 @@ XANADU_targetloc
 "{$XANADU}/SATS/synread.sats"
 //
 #staload
+"{$XANADU}/SATS/staexp1.sats"
+#staload
 "{$XANADU}/SATS/dynexp1.sats"
 #staload
 "{$XANADU}/SATS/trans01.sats"
 #staload
 "{$XANADU}/SATS/tread01.sats"
 //
+#staload
+"{$XANADU}/SATS/staexp2.sats"
+#staload
+"{$XANADU}/SATS/statyp2.sats"
 #staload
 "{$XANADU}/SATS/dynexp2.sats"
 #staload
@@ -96,10 +104,12 @@ XANADU_targetloc
 //
 (* ****** ****** *)
 //
+(*
 #staload S2E =
   "{$XANADU}/SATS/staexp2.sats"
 #staload D2E =
   "{$XANADU}/SATS/dynexp2.sats"
+*)
 //
 (* ****** ****** *)
 //

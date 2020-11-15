@@ -45,9 +45,6 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
-#staload $S2T; #staload $S2E
-#staload $D2E; #staload $D3E
-//
 #staload "./../SATS/intrep0.sats"
 //
 (* ****** ****** *)

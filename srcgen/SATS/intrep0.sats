@@ -62,6 +62,8 @@ LEX = "{$XANADU}/SATS/lexing.sats"
 (* ****** ****** *)
 //
 #staload
+S1E = "{$XANADU}/SATS/staexp1.sats"
+#staload
 D1E = "{$XANADU}/SATS/dynexp1.sats"
 //
 #staload
@@ -76,6 +78,7 @@ D3E = "{$XANADU}/SATS/dynexp3.sats"
 //
 (* ****** ****** *)
 
+typedef g1exp = $S1E.g1exp
 typedef d1exp = $D1E.d1exp
 
 (* ****** ****** *)
@@ -590,7 +593,7 @@ i0dcl_node =
 //
 | I0Cinclude of
   ( token
-  , d1exp // src
+  , g1exp // src
   , int(*knd*) // sta/dyn: 0/1
   , filpathopt
   , i0dclistopt) // file inclusion
