@@ -365,16 +365,22 @@ the_prelude_load
 ) (* end of [the_preludes_load_if] *)
 
 (* ****** ****** *)
-//
 datatype
 waitknd =
-  | WTKnone of ()
-  | WTKoutput of () // -o ...
-  | WTKinpsta of () // -s ...
-  | WTKinpdyn of () // -d ...
-  | WTKdefine of () // -DATS ...
-  | WTKinpath of () // -IATS ...
+| WTKnone of ()
+| WTKoutput of () // -o ...
+| WTKinpsta of () // -s ...
+| WTKinpdyn of () // -d ...
+| WTKdefine of () // -DATS ...
+| WTKinpath of () // -IATS ...
 // end of [waitkind]
+(* ****** ****** *)
+datatype
+outchan =
+| OUTCHANref of (FILEref)
+| OUTCHANptr of (FILEref)
+// end of [outchan]
+(* ****** ****** *)
 //
 fun
 waitknd_get_stadyn
@@ -388,12 +394,6 @@ case+ knd of
 //
 (* ****** ****** *)
 //
-datatype
-outchan =
-| OUTCHANref of (FILEref)
-| OUTCHANptr of (FILEref)
-// end of [outchan]
-
 fun
 outchan_get_filref
   (x0: outchan): FILEref =
@@ -408,23 +408,22 @@ case+ x0 of
 typedef
 cmdstate = @{
 //
-arg0= commarg
-,
-wtk0= waitknd
-,
-XATSENV= string
-,
-prelude= int
-,
-inpfil0=fpath_t
-,
-// the number of inputs
-ninpfil= int // processed
+  arg0= commarg
+, wtk0= waitknd
+, XATSENV= string
+, prelude= int
+, inpfil0=fpath_t
+(*
+the number of processed
+*)
+, ninpfil= int // inputs
 //
 , outmode= fmode
 , outchan= outchan
 //
+(*
 // the number of caught
+*)
 , nxerror= int // errors
 //
 } (* end of [cmdstate] *)
