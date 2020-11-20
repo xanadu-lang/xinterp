@@ -8,4 +8,4 @@ BUILD/xinterp_main0_dats.o : HATS/libxatsopt.hats SATS/intrep0.sats SATS/xinterp
 BUILD/interp0_print_dats.o : HATS/libxatsopt.hats SATS/intrep0.sats SATS/interp0.sats
 BUILD/interp0_envmap_dats.o : SATS/intrep0.sats SATS/interp0.sats
 BUILD/interp0_dynexp_dats.o : HATS/libxatsopt.hats SATS/intrep0.sats SATS/interp0.sats
-BUILD/xinterp_dats.o : SATS/xinterp.sats SATS/interp0.sats
+BUILD/xinterp_dats.o : HATS/libxinterp.hats SATS/xinterp.sats SATS/interp0.sats

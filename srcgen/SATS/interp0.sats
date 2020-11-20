@@ -45,7 +45,7 @@ XANADU_targetloc
 
 #staload
 LAB =
-"{$XANADU}/SATS/label0.sats"
+"{$XANADU}/SATS/xlabel0.sats"
 #staload
 D2E =
 "{$XANADU}/SATS/dynexp2.sats"

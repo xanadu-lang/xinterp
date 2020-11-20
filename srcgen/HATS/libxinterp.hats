@@ -6,16 +6,16 @@ XANADU_targetloc
 
 (* ****** ****** *)
 #staload STM =
-"{$XANADU}/SATS/stamp0.sats"
+"{$XANADU}/SATS/xstamp0.sats"
 (* ****** ****** *)
 #staload SYM =
-"{$XANADU}/SATS/symbol.sats"
+"{$XANADU}/SATS/xsymbol.sats"
 (* ****** ****** *)
 #staload LAB =
-"{$XANADU}/SATS/label0.sats"
+"{$XANADU}/SATS/xlabel0.sats"
 (* ****** ****** *)
 #staload GLO =
-"{$XANADU}/SATS/global.sats"
+"{$XANADU}/SATS/xglobal.sats"
 (* ****** ****** *)
 #staload ERR =
 "{$XANADU}/SATS/xerrory.sats"
@@ -28,7 +28,7 @@ XANADU_targetloc
 (* ****** ****** *)
 //
 #staload LEX =
-  "{$XANADU}/SATS/lexing.sats"
+"{$XANADU}/SATS/lexing0.sats"
 #staload PAR =
 "{$XANADU}/SATS/parsing.sats"
 //

@@ -45,10 +45,10 @@ XANADU_targetloc
 (* ****** ****** *)
 //
 #staload
-"{$XANADU}/SATS/basics.sats"
+"{$XANADU}/SATS/xbasics.sats"
 //
 #staload
-"{$XANADU}/SATS/label0.sats"
+"{$XANADU}/SATS/xlabel0.sats"
 #staload
 "{$XANADU}/SATS/filpath.sats"
 #staload
@@ -57,7 +57,7 @@ XANADU_targetloc
 (* ****** ****** *)
 //
 #staload
-LEX = "{$XANADU}/SATS/lexing.sats"
+LEX = "{$XANADU}/SATS/lexing0.sats"
 //
 (* ****** ****** *)
 //

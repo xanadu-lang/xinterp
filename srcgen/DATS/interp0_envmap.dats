@@ -56,11 +56,11 @@ XANADU_targetloc
 (* ****** ****** *)
 //
 #staload
-LAB = "{$XANADU}/SATS/label0.sats"
+LAB = "{$XANADU}/SATS/xlabel0.sats"
 #staload
-STM = "{$XANADU}/SATS/stamp0.sats"
+STM = "{$XANADU}/SATS/xstamp0.sats"
 #staload
-SYM = "{$XANADU}/SATS/symbol.sats"
+SYM = "{$XANADU}/SATS/xsymbol.sats"
 //
 #staload
 D2E = "{$XANADU}/SATS/dynexp2.sats"
