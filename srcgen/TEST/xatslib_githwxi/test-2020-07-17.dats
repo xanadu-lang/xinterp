@@ -53,8 +53,6 @@ tcc -run -DATS_MEMALLOC_LIBC -I${PATSHOME} -I${PATSHOME}/ccomp/runtime -
 "prelude/DATS/gflt.dats"
 #staload
 "prelude/DATS/string.dats"
-#staload
-"prelude/DATS/string_vt.dats"
 //
 (* ****** ****** *)
 #staload

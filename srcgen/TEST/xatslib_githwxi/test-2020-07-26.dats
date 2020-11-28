@@ -40,8 +40,6 @@ exit(EXIT_SUCCESS);
 "prelude/DATS/gflt.dats"
 #staload
 "prelude/DATS/string.dats"
-#staload
-"prelude/DATS/string_vt.dats"
 //
 (* ****** ****** *)
 #staload
