@@ -32,16 +32,19 @@
 #staload
 "prelude/DATS/list.dats"
 #staload
+"prelude/DATS/list_vt.dats"
+#staload
 "prelude/DATS/stream_vt.dats"
 //
 (* ****** ****** *)
 #staload
 "xatslib/githwxi/DATS/mygist.dats"
-#staload
-"xatslib/githwxi/DATS/mytest.dats"
+(* ****** ****** *)
+impltmp
+g_free<string_vt>(cs) = () // leak!
 (* ****** ****** *)
 
-extern
+#extern
 fun
 string_fset_at
 {n:nat}
@@ -116,35 +119,35 @@ alpha =
 "abcdefghijklmnopqrstuvwxyz"
 in
 let
-val i0 = N
+val j0 = N
 and r0 =
 list_vt_nil()
-in loop(i0, r0) end where
+in loop(j0, r0) end where
 {
 //
 typedef
-i0 = nintlte(26)
+j0 = nintlte(26)
 vwtpdef
 r0 = list_vt(string_vt(n))
 //
 fun
 loop
-(i0: i0, r0: r0): r0 =
+(j0: j0, r0: r0): r0 =
 if
-(i0 = 0)
+(j0 = 0)
 then r0 else
 let
-  val i1 = pred(i0)
+  val j1 = pred(j0)
   val c1 =
-  string_get_at(alpha, i1)
+  string_get_at(alpha, j1)
 in
   if
   (c0 = c1)
-  then loop(i1, r0) else let
+  then loop(j1, r0) else let
     val cs =
     string_fset_at(cs, i0, c1)
   in
-    loop(i1, list_vt_cons(cs, r0))
+    loop(j1, list_vt_cons(cs, r0))
   end
 end (*end-of-else*)
 //
@@ -153,12 +156,7 @@ end // end of [helper2]
 
 (* ****** ****** *)
 //
-local
-impltmp
-g_free<string_vt>(cs) = () // leak!
-in
 val nword = length(helper1("water"))
-end
 //
 (* ****** ****** *)
 

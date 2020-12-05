@@ -38,17 +38,17 @@
 (* ****** ****** *)
 
 #define
-XANADU_targetloc
-"./../../xanadu/srcgen/xats"
+XATSOPT_targetloc
+"./../../xatsopt/srcgen/xats"
 
 (* ****** ****** *)
 
 #staload
 LAB =
-"{$XANADU}/SATS/xlabel0.sats"
+"{$XATSOPT}/SATS/xlabel0.sats"
 #staload
 D2E =
-"{$XANADU}/SATS/dynexp2.sats"
+"{$XATSOPT}/SATS/dynexp2.sats"
 
 (* ****** ****** *)
 

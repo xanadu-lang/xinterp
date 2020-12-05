@@ -39,42 +39,42 @@
 (* ****** ****** *)
 //
 #define
-XANADU_targetloc
-"./../../xanadu/srcgen/xats"
+XATSOPT_targetloc
+"./../../xatsopt/srcgen/xats"
 //
 (* ****** ****** *)
 //
 #staload
-"{$XANADU}/SATS/xbasics.sats"
+"{$XATSOPT}/SATS/xbasics.sats"
 //
 #staload
-"{$XANADU}/SATS/xlabel0.sats"
+"{$XATSOPT}/SATS/xlabel0.sats"
 #staload
-"{$XANADU}/SATS/filpath.sats"
+"{$XATSOPT}/SATS/filpath.sats"
 #staload
-"{$XANADU}/SATS/locinfo.sats"
-//
-(* ****** ****** *)
-//
-#staload
-LEX = "{$XANADU}/SATS/lexing0.sats"
+"{$XATSOPT}/SATS/locinfo.sats"
 //
 (* ****** ****** *)
 //
 #staload
-S1E = "{$XANADU}/SATS/staexp1.sats"
-#staload
-D1E = "{$XANADU}/SATS/dynexp1.sats"
+LEX = "{$XATSOPT}/SATS/lexing0.sats"
+//
+(* ****** ****** *)
 //
 #staload
-S2E = "{$XANADU}/SATS/staexp2.sats"
+S1E = "{$XATSOPT}/SATS/staexp1.sats"
 #staload
-S2T = "{$XANADU}/SATS/statyp2.sats"
-#staload
-D2E = "{$XANADU}/SATS/dynexp2.sats"
+D1E = "{$XATSOPT}/SATS/dynexp1.sats"
 //
 #staload
-D3E = "{$XANADU}/SATS/dynexp3.sats"
+S2E = "{$XATSOPT}/SATS/staexp2.sats"
+#staload
+S2T = "{$XATSOPT}/SATS/statyp2.sats"
+#staload
+D2E = "{$XATSOPT}/SATS/dynexp2.sats"
+//
+#staload
+D3E = "{$XATSOPT}/SATS/dynexp3.sats"
 //
 (* ****** ****** *)
 

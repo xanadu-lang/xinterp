@@ -50,22 +50,22 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #define
-XANADU_targetloc
-"./../../xanadu/srcgen/xats"
+XATSOPT_targetloc
+"./../../xatsopt/srcgen/xats"
 //
 (* ****** ****** *)
 //
 #staload
-LAB = "{$XANADU}/SATS/xlabel0.sats"
+LAB = "{$XATSOPT}/SATS/xlabel0.sats"
 #staload
-STM = "{$XANADU}/SATS/xstamp0.sats"
+STM = "{$XATSOPT}/SATS/xstamp0.sats"
 #staload
-SYM = "{$XANADU}/SATS/xsymbol.sats"
+SYM = "{$XATSOPT}/SATS/xsymbol.sats"
 //
 #staload
-D2E = "{$XANADU}/SATS/dynexp2.sats"
+D2E = "{$XATSOPT}/SATS/dynexp2.sats"
 #staload
-T12 = "{$XANADU}/SATS/trans12.sats"
+T12 = "{$XATSOPT}/SATS/trans12.sats"
 //
 (* ****** ****** *)
 
@@ -91,7 +91,7 @@ overload
 
 #staload
 _(*TMP*) =
-"{$XANADU}/DATS/dynexp2_print.dats"
+"{$XATSOPT}/DATS/dynexp2_print.dats"
 
 (* ****** ****** *)
 //

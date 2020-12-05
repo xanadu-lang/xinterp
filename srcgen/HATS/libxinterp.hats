@@ -1,51 +1,51 @@
 (* ****** ****** *)
 
 #define
-XANADU_targetloc
-"./../../xanadu/srcgen/xats"
+XATSOPT_targetloc
+"./../../xatsopt/srcgen/xats"
 
 (* ****** ****** *)
 #staload STM =
-"{$XANADU}/SATS/xstamp0.sats"
+"{$XATSOPT}/SATS/xstamp0.sats"
 (* ****** ****** *)
 #staload SYM =
-"{$XANADU}/SATS/xsymbol.sats"
+"{$XATSOPT}/SATS/xsymbol.sats"
 (* ****** ****** *)
 #staload LAB =
-"{$XANADU}/SATS/xlabel0.sats"
+"{$XATSOPT}/SATS/xlabel0.sats"
 (* ****** ****** *)
 #staload GLO =
-"{$XANADU}/SATS/xglobal.sats"
+"{$XATSOPT}/SATS/xglobal.sats"
 (* ****** ****** *)
 #staload ERR =
-"{$XANADU}/SATS/xerrory.sats"
+"{$XATSOPT}/SATS/xerrory.sats"
 (* ****** ****** *)
 #staload FP0 =
-"{$XANADU}/SATS/filpath.sats"
+"{$XATSOPT}/SATS/filpath.sats"
 (* ****** ****** *)
 #staload LOC =
-"{$XANADU}/SATS/locinfo.sats"
+"{$XATSOPT}/SATS/locinfo.sats"
 (* ****** ****** *)
 //
 #staload LEX =
-"{$XANADU}/SATS/lexing0.sats"
+"{$XATSOPT}/SATS/lexing0.sats"
 #staload PAR =
-"{$XANADU}/SATS/parsing.sats"
+"{$XATSOPT}/SATS/parsing.sats"
 //
 (* ****** ****** *)
 #staload S1E =
-  "{$XANADU}/SATS/staexp1.sats"
+  "{$XATSOPT}/SATS/staexp1.sats"
 #staload S2E =
-  "{$XANADU}/SATS/staexp2.sats"
+  "{$XATSOPT}/SATS/staexp2.sats"
 (* ****** ****** *)
 //
 #staload INTREP0 =
-  "{$XANADU}/SATS/intrep0.sats"
+  "{$XATSOPT}/SATS/intrep0.sats"
 //
 (* ****** ****** *)
 //
 #staload XATSOPT =
-  "{$XANADU}/SATS/xatsopt.sats"
+  "{$XATSOPT}/SATS/xatsopt.sats"
 //
 (* ****** ****** *)
 

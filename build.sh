@@ -17,9 +17,9 @@ make_all() {
 #
 ######
 
-clone_xanadu() {
-    if [ ! -d xanadu/srcgen ]; then
-	git clone https://github.com/xanadu-lang/xanadu.git
+clone_xatsopt() {
+    if [ ! -d xatsopt/srcgen ]; then
+	git clone https://github.com/xanadu-lang/xatsopt.git
     fi
 }
 
@@ -30,7 +30,7 @@ XINTERP_SCRIPT='#!/bin/sh
 XINTERP='${PWD}/bin/xinterp'
 
 if [ ! "$XATSHOME" ] ; then
-  export XATSHOME='${PWD}/xanadu'
+  export XATSHOME='${PWD}/xatsopt'
 fi
 
 if [ -f "$XINTERP" ] ; then
@@ -47,7 +47,7 @@ generate_script() {
 ######
 
 main() {
-    clone_xanadu
+    clone_xatsopt
     make_all
     generate_script
 }

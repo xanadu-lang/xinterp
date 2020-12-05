@@ -1,3 +1,3 @@
-[submodule "xanadu"]
-	path = xanadu
-	url = https://github.com/xanadu-lang/xanadu.git
+[submodule "xatsopt"]
+	path = xatsopt
+	url = https://github.com/xanadu-lang/xatsopt.git
