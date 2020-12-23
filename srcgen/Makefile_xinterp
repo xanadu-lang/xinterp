@@ -40,8 +40,8 @@ LIBGC=-lgc
 
 SRCSATS := \
 intrep0.sats \
-xinterp.sats \
 interp0.sats \
+xinterp.sats \
 
 SRCDATS := \
 intrep0.dats \
