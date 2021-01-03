@@ -33,8 +33,8 @@ make -C srcgen/TEST test > output
 
 ## Remarks
 
-- Xinterp is for debugging the implementation of Xanadu
+- Xinterp is for debugging the implementation ATS3/Xanadu
 
-- Xinterp is *not* meant to be a practical interpreter for Xanadu
+- Xinterp is *not* meant to be a practical interpreter for ATS3
 
 - This project should be constantly under construction for quite some time
