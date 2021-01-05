@@ -37,10 +37,10 @@
 (* ****** ****** *)
 #staload _ =
 "prelude\
-/DATS/CATS/Xint/array.dats"
+/DATS/CATS/Xint/basics.dats"
 #staload _ =
 "prelude\
-/DATS/CATS/Xint/basics.dats"
+/DATS/CATS/Xint/prelude.dats"
 //
 (* ****** ****** *)
 //
