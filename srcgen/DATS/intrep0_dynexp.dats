@@ -651,7 +651,7 @@ d3e0.node() of
     (loc0, I0Eif0(ire1, ire2, opt3))
   end
 //
-| D3Ecase
+| D3Ecas0
   (knd0, d3e1, d3cls) =>
   let
     val ire1 = irerase_dexp(d3e1)
