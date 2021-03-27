@@ -313,7 +313,7 @@ i0exp_node =
 | I0Eassgn of
   (i0exp(*left*), i0exp(*right*))
 //
-| I0Eifte of
+| I0Eift1 of
   ( i0exp(*cond*)
   , i0exp(*then*)
   , i0expopt(*else*))

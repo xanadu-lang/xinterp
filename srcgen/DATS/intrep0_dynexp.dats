@@ -651,7 +651,7 @@ d3e0.node() of
     opt3 = irerase_dexpopt(opt3)
   in
     i0exp_make_node
-    (loc0, I0Eifte(ire1, ire2, opt3))
+    (loc0, I0Eift1(ire1, ire2, opt3))
   end
 | D3Eif1
   ( d3e1
@@ -665,7 +665,7 @@ d3e0.node() of
     opt3 = irerase_dexpopt(opt3)
   in
     i0exp_make_node
-    (loc0, I0Eifte(ire1, ire2, opt3))
+    (loc0, I0Eift1(ire1, ire2, opt3))
   end
 //
 | D3Ecas0

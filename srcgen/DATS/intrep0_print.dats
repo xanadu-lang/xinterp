@@ -333,10 +333,10 @@ x0.node() of
   ( out
   , "I0Eassgn(", irel, "; ", irer, ")")
 //
-| I0Eifte
+| I0Eift1
   (ire1, ire2, opt3) =>
   fprint!
-  ( out, "I0Eifte("
+  ( out, "I0Eift1("
   , ire1, "; ", ire2, "; ", opt3, ")")
 //
 | I0Ecase
