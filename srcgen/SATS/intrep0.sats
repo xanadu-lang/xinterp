@@ -313,12 +313,14 @@ i0exp_node =
 | I0Eassgn of
   (i0exp(*left*), i0exp(*right*))
 //
-| I0Eif0 of
+| I0Eifte of
   ( i0exp(*cond*)
-  , i0exp(*then*), i0expopt(*else*))
+  , i0exp(*then*)
+  , i0expopt(*else*))
 //
 | I0Ecase of
-  (int(*knd*), i0exp, i0claulst)
+  ( int(*knd*)
+  , i0exp(*val*), i0claulst)
 //
 | I0Elam of
   (int(*knd*), i0arglst, i0exp)

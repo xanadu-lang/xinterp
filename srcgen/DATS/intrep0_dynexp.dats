@@ -518,11 +518,14 @@ d3e0.node() of
       (ire1, targ, ircl, tsub))
   end
 //
-| D3Esap0
+| D3Esap0 // error
   (d3e1, _) => irerase_dexp(d3e1)
-| D3Esap1
+| D3Esap1 // checked
   (d3e1, _) => irerase_dexp(d3e1)
 //
+(*
+| D3Edap0 // no such case
+*)
 | D3Edapp
   (d3f0, npf1, d3es) =>
   let
@@ -648,14 +651,38 @@ d3e0.node() of
     opt3 = irerase_dexpopt(opt3)
   in
     i0exp_make_node
-    (loc0, I0Eif0(ire1, ire2, opt3))
+    (loc0, I0Eifte(ire1, ire2, opt3))
+  end
+| D3Eif1
+  ( d3e1
+  , d3e2, opt3, tinv) =>
+  let
+    val
+    ire1 = irerase_dexp(d3e1)
+    val
+    ire2 = irerase_dexp(d3e2)
+    val
+    opt3 = irerase_dexpopt(opt3)
+  in
+    i0exp_make_node
+    (loc0, I0Eifte(ire1, ire2, opt3))
   end
 //
 | D3Ecas0
-  (knd0, d3e1, d3cls) =>
+  (knd0, d3e1, dcls) =>
   let
     val ire1 = irerase_dexp(d3e1)
-    val ircls = irerase_dclaulst(d3cls)
+    val ircls = irerase_dclaulst(dcls)
+  in
+    i0exp_make_node
+    (loc0, I0Ecase(knd0, ire1, ircls))
+  end
+| D3Ecas1
+  ( knd0
+  , d3e1, dcls, tinv) =>
+  let
+    val ire1 = irerase_dexp(d3e1)
+    val ircls = irerase_dclaulst(dcls)
   in
     i0exp_make_node
     (loc0, I0Ecase(knd0, ire1, ircls))

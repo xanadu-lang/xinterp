@@ -1561,7 +1561,7 @@ end // end of [local]
 (* ****** ****** *)
 
 fun
-aux_if0
+aux_ifte
 ( env0
 : !intpenv
 , ire0
@@ -1569,7 +1569,7 @@ aux_if0
 let
 //
 val-
-I0Eif0
+I0Eifte
 ( ire1
 , ire2
 , opt3) = ire0.node()
@@ -1578,14 +1578,14 @@ val
 irv1 =
 interp0_irexp(env0, ire1)
 //
-// (*
+(*
 val () =
 println!
-("aux_if0: ire1 = ", ire1)
+("aux_ifte: ire1 = ", ire1)
 val () =
 println!
-("aux_if0: irv1 = ", irv1)
-// *)
+("aux_ifte: irv1 = ", irv1)
+*)
 //
 in
 //
@@ -1604,7 +1604,7 @@ case+ opt3 of
   interp0_irexp(env0, ire3)
 )
 //
-end // end of [aux_if0]
+end // end of [aux_ifte]
 
 (* ****** ****** *)
 
@@ -1644,10 +1644,10 @@ val
 irv1 =
 interp0_irexp(env0, ire1)
 //
-// (*
+(*
 val () =
 println!("aux_case: irv1 = ", irv1)
-// *)
+*)
 //
 val
 opt2 =
@@ -2308,9 +2308,9 @@ ire0.node() of
 | I0Eassgn
   (irel, irer) => aux_assgn(env0, ire0)
 //
-| I0Eif0
-    (_, _, _) => aux_if0(env0, ire0)
-  // I0Eif0
+| I0Eifte
+    (_, _, _) => aux_ifte(env0, ire0)
+  // I0Eifte
 | I0Ecase
     (_, _, _) => aux_case(env0, ire0)
   // I0Ecase
