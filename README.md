@@ -1,6 +1,7 @@
-# xinterp
+# Xinterp
 
-An interpreter for assigning dynamic semantics to Xanadu
+An interpreter for assigning dynamic semantics to the d3-level syntax
+of ATS3/Xanadu
 
 ## Build Status
 
