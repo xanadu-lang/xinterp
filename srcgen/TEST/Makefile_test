@@ -1,0 +1,30 @@
+######
+#
+# For testing xinterp
+#
+######
+
+all::
+
+######
+
+all:: \
+test_output
+
+######
+
+test_output:: ; \
+$(MAKE) -f Makefile_output > /dev/null
+
+######
+#
+# HX: for cleaning up
+#
+######
+clean:: ; rm -f *~
+######
+cleanall:: clean
+cleanall:: ; rm -f output
+######
+
+###### end of [Makefile_test] ######
