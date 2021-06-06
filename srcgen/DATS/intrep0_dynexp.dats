@@ -366,7 +366,8 @@ d3p0.node() of
 //
 | D3Ptuple _ => aux_tuple(d3p0)
 //
-| D3Panno(d3p1, _) => irerase_dpat(d3p1)
+| D3Panno
+  (d3p1, _, _) => irerase_dpat(d3p1)
 //
 | _(*rest-of-d3pat*) =>
   i0pat_make_node(loc0, I0Pnone1(d3p0))
@@ -474,7 +475,7 @@ d3e0.node() of
 | D3Evar(d2v) =>
   i0exp_make_node
   (loc0, I0Evar(d2v))
-| D3Evknd
+| D3Ekvar
   ( knd, d2v ) =>
   i0exp_make_node
   (loc0, I0Evar(d2v))
@@ -806,7 +807,7 @@ d3e0.node() of
   end // end of [D3Ellazy]
 //
 | D3Eanno
-  ( d3e1, s2e2 ) => irerase_dexp(d3e1)
+  (d3e1, _, _) => irerase_dexp(d3e1)
   // end of [D3Eanno]
 //
 | D3Enone0((*void*)) =>
