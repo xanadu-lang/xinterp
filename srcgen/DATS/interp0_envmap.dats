@@ -1143,7 +1143,7 @@ $UN.castvwtp0
 )
 //
 fun
-a0ref_get
+a0ref_get_raw
 (A: i0val): i0val =
 let
 val-
@@ -1152,7 +1152,7 @@ in
   $UN.ptr0_get<i0val>(A)
 end
 fun
-a0ref_set
+a0ref_set_raw
 ( A: i0val
 , x: i0val): i0val =
 let
@@ -2071,25 +2071,7 @@ the_d2cstdef_insert
 d2cst
 ("XINTERP_a0ptr_alloc")
 ,
-I0Vfun
-(firfun0(a0ptr_alloc)))
-//
-val () =
-the_d2cstdef_insert
-(
-d2cst("XINTERP_a0ref_get")
-,
-I0Vfun
-( firfun1(a0ref_get)) )
-val () =
-the_d2cstdef_insert
-(
-d2cst("XINTERP_a0ref_set")
-,
-I0Vfun
-( firfun2(a0ref_set)) )
-//
-(* ****** ****** *)
+I0Vfun(firfun0(a0ptr_alloc)))
 //
 val () =
 the_d2cstdef_insert
@@ -2097,8 +2079,28 @@ the_d2cstdef_insert
 d2cst
 ("XINTERP_a1ptr_alloc")
 ,
+I0Vfun(firfun1(a1ptr_alloc)))
+//
+(* ****** ****** *)
+//
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("XINTERP_a0ref_get_raw")
+,
 I0Vfun
-(firfun1(a1ptr_alloc)))
+( firfun1( a0ref_get_raw )) )
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("XINTERP_a0ref_set_raw")
+,
+I0Vfun
+( firfun2( a0ref_set_raw )) )
+//
+(* ****** ****** *)
 //
 val () =
 the_d2cstdef_insert
@@ -2107,7 +2109,7 @@ d2cst
 ("XINTERP_a1ref_head_raw")
 ,
 I0Vfun
-(firfun1(a1ref_head_raw)))
+( firfun1( a1ref_head_raw )) )
 val () =
 the_d2cstdef_insert
 (
@@ -2115,7 +2117,7 @@ d2cst
 ("XINTERP_a1ref_tail_raw")
 ,
 I0Vfun
-(firfun1(a1ref_tail_raw)))
+( firfun1( a1ref_tail_raw )) )
 //
 val () =
 the_d2cstdef_insert
@@ -2124,7 +2126,7 @@ d2cst
 ("XINTERP_a1ref_get_at_raw")
 ,
 I0Vfun
-(firfun2(a1ref_get_at_raw)))
+( firfun2(a1ref_get_at_raw)) )
 val () =
 the_d2cstdef_insert
 (
@@ -2132,7 +2134,7 @@ d2cst
 ("XINTERP_a1ptr_get_at_raw")
 ,
 I0Vfun
-(firfun2(a1ptr_get_at_raw)))
+( firfun2(a1ptr_get_at_raw)) )
 //
 val () =
 the_d2cstdef_insert
@@ -2141,7 +2143,7 @@ d2cst
 ("XINTERP_a1ref_set_at_raw")
 ,
 I0Vfun
-(firfun3(a1ref_set_at_raw)))
+( firfun3(a1ref_set_at_raw)) )
 val () =
 the_d2cstdef_insert
 (
@@ -2149,7 +2151,7 @@ d2cst
 ("XINTERP_a1ptr_set_at_raw")
 ,
 I0Vfun
-(firfun3(a1ptr_set_at_raw)))
+( firfun3(a1ptr_set_at_raw)) )
 //
 (* ****** ****** *)
 //
@@ -2173,7 +2175,7 @@ the_d2cstdef_insert
 d2cst
 ("XINTERP_g_stderr")
 ,
-I0Vfun(firfun0(g_stderr)))
+I0Vfun( firfun0(g_stderr)) )
 //
 val () =
 the_d2cstdef_insert
@@ -2181,14 +2183,14 @@ the_d2cstdef_insert
 d2cst
 ("XINTERP_fgetc_ref")
 ,
-I0Vfun(firfun1(fgetc_ref)))
+I0Vfun( firfun1(fgetc_ref)) )
 val () =
 the_d2cstdef_insert
 (
 d2cst
 ("XINTERP_fputc_ref")
 ,
-I0Vfun(firfun2(fputc_ref)))
+I0Vfun( firfun2(fputc_ref)) )
 //
 val () =
 the_d2cstdef_insert
